@@ -14,8 +14,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="/chaingateway.io/assets/images/favicon.webp" type="image/x-icon">
-    <link rel="stylesheet" href="/chaingateway.io/assets/css/main.css">
+    <link rel="shortcut icon" href="/assets/images/favicon.webp" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/main.css">
       
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -27,7 +27,7 @@
     <script>
       new WOW().init();
     </script>
-    <link type="application/atom+xml" rel="alternate" href="/chaingateway.io/feed.xml" title="Chaingateway.io - Blockchain API">
+    <link type="application/atom+xml" rel="alternate" href="https://demo.tokengateway.io/feed.xml" title="Chaingateway.io - Blockchain API">
    <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Interacting with Blockchain Nodes using JSON-RPC | Chaingateway.io - Blockchain API</title>
 <meta name="generator" content="Jekyll v4.3.3">
@@ -36,19 +36,19 @@
 <meta property="og:locale" content="en_US">
 <meta name="description" content="Learn how to use JSON-RPC, a lightweight protocol that allows for the transmission of data between a client and a server, to interact with blockchain nodes with example code in PHP, Python, and JavaScript.">
 <meta property="og:description" content="Learn how to use JSON-RPC, a lightweight protocol that allows for the transmission of data between a client and a server, to interact with blockchain nodes with example code in PHP, Python, and JavaScript.">
-<link rel="canonical" href="/chaingateway.io/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/">
-<meta property="og:url" content="/chaingateway.io/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/">
+<link rel="canonical" href="https://demo.tokengateway.io/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/">
+<meta property="og:url" content="https://demo.tokengateway.io/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/">
 <meta property="og:site_name" content="Chaingateway.io - Blockchain API">
-<meta property="og:image" content="/chaingateway.io/assets/images/blog/2023/01/Interacting-with-Blockchain-Nodes-using-JSON-RPC-A-guide-with-examples-in-PHP-Python-and-JavaScript.webp">
+<meta property="og:image" content="https://demo.tokengateway.io/assets/images/blog/2023/01/Interacting-with-Blockchain-Nodes-using-JSON-RPC-A-guide-with-examples-in-PHP-Python-and-JavaScript.webp">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2023-01-10T14:57:03+00:00">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:image" content="/chaingateway.io/assets/images/blog/2023/01/Interacting-with-Blockchain-Nodes-using-JSON-RPC-A-guide-with-examples-in-PHP-Python-and-JavaScript.webp">
+<meta property="twitter:image" content="https://demo.tokengateway.io/assets/images/blog/2023/01/Interacting-with-Blockchain-Nodes-using-JSON-RPC-A-guide-with-examples-in-PHP-Python-and-JavaScript.webp">
 <meta property="twitter:title" content="Interacting with Blockchain Nodes using JSON-RPC">
-<meta name="twitter:site" content="@benbalter">
+<meta name="twitter:site" content="@ChaingatewayIO">
 <meta name="twitter:creator" content="@Chaingateway">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Chaingateway"},"dateModified":"2023-01-10T14:57:03+00:00","datePublished":"2023-01-10T14:57:03+00:00","description":"Learn how to use JSON-RPC, a lightweight protocol that allows for the transmission of data between a client and a server, to interact with blockchain nodes with example code in PHP, Python, and JavaScript.","headline":"Interacting with Blockchain Nodes using JSON-RPC","image":"/chaingateway.io/assets/images/blog/2023/01/Interacting-with-Blockchain-Nodes-using-JSON-RPC-A-guide-with-examples-in-PHP-Python-and-JavaScript.webp","mainEntityOfPage":{"@type":"WebPage","@id":"/chaingateway.io/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/"},"url":"/chaingateway.io/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Chaingateway"},"dateModified":"2023-01-10T14:57:03+00:00","datePublished":"2023-01-10T14:57:03+00:00","description":"Learn how to use JSON-RPC, a lightweight protocol that allows for the transmission of data between a client and a server, to interact with blockchain nodes with example code in PHP, Python, and JavaScript.","headline":"Interacting with Blockchain Nodes using JSON-RPC","image":"https://demo.tokengateway.io/assets/images/blog/2023/01/Interacting-with-Blockchain-Nodes-using-JSON-RPC-A-guide-with-examples-in-PHP-Python-and-JavaScript.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://demo.tokengateway.io/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/"},"url":"https://demo.tokengateway.io/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -59,8 +59,8 @@
     <div class="relative -mx-4 flex items-center justify-between">
       <div class="w-60 max-w-full px-4">
         <a href="/" class="navbar-logo block w-full py-5">
-          <img src="/chaingateway.io/assets/images/logo/logo-white.svg" alt="logo" class="header-logo w-full" :class="{ 'hidden': !transparent &amp;&amp; !darkMode }" loading="lazy">
-          <img src="/chaingateway.io/assets/images/logo/logo.svg" alt="logo" class="header-logo w-full" :class="{ 'hidden': transparent || darkMode }" loading="lazy">
+          <img src="/assets/images/logo/logo-white.svg" alt="logo" class="header-logo w-full" :class="{ 'hidden': !transparent &amp;&amp; !darkMode }" loading="lazy">
+          <img src="/assets/images/logo/logo.svg" alt="logo" class="header-logo w-full" :class="{ 'hidden': transparent || darkMode }" loading="lazy">
         </a>
       </div>
       <div class="flex w-full items-center justify-between px-4">
@@ -255,12 +255,12 @@
     <div class="w-full px-4">
       <div class="wow fadeInUp relative z-20 mb-[50px] h-[300px] overflow-hidden rounded-[5px] md:h-[400px] lg:h-[500px]" data-wow-delay=".1s
         ">
-        <img src="/chaingateway.io/assets/images/blog/2023/01/Interacting-with-Blockchain-Nodes-using-JSON-RPC-A-guide-with-examples-in-PHP-Python-and-JavaScript.webp" alt="Interacting with Blockchain Nodes using JSON-RPC" class="object-cover object-center w-full h-full" loading="lazy">
+        <img src="/assets/images/blog/2023/01/Interacting-with-Blockchain-Nodes-using-JSON-RPC-A-guide-with-examples-in-PHP-Python-and-JavaScript.webp" alt="Interacting with Blockchain Nodes using JSON-RPC" class="object-cover object-center w-full h-full" loading="lazy">
         <div class="absolute top-0 left-0 z-10 flex items-end w-full h-full bg-gradient-to-t from-dark-700 to-transparent">
           <div class="flex flex-wrap items-center p-4 pb-4 sm:px-8">
             <div class="flex items-center mb-4 mr-5 md:mr-10">
               <div class="w-10 h-10 mr-4 overflow-hidden rounded-full">
-                <img src="/chaingateway.io/assets/images/logo/logo_small.jpg" alt="Chaingateway" class="w-full" loading="lazy">
+                <img src="/assets/images/logo/logo_small.jpg" alt="Chaingateway" class="w-full" loading="lazy">
               </div>
               <p class="text-base font-medium text-white">
                 By
@@ -435,26 +435,26 @@ By understanding the basics of JSON-RPC and how it can be used to interact with 
 <div class="flex flex-col items-start wow fadeInUp justify-end" data-wow-delay=".1s">
 <p class="mr-5 text-sm font-medium text-body-color dark:text-white">Share This Post </p>
 <div id="share-buttons" class="flex flex-row items-center gap-[10px] text-xl">
-    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/');">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://demo.tokengateway.io/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/');">
         <span class="icon-[devicon--facebook]"></span>
     </div>
-    <div class="twitter" title="Share this on Twitter" onclick="window.open('ttps://twitter.com/intent/tweet?text=/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/');">
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('ttps://twitter.com/intent/tweet?text=https://demo.tokengateway.io/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/');">
         <span class="icon-[devicon--twitter]"></span>
     </div>
-    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url=/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/&amp;title=&amp;summary=&amp;source=');">
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url=https://demo.tokengateway.io/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/&amp;title=&amp;summary=&amp;source=');">
         <span class="icon-[devicon--linkedin]"></span>
     </div>
     
-    <div class="whatsapp text-2xl" title="Share this on Whatsapp" onclick="window.open('https://api.whatsapp.com/send?text=/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/');">
+    <div class="whatsapp text-2xl" title="Share this on Whatsapp" onclick="window.open('https://api.whatsapp.com/send?text=https://demo.tokengateway.io/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/');">
         <span class="icon-[logos--whatsapp-icon]"></span>
     </div>
-    <div class="telegram text-2xl" title="Share this on Telegram" onclick="window.open('https://t.me/share/url?url=/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/');">
+    <div class="telegram text-2xl" title="Share this on Telegram" onclick="window.open('https://t.me/share/url?url=https://demo.tokengateway.io/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/');">
         <span class="icon-[logos--telegram]"></span>
     </div>
-    <div class="reddit text-2xl" title="Share this on Reddit" onclick="window.open('https://www.reddit.com/submit?url=/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/');">
+    <div class="reddit text-2xl" title="Share this on Reddit" onclick="window.open('https://www.reddit.com/submit?url=https://demo.tokengateway.io/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/');">
         <span class="icon-[logos--reddit-icon]"></span>
     </div>
-    <div class="mail text-2xl" title="Share this through Email" onclick="window.open('mailto:?&amp;body=/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/');">
+    <div class="mail text-2xl" title="Share this through Email" onclick="window.open('mailto:?&amp;body=https://demo.tokengateway.io/blog/interacting-with-blockchain-nodes-using-json-rpc-a-guide-with-examples-in-php-python-and-javascript/');">
         <span class="icon-[mdi--email-outline]"></span>
     </div>
 
@@ -787,7 +787,7 @@ By understanding the basics of JSON-RPC and how it can be used to interact with 
             <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-4/12 xl:w-3/12">
                 <div class="mb-10 w-full">
                     <a href="https://twitter.com/ChaingatewayIO" class="mb-6 inline-block max-w-[180px]">
-                        <img src="/chaingateway.io/assets/images/logo/logo-white.svg" alt="logo" class="max-w-full" loading="lazy">
+                        <img src="/assets/images/logo/logo-white.svg" alt="logo" class="max-w-full" loading="lazy">
                     </a>
                     <p class="mb-8 max-w-[270px] text-base text-gray-7">
                         Passionate Blockchain Enthusiasts unlocking the Future of Blockchain Technology.
