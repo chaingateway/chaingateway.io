@@ -26,8 +26,35 @@
 
 <script
     id="api-reference"
-    data-url="../docs/openapi.yaml">
+    data-url="https://beta.chaingateway.io/docs/openapi.yaml">
 </script>
+<script>
+    var configuration = {
+        servers: [{
+                url: 'https://testnet.chaingateway.io',
+                description: 'Testnet API',
+            },
+            {
+                url: 'https://beta.chaingateway.io',
+                description: 'Mainnet API',
+            },
+
+        ],
+        metaData: {
+            title: 'Chaingateway.io API Docs',
+            description: 'This Page provides the documentation for the Chaingateway API endpoints. Chaingateway is a blockchain gateway that allows you to interact with multiple blockchains using a single API.',
+            ogDescription: 'This Page provides the documentation for the Chaingateway API endpoints. Chaingateway is a blockchain gateway that allows you to interact with multiple blockchains using a single API.',
+            ogTitle: 'Chaingateway.io API Docs',
+            ogImage: 'https://chaingateway.io/assets/images/svg/nav-logo.svg',
+            twitterCard: 'Chaingateway.io API Docs',
+            // Add more...
+        }
+    }
+
+    document.getElementById('api-reference').dataset.configuration =
+        JSON.stringify(configuration)
+</script>
+    
 <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
 </body>
 </html>
