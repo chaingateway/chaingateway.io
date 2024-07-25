@@ -6,7 +6,7 @@
   toggleDarkMode() {
     this.darkMode = !this.darkMode;
     localStorage.setItem('darkMode', this.darkMode);
-  }
+  } 
 }" :class="{ 'dark': darkMode }">
 
 <head>
@@ -67,7 +67,7 @@
             <span class="relative my-[6px] block h-[2px] w-[30px]" :class="{ 'bg-white': transparent, 'bg-primary': !transparent }"></span>
             <span class="relative my-[6px] block h-[2px] w-[30px]" :class="{ 'bg-white': transparent, 'bg-primary': !transparent }"></span>
           </button>
-          <nav x-on:mouseleave="navbarOpen = !navbarOpen" :class="{'visible': navbarOpen, 'hidden lg:visible':  !navbarOpen }" id="navbarCollapse" class="absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-neutral-50 dark:bg-gray-800 dark:lg:bg-transparent dark:text-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:px-4 lg:py-0 lg:shadow-none xl:px-6">
+          <nav x-on:mouseleave="navbarOpen = !navbarOpen" :class="{'visible': navbarOpen, 'hidden lg:visible':  !navbarOpen }" id="navbarCollapse" class="absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-gray-50 dark:bg-gray-800 dark:lg:bg-transparent dark:text-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:px-4 lg:py-0 lg:shadow-none xl:px-6">
 
             <ul class="block lg:flex 2xl:ml-20">
               
@@ -79,25 +79,25 @@
                     <path d="M7.99999 14.9C7.84999 14.9 7.72499 14.85 7.59999 14.75L1.84999 9.10005C1.62499 8.87505 1.62499 8.52505 1.84999 8.30005C2.07499 8.07505 2.42499 8.07505 2.64999 8.30005L7.99999 13.525L13.35 8.25005C13.575 8.02505 13.925 8.02505 14.15 8.25005C14.375 8.47505 14.375 8.82505 14.15 9.05005L8.39999 14.7C8.27499 14.825 8.14999 14.9 7.99999 14.9Z"></path>
                   </svg>
                 </a>
-                <div x-show="open" class="submenu relative left-0 top-full w-[250px] rounded-sm bg-neutral-50 text-dark p-4 transition-[top] duration-300 group-hover:opacity-100 dark:bg-gray-800 dark:text-white lg:invisible lg:absolute lg:top-[110%] lg:block lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full">
+                <div x-show="open" class="submenu relative left-0 top-full w-[250px] rounded-sm bg-gray-50 text-dark p-4 transition-[top] duration-300 group-hover:opacity-100 dark:bg-gray-800 dark:text-white lg:invisible lg:absolute lg:top-[110%] lg:block lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full">
                   
-                  <a href="/tron-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/tron-api/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Tron Api
                   </a>
                   
-                  <a href="/binance-smart-chain-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/binance-smart-chain-api/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Binance Smart Chain Api
                   </a>
                   
-                  <a href="/ethereum-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/ethereum-api/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Ethereum Api
                   </a>
                   
-                  <a href="/polygon-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/polygon-api/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Polygon Api
                   </a>
                   
-                  <a href="/bitcoin-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/bitcoin-api/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Bitcoin Api
                   </a>
                   
@@ -121,17 +121,17 @@
                     <path d="M7.99999 14.9C7.84999 14.9 7.72499 14.85 7.59999 14.75L1.84999 9.10005C1.62499 8.87505 1.62499 8.52505 1.84999 8.30005C2.07499 8.07505 2.42499 8.07505 2.64999 8.30005L7.99999 13.525L13.35 8.25005C13.575 8.02505 13.925 8.02505 14.15 8.25005C14.375 8.47505 14.375 8.82505 14.15 9.05005L8.39999 14.7C8.27499 14.825 8.14999 14.9 7.99999 14.9Z"></path>
                   </svg>
                 </a>
-                <div x-show="open" class="submenu relative left-0 top-full w-[250px] rounded-sm bg-neutral-50 text-dark p-4 transition-[top] duration-300 group-hover:opacity-100 dark:bg-gray-800 dark:text-white lg:invisible lg:absolute lg:top-[110%] lg:block lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full">
+                <div x-show="open" class="submenu relative left-0 top-full w-[250px] rounded-sm bg-gray-50 text-dark p-4 transition-[top] duration-300 group-hover:opacity-100 dark:bg-gray-800 dark:text-white lg:invisible lg:absolute lg:top-[110%] lg:block lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full">
                   
-                  <a href="/docs/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/docs/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     API Docs
                   </a>
                   
-                  <a href="/developers/getting-started/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/developers/getting-started/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Getting Started
                   </a>
                   
-                  <a href="/developers/tutorials/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/developers/tutorials/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Tutorials
                   </a>
                   
@@ -158,10 +158,10 @@
             </ul>
 
             <div class="flex gap-2 w-100 sm:hidden px-2 ">
-              <a href="https://beta.chaingateway.io/" class="w-1/2 signUpBtn rounded-md bg-purple-800 px-6 py-2  font-medium  duration-300 ease-in-out hover:bg-opacity-90 text-white ">
+              <a href="https://beta.chaingateway.io/" class="w-1/2 signUpBtn rounded-md bg-indigo-800 px-6 py-2  font-medium  duration-300 ease-in-out hover:bg-opacity-90 text-white ">
                 Sign In
               </a>
-              <a href="https://beta.chaingateway.io/register" class="w-1/2 signUpBtn rounded-md bg-purple-600 text-white px-6 py-2  font-medium  duration-300 ease-in-out hover:bg-opacity-90 ">
+              <a href="https://beta.chaingateway.io/register" class="w-1/2 signUpBtn rounded-md bg-indigo-600 text-white px-6 py-2  font-medium  duration-300 ease-in-out hover:bg-opacity-90 ">
                 Sign Up
               </a>
             </div>
@@ -213,7 +213,7 @@
           </p>
 <ul class="flex flex-wrap items-center">
             <li>
-              <a href="https://app.chaingateway.io" class="inline-flex items-center justify-center rounded-md dark:bg-gray-900 bg-neutral-50 px-7 py-[14px] text-center text-base dark:text-neutral-50 font-medium text-dark shadow-md transition duration-300 ease-in-out wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="0.5s">
+              <a href="https://app.chaingateway.io" class="inline-flex items-center justify-center rounded-md dark:bg-gray-900 bg-gray-50 px-7 py-[14px] text-center text-base dark:text-neutral-50 font-medium text-dark shadow-md transition duration-300 ease-in-out wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="0.5s">
                 Get Started for free
               </a>
             </li>
@@ -229,8 +229,8 @@
       <div class="w-full px-4 lg:w-6/12">
         <div class="lg:ml-auto lg:text-right">
           <div class="relative z-10 inline-block lg:pt-0 wow fadeInUp w-full h-full" data-wow-delay="0.5s" data-wow-duration="0.5s">
-            
-              <img src="/assets/images/hero/polygon.png" alt="Start with our Polygon API" width="100%" height="100%" loading="lazy">
+
+            <img src="/assets/images/hero/polygon.png" alt="Start with our Polygon API" width="100%" height="100%" loading="lazy">
 
           </div>
         </div>
@@ -242,275 +242,283 @@
 <section class="dark:bg-gray-800 dark:text-neutral-50 text-body-color bg-gray-200 body-font">
   <div class="container px-5 py-24 mx-auto flex flex-wrap flex-col lg:flex-row">
     <div class="flex flex-wrap -mx-4 mt-auto mb-auto lg:w-1/2 sm:w-2/3 content-start sm:pr-10">
-    <div class="w-full sm:p-4 px-4 mb-6 wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="0.6s">
-      <div class="mb-6 max-w-[485px]  lg:mb-[70px] wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="0.6s">
-        <span class="mb-2 block text-lg font-semibold text-purple-500">
-          About Polygon
-        </span>
-        <h2 class="mb-1 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2] wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.5s">
-        What Is Polygon
-        </h2>
-      </div>
-      <div class="leading-relaxed">Polygon is a protocol and a framework for building and connecting Ethereum-compatible blockchain networks. It aims to solve some of Ethereum's scalability and usability issues, making it more efficient for developers to create decentralized applications (dApps) and facilitate fast and low-cost transactions.</div>
+      <div class="w-full sm:p-4 px-4 mb-6 wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="0.6s">
+        <div class="mb-6 max-w-[485px]  lg:mb-[70px] wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="0.6s">
+          <span class="mb-2 block text-lg font-semibold text-indigo-500">
+            About Polygon
+          </span>
+          <h2 class="mb-1 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2] wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.5s">
+            What Is Polygon
+          </h2>
+        </div>
+        <div class="leading-relaxed">Polygon is a protocol and a framework for building and connecting Ethereum-compatible blockchain networks. It aims to solve some of Ethereum's scalability and usability issues, making it more efficient for developers to create decentralized applications (dApps) and facilitate fast and low-cost transactions.</div>
 
-    </div>
-      
-    <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.5s">
-      <h2 class="title-font font-medium text-3xl text-purple-500">$7B+</h2>
-      <p class="leading-relaxed">Market Cap</p>
-    </div>
-    <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.5s">
-      <h2 class="title-font font-medium text-3xl text-purple-500">$390M+</h2>
-      <p class="leading-relaxed">Transactions (24h)</p>
-    </div>
-    <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.5s">
-      <h2 class="title-font font-medium text-3xl text-purple-500">35+</h2>
-      <p class="leading-relaxed">Transactions (second)</p>
-    </div>
-    <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.5s">
-      <h2 class="title-font font-medium text-3xl text-purple-500">750+</h2>
-      <p class="leading-relaxed">Tokens</p>
-    </div>
+      </div>
+
+      <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.5s">
+        <h2 class="title-font font-medium text-3xl text-indigo-500">$7B+</h2>
+        <p class="leading-relaxed">Market Cap</p>
+      </div>
+      <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.5s">
+        <h2 class="title-font font-medium text-3xl text-indigo-500">$390M+</h2>
+        <p class="leading-relaxed">Transactions (24h)</p>
+      </div>
+      <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.5s">
+        <h2 class="title-font font-medium text-3xl text-indigo-500">35+</h2>
+        <p class="leading-relaxed">Transactions (second)</p>
+      </div>
+      <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.5s">
+        <h2 class="title-font font-medium text-3xl text-indigo-500">750+</h2>
+        <p class="leading-relaxed">Tokens</p>
+      </div>
     </div>
     <div class="lg:w-1/2 sm:w-1/3 w-full rounded-lg overflow-hidden mt-6 sm:mt-0 justify-center content-center items-center mx-auto wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.5s">
-    <script type="text/javascript" src="https://s1.coincarp.com/static/script/widget/ticker.min.js"></script><div class="max-w-lg mx-auto coincarp-widget widget-div dark:bg-gray-900 bg-gray-100 border-gray-100" data-currencycode="matictoken" data-base="usd" data-secondary="" data-stats="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-statsticker="true"></div>
+      <script type="text/javascript" src="https://s1.coincarp.com/static/script/widget/ticker.min.js"></script>
+      <div class="max-w-lg mx-auto coincarp-widget widget-div dark:bg-gray-900 bg-gray-100 border-gray-100" data-currencycode="matictoken" data-base="usd" data-secondary="" data-stats="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-statsticker="true"></div>
     </div>
   </div>
-  </section>
+</section>
 
-    <!-- ====== Features Section Start -->
-    <section class="pb-8 pt-20 dark:bg-gray-900 lg:pb-[70px] lg:pt-[120px]">
-    <div class="container">
-      <div class="-mx-4 flex flex-wrap">
+<!-- ====== Features Section Start -->
+<section class="pb-8 pt-20 dark:bg-gray-900 lg:pb-[70px] lg:pt-[120px]">
+  <div class="container">
+    <div class="-mx-4 flex flex-wrap">
       <div class="w-full px-4">
         <div class="mx-auto mb-12 max-w-[485px] text-center lg:mb-[70px] wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="0.6s">
-        <span class="mb-2 block text-lg font-semibold text-purple-500">
-          Features
-        </span>
-        <h2 class="mb-3 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2] wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.5s">
-          Advantages of Polygon
-        </h2>
-        
+          <span class="mb-2 block text-lg font-semibold text-indigo-500">
+            Features
+          </span>
+          <h2 class="mb-3 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2] wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.5s">
+            Advantages of Polygon
+          </h2>
+          
           <p class="text-base text-body-color dark:text-white wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.5s">
-          Why use Polygon?
+            Why use Polygon?
           </p>
-        
+          
         </div>
       </div>
-      </div>
-      <div class="-mx-4 flex flex-wrap">
+    </div>
+    <div class="-mx-4 flex flex-wrap">
       
       <div class="w-full px-4 md:w-1/2 lg:w-1/4 wow fadeInUp" data-wow-delay=" 0.2s" data-wow-duration="0.4s">
         <div class="wow fadeInUp group mb-12  wow fadeInUp" data-wow-delay="0.4s" data-wow-duration=".5s">
-        <div class="relative z-10 mb-10 flex h-[70px] w-[70px] items-center justify-center rounded-[14px] bg-purple-800">
-          <span class="absolute left-0 top-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-purple-900  bg-opacity-20 duration-300 group-hover:rotate-45"></span>
-          <span class=" text-white text-4xl icon-[mdi--contract]"></span>
-        </div>
-        <h4 class="mb-3 text-xl font-bold text-dark dark:text-white">
-          Ethereum Compatibility
-        </h4>
-        <p class="mb-8 text-body-color dark:text-white lg:mb-9">
-          Polygon is compatible with Ethereum, 
+          <div class="relative z-10 mb-10 flex h-[70px] w-[70px] items-center justify-center rounded-[14px] bg-indigo-800">
+            <span class="absolute left-0 top-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-indigo-900  bg-opacity-20 duration-300 group-hover:rotate-45"></span>
+            <span class=" text-white text-4xl icon-[mdi--contract]"></span>
+          </div>
+          <h4 class="mb-3 text-xl font-bold text-dark dark:text-white">
+            Ethereum Compatibility
+          </h4>
+          <p class="mb-8 text-body-color dark:text-white lg:mb-9">
+            Polygon is compatible with Ethereum, 
 allowing easy migration of Ethereum 
 dApps and use of existing developer 
 tools and infrastructure.
 
-        </p>
+          </p>
 
         </div>
       </div>
       
       <div class="w-full px-4 md:w-1/2 lg:w-1/4 wow fadeInUp" data-wow-delay=" 0.2s" data-wow-duration="0.4s">
         <div class="wow fadeInUp group mb-12  wow fadeInUp" data-wow-delay="0.4s" data-wow-duration=".5s">
-        <div class="relative z-10 mb-10 flex h-[70px] w-[70px] items-center justify-center rounded-[14px] bg-purple-800">
-          <span class="absolute left-0 top-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-purple-900  bg-opacity-20 duration-300 group-hover:rotate-45"></span>
-          <span class=" text-white text-4xl icon-[mdi--speedometer]"></span>
-        </div>
-        <h4 class="mb-3 text-xl font-bold text-dark dark:text-white">
-          Scalability
-        </h4>
-        <p class="mb-8 text-body-color dark:text-white lg:mb-9">
-          Polygon provides high throughput 
+          <div class="relative z-10 mb-10 flex h-[70px] w-[70px] items-center justify-center rounded-[14px] bg-indigo-800">
+            <span class="absolute left-0 top-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-indigo-900  bg-opacity-20 duration-300 group-hover:rotate-45"></span>
+            <span class=" text-white text-4xl icon-[mdi--speedometer]"></span>
+          </div>
+          <h4 class="mb-3 text-xl font-bold text-dark dark:text-white">
+            Scalability
+          </h4>
+          <p class="mb-8 text-body-color dark:text-white lg:mb-9">
+            Polygon provides high throughput 
 and low-latency transactions, 
 making it suitable for a wide range 
 of applications.
 
-        </p>
+          </p>
 
         </div>
       </div>
       
       <div class="w-full px-4 md:w-1/2 lg:w-1/4 wow fadeInUp" data-wow-delay=" 0.2s" data-wow-duration="0.4s">
         <div class="wow fadeInUp group mb-12  wow fadeInUp" data-wow-delay="0.4s" data-wow-duration=".5s">
-        <div class="relative z-10 mb-10 flex h-[70px] w-[70px] items-center justify-center rounded-[14px] bg-purple-800">
-          <span class="absolute left-0 top-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-purple-900  bg-opacity-20 duration-300 group-hover:rotate-45"></span>
-          <span class=" text-white text-4xl icon-[mdi--resize]"></span>
-        </div>
-        <h4 class="mb-3 text-xl font-bold text-dark dark:text-white">
-          Interoperability
-        </h4>
-        <p class="mb-8 text-body-color dark:text-white lg:mb-9">
-          Polygon supports interoperability 
+          <div class="relative z-10 mb-10 flex h-[70px] w-[70px] items-center justify-center rounded-[14px] bg-indigo-800">
+            <span class="absolute left-0 top-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-indigo-900  bg-opacity-20 duration-300 group-hover:rotate-45"></span>
+            <span class=" text-white text-4xl icon-[mdi--resize]"></span>
+          </div>
+          <h4 class="mb-3 text-xl font-bold text-dark dark:text-white">
+            Interoperability
+          </h4>
+          <p class="mb-8 text-body-color dark:text-white lg:mb-9">
+            Polygon supports interoperability 
 between different blockchain networks, 
 enabling seamless asset transfers and 
 communication between them.
 
-        </p>
+          </p>
 
         </div>
       </div>
       
       <div class="w-full px-4 md:w-1/2 lg:w-1/4 wow fadeInUp" data-wow-delay=" 0.2s" data-wow-duration="0.4s">
         <div class="wow fadeInUp group mb-12  wow fadeInUp" data-wow-delay="0.4s" data-wow-duration=".5s">
-        <div class="relative z-10 mb-10 flex h-[70px] w-[70px] items-center justify-center rounded-[14px] bg-purple-800">
-          <span class="absolute left-0 top-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-purple-900  bg-opacity-20 duration-300 group-hover:rotate-45"></span>
-          <span class=" text-white text-4xl icon-[mdi--lock]"></span>
-        </div>
-        <h4 class="mb-3 text-xl font-bold text-dark dark:text-white">
-          Security
-        </h4>
-        <p class="mb-8 text-body-color dark:text-white lg:mb-9">
-          Polygon leverages Ethereum's security 
+          <div class="relative z-10 mb-10 flex h-[70px] w-[70px] items-center justify-center rounded-[14px] bg-indigo-800">
+            <span class="absolute left-0 top-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-indigo-900  bg-opacity-20 duration-300 group-hover:rotate-45"></span>
+            <span class=" text-white text-4xl icon-[mdi--lock]"></span>
+          </div>
+          <h4 class="mb-3 text-xl font-bold text-dark dark:text-white">
+            Security
+          </h4>
+          <p class="mb-8 text-body-color dark:text-white lg:mb-9">
+            Polygon leverages Ethereum's security 
 features and has additional security 
 measures to protect user assets and 
 ensure the integrity of transactions.
 
-        </p>
+          </p>
 
         </div>
       </div>
       
-      </div>
     </div>
-    </section>
-    <!-- ====== CTA Section Start -->
-<section class="relative z-10 overflow-hidden bg-purple-900 py-20 lg:py-[115px]">
-<div class="container mx-auto">
-    <div class="relative overflow-hidden">
-    <div class="-mx-4 flex flex-wrap items-stretch">
-        <div class="w-full px-4">
-        <div class="mx-auto max-w-[1000px] text-center flex flex-col gap-2">
-            <h2 class="block mb-2 text-lg font-semibold text-purple-200">
-                Get Started with Polygon
-            </h2>
-            <p class="text-3xl font-normal md:text-[40px] text-white">
-                Start building your application with our Polygon API
-            </p>
-            
-            <p class="mx-auto mb-6 max-w-[600px] text-base leading-[1.5] text-white mt-4">
-            Our Polygon API is easy to integrate and offers a wide range of features. Get started with our Polygon API today and start building your application.
-            </p>
-            <a href="https://app.chaingateway.io" class=" rounded-md border border-transparent bg-dark-2 px-7 py-3 text-base font-medium text-white transition hover:bg-opacity-80">
-            Get started for free
-            </a>
+  </div>
+</section>
+<!-- ====== CTA Section Start -->
+<section class="relative z-10 overflow-hidden bg-indigo-900 py-20 lg:py-[115px]">
+    <div class="container mx-auto">
+        <div class="relative overflow-hidden">
+            <div class="-mx-4 flex flex-wrap items-stretch">
+                <div class="w-full px-4">
+                    <div class="mx-auto max-w-[1000px] text-center flex flex-col gap-2">
+                        <h2 class="block mb-2 text-lg font-semibold text-indigo-200">
+                            Get Started with Polygon
+                        </h2>
+                        <p class="text-3xl font-normal md:text-[40px] text-white">
+                            Start building your application with our Polygon API
+                        </p>
+
+                        <p class="mx-auto mb-6 max-w-[600px] text-base leading-[1.5] text-white mt-4">
+                            Our Polygon API is easy to integrate and offers a wide range of features. Get started with our Polygon API today and start building your application.
+                        </p>
+                        <a href="https://app.chaingateway.io" class=" rounded-md border border-transparent bg-gray-900 px-7 py-3 text-base font-medium text-white transition hover:bg-opacity-80">
+                            Get started for free
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>
     </div>
+    <div>
+        <span class="absolute left-0 top-0">
+            <svg width="495" height="470" viewbox="0 0 495 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="55" cy="442" r="138" stroke="white" stroke-opacity="0.04" stroke-width="50"></circle>
+                <circle cx="446" r="39" stroke="white" stroke-opacity="0.04" stroke-width="20"></circle>
+                <path d="M245.406 137.609L233.985 94.9852L276.609 106.406L245.406 137.609Z" stroke="white" stroke-opacity="0.08" stroke-width="12"></path>
+            </svg>
+        </span>
+        <span class="absolute bottom-0 right-0">
+            <svg width="493" height="470" viewbox="0 0 493 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="462" cy="5" r="138" stroke="white" stroke-opacity="0.04" stroke-width="50"></circle>
+                <circle cx="49" cy="470" r="39" stroke="white" stroke-opacity="0.04" stroke-width="20"></circle>
+                <path d="M222.393 226.701L272.808 213.192L259.299 263.607L222.393 226.701Z" stroke="white" stroke-opacity="0.06" stroke-width="13"></path>
+            </svg>
+        </span>
     </div>
-</div>
-<div>
-    <span class="absolute left-0 top-0">
-    <svg width="495" height="470" viewbox="0 0 495 470" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="55" cy="442" r="138" stroke="white" stroke-opacity="0.04" stroke-width="50"></circle>
-        <circle cx="446" r="39" stroke="white" stroke-opacity="0.04" stroke-width="20"></circle>
-        <path d="M245.406 137.609L233.985 94.9852L276.609 106.406L245.406 137.609Z" stroke="white" stroke-opacity="0.08" stroke-width="12"></path>
-    </svg>
-    </span>
-    <span class="absolute bottom-0 right-0">
-    <svg width="493" height="470" viewbox="0 0 493 470" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="462" cy="5" r="138" stroke="white" stroke-opacity="0.04" stroke-width="50"></circle>
-        <circle cx="49" cy="470" r="39" stroke="white" stroke-opacity="0.04" stroke-width="20"></circle>
-        <path d="M222.393 226.701L272.808 213.192L259.299 263.607L222.393 226.701Z" stroke="white" stroke-opacity="0.06" stroke-width="13"></path>
-    </svg>
-    </span>
-</div>
 </section>
 <!-- ====== CTA Section End -->
-    <!-- ====== Features Section End -->
+<!-- ====== Features Section End -->
 
-    <section class="text-gray-600 bg-gray-100 dark:bg-gray-800 body-font dark:text-neutral-50">
-    <div class="container px-5 py-24 mx-auto">
-      <div class="flex flex-col text-center w-full mb-20 wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="0.6s">
-      <h2 class="mb-2 block text-lg font-semibold text-purple-500">Read our first class documentation</h2>
-      <h2 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 dark:dark:text-neutral-50">Learn how to use our Polygon API</h2>
-      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">We created tons of resources to help you get started with our API</p>
-      </div>
-      <div class="flex flex-wrap">
-      
-      <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.4s">
-        <h2 class="text-lg sm:text-xl text-gray-900 dark:text-neutral-50 font-medium title-font mb-2">Wallet Api</h2>
-        <p class="leading-relaxed text-base mb-4 dark:text-neutral-200">Create new addresses and manage existing ones with our Wallet API. Learn how to create and manage Polygon addresses.</p>
-        <a href="https://docs.chaingateway.io/#tag/Polygon-greater-addresses-Requests" class="text-purple-500 inline-flex items-center">Read the docs
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewbox="0 0 24 24">
-          <path d="M5 12h24M12 5l7 7-7 7"></path>
-        </svg>
-        </a>
-      </div>
-      
-      <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.4s">
-        <h2 class="text-lg sm:text-xl text-gray-900 dark:text-neutral-50 font-medium title-font mb-2">Webhook Api</h2>
-        <p class="leading-relaxed text-base mb-4 dark:text-neutral-200">Get instant notifications on payments or other blockchain events with our Webhook API.</p>
-        <a href="https://docs.chaingateway.io/#tag/Polygon-greater-WebhooksIPN-Requests" class="text-purple-500 inline-flex items-center">Read the docs
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewbox="0 0 24 24">
-          <path d="M5 12h24M12 5l7 7-7 7"></path>
-        </svg>
-        </a>
-      </div>
-      
-      <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.4s">
-        <h2 class="text-lg sm:text-xl text-gray-900 dark:text-neutral-50 font-medium title-font mb-2">Transaction Api</h2>
-        <p class="leading-relaxed text-base mb-4 dark:text-neutral-200">Easily create and retrieve transactions for MATIC and ERC20 tokens with our Transaction API.</p>
-        <a href="https://docs.chaingateway.io/#tag/Polygon-greater-Transaction-Requests" class="text-purple-500 inline-flex items-center">Read the docs
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewbox="0 0 24 24">
-          <path d="M5 12h24M12 5l7 7-7 7"></path>
-        </svg>
-        </a>
-      </div>
-      
-      <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.4s">
-        <h2 class="text-lg sm:text-xl text-gray-900 dark:text-neutral-50 font-medium title-font mb-2">Query the Network</h2>
-        <p class="leading-relaxed text-base mb-4 dark:text-neutral-200">Query the Polygon network for information about blocks, transactions, and addresses. Learn how to use our API here.</p>
-        <a href="https://docs.chaingateway.io/#tag/Polygon-greater-Transaction-Requests" class="text-purple-500 inline-flex items-center">Read the docs
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewbox="0 0 24 24">
-          <path d="M5 12h24M12 5l7 7-7 7"></path>
-        </svg>
-        </a>
-      </div>
-      
-      </div>
-      <div class="flex justify-center">
-      <a href="https://docs.chaingateway.io/#tag/Polygon" class="mt-16 text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-opacity-80 rounded text-lg"> Explore the Documentation</a>
-      </div>
+<section class="text-gray-400 bg-gray-100 dark:bg-gray-800 body-font dark:text-neutral-50">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-20 wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="0.6s">
+      <h2 class="mb-2 block text-lg font-semibold text-indigo-500">Read our first class documentation</h2>
+      <h2 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 dark:dark:text-neutral-50">Learn how to
+        use our Polygon API</h2>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">We created tons of resources to help you get started with
+        our API</p>
     </div>
-    </section>
-
-    <section class="text-gray-600 bg-gray-200 dark:bg-gray-900 body-font dark:text-neutral-50">
-    <div class="container mx-auto px-5 py-24">
-      <div class="flex flex-col text-center w-full mb-20 wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="0.6s">
-      <h2 class="mb-2 block text-lg font-semibold text-purple-500">Who should use our Polygon API?</h2>
-      <h2 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 dark:dark:text-neutral-50">Use Cases</h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="flex flex-wrap">
       
-      <div class="bg-neutral-50 dark:bg-gray-800 rounded-lg shadow-md p-6 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.4s">
+      <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.4s">
+        <h2 class="text-lg sm:text-xl text-gray-900 dark:text-neutral-50 font-medium title-font mb-2">Wallet Api
+        </h2>
+        <p class="leading-relaxed text-base mb-4 dark:text-neutral-200">Create new addresses and manage existing ones with our Wallet API. Learn how to create and manage Polygon addresses.</p>
+        <a href="https://docs.chaingateway.io/#tag/Polygon-greater-addresses-Requests" class="text-indigo-500 inline-flex items-center">Read the docs
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewbox="0 0 24 24">
+            <path d="M5 12h24M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+      
+      <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.4s">
+        <h2 class="text-lg sm:text-xl text-gray-900 dark:text-neutral-50 font-medium title-font mb-2">Webhook Api
+        </h2>
+        <p class="leading-relaxed text-base mb-4 dark:text-neutral-200">Get instant notifications on payments or other blockchain events with our Webhook API.</p>
+        <a href="https://docs.chaingateway.io/#tag/Polygon-greater-WebhooksIPN-Requests" class="text-indigo-500 inline-flex items-center">Read the docs
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewbox="0 0 24 24">
+            <path d="M5 12h24M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+      
+      <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.4s">
+        <h2 class="text-lg sm:text-xl text-gray-900 dark:text-neutral-50 font-medium title-font mb-2">Transaction Api
+        </h2>
+        <p class="leading-relaxed text-base mb-4 dark:text-neutral-200">Easily create and retrieve transactions for MATIC and ERC20 tokens with our Transaction API.</p>
+        <a href="https://docs.chaingateway.io/#tag/Polygon-greater-Transaction-Requests" class="text-indigo-500 inline-flex items-center">Read the docs
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewbox="0 0 24 24">
+            <path d="M5 12h24M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+      
+      <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.4s">
+        <h2 class="text-lg sm:text-xl text-gray-900 dark:text-neutral-50 font-medium title-font mb-2">Query the Network
+        </h2>
+        <p class="leading-relaxed text-base mb-4 dark:text-neutral-200">Query the Polygon network for information about blocks, transactions, and addresses. Learn how to use our API here.</p>
+        <a href="https://docs.chaingateway.io/#tag/Polygon-greater-Transaction-Requests" class="text-indigo-500 inline-flex items-center">Read the docs
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewbox="0 0 24 24">
+            <path d="M5 12h24M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+      
+    </div>
+    <div class="flex justify-center">
+      <a href="https://docs.chaingateway.io/#tag/Polygon" class="mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-opacity-80 rounded text-lg">
+        Explore the Documentation</a>
+    </div>
+  </div>
+</section>
+
+<section class="text-gray-400 bg-gray-200 dark:bg-gray-900 body-font dark:text-neutral-50">
+  <div class="container mx-auto px-5 py-24">
+    <div class="flex flex-col text-center w-full mb-20 wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="0.6s">
+      <h2 class="mb-2 block text-lg font-semibold text-indigo-500">Who should use our Polygon API?</h2>
+      <h2 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 dark:dark:text-neutral-50">Use Cases
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md p-6 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.4s">
         <h3 class="text-xl font-semibold mb-4">Decentralized Finance (DeFi)</h3>
         <p class="mb-6">Revolutionize the financial landscape by developing decentralized finance applications powered by Polygon's high throughput computing and smart contract capabilities. Explore lending platforms, decentralized exchanges, and yield farming protocols.</p>
       </div>
       
-      <div class="bg-neutral-50 dark:bg-gray-800 rounded-lg shadow-md p-6 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.4s">
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md p-6 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.4s">
         <h3 class="text-xl font-semibold mb-4">Gaming &amp; Non-Fungible Tokens (NFTs)</h3>
         <p class="mb-6">Unlock new possibilities in gaming and digital asset ownership with Polygon's scalable infrastructure. Build immersive gaming experiences, trade unique digital assets as NFTs, and create decentralized virtual worlds.</p>
       </div>
       
-      <div class="bg-neutral-50 dark:bg-gray-800 rounded-lg shadow-md p-6 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.4s">
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md p-6 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.4s">
         <h3 class="text-xl font-semibold mb-4">Payments &amp; Tokenized Rewards</h3>
         <p class="mb-6">Transform e-commerce platforms by integrating Polygon's blockchain for secure and transparent transactions, loyalty programs, and tokenized rewards. Enhance customer engagement and retention with innovative incentive mechanisms.</p>
       </div>
       
-      </div>
     </div>
-    </section>
-
+  </div>
+</section>
 
   <!-- ====== Footer Section Start -->
 <footer class="wow fadeInUp relative z-10 bg-gradient-to-tr from-indigo-900 to-purple-900 pt-20 lg:pt-[100px]" data-wow-delay=".15s">
@@ -638,7 +646,7 @@ ensure the integrity of transactions.
                     <p class="mb-9 text-base text-white/80">Don't miss any updates of our new templates and components.
                     </p>
                     <form class="relative mb-7.5 text-right" x-data="ContactForm()" x-on:submit.prevent="submitForm">
-                        <input type="email" name="email" id="email" x-model="formData.email" placeholder="Enter your email address" class="h-[50px] w-full rounded-lg border border-white/5 bg-neutral-50/[.08] pl-5 pr-5 text-base text-white placeholder-body-color-2 outline-none duration-300 focus:border-primary xs:pr-[110px] lg:pr-5 xl:pr-[110px]">
+                        <input type="email" name="email" id="email" x-model="formData.email" placeholder="Enter your email address" class="h-[50px] w-full rounded-lg border border-white/5 bg-gray-50/[.08] pl-5 pr-5 text-base text-white placeholder-body-color-2 outline-none duration-300 focus:border-primary xs:pr-[110px] lg:pr-5 xl:pr-[110px]">
 
                         <button type="submit" name="subform" value="yes"><button type="submit" name="submit" id="submit" class="right-1.5 top-1.5 ml-auto mt-2 h-[38px] w-full max-w-[103px] rounded-md bg-primary text-sm font-medium tracking-[-0.2px] text-white duration-300 hover:bg-primary/90 xs:absolute xs:mt-0 lg:static lg:mt-2 xl:absolute xl:mt-0">Subscribe</button>
                             <div x-show="formData.message" class="mt-4 text-sm text-white">
@@ -760,11 +768,12 @@ ensure the integrity of transactions.
                 </svg>
             </button>
         </div>
-        <p class="text-gray-600 text-sm pb-6">
-            We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of cookies.
+        <p class="text-gray-400 text-sm pb-6">
+            We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of
+            cookies.
         </p>
         <div class="flex flex-row"></div>
-        <button id="cookie-notice-accept" x-on:click="showBanner = false; localStorage.setItem('cookieConsentAccepted', 'true'); loadAdditionalScripts();" href="#" class="mt-4 bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded">
+        <button id="cookie-notice-accept" x-on:click="showBanner = false; localStorage.setItem('cookieConsentAccepted', 'true'); loadAdditionalScripts();" href="#" class="mt-4 bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded">
             Accept
         </button>
         
@@ -772,41 +781,41 @@ ensure the integrity of transactions.
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         loadAdditionalScripts();
     });
 
     function loadAdditionalScripts() {
         if (localStorage.getItem('cookieConsentAccepted')) {
-            
+
             //matomo
             var _paq = window._paq = window._paq || [];
             /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
             _paq.push(['trackPageView']);
             _paq.push(['enableLinkTracking']);
-            (function() {
-            var u="//analytics.bitblade.de/";
-            _paq.push(['setTrackerUrl', u+'matomo.php']);
-            _paq.push(['setSiteId', '27']);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+            (function () {
+                var u = "//analytics.bitblade.de/";
+                _paq.push(['setTrackerUrl', u + 'matomo.php']);
+                _paq.push(['setSiteId', '27']);
+                var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+                g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
             })();
 
             //Chatwoot
-            (function(d,t) {
-                var BASE_URL="https://chat.bitblade.io";
-                var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-                g.src=BASE_URL+"/packs/js/sdk.js";
+            (function (d, t) {
+                var BASE_URL = "https://chat.bitblade.io";
+                var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+                g.src = BASE_URL + "/packs/js/sdk.js";
                 g.defer = true;
                 g.async = true;
-                s.parentNode.insertBefore(g,s);
-                g.onload=function(){
-                window.chatwootSDK.run({
-                    websiteToken: 'kqQcrSbU3Z52dGoGCN7r3zho',
-                    baseUrl: BASE_URL
-                })
+                s.parentNode.insertBefore(g, s);
+                g.onload = function () {
+                    window.chatwootSDK.run({
+                        websiteToken: 'kqQcrSbU3Z52dGoGCN7r3zho',
+                        baseUrl: BASE_URL
+                    })
                 }
-            })(document,"script");
+            })(document, "script");
 
         }
     }

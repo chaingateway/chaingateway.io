@@ -6,7 +6,7 @@
   toggleDarkMode() {
     this.darkMode = !this.darkMode;
     localStorage.setItem('darkMode', this.darkMode);
-  }
+  } 
 }" :class="{ 'dark': darkMode }">
 
 <head>
@@ -34,8 +34,8 @@
 <meta name="generator" content="Jekyll v4.3.3">
 <meta property="og:title" content="Welcome to Chaingateway">
 <meta property="og:locale" content="en_US">
-<meta name="description" content="Blockchain API for Developers and Businesses - Chaingateway.io. Build your blockchain future with our API. Fetch blockchain data, create transactions, get notified, and support all tokens.">
-<meta property="og:description" content="Blockchain API for Developers and Businesses - Chaingateway.io. Build your blockchain future with our API. Fetch blockchain data, create transactions, get notified, and support all tokens.">
+<meta name="description" content="Blockchain API for Developers and Businesses - Chaingateway.io. Build your blockchain future with our API.">
+<meta property="og:description" content="Blockchain API for Developers and Businesses - Chaingateway.io. Build your blockchain future with our API.">
 <link rel="canonical" href="/">
 <meta property="og:url" content="/">
 <meta property="og:site_name" content="Chaingateway.io - Blockchain API">
@@ -44,7 +44,7 @@
 <meta property="twitter:title" content="Welcome to Chaingateway">
 <meta name="twitter:site" content="@ChaingatewayIO">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Blockchain API for Developers and Businesses - Chaingateway.io. Build your blockchain future with our API. Fetch blockchain data, create transactions, get notified, and support all tokens.","headline":"Welcome to Chaingateway","name":"Chaingateway","sameAs":["https://twitter.com/ChaingatewayIO","https://de.linkedin.com/company/chaingateway-ug"],"url":"/"}</script>
+{"@context":"https://schema.org","@type":"WebSite","description":"Blockchain API for Developers and Businesses - Chaingateway.io. Build your blockchain future with our API.","headline":"Welcome to Chaingateway","name":"Chaingateway","sameAs":["https://twitter.com/ChaingatewayIO","https://de.linkedin.com/company/chaingateway-ug"],"url":"/"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -67,7 +67,7 @@
             <span class="relative my-[6px] block h-[2px] w-[30px]" :class="{ 'bg-white': transparent, 'bg-primary': !transparent }"></span>
             <span class="relative my-[6px] block h-[2px] w-[30px]" :class="{ 'bg-white': transparent, 'bg-primary': !transparent }"></span>
           </button>
-          <nav x-on:mouseleave="navbarOpen = !navbarOpen" :class="{'visible': navbarOpen, 'hidden lg:visible':  !navbarOpen }" id="navbarCollapse" class="absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-neutral-50 dark:bg-gray-800 dark:lg:bg-transparent dark:text-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:px-4 lg:py-0 lg:shadow-none xl:px-6">
+          <nav x-on:mouseleave="navbarOpen = !navbarOpen" :class="{'visible': navbarOpen, 'hidden lg:visible':  !navbarOpen }" id="navbarCollapse" class="absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-gray-50 dark:bg-gray-800 dark:lg:bg-transparent dark:text-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:px-4 lg:py-0 lg:shadow-none xl:px-6">
 
             <ul class="block lg:flex 2xl:ml-20">
               
@@ -79,25 +79,25 @@
                     <path d="M7.99999 14.9C7.84999 14.9 7.72499 14.85 7.59999 14.75L1.84999 9.10005C1.62499 8.87505 1.62499 8.52505 1.84999 8.30005C2.07499 8.07505 2.42499 8.07505 2.64999 8.30005L7.99999 13.525L13.35 8.25005C13.575 8.02505 13.925 8.02505 14.15 8.25005C14.375 8.47505 14.375 8.82505 14.15 9.05005L8.39999 14.7C8.27499 14.825 8.14999 14.9 7.99999 14.9Z"></path>
                   </svg>
                 </a>
-                <div x-show="open" class="submenu relative left-0 top-full w-[250px] rounded-sm bg-neutral-50 text-dark p-4 transition-[top] duration-300 group-hover:opacity-100 dark:bg-gray-800 dark:text-white lg:invisible lg:absolute lg:top-[110%] lg:block lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full">
+                <div x-show="open" class="submenu relative left-0 top-full w-[250px] rounded-sm bg-gray-50 text-dark p-4 transition-[top] duration-300 group-hover:opacity-100 dark:bg-gray-800 dark:text-white lg:invisible lg:absolute lg:top-[110%] lg:block lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full">
                   
-                  <a href="/tron-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/tron-api/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Tron Api
                   </a>
                   
-                  <a href="/binance-smart-chain-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/binance-smart-chain-api/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Binance Smart Chain Api
                   </a>
                   
-                  <a href="/ethereum-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/ethereum-api/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Ethereum Api
                   </a>
                   
-                  <a href="/polygon-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/polygon-api/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Polygon Api
                   </a>
                   
-                  <a href="/bitcoin-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/bitcoin-api/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Bitcoin Api
                   </a>
                   
@@ -121,17 +121,17 @@
                     <path d="M7.99999 14.9C7.84999 14.9 7.72499 14.85 7.59999 14.75L1.84999 9.10005C1.62499 8.87505 1.62499 8.52505 1.84999 8.30005C2.07499 8.07505 2.42499 8.07505 2.64999 8.30005L7.99999 13.525L13.35 8.25005C13.575 8.02505 13.925 8.02505 14.15 8.25005C14.375 8.47505 14.375 8.82505 14.15 9.05005L8.39999 14.7C8.27499 14.825 8.14999 14.9 7.99999 14.9Z"></path>
                   </svg>
                 </a>
-                <div x-show="open" class="submenu relative left-0 top-full w-[250px] rounded-sm bg-neutral-50 text-dark p-4 transition-[top] duration-300 group-hover:opacity-100 dark:bg-gray-800 dark:text-white lg:invisible lg:absolute lg:top-[110%] lg:block lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full">
+                <div x-show="open" class="submenu relative left-0 top-full w-[250px] rounded-sm bg-gray-50 text-dark p-4 transition-[top] duration-300 group-hover:opacity-100 dark:bg-gray-800 dark:text-white lg:invisible lg:absolute lg:top-[110%] lg:block lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full">
                   
-                  <a href="/docs/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/docs/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     API Docs
                   </a>
                   
-                  <a href="/developers/getting-started/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/developers/getting-started/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Getting Started
                   </a>
                   
-                  <a href="/developers/tutorials/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/developers/tutorials/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Tutorials
                   </a>
                   
@@ -158,10 +158,10 @@
             </ul>
 
             <div class="flex gap-2 w-100 sm:hidden px-2 ">
-              <a href="https://beta.chaingateway.io/" class="w-1/2 signUpBtn rounded-md bg-purple-800 px-6 py-2  font-medium  duration-300 ease-in-out hover:bg-opacity-90 text-white ">
+              <a href="https://beta.chaingateway.io/" class="w-1/2 signUpBtn rounded-md bg-indigo-800 px-6 py-2  font-medium  duration-300 ease-in-out hover:bg-opacity-90 text-white ">
                 Sign In
               </a>
-              <a href="https://beta.chaingateway.io/register" class="w-1/2 signUpBtn rounded-md bg-purple-600 text-white px-6 py-2  font-medium  duration-300 ease-in-out hover:bg-opacity-90 ">
+              <a href="https://beta.chaingateway.io/register" class="w-1/2 signUpBtn rounded-md bg-indigo-600 text-white px-6 py-2  font-medium  duration-300 ease-in-out hover:bg-opacity-90 ">
                 Sign Up
               </a>
             </div>
@@ -200,7 +200,7 @@
 
 
   <!-- ====== Hero Section Start -->
-<div class="first relative bg-gradient-to-br from-indigo-950 from-30% to-purple-900 to-95% pt-[20px] pb-[40px] lg:py-[50px] 2xl:py-[150px]">
+<div class="first relative bg-gradient-to-br from-purple-950 from-20% to-indigo-950 to-95% pt-[20px] pb-[40px] lg:py-[50px] 2xl:py-[150px]">
   <div class="container mx-auto mt-20">
     <div class="flex flex-wrap items-center -mx-4">
       <div class="w-full px-4 lg:w-5/12">
@@ -216,7 +216,7 @@
           </p>
           <ul class="flex flex-col md:flex-row items-center justify-center content-center md:justify-start gap-4 md:gap-0">
             <li>
-              <a href="https://app.chaingateway.io" class="inline-flex items-center justify-center rounded-md dark:bg-gray-900 bg-neutral-50 px-7 py-[14px] text-center text-base dark:text-neutral-50 font-medium text-dark shadow-md transition duration-300 ease-in-out dark:hover:bg-gray-800 hover:bg-opacity-80">
+              <a href="https://app.chaingateway.io" class="inline-flex items-center justify-center rounded-md dark:bg-gray-900 bg-gray-50 px-7 py-[14px] text-center text-base dark:text-neutral-50 font-medium text-dark shadow-md transition duration-300 ease-in-out dark:hover:bg-gray-800 hover:bg-opacity-80">
                 Get Started for free
               </a>
             </li>
@@ -264,12 +264,12 @@
 </div>
 <!-- ====== Hero Section End -->
 
-<section class="pb-8 pt-20 dark:bg-gray-900 bg-neutral-50  lg:pb-[70px] lg:pt-[120px]  wow bounceInUp">
+<section class="pb-8 pt-20 dark:bg-gray-900 bg-gray-50  lg:pb-[70px] lg:pt-[120px]  wow bounceInUp">
   <div class="container">
     <div class="-mx-4 flex flex-wrap">
       <div class="w-full px-4">
         <div class="mx-auto mb-12 max-w-[485px] text-center lg:mb-[70px]">
-          <span class="mb-2 block text-lg font-semibold text-purple-300">
+          <span class="mb-2 block text-lg font-semibold text-indigo-500">
             Features
           </span>
           <h2 class="mb-3 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]">
@@ -285,8 +285,8 @@
     <div class="-mx-4 flex flex-wrap">
       <div class="w-full px-4 md:w-1/2 lg:w-1/4">
         <div class="wow fadeInUp group mb-12" data-wow-delay=".1s">
-          <div class="relative z-10 mb-10 flex h-[70px] w-[70px] items-center justify-center rounded-[14px] bg-purple-800">
-            <span class="absolute left-0 top-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-purple-900 bg-opacity-20 duration-300 group-hover:rotate-45"></span>
+          <div class="relative z-10 mb-10 flex h-[70px] w-[70px] items-center justify-center rounded-[14px] bg-indigo-500">
+            <span class="absolute left-0 top-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-indigo-500 bg-opacity-20 duration-300 group-hover:rotate-45"></span>
             <span class="icon-[mdi--sql-query] text-white text-5xl"></span>
           </div>
           <h4 class="mb-3 text-xl font-bold text-dark dark:text-white">
@@ -295,15 +295,15 @@
           <p class="mb-8 text-body-color dark:text-white lg:mb-9">
             We make it easy and reliable fetching blockchain data through a unified interface over all blockchains
           </p>
-          <a href="javascript:void(0)" class="text-base font-medium text-dark hover:text-purple-500 dark:text-white dark:hover:text-purple-800">
+          <a href="javascript:void(0)" class="text-base font-medium text-dark hover:text-indigo-500 dark:text-white dark:hover:text-indigo-500">
             Learn More
           </a>
         </div>
       </div>
       <div class="w-full px-4 md:w-1/2 lg:w-1/4">
         <div class="wow fadeInUp group mb-12" data-wow-delay=".15s">
-          <div class="relative z-10 mb-10 flex h-[70px] w-[70px] items-center justify-center rounded-[14px] bg-purple-800">
-            <span class="absolute left-0 top-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-purple-900 bg-opacity-20 duration-300 group-hover:rotate-45"></span>
+          <div class="relative z-10 mb-10 flex h-[70px] w-[70px] items-center justify-center rounded-[14px] bg-indigo-500">
+            <span class="absolute left-0 top-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-indigo-500 bg-opacity-20 duration-300 group-hover:rotate-45"></span>
             <span class="icon-[mdi--transfer] text-white text-5xl"></span>
           </div>
           <h4 class="mb-3 text-xl font-bold text-dark dark:text-white">
@@ -312,15 +312,15 @@
           <p class="mb-8 text-body-color dark:text-white lg:mb-9">
             With chaingateway, creating transactions is only an api call without any blockchain hassle
           </p>
-          <a href="javascript:void(0)" class="text-base font-medium text-dark hover:text-purple-500 dark:text-white dark:hover:text-purple-800">
+          <a href="javascript:void(0)" class="text-base font-medium text-dark hover:text-indigo-500 dark:text-white dark:hover:text-indigo-500">
             Learn More
           </a>
         </div>
       </div>
       <div class="w-full px-4 md:w-1/2 lg:w-1/4">
         <div class="wow fadeInUp group mb-12" data-wow-delay=".2s">
-          <div class="relative z-10 mb-10 flex h-[70px] w-[70px] items-center justify-center rounded-[14px] bg-purple-800">
-            <span class="absolute left-0 top-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-purple-900 bg-opacity-20 duration-300 group-hover:rotate-45"></span>
+          <div class="relative z-10 mb-10 flex h-[70px] w-[70px] items-center justify-center rounded-[14px] bg-indigo-500">
+            <span class="absolute left-0 top-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-indigo-500 bg-opacity-20 duration-300 group-hover:rotate-45"></span>
             <span class="icon-[mdi--message-notification] text-white text-5xl"></span>
           </div>
           <h4 class="mb-3 text-xl font-bold text-dark dark:text-white">
@@ -329,15 +329,15 @@
           <p class="mb-8 text-body-color dark:text-white lg:mb-9">
             Get notified on blockchain events to track events on your address with our webhook feature
           </p>
-          <a href="javascript:void(0)" class="text-base font-medium text-dark hover:text-purple-500 dark:text-white dark:hover:text-purple-800">
+          <a href="javascript:void(0)" class="text-base font-medium text-dark hover:text-indigo-500 dark:text-white dark:hover:text-indigo-500">
             Learn More
           </a>
         </div>
       </div>
       <div class="w-full px-4 md:w-1/2 lg:w-1/4">
         <div class="wow fadeInUp group mb-12" data-wow-delay=".25s">
-          <div class="relative z-10 mb-10 flex h-[70px] w-[70px] items-center justify-center rounded-[14px] bg-purple-800">
-            <span class="absolute left-0 top-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-purple-900 bg-opacity-20 duration-300 group-hover:rotate-45"></span>
+          <div class="relative z-10 mb-10 flex h-[70px] w-[70px] items-center justify-center rounded-[14px] bg-indigo-500">
+            <span class="absolute left-0 top-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-indigo-500 bg-opacity-20 duration-300 group-hover:rotate-45"></span>
             <span class="icon-[mdi--all-inclusive]  text-white text-5xl"></span>
           </div>
           <h4 class="mb-3 text-xl font-bold text-dark dark:text-white">
@@ -347,7 +347,7 @@
             Use our API with your own tokens. We support all ERC20 and ERC721 tokens and its equivalents on other
             blockchains.
           </p>
-          <a href="javascript:void(0)" class="text-base font-medium text-dark hover:text-purple-500 dark:text-white dark:hover:text-purple-800">
+          <a href="javascript:void(0)" class="text-base font-medium text-dark hover:text-indigo-500 dark:text-white dark:hover:text-indigo-500">
             Learn More
           </a>
         </div>
@@ -379,7 +379,7 @@
               of decentralized solutions.
             </p>
 
-            <a href="javascript:void(0)" class="inline-flex items-center justify-center rounded-md border border-purple-900 bg-purple-900 px-7 py-3 text-center text-base font-medium text-white hover:bg-opacity-80">
+            <a href="javascript:void(0)" class="inline-flex items-center justify-center rounded-md border border-indigo-900 bg-indigo-900 px-7 py-3 text-center text-base font-medium text-white hover:bg-opacity-80">
               Know More
             </a>
           </div>
@@ -393,7 +393,7 @@
           <img src="/assets/images/screenshots/dashboard_dark.webp" class="hidden dark:block  w-full rounded-lg shadow-[rgba(221,_221,_221,_0.1)_0px_0px_16px]" alt="Screenshot of the Dashboard dark" loading="lazy">
 
 
-            
+
         </div>
       </div>
     </div>
@@ -404,7 +404,7 @@
 
 <!-- ====== Token Standards Section Start -->
 
-<section class=" relative z-10 bg-purple-900 py-20 lg:py-[40px] p-4">
+<section class=" relative z-10 bg-indigo-900 py-20 lg:py-[40px] p-4">
   <div class="mx-auto ">
     <div class="flex flex-wrap justify-center items-center -mx-4">
       <div class="w-full px-4 lg:w-1/2 xl:w-3/12">
@@ -444,98 +444,98 @@
       </div>
       <div class="w-full max-w-4xl px-4 lg:w-1/2 xl:w-7/12">
         <div class="grid grid-cols-2 lg:grid-cols-3 p-2 gap-2 lg:gap-8 items-stretch items-center justify-center mt-12 lg:mt-0d">
-          <div class="max-w-xs rounded overflow-hidden shadow-lg bg-neutral-50/80 dark:bg-gray-800 dark:text-white text-center flex flex-col items-center justify-between wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".2s">
-            <span class="icon-[token-branded--tron] text-[128px] -my-4"> </span>
+          <div class="max-w-xs rounded overflow-hidden shadow-lg bg-gray-50 dark:bg-gray-800 dark:text-white text-center flex flex-col items-center justify-between wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".2s">
+            <span class="icon-[token-branded--tron] text-[90px]"> </span>
             <div class="">
               <div class="font-bold text-xl mb-2">Tron Network</div>
               <p class="text-gray-700 text-base"></p>
             </div>
             <div class="flex flex-wrap gap-1 px-1 lg:px-6  py-2 justify-center content-center">
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">mainnet</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">nile</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">TRX</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">TRC20</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">TRC721</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">mainnet</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">nile</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">TRX</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">TRC20</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">TRC721</span>
             </div>
             <div class="py-2">
-              <a href="#" class="inline-block bg-purple-500 hover:bg-purple-500/80 text-white text-sm font-bold py-2 px-4 rounded">docs</a>
-              <a href="/tron-api" class="inline-block bg-purple-500 hover:bg-purple-500/80 text-white text-sm font-bold py-2 px-4 rounded">more</a>
+              <a href="#" class="inline-block bg-indigo-500 hover:bg-indigo-500/80 text-white text-sm font-bold py-2 px-4 rounded">docs</a>
+              <a href="/tron-api" class="inline-block bg-indigo-500 hover:bg-indigo-500/80 text-white text-sm font-bold py-2 px-4 rounded">more</a>
             </div>
           </div>
 
-          <div class="max-w-xs dark:bg-gray-800 dark:text-white rounded overflow-hidden shadow-lg bg-neutral-50/80 text-center flex flex-col items-center justify-between wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".4s">
-            <span class="icon-[token-branded--bnb] text-[128px] -my-4"> </span>
+          <div class="max-w-xs dark:bg-gray-800 dark:text-white rounded overflow-hidden shadow-lg bg-gray-50 text-center flex flex-col items-center justify-between wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".4s">
+            <span class="icon-[token-branded--bnb] text-[90px]"> </span>
             <div class="">
               <div class="font-bold text-lg mb-2">Binance Smart Chain</div>
               <p class="text-gray-700 text-base"></p>
             </div>
             <div class="flex flex-wrap gap-1 px-1 lg:px-6  py-2 justify-center content-center">
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">mainnet</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">testnet</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">BNB</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">BEP20</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">BEP21</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">mainnet</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">testnet</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">BNB</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">BEP20</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">BEP21</span>
             </div>
             <div class="py-2">
-              <a href="#" class="inline-block bg-purple-500 hover:bg-purple-500/80 text-white text-sm font-bold py-2 px-4 rounded">docs</a>
-              <a href="/bsc-api" class="inline-block bg-purple-500 hover:bg-purple-500/80 text-white text-sm font-bold py-2 px-4 rounded">more</a>
+              <a href="#" class="inline-block bg-indigo-500 hover:bg-indigo-500/80 text-white text-sm font-bold py-2 px-4 rounded">docs</a>
+              <a href="/bsc-api" class="inline-block bg-indigo-500 hover:bg-indigo-500/80 text-white text-sm font-bold py-2 px-4 rounded">more</a>
             </div>
           </div>
 
-          <div class="max-w-xs dark:bg-gray-800 dark:text-white rounded overflow-hidden shadow-lg bg-neutral-50/80 text-center flex flex-col items-center justify-between wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".6s">
-            <span class="icon-[token-branded--eth] text-[112px] -my-2"> </span>
+          <div class="max-w-xs dark:bg-gray-800 dark:text-white rounded overflow-hidden shadow-lg bg-gray-50 text-center flex flex-col items-center justify-between wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".6s">
+            <span class="icon-[token-branded--eth] text-[90px]"> </span>
             <div class="">
               <div class="font-bold text-xl mb-2">Ethereum</div>
               <p class="text-gray-700 text-base"></p>
             </div>
             <div class="flex flex-wrap gap-1 px-1 lg:px-6  py-2 justify-center content-center">
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">mainnet</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">sepolia</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">ETH</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">ERC20</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">ERC21</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">mainnet</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">sepolia</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">ETH</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">ERC20</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">ERC21</span>
             </div>
             <div class="py-2">
-              <a href="#" class="inline-block bg-purple-500 hover:bg-purple-500/80 text-white text-sm font-bold py-2 px-4 rounded">docs</a>
-              <a href="/ethereum-api" class="inline-block bg-purple-500 hover:bg-purple-500/80 text-white text-sm font-bold py-2 px-4 rounded">more</a>
+              <a href="#" class="inline-block bg-indigo-500 hover:bg-indigo-500/80 text-white text-sm font-bold py-2 px-4 rounded">docs</a>
+              <a href="/ethereum-api" class="inline-block bg-indigo-500 hover:bg-indigo-500/80 text-white text-sm font-bold py-2 px-4 rounded">more</a>
             </div>
           </div>
 
-          <div class="max-w-xs dark:bg-gray-800 dark:text-white rounded overflow-hidden shadow-lg bg-neutral-50/80 text-center flex flex-col items-center justify-between wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".8s">
-            <span class="icon-[token-branded--matic] text-[128px] -my-4"> </span>
+          <div class="max-w-xs dark:bg-gray-800 dark:text-white rounded overflow-hidden shadow-lg bg-gray-50 text-center flex flex-col items-center justify-between wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".8s">
+            <span class="icon-[token-branded--matic] text-[90px]"> </span>
             <div class="">
               <div class="font-bold text-xl mb-2">Polygon</div>
               <p class="text-gray-700 text-base"></p>
             </div>
             <div class="flex flex-wrap gap-1 px-1 lg:px-6 py-2 justify-center content-center">
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">mainnet</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">amoy</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">MATIC</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">ERC20</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">ERC721</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">mainnet</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">amoy</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">MATIC</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">ERC20</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">ERC721</span>
             </div>
             <div class="py-2">
-              <a href="#" class="inline-block bg-purple-500 hover:bg-purple-500/80 text-white text-sm font-bold py-2 px-4 rounded">docs</a>
-              <a href="/polygon-api" class="inline-block bg-purple-500 hover:bg-purple-500/80 text-white text-sm font-bold py-2 px-4 rounded">more</a>
+              <a href="#" class="inline-block bg-indigo-500 hover:bg-indigo-500/80 text-white text-sm font-bold py-2 px-4 rounded">docs</a>
+              <a href="/polygon-api" class="inline-block bg-indigo-500 hover:bg-indigo-500/80 text-white text-sm font-bold py-2 px-4 rounded">more</a>
             </div>
           </div>
 
-          <div class="max-w-xs dark:bg-gray-800 dark:text-white rounded overflow-hidden shadow-lg bg-neutral-50/80 text-center flex flex-col items-center justify-between wow fadeInUp" data-wow-duration=".5s" data-wow-delay="1s">
-            <span class="icon-[token-branded--btc] text-[128px] -my-4"> </span>
+          <div class="max-w-xs dark:bg-gray-800 dark:text-white rounded overflow-hidden shadow-lg bg-gray-50 text-center flex flex-col items-center justify-between wow fadeInUp" data-wow-duration=".5s" data-wow-delay="1s">
+            <span class="icon-[token-branded--btc] text-[90px]"> </span>
             <div class="">
               <div class="font-bold text-xl mb-2">Bitcoin</div>
               <p class="text-gray-700 text-base"></p>
             </div>
             <div class="flex flex-wrap gap-1 px-1 lg:px-6 py-2 justify-center content-center">
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">mainnet</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">testnet
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">mainnet</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">testnet
                 3</span>
 
-              <span class="inline-block bg-gray-900-6 dark:bg-purple-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-purple-800">BTC</span>
+              <span class="inline-block bg-gray-900-6 dark:bg-indigo-500 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">BTC</span>
             </div>
             <div class="py-2">
-              <a href="#" class="inline-block bg-purple-500 hover:bg-purple-500/80 text-white text-sm font-bold py-2 px-4 rounded">docs</a>
-              <a href="/bitcoin-api" class="inline-block bg-purple-500 hover:bg-purple-500/80 text-white text-sm font-bold py-2 px-4 rounded">more</a>
+              <a href="#" class="inline-block bg-indigo-500 hover:bg-indigo-500/80 text-white text-sm font-bold py-2 px-4 rounded">docs</a>
+              <a href="/bitcoin-api" class="inline-block bg-indigo-500 hover:bg-indigo-500/80 text-white text-sm font-bold py-2 px-4 rounded">more</a>
             </div>
           </div>
 
@@ -599,7 +599,7 @@
           <div class="-mx-4 flex flex-wrap justify-center">
             <div class="w-full px-4">
               <div class="mx-auto mb-[60px] max-w-[485px] text-center">
-                <span class="mb-2 block text-lg font-semibold text-purple-500">
+                <span class="mb-2 block text-lg font-semibold text-indigo-500">
                   Testimonials
                 </span>
                 <h2
@@ -620,7 +620,7 @@
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
                   <div
-                    class="rounded-xl bg-neutral-50 px-4 py-[30px] shadow-testimonial dark:bg-gray-900 sm:px-[30px]"
+                    class="rounded-xl bg-gray-50 px-4 py-[30px] shadow-testimonial dark:bg-gray-900 sm:px-[30px]"
                   >
                     <div class="mb-[18px] flex items-center gap-[2px]">
                       <img
@@ -673,7 +673,7 @@
   
                 <div class="swiper-slide">
                   <div
-                    class="rounded-xl bg-neutral-50 px-4 py-[30px] shadow-testimonial dark:bg-gray-900 sm:px-[30px]"
+                    class="rounded-xl bg-gray-50 px-4 py-[30px] shadow-testimonial dark:bg-gray-900 sm:px-[30px]"
                   >
                     <div class="mb-[18px] flex items-center gap-[2px]">
                       <img
@@ -728,7 +728,7 @@
   
                 <div class="swiper-slide">
                   <div
-                    class="rounded-xl bg-neutral-50 px-4 py-[30px] shadow-testimonial dark:bg-gray-900 sm:px-[30px]"
+                    class="rounded-xl bg-gray-50 px-4 py-[30px] shadow-testimonial dark:bg-gray-900 sm:px-[30px]"
                   >
                     <div class="mb-[18px] flex items-center gap-[2px]">
                       <img
@@ -783,7 +783,7 @@
   
                 <div class="swiper-slide">
                   <div
-                    class="rounded-xl bg-neutral-50 px-4 py-[30px] shadow-testimonial dark:bg-gray-900 sm:px-[30px]"
+                    class="rounded-xl bg-gray-50 px-4 py-[30px] shadow-testimonial dark:bg-gray-900 sm:px-[30px]"
                   >
                     <div class="mb-[18px] flex items-center gap-[2px]">
                       <img
@@ -836,7 +836,7 @@
   
                 <div class="swiper-slide">
                   <div
-                    class="rounded-xl bg-neutral-50 px-4 py-[30px] shadow-testimonial dark:bg-gray-900 sm:px-[30px]"
+                    class="rounded-xl bg-gray-50 px-4 py-[30px] shadow-testimonial dark:bg-gray-900 sm:px-[30px]"
                   >
                     <div class="mb-[18px] flex items-center gap-[2px]">
                       <img
@@ -891,7 +891,7 @@
   
                 <div class="swiper-slide">
                   <div
-                    class="rounded-xl bg-neutral-50 px-4 py-[30px] shadow-testimonial dark:bg-gray-900 sm:px-[30px]"
+                    class="rounded-xl bg-gray-50 px-4 py-[30px] shadow-testimonial dark:bg-gray-900 sm:px-[30px]"
                   >
                     <div class="mb-[18px] flex items-center gap-[2px]">
                       <img
@@ -985,7 +985,7 @@
 
 <section class="text-gray-900 body-font bg-gray-100 dark:bg-gray-900 ">
   <div class="px-5 py-24 mx-auto text-center">
-    <span class="block mb-2 text-lg font-semibold text-purple-500">How It Works</span>
+    <span class="block mb-2 text-lg font-semibold text-indigo-500">How It Works</span>
     <h2 class="text-dark dark:text-white mb-4 text-3xl font-bold sm:text-[40px]/[48px]">Our Solution</h2>
     <div class="mx-auto max-w-screen-2xl grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-2 content-center">
 
@@ -997,7 +997,7 @@
         <h2 class="text-dark dark:text-white mb-4 text-xl font-bold sm:text-[40px]/[48px]">
           Query Blockchain Data
         </h2>
-        <ul class="mt-3 text-base text-gray-400 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
+        <ul class="mt-2 text-base text-gray-400 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
           <li class="mb-2">Testnet and Mainnet support</li>
           <li class="mb-2">Retrieve Block information</li>
           <li class="mb-2">Retrieve Address balance</li>
@@ -1005,11 +1005,11 @@
           <li class="mb-2">Supporting ERC-20, TRC20, BEP-20 ERC721, TRC721 and BEP721</li>
         </ul>
         <div class="mt-5 sm:mt-8 flex flex-row items-center sm:flex-row lg:justify-start gap-4">
-          <a href="/docs" class="text-purple-500 flex items-center">
+          <a href="/docs" class="text-indigo-500 flex items-center">
             <span class="text-xl  icon-[mdi--keyboard-arrow-right] mr-1"></span>
             Documentation
           </a>
-          <a href="/tutorials" class="text-purple-500 hover:text-underline flex items-center">
+          <a href="/tutorials" class="text-indigo-500 hover:text-underline flex items-center">
             <span class="text-xl icon-[mdi--keyboard-arrow-right] mr-1"></span>
             Tutorials
           </a>
@@ -1018,7 +1018,7 @@
 
       <!-- Code Block - Query Blockchain Data -->
       <div class="relative wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-        <div class="flex flex-col overflow-auto scrollbar-hide text-left p-2 pr-2 text-base leading-relaxed text-white/80 bg-purple-900/90 rounded-lg shadow-lg xl:text-md">
+        <div class="flex flex-col overflow-auto scrollbar-hide text-left p-2 pr-2 text-base leading-relaxed text-white/80 bg-indigo-800 rounded-lg shadow-lg xl:text-md">
           <pre><code>
   // Get latest block number
   curl --request GET \
@@ -1041,7 +1041,7 @@
         <h2 class="text-dark dark:text-white mb-4 text-xl font-bold sm:text-[40px]/[48px]">
           Create Transactions
         </h2>
-        <ul class="mt-3 text-base text-gray-600 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
+        <ul class="mt-2 text-base text-gray-400 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
           <li class="mb-2">Creating transactions with one API call</li>
           <li class="mb-2">Sending native token</li>
           <li class="mb-2">Sending Tokens (ERC20, TRC20, BEP20)</li>
@@ -1050,11 +1050,11 @@
           <li class="mb-2">Use your own tokens</li>
         </ul>
         <div class="mt-5 sm:mt-8 flex flex-row items-center sm:flex-row lg:justify-start gap-4">
-          <a href="/docs" class="text-purple-500 flex items-center">
+          <a href="/docs" class="text-indigo-500 flex items-center">
             <span class="text-xl  icon-[mdi--keyboard-arrow-right] mr-1"></span>
             Documentation
           </a>
-          <a href="/tutorials" class="text-purple-500 hover:text-underline flex items-center">
+          <a href="/tutorials" class="text-indigo-500 hover:text-underline flex items-center">
             <span class="text-xl icon-[mdi--keyboard-arrow-right] mr-1"></span>
             Tutorials
           </a>
@@ -1064,7 +1064,7 @@
 
       <!-- Code Block - Create Transactions -->
       <div class="relative wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-        <div class="flex flex-col overflow-auto scrollbar-hide text-left p-2 pr-2 text-base leading-relaxed text-white/80 bg-purple-900/90 rounded-lg shadow-lg xl:text-md">
+        <div class="flex flex-col overflow-auto scrollbar-hide text-left p-2 pr-2 text-base leading-relaxed text-white/80 bg-indigo-800 rounded-lg shadow-lg xl:text-md">
           <pre><code>
   // Create Ethereum ERC20 transaction
   curl --request POST \
@@ -1089,7 +1089,7 @@
         <h2 class="text-dark dark:text-white mb-4 text-xl font-bold sm:text-[40px]/[48px]">
           Get Notified
         </h2>
-        <ul class="mt-3 text-base text-gray-600 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
+        <ul class="mt-2 text-base text-gray-400 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
           <li class="mb-2">Subscribe to Blockchain Events</li>
           <li class="mb-2">Track incoming and outgoing transactions</li>
           <li class="mb-2">Filter transactions by address, type, and contract</li>
@@ -1097,11 +1097,11 @@
           <li class="mb-2">Real-time updates</li>
         </ul>
         <div class="mt-5 sm:mt-8 flex flex-row items-center sm:flex-row lg:justify-start gap-4">
-          <a href="/docs" class="text-purple-500 flex items-center">
+          <a href="/docs" class="text-indigo-500 flex items-center">
             <span class="text-xl  icon-[mdi--keyboard-arrow-right] mr-1"></span>
             Documentation
           </a>
-          <a href="/tutorials" class="text-purple-500 hover:text-underline flex items-center">
+          <a href="/tutorials" class="text-indigo-500 hover:text-underline flex items-center">
             <span class="text-xl icon-[mdi--keyboard-arrow-right] mr-1"></span>
             Tutorials
           </a>
@@ -1110,7 +1110,7 @@
 
       <!-- Code Block - Get Webhook callbacks on Blockchain Events -->
       <div class="relative wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-        <div class="flex flex-col overflow-auto scrollbar-hide text-left p-2 pr-2 text-base leading-relaxed text-white/80 bg-purple-900/90 rounded-lg shadow-lg xl:text-md">
+        <div class="flex flex-col overflow-auto scrollbar-hide text-left p-2 pr-2 text-base leading-relaxed text-white/80 bg-indigo-800 rounded-lg shadow-lg xl:text-md">
           <pre><code>
   // Create webhook
   curl --request POST \
@@ -1131,12 +1131,12 @@
   </div>
 </section>
 
-<section id="pricing" class="relative z-20 overflow-hidden bg-neutral-50 pb-12 pt-20 px-6 dark:bg-dark lg:pb-[90px] lg:pt-[120px]">
+<section id="pricing" class="relative z-20 overflow-hidden bg-gray-50 pb-12 pt-20 px-6 dark:bg-gray-800 lg:pb-[90px] lg:pt-[120px]">
   <div class="w-full mx-auto">
     <div class="-mx-4 flex flex-col">
       <div class="w-full px-4">
         <div class="mx-auto mb-[60px] max-w-[510px] text-center">
-          <span class="mb-2 block text-lg font-semibold text-primary">
+          <span class="mb-2 block text-lg font-semibold text-indigo-500">
             Pricing Plans
           </span>
           <h2 class="mb-3 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]">
@@ -1151,369 +1151,390 @@
       <!-- ====== Pricing Section Start -->
 
 <div class="flex flex-col">
-            <label for="pricingSwitcherOne" class="mx-auto mb-4 shadow-two shadow-lg relative inline-flex cursor-pointer select-none items-center justify-center rounded-md bg-neutral-50 dark:bg-dark-2 p-1">
-                <input type="checkbox" name="pricingSwitcherOne" id="pricingSwitcherOne" class="sr-only">
-                <span class="monthly-payment text-primary bg-gray-100 flex items-center space-x-[6px] rounded py-2 px-[18px] text-sm font-medium">
-                <span class="icon-[mdi--calendar-month] text-2xl"></span>
-                Monthly Payment
+    <label for="pricingSwitcherOne" class="mx-auto mb-4 shadow-two shadow-lg relative inline-flex cursor-pointer select-none items-center justify-center rounded-md bg-gray-50 dark:bg-gray-900 p-1">
+        <input type="checkbox" name="pricingSwitcherOne" id="pricingSwitcherOne" class="sr-only">
+        <span class="monthly-payment text-primary bg-gray-100 flex items-center space-x-[6px] rounded py-2 px-[18px] text-sm font-medium">
+            <span class="icon-[mdi--calendar-month] text-2xl"></span>
+            Monthly Payment
+        </span>
+        <span class="yearly-payment text-body-color flex items-center space-x-[6px] rounded py-2 px-[18px] text-sm font-medium">
+            <span class="icon-[mdi--calendar-heart] text-2xl"></span>
+            Yearly Payment
+        </span>
+
+    </label>
+
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center px-4">
+        
+        <div class=" px-2 ">
+            <div class="relative z-10 mb-10 overflow-hidden rounded-xl bg-gray-50 px-4 py-5 shadow-pricing dark:bg-gray-900 sm:p-12 lg:px-6 lg:py-5 xl:p-10">
+                
+                <span class="mb-5 block text-xl font-medium text-dark dark:text-white">
+                    Plus
                 </span>
-                <span class="yearly-payment text-body-color flex items-center space-x-[6px] rounded py-2 px-[18px] text-sm font-medium">
-                <span class="icon-[mdi--calendar-heart] text-2xl"></span>
-                Yearly Payment 
-                </span>
+                <h2 class="monthly-price mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]">
+                    <span class="text-xl font-medium">€</span>
+                    <span class="-ml-1 -tracking-[2px]">49</span>
+                    <span class="text-base font-normal text-body-color dark:text-white">
+                        Per Month
+                    </span>
+                </h2>
+                <h2 class="yearly-price hidden mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]">
+                    <span class="text-xl font-medium">€</span>
+                    <span class="-ml-1 -tracking-[2px]">490 </span>
+                    <span class="text-base font-normal text-body-color dark:text-white">
+                        Per Year
+                    </span>
 
-            </label>
+                </h2>
+                <div class="mb-[50px]">
+                    <h5 class="mb-5 text-lg font-medium text-dark dark:text-white">
+                        Features
+                    </h5>
+                    <div class="flex flex-col gap-3">
 
-
-
-
-       
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center px-4">
-            
-                <div class=" px-2 ">
-                    <div class="relative z-10 mb-10 overflow-hidden rounded-xl bg-neutral-50 px-4 py-5 shadow-pricing dark:bg-dark-2 sm:p-12 lg:px-6 lg:py-5 xl:p-10">
-                        
-                        <span class="mb-5 block text-xl font-medium text-dark dark:text-white">
-                            Plus
-                        </span>
-                        <h2 class="monthly-price mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]">
-                            <span class="text-xl font-medium">€</span>
-                            <span class="-ml-1 -tracking-[2px]">49</span>
-                            <span class="text-base font-normal text-body-color dark:text-white">
-                                Per Month 
-                            </span>
-                        </h2>
-                        <h2 class="yearly-price hidden mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]">
-                            <span class="text-xl font-medium">€</span>
-                            <span class="-ml-1 -tracking-[2px]">490 </span>
-                            <span class="text-base font-normal text-body-color dark:text-white">
-                                Per Year
-                            </span>
-                            
-                        </h2>
-                        <div class="mb-[50px]">
-                            <h5 class="mb-5 text-lg font-medium text-dark dark:text-white">
-                                Features
-                            </h5>
-                            <div class="flex flex-col gap-3">
-
-                                <p class="text-base dark:text-white flex items-center">
-                                    </p>
-<div x-data="{ tooltip: false }">
-                                        <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
-                                            <span class="text-base dark:text-white">500 monthly transactions</span>
-                                            <span class="icon-[mdi--information] text-lg text-primary"></span>
-                                        </button>
-                                        
-                                        <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
-                                            Successful transactions to a blockchain like Ethereum or Tron, including Tokens and broadcasting of raw transactions.
-                                        </div>
-                                    </div>
-                                
-                                <p class="text-base dark:text-white flex items-center">
-                                    </p>
-<div x-data="{ tooltip: false }">
-                                        <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
-                                            <span class="text-base  dark:text-white">750 total wallets</span> <span class="icon-[mdi--information] text-lg text-primary"></span>
-                                        </button>
-                                        <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
-                                            Total created or imported wallet addresses with your account to send cryptocurrencies or tokens from. Addresses can be deleted whenever needed.<br>Tron addresses do <u>not</u> count here.
-                                        </div>
-                                    </div>
-                                
-                                <p class="text-base text-body-color dark:text-white flex items-center">
-                                    </p>
-<div x-data="{ tooltip: false }">
-                                        <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
-                                            <span class="text-base  dark:text-white">375 total webhooks</span> <span class="icon-[mdi--information] text-lg text-primary"></span>
-                                        </button>
-                                        <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
-                                            Total created IPNs/Subscriptions with your account to watch addresses or tokens. IPNs can be deleted whenever needed.
-                                        </div>
-                                    </div>
-                                
-                                <p class="text-base dark:text-white flex items-center">
-                                    </p>
-<div x-data="{ tooltip: false }">
-                                        <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
-                                            <span class="text-base  dark:text-white">50K requests </span><span class="icon-[mdi--information] text-lg text-primary"></span>
-                                        </button>
-                                        <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
-                                            All successful requests. A request is a call to our API to get information or to send a transaction.
-                                        </div>
-                                    </div>
-                                
-
-                           
-
-                            </div>
-                        </div>
-                        <a href="https://app.chaingateway.io/register" class="inline-block w-full rounded-md bg-purple-500 hover:bg-opacity-80 px-7 py-3 text-center text-base font-medium text-white transition">
-                            30 Days Free Trial
-                        </a>
-                    </div>
-                </div>
-            
-                <div class=" px-2 ">
-                    <div class="relative z-10 mb-10 overflow-hidden rounded-xl bg-neutral-50 px-4 py-5 shadow-pricing dark:bg-dark-2 sm:p-12 lg:px-6 lg:py-5 xl:p-10">
-                        
-                        <span class="mb-5 block text-xl font-medium text-dark dark:text-white">
-                            PRO
-                        </span>
-                        <h2 class="monthly-price mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]">
-                            <span class="text-xl font-medium">€</span>
-                            <span class="-ml-1 -tracking-[2px]">99</span>
-                            <span class="text-base font-normal text-body-color dark:text-white">
-                                Per Month 
-                            </span>
-                        </h2>
-                        <h2 class="yearly-price hidden mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]">
-                            <span class="text-xl font-medium">€</span>
-                            <span class="-ml-1 -tracking-[2px]">990 </span>
-                            <span class="text-base font-normal text-body-color dark:text-white">
-                                Per Year
-                            </span>
-                            
-                        </h2>
-                        <div class="mb-[50px]">
-                            <h5 class="mb-5 text-lg font-medium text-dark dark:text-white">
-                                Features
-                            </h5>
-                            <div class="flex flex-col gap-3">
-
-                                <p class="text-base dark:text-white flex items-center">
-                                    </p>
-<div x-data="{ tooltip: false }">
-                                        <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
-                                            <span class="text-base dark:text-white">2K monthly transactions</span>
-                                            <span class="icon-[mdi--information] text-lg text-primary"></span>
-                                        </button>
-                                        
-                                        <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
-                                            Successful transactions to a blockchain like Ethereum or Tron, including Tokens and broadcasting of raw transactions.
-                                        </div>
-                                    </div>
-                                
-                                <p class="text-base dark:text-white flex items-center">
-                                    </p>
-<div x-data="{ tooltip: false }">
-                                        <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
-                                            <span class="text-base  dark:text-white">3K total wallets</span> <span class="icon-[mdi--information] text-lg text-primary"></span>
-                                        </button>
-                                        <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
-                                            Total created or imported wallet addresses with your account to send cryptocurrencies or tokens from. Addresses can be deleted whenever needed.<br>Tron addresses do <u>not</u> count here.
-                                        </div>
-                                    </div>
-                                
-                                <p class="text-base text-body-color dark:text-white flex items-center">
-                                    </p>
-<div x-data="{ tooltip: false }">
-                                        <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
-                                            <span class="text-base  dark:text-white">1.5K total webhooks</span> <span class="icon-[mdi--information] text-lg text-primary"></span>
-                                        </button>
-                                        <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
-                                            Total created IPNs/Subscriptions with your account to watch addresses or tokens. IPNs can be deleted whenever needed.
-                                        </div>
-                                    </div>
-                                
-                                <p class="text-base dark:text-white flex items-center">
-                                    </p>
-<div x-data="{ tooltip: false }">
-                                        <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
-                                            <span class="text-base  dark:text-white">200K requests </span><span class="icon-[mdi--information] text-lg text-primary"></span>
-                                        </button>
-                                        <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
-                                            All successful requests. A request is a call to our API to get information or to send a transaction.
-                                        </div>
-                                    </div>
-                                
-
-                           
-
-                            </div>
-                        </div>
-                        <a href="https://app.chaingateway.io/order/9/monthly" class="inline-block w-full rounded-md bg-purple-500 hover:bg-opacity-80 px-7 py-3 text-center text-base font-medium text-white transition">
-                            Order Now
-                        </a>
-                    </div>
-                </div>
-            
-                <div class=" px-2 ">
-                    <div class="relative z-10 mb-10 overflow-hidden rounded-xl bg-neutral-50 px-4 py-5 shadow-pricing dark:bg-dark-2 sm:p-12 lg:px-6 lg:py-5 xl:p-10">
-                        
-                        <p class="absolute right-[-50px] top-[60px] inline-block bg-primary -rotate-90 rounded-bl-md rounded-tl-md bg-gray-100 dark:bg-purple-500 px-8 py-2 text-base font-medium text-white">
-                            Recommended
+                        <p class="text-base dark:text-white flex items-center">
                         </p>
-                        
-                        <span class="mb-5 block text-xl font-medium text-dark dark:text-white">
-                            PREMIUM
-                        </span>
-                        <h2 class="monthly-price mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]">
-                            <span class="text-xl font-medium">€</span>
-                            <span class="-ml-1 -tracking-[2px]">249</span>
-                            <span class="text-base font-normal text-body-color dark:text-white">
-                                Per Month 
-                            </span>
-                        </h2>
-                        <h2 class="yearly-price hidden mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]">
-                            <span class="text-xl font-medium">€</span>
-                            <span class="-ml-1 -tracking-[2px]">2490 </span>
-                            <span class="text-base font-normal text-body-color dark:text-white">
-                                Per Year
-                            </span>
+<div x-data="{ tooltip: false }">
+                            <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
+                                <span class="text-base dark:text-white">500
+                                    monthly transactions</span>
+                                <span class="icon-[mdi--information] text-lg text-primary"></span>
+                            </button>
                             
-                        </h2>
-                        <div class="mb-[50px]">
-                            <h5 class="mb-5 text-lg font-medium text-dark dark:text-white">
-                                Features
-                            </h5>
-                            <div class="flex flex-col gap-3">
-
-                                <p class="text-base dark:text-white flex items-center">
-                                    </p>
-<div x-data="{ tooltip: false }">
-                                        <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
-                                            <span class="text-base dark:text-white">20K monthly transactions</span>
-                                            <span class="icon-[mdi--information] text-lg text-primary"></span>
-                                        </button>
-                                        
-                                        <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
-                                            Successful transactions to a blockchain like Ethereum or Tron, including Tokens and broadcasting of raw transactions.
-                                        </div>
-                                    </div>
-                                
-                                <p class="text-base dark:text-white flex items-center">
-                                    </p>
-<div x-data="{ tooltip: false }">
-                                        <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
-                                            <span class="text-base  dark:text-white">30K total wallets</span> <span class="icon-[mdi--information] text-lg text-primary"></span>
-                                        </button>
-                                        <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
-                                            Total created or imported wallet addresses with your account to send cryptocurrencies or tokens from. Addresses can be deleted whenever needed.<br>Tron addresses do <u>not</u> count here.
-                                        </div>
-                                    </div>
-                                
-                                <p class="text-base text-body-color dark:text-white flex items-center">
-                                    </p>
-<div x-data="{ tooltip: false }">
-                                        <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
-                                            <span class="text-base  dark:text-white">7.5K total webhooks</span> <span class="icon-[mdi--information] text-lg text-primary"></span>
-                                        </button>
-                                        <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
-                                            Total created IPNs/Subscriptions with your account to watch addresses or tokens. IPNs can be deleted whenever needed.
-                                        </div>
-                                    </div>
-                                
-                                <p class="text-base dark:text-white flex items-center">
-                                    </p>
-<div x-data="{ tooltip: false }">
-                                        <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
-                                            <span class="text-base  dark:text-white">2M requests </span><span class="icon-[mdi--information] text-lg text-primary"></span>
-                                        </button>
-                                        <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
-                                            All successful requests. A request is a call to our API to get information or to send a transaction.
-                                        </div>
-                                    </div>
-                                
-
-                           
-
+                            <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
+                                Successful transactions to a blockchain like Ethereum or Tron, including Tokens and
+                                broadcasting of raw transactions.
                             </div>
                         </div>
-                        <a href="https://app.chaingateway.io/order/10/monthly" class="inline-block w-full rounded-md bg-purple-500 hover:bg-opacity-80 px-7 py-3 text-center text-base font-medium text-white transition">
-                            Order Now
-                        </a>
-                    </div>
-                </div>
-            
-                <div class=" px-2 ">
-                    <div class="relative z-10 mb-10 overflow-hidden rounded-xl bg-neutral-50 px-4 py-5 shadow-pricing dark:bg-dark-2 sm:p-12 lg:px-6 lg:py-5 xl:p-10">
                         
-                        <span class="mb-5 block text-xl font-medium text-dark dark:text-white">
-                            ENTERPRISE
-                        </span>
-                        <h2 class="monthly-price mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]">
-                            <span class="text-xl font-medium">€</span>
-                            <span class="-ml-1 -tracking-[2px]">499</span>
-                            <span class="text-base font-normal text-body-color dark:text-white">
-                                Per Month 
-                            </span>
-                        </h2>
-                        <h2 class="yearly-price hidden mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]">
-                            <span class="text-xl font-medium">€</span>
-                            <span class="-ml-1 -tracking-[2px]">4990 </span>
-                            <span class="text-base font-normal text-body-color dark:text-white">
-                                Per Year
-                            </span>
-                            
-                        </h2>
-                        <div class="mb-[50px]">
-                            <h5 class="mb-5 text-lg font-medium text-dark dark:text-white">
-                                Features
-                            </h5>
-                            <div class="flex flex-col gap-3">
-
-                                <p class="text-base dark:text-white flex items-center">
-                                    </p>
+                        <p class="text-base dark:text-white flex items-center">
+                        </p>
 <div x-data="{ tooltip: false }">
-                                        <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
-                                            <span class="text-base dark:text-white">100K monthly transactions</span>
-                                            <span class="icon-[mdi--information] text-lg text-primary"></span>
-                                        </button>
-                                        
-                                        <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
-                                            Successful transactions to a blockchain like Ethereum or Tron, including Tokens and broadcasting of raw transactions.
-                                        </div>
-                                    </div>
-                                
-                                <p class="text-base dark:text-white flex items-center">
-                                    </p>
-<div x-data="{ tooltip: false }">
-                                        <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
-                                            <span class="text-base  dark:text-white">100K total wallets</span> <span class="icon-[mdi--information] text-lg text-primary"></span>
-                                        </button>
-                                        <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
-                                            Total created or imported wallet addresses with your account to send cryptocurrencies or tokens from. Addresses can be deleted whenever needed.<br>Tron addresses do <u>not</u> count here.
-                                        </div>
-                                    </div>
-                                
-                                <p class="text-base text-body-color dark:text-white flex items-center">
-                                    </p>
-<div x-data="{ tooltip: false }">
-                                        <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
-                                            <span class="text-base  dark:text-white">25K total webhooks</span> <span class="icon-[mdi--information] text-lg text-primary"></span>
-                                        </button>
-                                        <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
-                                            Total created IPNs/Subscriptions with your account to watch addresses or tokens. IPNs can be deleted whenever needed.
-                                        </div>
-                                    </div>
-                                
-                                <p class="text-base dark:text-white flex items-center">
-                                    </p>
-<div x-data="{ tooltip: false }">
-                                        <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
-                                            <span class="text-base  dark:text-white">200M requests </span><span class="icon-[mdi--information] text-lg text-primary"></span>
-                                        </button>
-                                        <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
-                                            All successful requests. A request is a call to our API to get information or to send a transaction.
-                                        </div>
-                                    </div>
-                                
-
-                           
-
+                            <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
+                                <span class="text-base  dark:text-white">750 total wallets</span> <span class="icon-[mdi--information] text-lg text-primary"></span>
+                            </button>
+                            <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
+                                Total created or imported wallet addresses with your account to send cryptocurrencies or
+                                tokens from. Addresses can be deleted whenever needed.<br>Tron addresses do <u>not</u>
+                                count here.
                             </div>
                         </div>
-                        <a href="https://app.chaingateway.io/order/12/monthly" class="inline-block w-full rounded-md bg-purple-500 hover:bg-opacity-80 px-7 py-3 text-center text-base font-medium text-white transition">
-                            Order Now
-                        </a>
+                        
+                        <p class="text-base text-body-color dark:text-white flex items-center">
+                        </p>
+<div x-data="{ tooltip: false }">
+                            <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
+                                <span class="text-base  dark:text-white">375 total webhooks</span> <span class="icon-[mdi--information] text-lg text-primary"></span>
+                            </button>
+                            <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
+                                Total created IPNs/Subscriptions with your account to watch addresses or tokens. IPNs
+                                can be deleted whenever needed.
+                            </div>
+                        </div>
+                        
+                        <p class="text-base dark:text-white flex items-center">
+                        </p>
+<div x-data="{ tooltip: false }">
+                            <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
+                                <span class="text-base  dark:text-white">50K requests </span><span class="icon-[mdi--information] text-lg text-primary"></span>
+                            </button>
+                            <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
+                                All successful requests. A request is a call to our API to get information or to send a
+                                transaction.
+                            </div>
+                        </div>
+                        
+
+
+
                     </div>
                 </div>
-            
-            <!--
+                <a href="https://app.chaingateway.io/register" class="inline-block w-full rounded-md bg-indigo-500 hover:bg-opacity-80 px-7 py-3 text-center text-base font-medium text-white transition">
+                    30 Days Free Trial
+                </a>
+            </div>
+        </div>
+        
+        <div class=" px-2 ">
+            <div class="relative z-10 mb-10 overflow-hidden rounded-xl bg-gray-50 px-4 py-5 shadow-pricing dark:bg-gray-900 sm:p-12 lg:px-6 lg:py-5 xl:p-10">
+                
+                <span class="mb-5 block text-xl font-medium text-dark dark:text-white">
+                    PRO
+                </span>
+                <h2 class="monthly-price mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]">
+                    <span class="text-xl font-medium">€</span>
+                    <span class="-ml-1 -tracking-[2px]">99</span>
+                    <span class="text-base font-normal text-body-color dark:text-white">
+                        Per Month
+                    </span>
+                </h2>
+                <h2 class="yearly-price hidden mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]">
+                    <span class="text-xl font-medium">€</span>
+                    <span class="-ml-1 -tracking-[2px]">990 </span>
+                    <span class="text-base font-normal text-body-color dark:text-white">
+                        Per Year
+                    </span>
+
+                </h2>
+                <div class="mb-[50px]">
+                    <h5 class="mb-5 text-lg font-medium text-dark dark:text-white">
+                        Features
+                    </h5>
+                    <div class="flex flex-col gap-3">
+
+                        <p class="text-base dark:text-white flex items-center">
+                        </p>
+<div x-data="{ tooltip: false }">
+                            <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
+                                <span class="text-base dark:text-white">2K
+                                    monthly transactions</span>
+                                <span class="icon-[mdi--information] text-lg text-primary"></span>
+                            </button>
+                            
+                            <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
+                                Successful transactions to a blockchain like Ethereum or Tron, including Tokens and
+                                broadcasting of raw transactions.
+                            </div>
+                        </div>
+                        
+                        <p class="text-base dark:text-white flex items-center">
+                        </p>
+<div x-data="{ tooltip: false }">
+                            <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
+                                <span class="text-base  dark:text-white">3K total wallets</span> <span class="icon-[mdi--information] text-lg text-primary"></span>
+                            </button>
+                            <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
+                                Total created or imported wallet addresses with your account to send cryptocurrencies or
+                                tokens from. Addresses can be deleted whenever needed.<br>Tron addresses do <u>not</u>
+                                count here.
+                            </div>
+                        </div>
+                        
+                        <p class="text-base text-body-color dark:text-white flex items-center">
+                        </p>
+<div x-data="{ tooltip: false }">
+                            <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
+                                <span class="text-base  dark:text-white">1.5K total webhooks</span> <span class="icon-[mdi--information] text-lg text-primary"></span>
+                            </button>
+                            <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
+                                Total created IPNs/Subscriptions with your account to watch addresses or tokens. IPNs
+                                can be deleted whenever needed.
+                            </div>
+                        </div>
+                        
+                        <p class="text-base dark:text-white flex items-center">
+                        </p>
+<div x-data="{ tooltip: false }">
+                            <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
+                                <span class="text-base  dark:text-white">200K requests </span><span class="icon-[mdi--information] text-lg text-primary"></span>
+                            </button>
+                            <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
+                                All successful requests. A request is a call to our API to get information or to send a
+                                transaction.
+                            </div>
+                        </div>
+                        
+
+
+
+                    </div>
+                </div>
+                <a href="https://app.chaingateway.io/order/9/monthly" class="inline-block w-full rounded-md bg-indigo-500 hover:bg-opacity-80 px-7 py-3 text-center text-base font-medium text-white transition">
+                    Order Now
+                </a>
+            </div>
+        </div>
+        
+        <div class=" px-2 ">
+            <div class="relative z-10 mb-10 overflow-hidden rounded-xl bg-gray-50 px-4 py-5 shadow-pricing dark:bg-gray-900 sm:p-12 lg:px-6 lg:py-5 xl:p-10">
+                
+                <p class="absolute right-[-50px] top-[60px] inline-block bg-primary -rotate-90 rounded-bl-md rounded-tl-md bg-gray-100 dark:bg-indigo-500 px-8 py-2 text-base font-medium text-white">
+                    Recommended
+                </p>
+                
+                <span class="mb-5 block text-xl font-medium text-dark dark:text-white">
+                    PREMIUM
+                </span>
+                <h2 class="monthly-price mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]">
+                    <span class="text-xl font-medium">€</span>
+                    <span class="-ml-1 -tracking-[2px]">249</span>
+                    <span class="text-base font-normal text-body-color dark:text-white">
+                        Per Month
+                    </span>
+                </h2>
+                <h2 class="yearly-price hidden mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]">
+                    <span class="text-xl font-medium">€</span>
+                    <span class="-ml-1 -tracking-[2px]">2490 </span>
+                    <span class="text-base font-normal text-body-color dark:text-white">
+                        Per Year
+                    </span>
+
+                </h2>
+                <div class="mb-[50px]">
+                    <h5 class="mb-5 text-lg font-medium text-dark dark:text-white">
+                        Features
+                    </h5>
+                    <div class="flex flex-col gap-3">
+
+                        <p class="text-base dark:text-white flex items-center">
+                        </p>
+<div x-data="{ tooltip: false }">
+                            <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
+                                <span class="text-base dark:text-white">20K
+                                    monthly transactions</span>
+                                <span class="icon-[mdi--information] text-lg text-primary"></span>
+                            </button>
+                            
+                            <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
+                                Successful transactions to a blockchain like Ethereum or Tron, including Tokens and
+                                broadcasting of raw transactions.
+                            </div>
+                        </div>
+                        
+                        <p class="text-base dark:text-white flex items-center">
+                        </p>
+<div x-data="{ tooltip: false }">
+                            <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
+                                <span class="text-base  dark:text-white">30K total wallets</span> <span class="icon-[mdi--information] text-lg text-primary"></span>
+                            </button>
+                            <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
+                                Total created or imported wallet addresses with your account to send cryptocurrencies or
+                                tokens from. Addresses can be deleted whenever needed.<br>Tron addresses do <u>not</u>
+                                count here.
+                            </div>
+                        </div>
+                        
+                        <p class="text-base text-body-color dark:text-white flex items-center">
+                        </p>
+<div x-data="{ tooltip: false }">
+                            <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
+                                <span class="text-base  dark:text-white">7.5K total webhooks</span> <span class="icon-[mdi--information] text-lg text-primary"></span>
+                            </button>
+                            <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
+                                Total created IPNs/Subscriptions with your account to watch addresses or tokens. IPNs
+                                can be deleted whenever needed.
+                            </div>
+                        </div>
+                        
+                        <p class="text-base dark:text-white flex items-center">
+                        </p>
+<div x-data="{ tooltip: false }">
+                            <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
+                                <span class="text-base  dark:text-white">2M requests </span><span class="icon-[mdi--information] text-lg text-primary"></span>
+                            </button>
+                            <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
+                                All successful requests. A request is a call to our API to get information or to send a
+                                transaction.
+                            </div>
+                        </div>
+                        
+
+
+
+                    </div>
+                </div>
+                <a href="https://app.chaingateway.io/order/10/monthly" class="inline-block w-full rounded-md bg-indigo-500 hover:bg-opacity-80 px-7 py-3 text-center text-base font-medium text-white transition">
+                    Order Now
+                </a>
+            </div>
+        </div>
+        
+        <div class=" px-2 ">
+            <div class="relative z-10 mb-10 overflow-hidden rounded-xl bg-gray-50 px-4 py-5 shadow-pricing dark:bg-gray-900 sm:p-12 lg:px-6 lg:py-5 xl:p-10">
+                
+                <span class="mb-5 block text-xl font-medium text-dark dark:text-white">
+                    ENTERPRISE
+                </span>
+                <h2 class="monthly-price mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]">
+                    <span class="text-xl font-medium">€</span>
+                    <span class="-ml-1 -tracking-[2px]">499</span>
+                    <span class="text-base font-normal text-body-color dark:text-white">
+                        Per Month
+                    </span>
+                </h2>
+                <h2 class="yearly-price hidden mb-11 text-4xl font-semibold text-dark dark:text-white xl:text-[42px] xl:leading-[1.21]">
+                    <span class="text-xl font-medium">€</span>
+                    <span class="-ml-1 -tracking-[2px]">4990 </span>
+                    <span class="text-base font-normal text-body-color dark:text-white">
+                        Per Year
+                    </span>
+
+                </h2>
+                <div class="mb-[50px]">
+                    <h5 class="mb-5 text-lg font-medium text-dark dark:text-white">
+                        Features
+                    </h5>
+                    <div class="flex flex-col gap-3">
+
+                        <p class="text-base dark:text-white flex items-center">
+                        </p>
+<div x-data="{ tooltip: false }">
+                            <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
+                                <span class="text-base dark:text-white">100K
+                                    monthly transactions</span>
+                                <span class="icon-[mdi--information] text-lg text-primary"></span>
+                            </button>
+                            
+                            <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
+                                Successful transactions to a blockchain like Ethereum or Tron, including Tokens and
+                                broadcasting of raw transactions.
+                            </div>
+                        </div>
+                        
+                        <p class="text-base dark:text-white flex items-center">
+                        </p>
+<div x-data="{ tooltip: false }">
+                            <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
+                                <span class="text-base  dark:text-white">100K total wallets</span> <span class="icon-[mdi--information] text-lg text-primary"></span>
+                            </button>
+                            <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
+                                Total created or imported wallet addresses with your account to send cryptocurrencies or
+                                tokens from. Addresses can be deleted whenever needed.<br>Tron addresses do <u>not</u>
+                                count here.
+                            </div>
+                        </div>
+                        
+                        <p class="text-base text-body-color dark:text-white flex items-center">
+                        </p>
+<div x-data="{ tooltip: false }">
+                            <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
+                                <span class="text-base  dark:text-white">25K total webhooks</span> <span class="icon-[mdi--information] text-lg text-primary"></span>
+                            </button>
+                            <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
+                                Total created IPNs/Subscriptions with your account to watch addresses or tokens. IPNs
+                                can be deleted whenever needed.
+                            </div>
+                        </div>
+                        
+                        <p class="text-base dark:text-white flex items-center">
+                        </p>
+<div x-data="{ tooltip: false }">
+                            <button x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
+                                <span class="text-base  dark:text-white">200M requests </span><span class="icon-[mdi--information] text-lg text-primary"></span>
+                            </button>
+                            <div x-show="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-white  bg-gray-900 rounded-lg shadow-sm  tooltip dark:bg-gray-700">
+                                All successful requests. A request is a call to our API to get information or to send a
+                                transaction.
+                            </div>
+                        </div>
+                        
+
+
+
+                    </div>
+                </div>
+                <a href="https://app.chaingateway.io/order/12/monthly" class="inline-block w-full rounded-md bg-indigo-500 hover:bg-opacity-80 px-7 py-3 text-center text-base font-medium text-white transition">
+                    Order Now
+                </a>
+            </div>
+        </div>
+        
+        <!--
                 <div class="w-full px-4 md:w-1/2 lg:w-1/3">
                     <div
-                        class="relative z-10 mb-10 overflow-hidden rounded-xl bg-neutral-50 px-8 py-10 shadow-pricing dark:bg-gray-900 sm:p-12 lg:px-6 lg:py-10 xl:p-14">
+                        class="relative z-10 mb-10 overflow-hidden rounded-xl bg-gray-50 px-8 py-10 shadow-pricing dark:bg-gray-900 sm:p-12 lg:px-6 lg:py-10 xl:p-14">
                         <p
                             class="absolute right-[-50px] top-[60px] inline-block -rotate-90 rounded-bl-md rounded-tl-md bg-gray-100 px-5 py-2 text-base font-medium text-white">
                             Recommended
@@ -1555,7 +1576,7 @@
                 </div>
                 <div class="w-full px-4 md:w-1/2 lg:w-1/3">
                     <div
-                        class="relative z-10 mb-10 overflow-hidden rounded-xl bg-neutral-50 px-8 py-10 shadow-pricing dark:bg-gray-900 sm:p-12 lg:px-6 lg:py-10 xl:p-14">
+                        class="relative z-10 mb-10 overflow-hidden rounded-xl bg-gray-50 px-8 py-10 shadow-pricing dark:bg-gray-900 sm:p-12 lg:px-6 lg:py-10 xl:p-14">
                         <span class="mb-5 block text-xl font-medium text-dark dark:text-white">
                             Premium
                         </span>
@@ -1592,7 +1613,7 @@
                     </div>
                 </div>
             -->
-        </div>
+    </div>
 </div>
 <script>
     const pricingSwitcherOne = document.getElementById('pricingSwitcherOne');
@@ -1601,37 +1622,37 @@
     const monthlyPrices = document.querySelectorAll('.monthly-price');
     const yearlyPrices = document.querySelectorAll('.yearly-price');
 
-    
 
 
 
-    pricingSwitcherOne.addEventListener('change', function() {
-    if (this.checked) {
-        monthlyPayment.classList.add('bg-neutral-50', 'text-body-color', 'dark:bg-dark-2');
-        monthlyPayment.classList.remove('bg-gray-100', 'text-primary', 'dark:bg-dark-blue');
-        yearlyPayment.classList.add('bg-gray-100', 'text-primary', 'dark:bg-dark-blue');
-        yearlyPayment.classList.remove('bg-neutral-50', 'text-body-color', 'dark:bg-dark-2');
 
-        for (const monthlyPrice of monthlyPrices) {
-            monthlyPrice.classList.add('hidden');
+    pricingSwitcherOne.addEventListener('change', function () {
+        if (this.checked) {
+            monthlyPayment.classList.add('bg-gray-50', 'text-body-color', 'dark:bg-gray-900');
+            monthlyPayment.classList.remove('bg-gray-100', 'text-primary', 'dark:bg-dark-blue');
+            yearlyPayment.classList.add('bg-gray-100', 'text-primary', 'dark:bg-dark-blue');
+            yearlyPayment.classList.remove('bg-gray-50', 'text-body-color', 'dark:bg-gray-900');
+
+            for (const monthlyPrice of monthlyPrices) {
+                monthlyPrice.classList.add('hidden');
+            }
+
+            for (const yearlyPrice of yearlyPrices) {
+                yearlyPrice.classList.remove('hidden');
+            }
+        } else {
+            monthlyPayment.classList.add('bg-gray-100', 'text-primary', 'dark:bg-dark-blue');
+            monthlyPayment.classList.remove('bg-gray-50', 'text-body-color', 'dark:bg-gray-900');
+            yearlyPayment.classList.add('bg-gray-50', 'text-body-color', 'dark:bg-gray-900');
+            yearlyPayment.classList.remove('bg-gray-100', 'text-primary', 'dark:bg-dark-blue');
+
+            for (const monthlyPrice of monthlyPrices) {
+                monthlyPrice.classList.remove('hidden');
+            }
+            for (const yearlyPrice of yearlyPrices) {
+                yearlyPrice.classList.add('hidden');
+            }
         }
-
-        for (const yearlyPrice of yearlyPrices) {
-            yearlyPrice.classList.remove('hidden');
-        }
-    } else {
-        monthlyPayment.classList.add('bg-gray-100', 'text-primary', 'dark:bg-dark-blue');
-        monthlyPayment.classList.remove('bg-neutral-50', 'text-body-color', 'dark:bg-dark-2');       
-        yearlyPayment.classList.add('bg-neutral-50', 'text-body-color', 'dark:bg-dark-2');
-        yearlyPayment.classList.remove('bg-gray-100', 'text-primary', 'dark:bg-dark-blue');
-
-        for (const monthlyPrice of monthlyPrices) {
-            monthlyPrice.classList.remove('hidden');
-        }
-        for (const yearlyPrice of yearlyPrices) {
-            yearlyPrice.classList.add('hidden');
-        }  
-    }
     });
 </script>
 <!-- ====== Pricing Section End -->
@@ -1640,47 +1661,47 @@
 </section>
 
 <!-- ====== CTA Section Start -->
-<section class="relative z-10 overflow-hidden bg-purple-900 py-20 lg:py-[115px]">
-<div class="container mx-auto">
-    <div class="relative overflow-hidden">
-    <div class="-mx-4 flex flex-wrap items-stretch">
-        <div class="w-full px-4">
-        <div class="mx-auto max-w-[1000px] text-center flex flex-col gap-2">
-            <h2 class="block mb-2 text-lg font-semibold text-purple-200">
-                Unlock the Power of Blockchain with Just a Click!
-            </h2>
-            <p class="text-3xl font-normal md:text-[40px] text-white">
-                Join for Free and Get Your Personal API Key Instantly!
-            </p>
-            
-            <p class="mx-auto mb-6 max-w-[600px] text-base leading-[1.5] text-white mt-4">
-            Ready to explore the limitless possibilities of blockchain technology? Create your account now and receive your
+<section class="relative z-10 overflow-hidden bg-indigo-900 py-20 lg:py-[115px]">
+    <div class="container mx-auto">
+        <div class="relative overflow-hidden">
+            <div class="-mx-4 flex flex-wrap items-stretch">
+                <div class="w-full px-4">
+                    <div class="mx-auto max-w-[1000px] text-center flex flex-col gap-2">
+                        <h2 class="block mb-2 text-lg font-semibold text-indigo-200">
+                            Unlock the Power of Blockchain with Just a Click!
+                        </h2>
+                        <p class="text-3xl font-normal md:text-[40px] text-white">
+                            Join for Free and Get Your Personal API Key Instantly!
+                        </p>
+
+                        <p class="mx-auto mb-6 max-w-[600px] text-base leading-[1.5] text-white mt-4">
+                            Ready to explore the limitless possibilities of blockchain technology? Create your account now and receive your
 very own API Key within seconds! With this key, you'll have immediate access to our robust Blockchain API.
-            </p>
-            <a href="https://app.chaingateway.io" class=" rounded-md border border-transparent bg-dark-2 px-7 py-3 text-base font-medium text-white transition hover:bg-opacity-80">
-            Join Now and Get Your Key!
-            </a>
-        </div>
+                        </p>
+                        <a href="https://app.chaingateway.io" class=" rounded-md border border-transparent bg-gray-900 px-7 py-3 text-base font-medium text-white transition hover:bg-opacity-80">
+                            Join Now and Get Your Key!
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <div>
+        <span class="absolute left-0 top-0">
+            <svg width="495" height="470" viewbox="0 0 495 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="55" cy="442" r="138" stroke="white" stroke-opacity="0.04" stroke-width="50"></circle>
+                <circle cx="446" r="39" stroke="white" stroke-opacity="0.04" stroke-width="20"></circle>
+                <path d="M245.406 137.609L233.985 94.9852L276.609 106.406L245.406 137.609Z" stroke="white" stroke-opacity="0.08" stroke-width="12"></path>
+            </svg>
+        </span>
+        <span class="absolute bottom-0 right-0">
+            <svg width="493" height="470" viewbox="0 0 493 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="462" cy="5" r="138" stroke="white" stroke-opacity="0.04" stroke-width="50"></circle>
+                <circle cx="49" cy="470" r="39" stroke="white" stroke-opacity="0.04" stroke-width="20"></circle>
+                <path d="M222.393 226.701L272.808 213.192L259.299 263.607L222.393 226.701Z" stroke="white" stroke-opacity="0.06" stroke-width="13"></path>
+            </svg>
+        </span>
     </div>
-</div>
-<div>
-    <span class="absolute left-0 top-0">
-    <svg width="495" height="470" viewbox="0 0 495 470" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="55" cy="442" r="138" stroke="white" stroke-opacity="0.04" stroke-width="50"></circle>
-        <circle cx="446" r="39" stroke="white" stroke-opacity="0.04" stroke-width="20"></circle>
-        <path d="M245.406 137.609L233.985 94.9852L276.609 106.406L245.406 137.609Z" stroke="white" stroke-opacity="0.08" stroke-width="12"></path>
-    </svg>
-    </span>
-    <span class="absolute bottom-0 right-0">
-    <svg width="493" height="470" viewbox="0 0 493 470" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="462" cy="5" r="138" stroke="white" stroke-opacity="0.04" stroke-width="50"></circle>
-        <circle cx="49" cy="470" r="39" stroke="white" stroke-opacity="0.04" stroke-width="20"></circle>
-        <path d="M222.393 226.701L272.808 213.192L259.299 263.607L222.393 226.701Z" stroke="white" stroke-opacity="0.06" stroke-width="13"></path>
-    </svg>
-    </span>
-</div>
 </section>
 <!-- ====== CTA Section End -->
 
@@ -1688,12 +1709,12 @@ very own API Key within seconds! With this key, you'll have immediate access to 
 
 
 <!-- FAQ Section Start -->
-<section x-data="{ openFaq: null }" class="relative z-20 overflow-hidden bg-neutral-50 dark:bg-gray-900 pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
+<section x-data="{ openFaq: null }" class="relative z-20 overflow-hidden bg-gray-50 dark:bg-gray-900 pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
   <div class="container mx-auto">
     <div class="flex flex-wrap -mx-4">
       <div class="w-full px-4">
         <div class="mx-auto mb-[60px] max-w-[520px] text-center lg:mb-20">
-          <span class="block mb-2 text-lg font-semibold text-purple-500">FAQ</span>
+          <span class="block mb-2 text-lg font-semibold text-indigo-500">FAQ</span>
           <h2 class="text-dark dark:text-white mb-4 text-3xl font-bold sm:text-[40px]/[48px]">You have questions? We
             have the answer!</h2>
           <p class="text-base text-body-color dark:text-white">See here the answer of our most asked questions</p>
@@ -1703,9 +1724,9 @@ very own API Key within seconds! With this key, you'll have immediate access to 
     <div class="flex flex-wrap -mx-4">
       
       <div class="w-full px-4 lg:w-1/2">
-        <div class="w-full p-2 mb-4 bg-neutral-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
+        <div class="w-full p-2 mb-4 bg-gray-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
           <button x-on:click="openFaq === 1 ? openFaq = null : openFaq = 1" class="flex w-full text-left faq-btn">
-            <div class="bg-purple-900/5 dark:bg-neutral-50/5 text-purple-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
+            <div class="bg-indigo-900/5 dark:bg-gray-50/5 text-indigo-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
               <svg :class="openFaq === 1 ? 'rotate-180' : ''" width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 15.675C10.7937 15.675 10.6219 15.6062 10.45 15.4687L2.54374 7.69998C2.23436 7.3906 2.23436 6.90935 2.54374 6.59998C2.85311 6.2906 3.33436 6.2906 3.64374 6.59998L11 13.7844L18.3562 6.53123C18.6656 6.22185 19.1469 6.22185 19.4562 6.53123C19.7656 6.8406 19.7656 7.32185 19.4562 7.63123L11.55 15.4C11.3781 15.5719 11.2062 15.675 11 15.675Z" fill="currentColor"></path>
               </svg>
@@ -1722,9 +1743,9 @@ very own API Key within seconds! With this key, you'll have immediate access to 
       </div>
       
       <div class="w-full px-4 lg:w-1/2">
-        <div class="w-full p-2 mb-4 bg-neutral-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
+        <div class="w-full p-2 mb-4 bg-gray-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
           <button x-on:click="openFaq === 2 ? openFaq = null : openFaq = 2" class="flex w-full text-left faq-btn">
-            <div class="bg-purple-900/5 dark:bg-neutral-50/5 text-purple-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
+            <div class="bg-indigo-900/5 dark:bg-gray-50/5 text-indigo-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
               <svg :class="openFaq === 2 ? 'rotate-180' : ''" width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 15.675C10.7937 15.675 10.6219 15.6062 10.45 15.4687L2.54374 7.69998C2.23436 7.3906 2.23436 6.90935 2.54374 6.59998C2.85311 6.2906 3.33436 6.2906 3.64374 6.59998L11 13.7844L18.3562 6.53123C18.6656 6.22185 19.1469 6.22185 19.4562 6.53123C19.7656 6.8406 19.7656 7.32185 19.4562 7.63123L11.55 15.4C11.3781 15.5719 11.2062 15.675 11 15.675Z" fill="currentColor"></path>
               </svg>
@@ -1741,9 +1762,9 @@ very own API Key within seconds! With this key, you'll have immediate access to 
       </div>
       
       <div class="w-full px-4 lg:w-1/2">
-        <div class="w-full p-2 mb-4 bg-neutral-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
+        <div class="w-full p-2 mb-4 bg-gray-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
           <button x-on:click="openFaq === 3 ? openFaq = null : openFaq = 3" class="flex w-full text-left faq-btn">
-            <div class="bg-purple-900/5 dark:bg-neutral-50/5 text-purple-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
+            <div class="bg-indigo-900/5 dark:bg-gray-50/5 text-indigo-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
               <svg :class="openFaq === 3 ? 'rotate-180' : ''" width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 15.675C10.7937 15.675 10.6219 15.6062 10.45 15.4687L2.54374 7.69998C2.23436 7.3906 2.23436 6.90935 2.54374 6.59998C2.85311 6.2906 3.33436 6.2906 3.64374 6.59998L11 13.7844L18.3562 6.53123C18.6656 6.22185 19.1469 6.22185 19.4562 6.53123C19.7656 6.8406 19.7656 7.32185 19.4562 7.63123L11.55 15.4C11.3781 15.5719 11.2062 15.675 11 15.675Z" fill="currentColor"></path>
               </svg>
@@ -1760,9 +1781,9 @@ very own API Key within seconds! With this key, you'll have immediate access to 
       </div>
       
       <div class="w-full px-4 lg:w-1/2">
-        <div class="w-full p-2 mb-4 bg-neutral-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
+        <div class="w-full p-2 mb-4 bg-gray-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
           <button x-on:click="openFaq === 4 ? openFaq = null : openFaq = 4" class="flex w-full text-left faq-btn">
-            <div class="bg-purple-900/5 dark:bg-neutral-50/5 text-purple-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
+            <div class="bg-indigo-900/5 dark:bg-gray-50/5 text-indigo-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
               <svg :class="openFaq === 4 ? 'rotate-180' : ''" width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 15.675C10.7937 15.675 10.6219 15.6062 10.45 15.4687L2.54374 7.69998C2.23436 7.3906 2.23436 6.90935 2.54374 6.59998C2.85311 6.2906 3.33436 6.2906 3.64374 6.59998L11 13.7844L18.3562 6.53123C18.6656 6.22185 19.1469 6.22185 19.4562 6.53123C19.7656 6.8406 19.7656 7.32185 19.4562 7.63123L11.55 15.4C11.3781 15.5719 11.2062 15.675 11 15.675Z" fill="currentColor"></path>
               </svg>
@@ -1779,9 +1800,9 @@ very own API Key within seconds! With this key, you'll have immediate access to 
       </div>
       
       <div class="w-full px-4 lg:w-1/2">
-        <div class="w-full p-2 mb-4 bg-neutral-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
+        <div class="w-full p-2 mb-4 bg-gray-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
           <button x-on:click="openFaq === 5 ? openFaq = null : openFaq = 5" class="flex w-full text-left faq-btn">
-            <div class="bg-purple-900/5 dark:bg-neutral-50/5 text-purple-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
+            <div class="bg-indigo-900/5 dark:bg-gray-50/5 text-indigo-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
               <svg :class="openFaq === 5 ? 'rotate-180' : ''" width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 15.675C10.7937 15.675 10.6219 15.6062 10.45 15.4687L2.54374 7.69998C2.23436 7.3906 2.23436 6.90935 2.54374 6.59998C2.85311 6.2906 3.33436 6.2906 3.64374 6.59998L11 13.7844L18.3562 6.53123C18.6656 6.22185 19.1469 6.22185 19.4562 6.53123C19.7656 6.8406 19.7656 7.32185 19.4562 7.63123L11.55 15.4C11.3781 15.5719 11.2062 15.675 11 15.675Z" fill="currentColor"></path>
               </svg>
@@ -1798,9 +1819,9 @@ very own API Key within seconds! With this key, you'll have immediate access to 
       </div>
       
       <div class="w-full px-4 lg:w-1/2">
-        <div class="w-full p-2 mb-4 bg-neutral-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
+        <div class="w-full p-2 mb-4 bg-gray-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
           <button x-on:click="openFaq === 6 ? openFaq = null : openFaq = 6" class="flex w-full text-left faq-btn">
-            <div class="bg-purple-900/5 dark:bg-neutral-50/5 text-purple-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
+            <div class="bg-indigo-900/5 dark:bg-gray-50/5 text-indigo-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
               <svg :class="openFaq === 6 ? 'rotate-180' : ''" width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 15.675C10.7937 15.675 10.6219 15.6062 10.45 15.4687L2.54374 7.69998C2.23436 7.3906 2.23436 6.90935 2.54374 6.59998C2.85311 6.2906 3.33436 6.2906 3.64374 6.59998L11 13.7844L18.3562 6.53123C18.6656 6.22185 19.1469 6.22185 19.4562 6.53123C19.7656 6.8406 19.7656 7.32185 19.4562 7.63123L11.55 15.4C11.3781 15.5719 11.2062 15.675 11 15.675Z" fill="currentColor"></path>
               </svg>
@@ -1817,9 +1838,9 @@ very own API Key within seconds! With this key, you'll have immediate access to 
       </div>
       
       <div class="w-full px-4 lg:w-1/2">
-        <div class="w-full p-2 mb-4 bg-neutral-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
+        <div class="w-full p-2 mb-4 bg-gray-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
           <button x-on:click="openFaq === 7 ? openFaq = null : openFaq = 7" class="flex w-full text-left faq-btn">
-            <div class="bg-purple-900/5 dark:bg-neutral-50/5 text-purple-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
+            <div class="bg-indigo-900/5 dark:bg-gray-50/5 text-indigo-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
               <svg :class="openFaq === 7 ? 'rotate-180' : ''" width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 15.675C10.7937 15.675 10.6219 15.6062 10.45 15.4687L2.54374 7.69998C2.23436 7.3906 2.23436 6.90935 2.54374 6.59998C2.85311 6.2906 3.33436 6.2906 3.64374 6.59998L11 13.7844L18.3562 6.53123C18.6656 6.22185 19.1469 6.22185 19.4562 6.53123C19.7656 6.8406 19.7656 7.32185 19.4562 7.63123L11.55 15.4C11.3781 15.5719 11.2062 15.675 11 15.675Z" fill="currentColor"></path>
               </svg>
@@ -1836,9 +1857,9 @@ very own API Key within seconds! With this key, you'll have immediate access to 
       </div>
       
       <div class="w-full px-4 lg:w-1/2">
-        <div class="w-full p-2 mb-4 bg-neutral-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
+        <div class="w-full p-2 mb-4 bg-gray-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
           <button x-on:click="openFaq === 8 ? openFaq = null : openFaq = 8" class="flex w-full text-left faq-btn">
-            <div class="bg-purple-900/5 dark:bg-neutral-50/5 text-purple-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
+            <div class="bg-indigo-900/5 dark:bg-gray-50/5 text-indigo-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
               <svg :class="openFaq === 8 ? 'rotate-180' : ''" width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 15.675C10.7937 15.675 10.6219 15.6062 10.45 15.4687L2.54374 7.69998C2.23436 7.3906 2.23436 6.90935 2.54374 6.59998C2.85311 6.2906 3.33436 6.2906 3.64374 6.59998L11 13.7844L18.3562 6.53123C18.6656 6.22185 19.1469 6.22185 19.4562 6.53123C19.7656 6.8406 19.7656 7.32185 19.4562 7.63123L11.55 15.4C11.3781 15.5719 11.2062 15.675 11 15.675Z" fill="currentColor"></path>
               </svg>
@@ -1855,9 +1876,9 @@ very own API Key within seconds! With this key, you'll have immediate access to 
       </div>
       
       <div class="w-full px-4 lg:w-1/2">
-        <div class="w-full p-2 mb-4 bg-neutral-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
+        <div class="w-full p-2 mb-4 bg-gray-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
           <button x-on:click="openFaq === 9 ? openFaq = null : openFaq = 9" class="flex w-full text-left faq-btn">
-            <div class="bg-purple-900/5 dark:bg-neutral-50/5 text-purple-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
+            <div class="bg-indigo-900/5 dark:bg-gray-50/5 text-indigo-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
               <svg :class="openFaq === 9 ? 'rotate-180' : ''" width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 15.675C10.7937 15.675 10.6219 15.6062 10.45 15.4687L2.54374 7.69998C2.23436 7.3906 2.23436 6.90935 2.54374 6.59998C2.85311 6.2906 3.33436 6.2906 3.64374 6.59998L11 13.7844L18.3562 6.53123C18.6656 6.22185 19.1469 6.22185 19.4562 6.53123C19.7656 6.8406 19.7656 7.32185 19.4562 7.63123L11.55 15.4C11.3781 15.5719 11.2062 15.675 11 15.675Z" fill="currentColor"></path>
               </svg>
@@ -1874,9 +1895,9 @@ very own API Key within seconds! With this key, you'll have immediate access to 
       </div>
       
       <div class="w-full px-4 lg:w-1/2">
-        <div class="w-full p-2 mb-4 bg-neutral-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
+        <div class="w-full p-2 mb-4 bg-gray-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
           <button x-on:click="openFaq === 10 ? openFaq = null : openFaq = 10" class="flex w-full text-left faq-btn">
-            <div class="bg-purple-900/5 dark:bg-neutral-50/5 text-purple-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
+            <div class="bg-indigo-900/5 dark:bg-gray-50/5 text-indigo-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
               <svg :class="openFaq === 10 ? 'rotate-180' : ''" width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 15.675C10.7937 15.675 10.6219 15.6062 10.45 15.4687L2.54374 7.69998C2.23436 7.3906 2.23436 6.90935 2.54374 6.59998C2.85311 6.2906 3.33436 6.2906 3.64374 6.59998L11 13.7844L18.3562 6.53123C18.6656 6.22185 19.1469 6.22185 19.4562 6.53123C19.7656 6.8406 19.7656 7.32185 19.4562 7.63123L11.55 15.4C11.3781 15.5719 11.2062 15.675 11 15.675Z" fill="currentColor"></path>
               </svg>
@@ -1893,9 +1914,9 @@ very own API Key within seconds! With this key, you'll have immediate access to 
       </div>
       
       <div class="w-full px-4 lg:w-1/2">
-        <div class="w-full p-2 mb-4 bg-neutral-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
+        <div class="w-full p-2 mb-4 bg-gray-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
           <button x-on:click="openFaq === 11 ? openFaq = null : openFaq = 11" class="flex w-full text-left faq-btn">
-            <div class="bg-purple-900/5 dark:bg-neutral-50/5 text-purple-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
+            <div class="bg-indigo-900/5 dark:bg-gray-50/5 text-indigo-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
               <svg :class="openFaq === 11 ? 'rotate-180' : ''" width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 15.675C10.7937 15.675 10.6219 15.6062 10.45 15.4687L2.54374 7.69998C2.23436 7.3906 2.23436 6.90935 2.54374 6.59998C2.85311 6.2906 3.33436 6.2906 3.64374 6.59998L11 13.7844L18.3562 6.53123C18.6656 6.22185 19.1469 6.22185 19.4562 6.53123C19.7656 6.8406 19.7656 7.32185 19.4562 7.63123L11.55 15.4C11.3781 15.5719 11.2062 15.675 11 15.675Z" fill="currentColor"></path>
               </svg>
@@ -1912,9 +1933,9 @@ very own API Key within seconds! With this key, you'll have immediate access to 
       </div>
       
       <div class="w-full px-4 lg:w-1/2">
-        <div class="w-full p-2 mb-4 bg-neutral-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
+        <div class="w-full p-2 mb-4 bg-gray-50 rounded-lg shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] dark:bg-gray-800 sm:p-2 lg:px-6 xl:px-2">
           <button x-on:click="openFaq === 12 ? openFaq = null : openFaq = 12" class="flex w-full text-left faq-btn">
-            <div class="bg-purple-900/5 dark:bg-neutral-50/5 text-purple-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
+            <div class="bg-indigo-900/5 dark:bg-gray-50/5 text-indigo-500 mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg">
               <svg :class="openFaq === 12 ? 'rotate-180' : ''" width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 15.675C10.7937 15.675 10.6219 15.6062 10.45 15.4687L2.54374 7.69998C2.23436 7.3906 2.23436 6.90935 2.54374 6.59998C2.85311 6.2906 3.33436 6.2906 3.64374 6.59998L11 13.7844L18.3562 6.53123C18.6656 6.22185 19.1469 6.22185 19.4562 6.53123C19.7656 6.8406 19.7656 7.32185 19.4562 7.63123L11.55 15.4C11.3781 15.5719 11.2062 15.675 11 15.675Z" fill="currentColor"></path>
               </svg>
@@ -1947,12 +1968,12 @@ very own API Key within seconds! With this key, you'll have immediate access to 
 </section>
 
 <!-- BLOG Section Start -->
-<section class="bg-neutral-50 pb-10 pt-20 dark:bg-gray-800  lg:pt-[120px]">
+<section class="bg-gray-50 pb-10 pt-20 dark:bg-gray-800  lg:pt-[120px]">
   <div class="container mx-auto">
     <div class="-mx-4 flex flex-wrap justify-center">
       <div class="w-full px-4">
         <div class="mx-auto mb-[60px] max-w-[485px] text-center">
-          <span class="mb-2 block text-lg font-semibold text-purple-500">
+          <span class="mb-2 block text-lg font-semibold text-indigo-500">
             Our Blogs
           </span>
           <h2 class="mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]">
@@ -1968,95 +1989,95 @@ very own API Key within seconds! With this key, you'll have immediate access to 
     <div class="-mx-4 flex flex-wrap">
 
     
-        <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-            <div class="wow fadeInUp group mb-10" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s;">
-                <div class="mb-8 overflow-hidden rounded-[5px]">
-                    <a href="/blog/role-of-blockchain-apis-in-unlocking-blockchain-interoperability/" class="block">
-                        <div class="aspect-w-16 h-64">
-                            
-                            <img src="/assets/images/blog/2023/12/thumbnails/blog_12_23_400w.png" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
-                        </div>
-                    </a>
-                
-                </div>
-                <div>
-                    <span class="mb-6 inline-block rounded-[5px] bg-purple-700 px-4 py-0.5 text-center text-xs font-medium leading-loose text-white">
-                        Dec 23, 2023
-                    </span>
-                    <h3>
-                        <a href="/blog/role-of-blockchain-apis-in-unlocking-blockchain-interoperability/" class="mb-4 inline-block text-xl font-semibold text-dark hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl">
-                            Role Of Blockchain Apis In Unlocking Blockchain Interoperability
-                        </a>
-                    </h3>
-                    <p class="max-w-[370px] text-base text-body-color dark:text-white">
+    <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+        <div class="wow fadeInUp group mb-10" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s;">
+            <div class="mb-8 overflow-hidden rounded-[5px]">
+                <a href="/blog/role-of-blockchain-apis-in-unlocking-blockchain-interoperability/" class="block">
+                    <div class="aspect-w-16 h-64">
                         
-                    </p>
-                </div>
+                        <img src="/assets/images/blog/2023/12/thumbnails/blog_12_23_400w.png" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
+                    </div>
+                </a>
+
+            </div>
+            <div>
+                <span class="mb-6 inline-block rounded-[5px] bg-indigo-700 px-4 py-0.5 text-center text-xs font-medium leading-loose text-white">
+                    Dec 23, 2023
+                </span>
+                <h3>
+                    <a href="/blog/role-of-blockchain-apis-in-unlocking-blockchain-interoperability/" class="mb-4 inline-block text-xl font-semibold text-dark hover:text-primary dark:text-white dark:hover:text-indigo-500y sm:text-2xl lg:text-xl xl:text-2xl">
+                        Role Of Blockchain Apis In Unlocking Blockchain Interoperability
+                    </a>
+                </h3>
+                <p class="max-w-[370px] text-base text-body-color dark:text-white">
+                    
+                </p>
             </div>
         </div>
+    </div>
     
-        <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-            <div class="wow fadeInUp group mb-10" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s;">
-                <div class="mb-8 overflow-hidden rounded-[5px]">
-                    <a href="/blog/invest-in-our-blockchain-api-adventure/" class="block">
-                        <div class="aspect-w-16 h-64">
-                            
-                            <img src="/assets/images/blog/2023/09/thumbnails/blog_09_14_400w.webp" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
-                        </div>
-                    </a>
-                
-                </div>
-                <div>
-                    <span class="mb-6 inline-block rounded-[5px] bg-purple-700 px-4 py-0.5 text-center text-xs font-medium leading-loose text-white">
-                        Nov 30, 2023
-                    </span>
-                    <h3>
-                        <a href="/blog/invest-in-our-blockchain-api-adventure/" class="mb-4 inline-block text-xl font-semibold text-dark hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl">
-                            Invest In Our Blockchain Api Adventure
-                        </a>
-                    </h3>
-                    <p class="max-w-[370px] text-base text-body-color dark:text-white">
+    <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+        <div class="wow fadeInUp group mb-10" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s;">
+            <div class="mb-8 overflow-hidden rounded-[5px]">
+                <a href="/blog/invest-in-our-blockchain-api-adventure/" class="block">
+                    <div class="aspect-w-16 h-64">
                         
-                    </p>
-                </div>
+                        <img src="/assets/images/blog/2023/09/thumbnails/blog_09_14_400w.webp" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
+                    </div>
+                </a>
+
+            </div>
+            <div>
+                <span class="mb-6 inline-block rounded-[5px] bg-indigo-700 px-4 py-0.5 text-center text-xs font-medium leading-loose text-white">
+                    Nov 30, 2023
+                </span>
+                <h3>
+                    <a href="/blog/invest-in-our-blockchain-api-adventure/" class="mb-4 inline-block text-xl font-semibold text-dark hover:text-primary dark:text-white dark:hover:text-indigo-500y sm:text-2xl lg:text-xl xl:text-2xl">
+                        Invest In Our Blockchain Api Adventure
+                    </a>
+                </h3>
+                <p class="max-w-[370px] text-base text-body-color dark:text-white">
+                    
+                </p>
             </div>
         </div>
+    </div>
     
-        <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-            <div class="wow fadeInUp group mb-10" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s;">
-                <div class="mb-8 overflow-hidden rounded-[5px]">
-                    <a href="/blog/How-to-Set-Up-an-Ethereum-Node/" class="block">
-                        <div class="aspect-w-16 h-64">
-                            
-                            <img src="/assets/images/blog/2023/11/thumbnails/blog_11_10_400w.png" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
-                        </div>
-                    </a>
-                
-                </div>
-                <div>
-                    <span class="mb-6 inline-block rounded-[5px] bg-purple-700 px-4 py-0.5 text-center text-xs font-medium leading-loose text-white">
-                        Nov 10, 2023
-                    </span>
-                    <h3>
-                        <a href="/blog/How-to-Set-Up-an-Ethereum-Node/" class="mb-4 inline-block text-xl font-semibold text-dark hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl">
-                            How To Set Up A Ethereum Node
-                        </a>
-                    </h3>
-                    <p class="max-w-[370px] text-base text-body-color dark:text-white">
+    <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+        <div class="wow fadeInUp group mb-10" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s;">
+            <div class="mb-8 overflow-hidden rounded-[5px]">
+                <a href="/blog/How-to-Set-Up-an-Ethereum-Node/" class="block">
+                    <div class="aspect-w-16 h-64">
                         
-                    </p>
-                </div>
+                        <img src="/assets/images/blog/2023/11/thumbnails/blog_11_10_400w.png" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
+                    </div>
+                </a>
+
+            </div>
+            <div>
+                <span class="mb-6 inline-block rounded-[5px] bg-indigo-700 px-4 py-0.5 text-center text-xs font-medium leading-loose text-white">
+                    Nov 10, 2023
+                </span>
+                <h3>
+                    <a href="/blog/How-to-Set-Up-an-Ethereum-Node/" class="mb-4 inline-block text-xl font-semibold text-dark hover:text-primary dark:text-white dark:hover:text-indigo-500y sm:text-2xl lg:text-xl xl:text-2xl">
+                        How To Set Up A Ethereum Node
+                    </a>
+                </h3>
+                <p class="max-w-[370px] text-base text-body-color dark:text-white">
+                    
+                </p>
             </div>
         </div>
+    </div>
     
 
-    
-  </div>
+
+</div>
   </div>
 </section>
 
 <!-- Cryptonodes CTA Section start -->
-<div class="bg-neutral-50 dark:bg-gray-800">
+<div class="bg-gray-100 dark:bg-gray-800">
   <div class="mx-auto max-w-screen-2xl py-12 sm:px-6 sm:py-32 lg:px-8">
     <div class="relative isolate overflow-hidden bg-gray-900 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
       <svg viewbox="0 0 1024 1024" class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0" aria-hidden="true">
@@ -2092,7 +2113,8 @@ very own API Key within seconds! With this key, you'll have immediate access to 
 <!-- ====== Contact Start ====== -->
 <section id="contact" class="relative py-20 md:py-[120px]">
   <div class="absolute left-0 top-0 -z-[1] h-full w-full dark:bg-gray-900"></div>
-  <div class="absolute left-0 top-0 -z-[1] h-1/2 w-full bg-purple-900 dark:bg-gray-900-700 lg:h-[45%] xl:h-1/2"></div>
+  <div class="absolute left-0 top-0 -z-[1] h-1/2 w-full bg-indigo-900 dark:bg-gray-900-700 lg:h-[45%] xl:h-1/2">
+  </div>
   <div class="container px-4">
     <div class="-mx-4 flex flex-wrap items-center">
       <div class="w-full px-4 lg:w-7/12 xl:w-8/12">
@@ -2107,7 +2129,7 @@ very own API Key within seconds! With this key, you'll have immediate access to 
           </div>
           <div class="mb-12 flex flex-wrap justify-between lg:mb-0">
             <div class="mb-8 flex w-[330px] max-w-full">
-              <div class="mr-6 text-[32px] text-purple-500">
+              <div class="mr-6 text-[32px] text-indigo-500">
                 <svg width="29" height="35" viewbox="0 0 29 35" class="fill-current">
                   <path d="M14.5 0.710938C6.89844 0.710938 0.664062 6.72656 0.664062 14.0547C0.664062 19.9062 9.03125 29.5859 12.6406 33.5234C13.1328 34.0703 13.7891 34.3437 14.5 34.3437C15.2109 34.3437 15.8672 34.0703 16.3594 33.5234C19.9688 29.6406 28.3359 19.9062 28.3359 14.0547C28.3359 6.67188 22.1016 0.710938 14.5 0.710938ZM14.9375 32.2109C14.6641 32.4844 14.2812 32.4844 14.0625 32.2109C11.3828 29.3125 2.57812 19.3594 2.57812 14.0547C2.57812 7.71094 7.9375 2.625 14.5 2.625C21.0625 2.625 26.4219 7.76562 26.4219 14.0547C26.4219 19.3594 17.6172 29.2578 14.9375 32.2109Z"></path>
                   <path d="M14.5 8.58594C11.2734 8.58594 8.59375 11.2109 8.59375 14.4922C8.59375 17.7188 11.2187 20.3984 14.5 20.3984C17.7812 20.3984 20.4062 17.7734 20.4062 14.4922C20.4062 11.2109 17.7266 8.58594 14.5 8.58594ZM14.5 18.4297C12.3125 18.4297 10.5078 16.625 10.5078 14.4375C10.5078 12.25 12.3125 10.4453 14.5 10.4453C16.6875 10.4453 18.4922 12.25 18.4922 14.4375C18.4922 16.625 16.6875 18.4297 14.5 18.4297Z"></path>
@@ -2123,7 +2145,7 @@ very own API Key within seconds! With this key, you'll have immediate access to 
               </div>
             </div>
             <div class="mb-8 flex w-[330px] max-w-full">
-              <div class="mr-6 text-[32px] text-purple-500">
+              <div class="mr-6 text-[32px] text-indigo-500">
                 <svg width="34" height="25" viewbox="0 0 34 25" class="fill-current">
                   <path d="M30.5156 0.960938H3.17188C1.42188 0.960938 0 2.38281 0 4.13281V20.9219C0 22.6719 1.42188 24.0938 3.17188 24.0938H30.5156C32.2656 24.0938 33.6875 22.6719 33.6875 20.9219V4.13281C33.6875 2.38281 32.2656 0.960938 30.5156 0.960938ZM30.5156 2.875C30.7891 2.875 31.0078 2.92969 31.2266 3.09375L17.6094 11.3516C17.1172 11.625 16.5703 11.625 16.0781 11.3516L2.46094 3.09375C2.67969 2.98438 2.89844 2.875 3.17188 2.875H30.5156ZM30.5156 22.125H3.17188C2.51562 22.125 1.91406 21.5781 1.91406 20.8672V5.00781L15.0391 12.9922C15.5859 13.3203 16.1875 13.4844 16.7891 13.4844C17.3906 13.4844 17.9922 13.3203 18.5391 12.9922L31.6641 5.00781V20.8672C31.7734 21.5781 31.1719 22.125 30.5156 22.125Z"></path>
                 </svg>
@@ -2153,7 +2175,7 @@ very own API Key within seconds! With this key, you'll have immediate access to 
 
 
       <div class="w-full px-4 lg:w-5/12 xl:w-4/12">
-        <div class="wow fadeInUp rounded-lg bg-neutral-50 px-8 py-10 shadow-testimonial dark:bg-gray-800 dark:shadow-none sm:px-10 sm:py-12 md:p-[60px] lg:p-10 lg:px-10 lg:py-12 2xl:p-[60px]" data-wow-delay=".2s
+        <div class="wow fadeInUp rounded-lg bg-gray-50 px-8 py-10 shadow-testimonial dark:bg-gray-800 dark:shadow-none sm:px-10 sm:py-12 md:p-[60px] lg:p-10 lg:px-10 lg:py-12 2xl:p-[60px]" data-wow-delay=".2s
               ">
           <h3 class="mb-8 text-2xl font-semibold text-dark dark:text-white md:text-[28px] md:leading-[1.42]">
             Send us a Message
@@ -2161,22 +2183,22 @@ very own API Key within seconds! With this key, you'll have immediate access to 
           <form>
             <div class="mb-[22px]">
               <label for="fullName" class="mb-4 block text-sm text-body-color dark:text-white">Full Name*</label>
-              <input type="text" name="fullName" placeholder="Adam Gelius" class="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-body-color placeholder:text-body-color/60 focus:border-purple-900 focus:outline-none dark:border-dark-3 dark:text-white">
+              <input type="text" name="fullName" placeholder="Adam Gelius" class="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-body-color placeholder:text-body-color/60 focus:border-indigo-900 focus:outline-none dark:border-dark-3 dark:text-white">
             </div>
             <div class="mb-[22px]">
               <label for="email" class="mb-4 block text-sm text-body-color dark:text-white">Email*</label>
-              <input type="email" name="email" placeholder="example@yourmail.com" class="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-body-color placeholder:text-body-color/60 focus:border-purple-900 focus:outline-none dark:border-dark-3 dark:text-white">
+              <input type="email" name="email" placeholder="example@yourmail.com" class="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-body-color placeholder:text-body-color/60 focus:border-indigo-900 focus:outline-none dark:border-dark-3 dark:text-white">
             </div>
             <div class="mb-[22px]">
               <label for="phone" class="mb-4 block text-sm text-body-color dark:text-white">Phone*</label>
-              <input type="text" name="phone" placeholder="+885 1254 5211 552" class="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-body-color placeholder:text-body-color/60 focus:border-purple-900 focus:outline-none dark:border-dark-3 dark:text-white">
+              <input type="text" name="phone" placeholder="+885 1254 5211 552" class="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-body-color placeholder:text-body-color/60 focus:border-indigo-900 focus:outline-none dark:border-dark-3 dark:text-white">
             </div>
             <div class="mb-[30px]">
               <label for="message" class="mb-4 block text-sm text-body-color dark:text-white">Message*</label>
-              <textarea name="message" rows="1" placeholder="type your message here" class="w-full resize-none border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-body-color placeholder:text-body-color/60 focus:border-purple-900 focus:outline-none dark:border-dark-3 dark:text-white"></textarea>
+              <textarea name="message" rows="1" placeholder="type your message here" class="w-full resize-none border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-body-color placeholder:text-body-color/60 focus:border-indigo-900 focus:outline-none dark:border-dark-3 dark:text-white"></textarea>
             </div>
             <div class="mb-0">
-              <button type="submit" class="inline-flex items-center justify-center rounded-md bg-purple-900 px-10 py-3 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-gray-900-blue">
+              <button type="submit" class="inline-flex items-center justify-center rounded-md bg-indigo-900 px-10 py-3 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-gray-900-blue">
                 Send
               </button>
             </div>
@@ -2317,7 +2339,7 @@ very own API Key within seconds! With this key, you'll have immediate access to 
                     <p class="mb-9 text-base text-white/80">Don't miss any updates of our new templates and components.
                     </p>
                     <form class="relative mb-7.5 text-right" x-data="ContactForm()" x-on:submit.prevent="submitForm">
-                        <input type="email" name="email" id="email" x-model="formData.email" placeholder="Enter your email address" class="h-[50px] w-full rounded-lg border border-white/5 bg-neutral-50/[.08] pl-5 pr-5 text-base text-white placeholder-body-color-2 outline-none duration-300 focus:border-primary xs:pr-[110px] lg:pr-5 xl:pr-[110px]">
+                        <input type="email" name="email" id="email" x-model="formData.email" placeholder="Enter your email address" class="h-[50px] w-full rounded-lg border border-white/5 bg-gray-50/[.08] pl-5 pr-5 text-base text-white placeholder-body-color-2 outline-none duration-300 focus:border-primary xs:pr-[110px] lg:pr-5 xl:pr-[110px]">
 
                         <button type="submit" name="subform" value="yes"><button type="submit" name="submit" id="submit" class="right-1.5 top-1.5 ml-auto mt-2 h-[38px] w-full max-w-[103px] rounded-md bg-primary text-sm font-medium tracking-[-0.2px] text-white duration-300 hover:bg-primary/90 xs:absolute xs:mt-0 lg:static lg:mt-2 xl:absolute xl:mt-0">Subscribe</button>
                             <div x-show="formData.message" class="mt-4 text-sm text-white">
@@ -2439,11 +2461,12 @@ very own API Key within seconds! With this key, you'll have immediate access to 
                 </svg>
             </button>
         </div>
-        <p class="text-gray-600 text-sm pb-6">
-            We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of cookies.
+        <p class="text-gray-400 text-sm pb-6">
+            We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of
+            cookies.
         </p>
         <div class="flex flex-row"></div>
-        <button id="cookie-notice-accept" x-on:click="showBanner = false; localStorage.setItem('cookieConsentAccepted', 'true'); loadAdditionalScripts();" href="#" class="mt-4 bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded">
+        <button id="cookie-notice-accept" x-on:click="showBanner = false; localStorage.setItem('cookieConsentAccepted', 'true'); loadAdditionalScripts();" href="#" class="mt-4 bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded">
             Accept
         </button>
         
@@ -2451,41 +2474,41 @@ very own API Key within seconds! With this key, you'll have immediate access to 
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         loadAdditionalScripts();
     });
 
     function loadAdditionalScripts() {
         if (localStorage.getItem('cookieConsentAccepted')) {
-            
+
             //matomo
             var _paq = window._paq = window._paq || [];
             /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
             _paq.push(['trackPageView']);
             _paq.push(['enableLinkTracking']);
-            (function() {
-            var u="//analytics.bitblade.de/";
-            _paq.push(['setTrackerUrl', u+'matomo.php']);
-            _paq.push(['setSiteId', '27']);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+            (function () {
+                var u = "//analytics.bitblade.de/";
+                _paq.push(['setTrackerUrl', u + 'matomo.php']);
+                _paq.push(['setSiteId', '27']);
+                var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+                g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
             })();
 
             //Chatwoot
-            (function(d,t) {
-                var BASE_URL="https://chat.bitblade.io";
-                var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-                g.src=BASE_URL+"/packs/js/sdk.js";
+            (function (d, t) {
+                var BASE_URL = "https://chat.bitblade.io";
+                var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+                g.src = BASE_URL + "/packs/js/sdk.js";
                 g.defer = true;
                 g.async = true;
-                s.parentNode.insertBefore(g,s);
-                g.onload=function(){
-                window.chatwootSDK.run({
-                    websiteToken: 'kqQcrSbU3Z52dGoGCN7r3zho',
-                    baseUrl: BASE_URL
-                })
+                s.parentNode.insertBefore(g, s);
+                g.onload = function () {
+                    window.chatwootSDK.run({
+                        websiteToken: 'kqQcrSbU3Z52dGoGCN7r3zho',
+                        baseUrl: BASE_URL
+                    })
                 }
-            })(document,"script");
+            })(document, "script");
 
         }
     }

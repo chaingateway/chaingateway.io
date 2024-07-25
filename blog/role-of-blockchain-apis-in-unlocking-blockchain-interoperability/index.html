@@ -6,7 +6,7 @@
   toggleDarkMode() {
     this.darkMode = !this.darkMode;
     localStorage.setItem('darkMode', this.darkMode);
-  }
+  } 
 }" :class="{ 'dark': darkMode }">
 
 <head>
@@ -72,7 +72,7 @@
             <span class="relative my-[6px] block h-[2px] w-[30px]" :class="{ 'bg-white': transparent, 'bg-primary': !transparent }"></span>
             <span class="relative my-[6px] block h-[2px] w-[30px]" :class="{ 'bg-white': transparent, 'bg-primary': !transparent }"></span>
           </button>
-          <nav x-on:mouseleave="navbarOpen = !navbarOpen" :class="{'visible': navbarOpen, 'hidden lg:visible':  !navbarOpen }" id="navbarCollapse" class="absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-neutral-50 dark:bg-gray-800 dark:lg:bg-transparent dark:text-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:px-4 lg:py-0 lg:shadow-none xl:px-6">
+          <nav x-on:mouseleave="navbarOpen = !navbarOpen" :class="{'visible': navbarOpen, 'hidden lg:visible':  !navbarOpen }" id="navbarCollapse" class="absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-gray-50 dark:bg-gray-800 dark:lg:bg-transparent dark:text-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:px-4 lg:py-0 lg:shadow-none xl:px-6">
 
             <ul class="block lg:flex 2xl:ml-20">
               
@@ -84,25 +84,25 @@
                     <path d="M7.99999 14.9C7.84999 14.9 7.72499 14.85 7.59999 14.75L1.84999 9.10005C1.62499 8.87505 1.62499 8.52505 1.84999 8.30005C2.07499 8.07505 2.42499 8.07505 2.64999 8.30005L7.99999 13.525L13.35 8.25005C13.575 8.02505 13.925 8.02505 14.15 8.25005C14.375 8.47505 14.375 8.82505 14.15 9.05005L8.39999 14.7C8.27499 14.825 8.14999 14.9 7.99999 14.9Z"></path>
                   </svg>
                 </a>
-                <div x-show="open" class="submenu relative left-0 top-full w-[250px] rounded-sm bg-neutral-50 text-dark p-4 transition-[top] duration-300 group-hover:opacity-100 dark:bg-gray-800 dark:text-white lg:invisible lg:absolute lg:top-[110%] lg:block lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full">
+                <div x-show="open" class="submenu relative left-0 top-full w-[250px] rounded-sm bg-gray-50 text-dark p-4 transition-[top] duration-300 group-hover:opacity-100 dark:bg-gray-800 dark:text-white lg:invisible lg:absolute lg:top-[110%] lg:block lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full">
                   
-                  <a href="/tron-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/tron-api/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Tron Api
                   </a>
                   
-                  <a href="/binance-smart-chain-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/binance-smart-chain-api/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Binance Smart Chain Api
                   </a>
                   
-                  <a href="/ethereum-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/ethereum-api/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Ethereum Api
                   </a>
                   
-                  <a href="/polygon-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/polygon-api/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Polygon Api
                   </a>
                   
-                  <a href="/bitcoin-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/bitcoin-api/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Bitcoin Api
                   </a>
                   
@@ -126,17 +126,17 @@
                     <path d="M7.99999 14.9C7.84999 14.9 7.72499 14.85 7.59999 14.75L1.84999 9.10005C1.62499 8.87505 1.62499 8.52505 1.84999 8.30005C2.07499 8.07505 2.42499 8.07505 2.64999 8.30005L7.99999 13.525L13.35 8.25005C13.575 8.02505 13.925 8.02505 14.15 8.25005C14.375 8.47505 14.375 8.82505 14.15 9.05005L8.39999 14.7C8.27499 14.825 8.14999 14.9 7.99999 14.9Z"></path>
                   </svg>
                 </a>
-                <div x-show="open" class="submenu relative left-0 top-full w-[250px] rounded-sm bg-neutral-50 text-dark p-4 transition-[top] duration-300 group-hover:opacity-100 dark:bg-gray-800 dark:text-white lg:invisible lg:absolute lg:top-[110%] lg:block lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full">
+                <div x-show="open" class="submenu relative left-0 top-full w-[250px] rounded-sm bg-gray-50 text-dark p-4 transition-[top] duration-300 group-hover:opacity-100 dark:bg-gray-800 dark:text-white lg:invisible lg:absolute lg:top-[110%] lg:block lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full">
                   
-                  <a href="/docs/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/docs/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     API Docs
                   </a>
                   
-                  <a href="/developers/getting-started/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/developers/getting-started/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Getting Started
                   </a>
                   
-                  <a href="/developers/tutorials/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                  <a href="/developers/tutorials/" class="block rounded px-4 py-[10px] text-sm  lg:hover:text-indigo-500">
                     Tutorials
                   </a>
                   
@@ -163,10 +163,10 @@
             </ul>
 
             <div class="flex gap-2 w-100 sm:hidden px-2 ">
-              <a href="https://beta.chaingateway.io/" class="w-1/2 signUpBtn rounded-md bg-purple-800 px-6 py-2  font-medium  duration-300 ease-in-out hover:bg-opacity-90 text-white ">
+              <a href="https://beta.chaingateway.io/" class="w-1/2 signUpBtn rounded-md bg-indigo-800 px-6 py-2  font-medium  duration-300 ease-in-out hover:bg-opacity-90 text-white ">
                 Sign In
               </a>
-              <a href="https://beta.chaingateway.io/register" class="w-1/2 signUpBtn rounded-md bg-purple-600 text-white px-6 py-2  font-medium  duration-300 ease-in-out hover:bg-opacity-90 ">
+              <a href="https://beta.chaingateway.io/register" class="w-1/2 signUpBtn rounded-md bg-indigo-600 text-white px-6 py-2  font-medium  duration-300 ease-in-out hover:bg-opacity-90 ">
                 Sign Up
               </a>
             </div>
@@ -489,7 +489,7 @@ While blockchain APIs offer the technological solution to interoperability, a se
                   Enter your email to receive our latest newsletter.
                 </p>
                 <form x-data="ContactForm()" x-on:submit.prevent="submitForm">
-                  <input required type="email" placeholder="Your email address" x-model="formData.email" id="email" class="mb-4 h-[50px] w-full rounded-md border border-transparent bg-neutral-50/10 text-center text-base text-white outline-none placeholder:text-white/60 focus:border-white focus-visible:shadow-none" autocomplete="on">
+                  <input required type="email" placeholder="Your email address" x-model="formData.email" id="email" class="mb-4 h-[50px] w-full rounded-md border border-transparent bg-gray-50/10 text-center text-base text-white outline-none placeholder:text-white/60 focus:border-white focus-visible:shadow-none" autocomplete="on">
                   <button type="submit" id="submit" class="mb-4 h-[50px] w-full cursor-pointer rounded-md bg-secondary text-center text-sm font-medium text-white transition duration-300 ease-in-out hover:bg-[#0BB489] hover:bg-opacity-90">
                     Subscribe Now
                   </button>
@@ -566,7 +566,7 @@ While blockchain APIs offer the technological solution to interoperability, a se
                     </div>
                     <div class="w-full">
                       <h4>
-                        <a href="/blog/role-of-blockchain-apis-in-unlocking-blockchain-interoperability/" class="inline-block mb-1 text-lg font-medium leading-snug text-dark hover:text-primary dark:text-white dark:hover:text-primary lg:text-base xl:text-lg">
+                        <a href="/blog/role-of-blockchain-apis-in-unlocking-blockchain-interoperability/" class="inline-block mb-1 text-lg font-medium leading-snug text-dark hover:text-primary dark:text-white dark:hover:text-indigo-500y lg:text-base xl:text-lg">
                           Role Of Blockchain Apis In Unlocking Blockchain Interoperability
                         </a>
                       </h4>
@@ -586,7 +586,7 @@ While blockchain APIs offer the technological solution to interoperability, a se
                     </div>
                     <div class="w-full">
                       <h4>
-                        <a href="/blog/invest-in-our-blockchain-api-adventure/" class="inline-block mb-1 text-lg font-medium leading-snug text-dark hover:text-primary dark:text-white dark:hover:text-primary lg:text-base xl:text-lg">
+                        <a href="/blog/invest-in-our-blockchain-api-adventure/" class="inline-block mb-1 text-lg font-medium leading-snug text-dark hover:text-primary dark:text-white dark:hover:text-indigo-500y lg:text-base xl:text-lg">
                           Invest In Our Blockchain Api Adventure
                         </a>
                       </h4>
@@ -606,7 +606,7 @@ While blockchain APIs offer the technological solution to interoperability, a se
                     </div>
                     <div class="w-full">
                       <h4>
-                        <a href="/blog/How-to-Set-Up-an-Ethereum-Node/" class="inline-block mb-1 text-lg font-medium leading-snug text-dark hover:text-primary dark:text-white dark:hover:text-primary lg:text-base xl:text-lg">
+                        <a href="/blog/How-to-Set-Up-an-Ethereum-Node/" class="inline-block mb-1 text-lg font-medium leading-snug text-dark hover:text-primary dark:text-white dark:hover:text-indigo-500y lg:text-base xl:text-lg">
                           How To Set Up A Ethereum Node
                         </a>
                       </h4>
@@ -626,7 +626,7 @@ While blockchain APIs offer the technological solution to interoperability, a se
                     </div>
                     <div class="w-full">
                       <h4>
-                        <a href="/blog/How-to-Set-Up-a-Tron-Node/" class="inline-block mb-1 text-lg font-medium leading-snug text-dark hover:text-primary dark:text-white dark:hover:text-primary lg:text-base xl:text-lg">
+                        <a href="/blog/How-to-Set-Up-a-Tron-Node/" class="inline-block mb-1 text-lg font-medium leading-snug text-dark hover:text-primary dark:text-white dark:hover:text-indigo-500y lg:text-base xl:text-lg">
                           How To Set Up A Tron Node
                         </a>
                       </h4>
@@ -646,7 +646,7 @@ While blockchain APIs offer the technological solution to interoperability, a se
                     </div>
                     <div class="w-full">
                       <h4>
-                        <a href="/blog/How-to-Set-Up-a-Binance-Smart-Chain-Node/" class="inline-block mb-1 text-lg font-medium leading-snug text-dark hover:text-primary dark:text-white dark:hover:text-primary lg:text-base xl:text-lg">
+                        <a href="/blog/How-to-Set-Up-a-Binance-Smart-Chain-Node/" class="inline-block mb-1 text-lg font-medium leading-snug text-dark hover:text-primary dark:text-white dark:hover:text-indigo-500y lg:text-base xl:text-lg">
                           How To Set Up A Binance Smart Chain Node
                         </a>
                       </h4>
@@ -890,7 +890,7 @@ While blockchain APIs offer the technological solution to interoperability, a se
                     <p class="mb-9 text-base text-white/80">Don't miss any updates of our new templates and components.
                     </p>
                     <form class="relative mb-7.5 text-right" x-data="ContactForm()" x-on:submit.prevent="submitForm">
-                        <input type="email" name="email" id="email" x-model="formData.email" placeholder="Enter your email address" class="h-[50px] w-full rounded-lg border border-white/5 bg-neutral-50/[.08] pl-5 pr-5 text-base text-white placeholder-body-color-2 outline-none duration-300 focus:border-primary xs:pr-[110px] lg:pr-5 xl:pr-[110px]">
+                        <input type="email" name="email" id="email" x-model="formData.email" placeholder="Enter your email address" class="h-[50px] w-full rounded-lg border border-white/5 bg-gray-50/[.08] pl-5 pr-5 text-base text-white placeholder-body-color-2 outline-none duration-300 focus:border-primary xs:pr-[110px] lg:pr-5 xl:pr-[110px]">
 
                         <button type="submit" name="subform" value="yes"><button type="submit" name="submit" id="submit" class="right-1.5 top-1.5 ml-auto mt-2 h-[38px] w-full max-w-[103px] rounded-md bg-primary text-sm font-medium tracking-[-0.2px] text-white duration-300 hover:bg-primary/90 xs:absolute xs:mt-0 lg:static lg:mt-2 xl:absolute xl:mt-0">Subscribe</button>
                             <div x-show="formData.message" class="mt-4 text-sm text-white">
@@ -1012,11 +1012,12 @@ While blockchain APIs offer the technological solution to interoperability, a se
                 </svg>
             </button>
         </div>
-        <p class="text-gray-600 text-sm pb-6">
-            We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of cookies.
+        <p class="text-gray-400 text-sm pb-6">
+            We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of
+            cookies.
         </p>
         <div class="flex flex-row"></div>
-        <button id="cookie-notice-accept" x-on:click="showBanner = false; localStorage.setItem('cookieConsentAccepted', 'true'); loadAdditionalScripts();" href="#" class="mt-4 bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded">
+        <button id="cookie-notice-accept" x-on:click="showBanner = false; localStorage.setItem('cookieConsentAccepted', 'true'); loadAdditionalScripts();" href="#" class="mt-4 bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded">
             Accept
         </button>
         
@@ -1024,41 +1025,41 @@ While blockchain APIs offer the technological solution to interoperability, a se
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         loadAdditionalScripts();
     });
 
     function loadAdditionalScripts() {
         if (localStorage.getItem('cookieConsentAccepted')) {
-            
+
             //matomo
             var _paq = window._paq = window._paq || [];
             /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
             _paq.push(['trackPageView']);
             _paq.push(['enableLinkTracking']);
-            (function() {
-            var u="//analytics.bitblade.de/";
-            _paq.push(['setTrackerUrl', u+'matomo.php']);
-            _paq.push(['setSiteId', '27']);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+            (function () {
+                var u = "//analytics.bitblade.de/";
+                _paq.push(['setTrackerUrl', u + 'matomo.php']);
+                _paq.push(['setSiteId', '27']);
+                var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+                g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
             })();
 
             //Chatwoot
-            (function(d,t) {
-                var BASE_URL="https://chat.bitblade.io";
-                var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-                g.src=BASE_URL+"/packs/js/sdk.js";
+            (function (d, t) {
+                var BASE_URL = "https://chat.bitblade.io";
+                var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+                g.src = BASE_URL + "/packs/js/sdk.js";
                 g.defer = true;
                 g.async = true;
-                s.parentNode.insertBefore(g,s);
-                g.onload=function(){
-                window.chatwootSDK.run({
-                    websiteToken: 'kqQcrSbU3Z52dGoGCN7r3zho',
-                    baseUrl: BASE_URL
-                })
+                s.parentNode.insertBefore(g, s);
+                g.onload = function () {
+                    window.chatwootSDK.run({
+                        websiteToken: 'kqQcrSbU3Z52dGoGCN7r3zho',
+                        baseUrl: BASE_URL
+                    })
                 }
-            })(document,"script");
+            })(document, "script");
 
         }
     }
