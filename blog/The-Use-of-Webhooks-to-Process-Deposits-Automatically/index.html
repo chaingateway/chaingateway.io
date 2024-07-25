@@ -8,27 +8,28 @@
     localStorage.setItem('darkMode', this.darkMode);
   }
 }" :class="{ 'dark': darkMode }">
-  <head>
+
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="/assets/images/favicon.webp" type="image/x-icon">
-    <link rel="stylesheet" href="/assets/css/main.css">
-      
-
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script defer type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+  <link rel="shortcut icon" href="/assets/images/logo/favicon.webp" type="image/webp">
+  <link rel="stylesheet" href="/assets/css/main.css">
 
 
-    
-    <script>
-      new WOW().init();
-    </script>
-    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Chaingateway.io - Blockchain API">
-   <!-- Begin Jekyll SEO tag v2.8.0 -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script defer type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+
+
+
+  <script>
+    new WOW().init();
+  </script>
+  <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Chaingateway.io - Blockchain API">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>The Use Of Webhooks To Process Deposits Automatically | Chaingateway.io - Blockchain API</title>
 <meta name="generator" content="Jekyll v4.3.3">
 <meta property="og:title" content="The Use Of Webhooks To Process Deposits Automatically">
@@ -51,16 +52,17 @@
 {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Chaingateway"},"dateModified":"2023-08-20T00:00:00+00:00","datePublished":"2023-08-20T00:00:00+00:00","description":"How webhooks can be used to process deposits on the blockchain automatically to improve efficiency, and speed.","headline":"The Use Of Webhooks To Process Deposits Automatically","image":"/assets/images/blog/2023/08/bitblade_illustration_of_blockchain_colors_like_image_style_lik_2.webp","mainEntityOfPage":{"@type":"WebPage","@id":"/blog/The-Use-of-Webhooks-to-Process-Deposits-Automatically/"},"url":"/blog/The-Use-of-Webhooks-to-Process-Deposits-Automatically/"}</script>
 <!-- End Jekyll SEO tag -->
 
-  </head>
-  <body>
-    <div x-data="{ transparent: shouldBeTransparent(), navbarOpen: false  }" :class="{ 'lg:text-white  ': transparent, 'lg:text-primary ': !transparent}" class="ud-header absolute left-0 top-0 z-40 flex w-full items-center">
+</head>
+
+<body>
+  <div x-data="{ transparent: shouldBeTransparent(), navbarOpen: false  }" :class="{ 'lg:text-white  ': transparent, 'lg:text-primary ': !transparent}" class="ud-header absolute left-0 top-0 z-40 flex w-full items-center">
   <div class="container">
     <!-- Your navbar content -->
     <div class="relative -mx-4 flex items-center justify-between">
       <div class="w-60 max-w-full px-4">
         <a href="/" class="navbar-logo block w-full py-5">
-          <img src="/assets/images/logo/logo-white.svg" alt="logo" class="header-logo w-full" :class="{ 'hidden': !transparent &amp;&amp; !darkMode }" loading="lazy">
-          <img src="/assets/images/logo/logo.svg" alt="logo" class="header-logo w-full" :class="{ 'hidden': transparent || darkMode }" loading="lazy">
+          <img src="/assets/images/logo/logo-white.svg" alt="Chaingateway.io" class="header-logo w-full" :class="{ 'hidden': !transparent &amp;&amp; !darkMode }" loading="lazy">
+          <img src="/assets/images/logo/logo.svg" alt="Chaingateway.io" class="header-logo w-full" :class="{ 'hidden': transparent || darkMode }" loading="lazy">
         </a>
       </div>
       <div class="flex w-full items-center justify-between px-4">
@@ -71,10 +73,10 @@
             <span class="relative my-[6px] block h-[2px] w-[30px]" :class="{ 'bg-white': transparent, 'bg-primary': !transparent }"></span>
           </button>
           <nav x-on:mouseleave="navbarOpen = !navbarOpen" :class="{'visible': navbarOpen, 'hidden lg:visible':  !navbarOpen }" id="navbarCollapse" class="absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-neutral-50 dark:bg-gray-800 dark:lg:bg-transparent dark:text-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:px-4 lg:py-0 lg:shadow-none xl:px-6">
-  
-        <ul class="block lg:flex 2xl:ml-20">
-          
-            
+
+            <ul class="block lg:flex 2xl:ml-20">
+              
+              
               <li x-data="{ open: false }" class="group relative">
                 <a href="#" class="relative mx-8 flex items-center justify-between py-2 text-base font-medium lg:ml-8 lg:mr-0 lg:inline-flex lg:py-6 lg:pl-0 lg:pr-4 lg:group-hover:opacity-80 lg:hover:opacity-80 xl:ml-10" x-on:click="open = !open">
                   Blockchain APIs
@@ -84,39 +86,39 @@
                 </a>
                 <div x-show="open" class="submenu relative left-0 top-full w-[250px] rounded-sm bg-neutral-50 text-dark p-4 transition-[top] duration-300 group-hover:opacity-100 dark:bg-gray-800 dark:text-white lg:invisible lg:absolute lg:top-[110%] lg:block lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full">
                   
-                    <a href="/tron-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
-                      Tron Api
-                    </a>
+                  <a href="/tron-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                    Tron Api
+                  </a>
                   
-                    <a href="/binance-smart-chain-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
-                      Binance Smart Chain Api
-                    </a>
+                  <a href="/binance-smart-chain-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                    Binance Smart Chain Api
+                  </a>
                   
-                    <a href="/ethereum-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
-                      Ethereum Api
-                    </a>
+                  <a href="/ethereum-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                    Ethereum Api
+                  </a>
                   
-                    <a href="/polygon-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
-                      Polygon Api
-                    </a>
+                  <a href="/polygon-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                    Polygon Api
+                  </a>
                   
-                    <a href="/bitcoin-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
-                      Bitcoin Api
-                    </a>
+                  <a href="/bitcoin-api/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                    Bitcoin Api
+                  </a>
                   
                 </div>
               </li>
-            
-          
-            
+              
+              
+              
               <li class="group relative">
                 <a href="/blog/" class="mx-8 flex py-2 text-base font-medium hover:opacity-80 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ">
                   Blog
                 </a>
               </li>
-            
-          
-            
+              
+              
+              
               <li x-data="{ open: false }" class="group relative">
                 <a href="#" class="relative mx-8 flex items-center justify-between py-2 text-base font-medium lg:ml-8 lg:mr-0 lg:inline-flex lg:py-6 lg:pl-0 lg:pr-4 lg:group-hover:opacity-80 lg:hover:opacity-80 xl:ml-10" x-on:click="open = !open">
                   Developers
@@ -126,60 +128,60 @@
                 </a>
                 <div x-show="open" class="submenu relative left-0 top-full w-[250px] rounded-sm bg-neutral-50 text-dark p-4 transition-[top] duration-300 group-hover:opacity-100 dark:bg-gray-800 dark:text-white lg:invisible lg:absolute lg:top-[110%] lg:block lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full">
                   
-                    <a href="/docs/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
-                      API Docs
-                    </a>
+                  <a href="/docs/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                    API Docs
+                  </a>
                   
-                    <a href="/developers/getting-started/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
-                      Getting Started
-                    </a>
+                  <a href="/developers/getting-started/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                    Getting Started
+                  </a>
                   
-                    <a href="/developers/tutorials/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
-                      Tutorials
-                    </a>
+                  <a href="/developers/tutorials/" class="block rounded px-4 py-[10px] text-sm lg:group-hover:opacity-70 lg:hover:text-purple-500">
+                    Tutorials
+                  </a>
                   
                 </div>
               </li>
-            
-          
-            
+              
+              
+              
               <li class="group relative">
                 <a href="/pricing/" class="mx-8 flex py-2 text-base font-medium hover:opacity-80 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ">
                   Pricing
                 </a>
               </li>
-            
-          
-            
+              
+              
+              
               <li class="group relative">
                 <a href="/support/" class="mx-8 flex py-2 text-base font-medium hover:opacity-80 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ">
                   Support
                 </a>
               </li>
-            
-          
-        </ul>
-        
-          <div class="flex gap-2 w-100 sm:hidden px-2 ">
-            <a href="https://app.chaingateway.io/" class="w-1/2 signUpBtn rounded-md bg-primary bg-opacity-90 px-6 py-2  font-medium  duration-300 ease-in-out hover:bg-opacity-100 hover:text-white ">
-              Sign In
-            </a>
-            <a href="https://app.chaingateway.io/register" class="w-1/2 signUpBtn rounded-md bg-primary text-white px-6 py-2  font-medium  duration-300 ease-in-out hover:bg-opacity-90 ">
-              Sign Up
-            </a>
-          </div>
-        </nav>
+              
+              
+            </ul>
+
+            <div class="flex gap-2 w-100 sm:hidden px-2 ">
+              <a href="https://beta.chaingateway.io/" class="w-1/2 signUpBtn rounded-md bg-purple-800 px-6 py-2  font-medium  duration-300 ease-in-out hover:bg-opacity-90 text-white ">
+                Sign In
+              </a>
+              <a href="https://beta.chaingateway.io/register" class="w-1/2 signUpBtn rounded-md bg-purple-600 text-white px-6 py-2  font-medium  duration-300 ease-in-out hover:bg-opacity-90 ">
+                Sign Up
+              </a>
+            </div>
+          </nav>
         </div>
         <div class="flex items-center justify-end pr-16 lg:pr-0" :class="{ 'text-white': transparent, 'text-primary dark:text-white': !transparent}">
-          <label for="themeSwitcher" class="inline-flex cursor-pointer items-center" aria-label="themeSwitcher" name="themeSwitcher">
-          <input type="checkbox" name="themeSwitcher" id="themeSwitcher" class="sr-only" x-model="darkMode">
-          <span class="block" x-show="!darkMode">
-            <span class="text-4xl icon-[bx--sun]"></span>
-          </span>
-          <span class="block" x-show="darkMode">
-            <span class="text-4xl icon-[bx--moon]"></span>
-          </span>
-        </label>
+          <label for="themeSwitcher" class="flex cursor-pointer items-center" aria-label="themeSwitcher" name="themeSwitcher">
+            <input type="checkbox" name="themeSwitcher" id="themeSwitcher" class="sr-only" x-model="darkMode">
+
+            <span x-show="!darkMode" class="text-3xl icon-[bx--sun]"></span>
+
+
+            <span x-show="darkMode" class="text-3xl icon-[bx--moon]"></span>
+
+          </label>
           <div class="hidden sm:flex" :class="{ 'sm:text-white dark:sm:text-white': transparent, 'sm:text-primary dark:sm:text-primary dark:lg:text-white': !transparent}">
             <a href="https://app.chaingateway.io/" class=" px-[22px] py-2 font-medium  hover:opacity-70">
               Sign In
@@ -196,121 +198,124 @@
 <script>
   function shouldBeTransparent() {
     console.log(window.location.pathname);
-    
-    return window.location.pathname == "/" || window.location.pathname.includes("-api") || window.location.pathname.includes("index.html");
+
+    return window.location.pathname == "/" || (window.location.pathname.includes("-api") && !window.location.pathname.includes("blog")) || window.location.pathname.includes("index.html");
   }
 </script>
 
 
-      
-    
+  
 
 
 <div class="relative z-10 overflow-hidden pb-[60px] pt-[120px] dark:bg-gray-900 md:pt-[130px] lg:pt-[100px]">
-      <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-stroke/0 via-stroke to-stroke/0 dark:via-dark-3"></div>
-      <div class="container">
-        <div class="flex flex-wrap items-center -mx-4">
-          <div class="w-full px-4">
-            <div class="text-center">
-              <h1 class="mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]">
-                Blog Post
-              </h1>
-              <p class="mb-5 text-base text-body-color dark:text-white">
-                Read our latest blog posts and stay updated with the latest trends and insights in the blockchain industry. <br>Explore a wide range of topics and discover valuable information that can help you enhance your knowledge and skills.
-              </p>
-              
+  <div class=" absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-stroke/0 via-stroke to-stroke/0
+  dark:via-dark-3">
+  </div>
+  <div class="container">
+    <div class="flex flex-wrap items-center -mx-4">
+      <div class="w-full px-4">
+        <div class="text-center">
+          <h1 class="mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]">
+            Blog Post
+          </h1>
+          <p class="mb-5 text-base text-body-color dark:text-white">
+            Read our latest blog posts and stay updated with the latest trends and insights in the blockchain industry.
+            <br>Explore a wide range of topics and discover valuable information that can help you enhance your
+            knowledge and skills.
+          </p>
+          
 
-              <ul class="flex items-center justify-center gap-[10px]">
-                <li>
-                  <a href="/" class="flex items-center gap-[10px] text-base font-medium text-body-color dark:text-white">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a href="/blog/" class="flex items-center gap-[10px] text-base font-medium text-body-color">
-                    <span class="text-body-color dark:text-white"> / </span>
-                    Blog
-                  </a>
-                </li>
-                <li>
-                    <a href="/blog/The-Use-of-Webhooks-to-Process-Deposits-Automatically/" class="flex md:hidden items-center gap-[10px] text-base font-medium text-dark truncate">
-                        <span class="text-body-color dark:text-white"> / </span>
-                        The Use Of Webhooks To Proc...
-                    </a>
-                    <a href="/blog/The-Use-of-Webhooks-to-Process-Deposits-Automatically/" class="hidden md:flex items-center gap-[10px] text-base font-medium text-dark dark:text-white truncate">
-                        <span class="text-body-color dark:text-white"> / </span>
-                        The Use Of Webhooks To Process Deposits Automatically
-                    </a>
-                  </li>
-              </ul>
-            </div>
-          </div>
+          <ul class="flex items-center justify-center gap-[10px]">
+            <li>
+              <a href="/" class="flex items-center gap-[10px] text-base font-medium text-body-color dark:text-white">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/blog/" class="flex items-center gap-[10px] text-base font-medium text-body-color">
+                <span class="text-body-color dark:text-white"> / </span>
+                Blog
+              </a>
+            </li>
+            <li>
+              <a href="/blog/The-Use-of-Webhooks-to-Process-Deposits-Automatically/" class="flex md:hidden items-center gap-[10px] text-base font-medium text-dark truncate">
+                <span class="text-body-color dark:text-white"> / </span>
+                The Use Of Webhooks To Proc...
+              </a>
+              <a href="/blog/The-Use-of-Webhooks-to-Process-Deposits-Automatically/" class="hidden md:flex items-center gap-[10px] text-base font-medium text-dark dark:text-white truncate">
+                <span class="text-body-color dark:text-white"> / </span>
+                The Use Of Webhooks To Process Deposits Automatically
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
+  </div>
+</div>
 <!-- ====== Blog Details Section Start -->
 <section class="pb-10 pt-20 dark:bg-gray-900 lg:pb-20 lg:pt-[120px]">
-<div class="container">
-  <div class="flex flex-wrap justify-center -mx-4">
-    <div class="w-full px-4">
-      <div class="wow fadeInUp relative z-20 mb-[50px] h-[300px] overflow-hidden rounded-[5px] md:h-[400px] lg:h-[500px]" data-wow-delay=".1s
+  <div class="container">
+    <div class="flex flex-wrap justify-center -mx-4">
+      <div class="w-full px-4">
+        <div class="wow fadeInUp relative z-20 mb-[50px] h-[300px] overflow-hidden rounded-[5px] md:h-[400px] lg:h-[500px]" data-wow-delay=".1s
         ">
-        <img src="/assets/images/blog/2023/08/bitblade_illustration_of_blockchain_colors_like_image_style_lik_2.webp" alt="The Use Of Webhooks To Process Deposits Automatically" class="object-cover object-center w-full h-full" loading="lazy">
-        <div class="absolute top-0 left-0 z-10 flex items-end w-full h-full bg-gradient-to-t from-dark-700 to-transparent">
-          <div class="flex flex-wrap items-center p-4 pb-4 sm:px-8">
-            <div class="flex items-center mb-4 mr-5 md:mr-10">
-              <div class="w-10 h-10 mr-4 overflow-hidden rounded-full">
-                <img src="/assets/images/logo/logo_small.jpg" alt="Chaingateway" class="w-full" loading="lazy">
+          <img src="/assets/images/blog/2023/08/bitblade_illustration_of_blockchain_colors_like_image_style_lik_2.webp" alt="The Use Of Webhooks To Process Deposits Automatically" class="object-cover object-center w-full h-full" loading="lazy">
+          <div class="absolute top-0 left-0 z-10 flex items-end w-full h-full bg-gradient-to-t from-dark-700 to-transparent">
+            <div class="flex flex-wrap items-center p-4 pb-4 sm:px-8">
+              <div class="flex items-center mb-4 mr-5 md:mr-10">
+                <div class="w-10 h-10 mr-4 overflow-hidden rounded-full">
+                  <img src="/assets/images/logo/logo_small.jpg" alt="Chaingateway" class="w-full" loading="lazy">
+                </div>
+                <p class="text-base font-medium text-white">
+                  By
+                  <a href="javascript:void(0)" class="text-white hover:opacity-70">
+                    Chaingateway
+                  </a>
+                </p>
               </div>
-              <p class="text-base font-medium text-white">
-                By
-                <a href="javascript:void(0)" class="text-white hover:opacity-70">
-                Chaingateway
-                </a>
-              </p>
-            </div>
-            <div class="flex items-center mb-4">
-              <p class="flex items-center mr-5 text-sm font-medium text-white md:mr-6">
-                <span class="mr-3 text-lg">
-                  <span class="icon-[mdi--calendar-month-outline]"></span>
-                </span>
-                Aug 20, 2023
-              </p>
-              <p class="flex items-center mr-5 text-sm font-medium text-white md:mr-6">
-                <span class="mr-3 text-lg">
-                  <span class="icon-[mdi--category]"></span>
-                </span>
-                
-                    <a href="/blog/category/blockchain/" class="text-white hover:opacity-70 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary text-white mr-2">
+              <div class="flex items-center mb-4">
+                <p class="flex items-center mr-5 text-sm font-medium text-white md:mr-6">
+                  <span class="mr-3 text-lg">
+                    <span class="icon-[mdi--calendar-month-outline]"></span>
+                  </span>
+                  Aug 20, 2023
+                </p>
+                <p class="flex items-center mr-5 text-sm font-medium text-white md:mr-6">
+                  <span class="mr-3 text-lg">
+                    <span class="icon-[mdi--category]"></span>
+                  </span>
+                  
+                  <a href="/blog/category/blockchain/" class="text-white hover:opacity-70 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary text-white mr-2">
                     Blockchain
-                    </a>
+                  </a>
 
-                
-                    <a href="/blog/category/api/" class="text-white hover:opacity-70 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary text-white mr-2">
+                  
+                  <a href="/blog/category/api/" class="text-white hover:opacity-70 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary text-white mr-2">
                     API
-                    </a>
+                  </a>
 
-                
-                    <a href="/blog/category/web3/" class="text-white hover:opacity-70 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary text-white mr-2">
+                  
+                  <a href="/blog/category/web3/" class="text-white hover:opacity-70 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary text-white mr-2">
                     Web3
-                    </a>
+                  </a>
 
+                  
+                </p>
                 
-              </p>
-              
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="flex flex-wrap -mx-4">
-        <div class="w-full px-4 lg:w-8/12">
-          <div>
-            <h2 class="wow fadeInUp mb-8 text-2xl font-bold text-dark dark:text-white sm:text-3xl md:text-[35px] md:leading-[1.28]" data-wow-delay=".1s
+        <div class="flex flex-wrap -mx-4">
+          <div class="w-full px-4 lg:w-8/12">
+            <div>
+              <h2 class="wow fadeInUp mb-8 text-2xl font-bold text-dark dark:text-white sm:text-3xl md:text-[35px] md:leading-[1.28]" data-wow-delay=".1s
               ">
-              The Use Of Webhooks To Process Deposits Automatically
-            </h2>
-            <div class="prose mb-6 text-base wow fadeInUp text-body-color dark:text-white" data-wow-delay=".1s">
-              <p>As an app developer, you may have encountered webhook integrations in some of your applications and wondered what they were.
+                The Use Of Webhooks To Process Deposits Automatically
+              </h2>
+              <div class="prose mb-6 text-base wow fadeInUp text-body-color dark:text-white" data-wow-delay=".1s">
+                <p>As an app developer, you may have encountered webhook integrations in some of your applications and wondered what they were.
 Webhooks are growing in popularity, and you should understand them. According to Google trends, interest in webhooks has risen astronomically in recent years.</p>
 <h2 id="what-is-a-webhook">What is a Webhook?</h2>
 <p>Webhooks are one of the ways web applications exchange data. They allow real-time data transmission across apps based on a predefined event. For instance, on a restaurant-based app, a webhook would notify you when someone checks in. You can then run any automated processes once the event is triggered. Data will be sent over the web from the app where the event originated to a handling application that receives the signal.
@@ -330,50 +335,50 @@ When webhook integration is lacking, some middleware applications have come in t
 <h2 id="summary">Summary</h2>
 <p>Webhooks are an important part of the internet, and their popularity is growing. They allow applications to send data instantly, which is useful for automated payments. While they work similarly to APIs, they have different roles, each with unique use cases. One of the best ways to understand the full capabilities of webhooks is to try them yourself. With a few connections between your apps, you will get a feel for how they work. Within a short time, you will be a pro at using webhooks for everything, including automated payments.</p>
 
-            </div>
-
-            <div class="flex flex-wrap items-center mb-12 -mx-4">
-              <div class="w-full px-4 md:w-1/2 lg:w-2/3">
-                <div class="flex flex-wrap items-center gap-3 mb-8 wow fadeInUp md:mb-0" data-wow-delay=".1s">
-
-                
-                  <a href="/blog/tag/blockchain-apis" class="block rounded-md bg-primary/[0.08] px-[14px] py-[5px] text-base text-dark hover:bg-primary hover:text-white dark:text-white">
-                    Blockchain APIs
-                  </a>
-                
-                  <a href="/blog/tag/dapps" class="block rounded-md bg-primary/[0.08] px-[14px] py-[5px] text-base text-dark hover:bg-primary hover:text-white dark:text-white">
-                    DApps
-                  </a>
-                
-                  <a href="/blog/tag/smart-contracts" class="block rounded-md bg-primary/[0.08] px-[14px] py-[5px] text-base text-dark hover:bg-primary hover:text-white dark:text-white">
-                    Smart Contracts
-                  </a>
-                
-                  <a href="/blog/tag/security" class="block rounded-md bg-primary/[0.08] px-[14px] py-[5px] text-base text-dark hover:bg-primary hover:text-white dark:text-white">
-                    Security
-                  </a>
-                
-                  <a href="/blog/tag/web3" class="block rounded-md bg-primary/[0.08] px-[14px] py-[5px] text-base text-dark hover:bg-primary hover:text-white dark:text-white">
-                    Web3
-                  </a>
-                
-                  <a href="/blog/tag/web3-future" class="block rounded-md bg-primary/[0.08] px-[14px] py-[5px] text-base text-dark hover:bg-primary hover:text-white dark:text-white">
-                    Web3 Future
-                  </a>
-                
-                  <a href="/blog/tag/decentralized-web3" class="block rounded-md bg-primary/[0.08] px-[14px] py-[5px] text-base text-dark hover:bg-primary hover:text-white dark:text-white">
-                    Decentralized Web3
-                  </a>
-                
-                  <a href="/blog/tag/webhooks" class="block rounded-md bg-primary/[0.08] px-[14px] py-[5px] text-base text-dark hover:bg-primary hover:text-white dark:text-white">
-                    Webhooks
-                  </a>
-                
-                
-                </div>
               </div>
-              <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-                
+
+              <div class="flex flex-wrap items-center mb-12 -mx-4">
+                <div class="w-full px-4 md:w-1/2 lg:w-2/3">
+                  <div class="flex flex-wrap items-center gap-3 mb-8 wow fadeInUp md:mb-0" data-wow-delay=".1s">
+
+                    
+                    <a href="/blog/tag/blockchain%20apis" class="block rounded-md bg-primary/[0.08] px-[14px] py-[5px] text-base text-dark hover:bg-primary hover:text-white dark:text-white">
+                      Blockchain APIs
+                    </a>
+                    
+                    <a href="/blog/tag/dapps" class="block rounded-md bg-primary/[0.08] px-[14px] py-[5px] text-base text-dark hover:bg-primary hover:text-white dark:text-white">
+                      DApps
+                    </a>
+                    
+                    <a href="/blog/tag/smart%20contracts" class="block rounded-md bg-primary/[0.08] px-[14px] py-[5px] text-base text-dark hover:bg-primary hover:text-white dark:text-white">
+                      Smart Contracts
+                    </a>
+                    
+                    <a href="/blog/tag/security" class="block rounded-md bg-primary/[0.08] px-[14px] py-[5px] text-base text-dark hover:bg-primary hover:text-white dark:text-white">
+                      Security
+                    </a>
+                    
+                    <a href="/blog/tag/web3" class="block rounded-md bg-primary/[0.08] px-[14px] py-[5px] text-base text-dark hover:bg-primary hover:text-white dark:text-white">
+                      Web3
+                    </a>
+                    
+                    <a href="/blog/tag/web3%20future" class="block rounded-md bg-primary/[0.08] px-[14px] py-[5px] text-base text-dark hover:bg-primary hover:text-white dark:text-white">
+                      Web3 Future
+                    </a>
+                    
+                    <a href="/blog/tag/decentralized%20web3" class="block rounded-md bg-primary/[0.08] px-[14px] py-[5px] text-base text-dark hover:bg-primary hover:text-white dark:text-white">
+                      Decentralized Web3
+                    </a>
+                    
+                    <a href="/blog/tag/webhooks" class="block rounded-md bg-primary/[0.08] px-[14px] py-[5px] text-base text-dark hover:bg-primary hover:text-white dark:text-white">
+                      Webhooks
+                    </a>
+                    
+
+                  </div>
+                </div>
+                <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+
                   
 
 <style>
@@ -466,92 +471,100 @@ When webhook integration is lacking, some middleware applications have come in t
                         </div>
                       </div>
                       -->
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="w-full px-4 lg:w-4/12">
-          <div>
-            <div class="wow fadeInUp relative mb-12 overflow-hidden rounded-[5px] bg-primary px-11 py-[60px] text-center lg:px-8" data-wow-delay=".1s
+          <div class="w-full px-4 lg:w-4/12">
+            <div>
+              <div class="wow fadeInUp relative mb-12 overflow-hidden rounded-[5px] bg-primary px-11 py-[60px] text-center lg:px-8" data-wow-delay=".1s
               ">
-              <h3 class="mb-[6px] text-[28px] font-semibold leading-[40px] text-white">
-                Join our newsletter!
-              </h3>
-              <p class="mb-5 text-base text-white">
-                Enter your email to receive our latest newsletter.
-              </p>
-              <form>
-                <input type="email" placeholder="Your email address" class="mb-4 h-[50px] w-full rounded-md border border-transparent bg-neutral-50/10 text-center text-base text-white outline-none placeholder:text-white/60 focus:border-white focus-visible:shadow-none">
-                <input type="submit" value="Subscribe Now" class="mb-4 h-[50px] w-full cursor-pointer rounded-md bg-secondary text-center text-sm font-medium text-white transition duration-300 ease-in-out hover:bg-[#0BB489] hover:bg-opacity-90">
-              </form>
-              <p class="text-sm font-medium text-white">
-                Don't worry, we don't spam
-              </p>
+                <h3 class="mb-[6px] text-[28px] font-semibold leading-[40px] text-white">
+                  Join our newsletter!
+                </h3>
+                <p class="mb-5 text-base text-white">
+                  Enter your email to receive our latest newsletter.
+                </p>
+                <form x-data="ContactForm()" x-on:submit.prevent="submitForm">
+                  <input required type="email" placeholder="Your email address" x-model="formData.email" id="email" class="mb-4 h-[50px] w-full rounded-md border border-transparent bg-neutral-50/10 text-center text-base text-white outline-none placeholder:text-white/60 focus:border-white focus-visible:shadow-none" autocomplete="on">
+                  <button type="submit" id="submit" class="mb-4 h-[50px] w-full cursor-pointer rounded-md bg-secondary text-center text-sm font-medium text-white transition duration-300 ease-in-out hover:bg-[#0BB489] hover:bg-opacity-90">
+                    Subscribe Now
+                  </button>
+                  <div x-show="formData.message" class="mt-4 text-sm text-white">
+                    <p x-text="formData.message"></p>
+                  </div>
+                </form>
+                <p class="text-sm font-medium text-white">
+                  Don't worry, we don't spam
+                </p>
 
-              <div>
-                <span class="absolute top-0 right-0">
-                  <svg width="46" height="46" viewbox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="1.39737" cy="44.6026" r="1.39737" transform="rotate(-90 1.39737 44.6026)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="1.39737" cy="7.9913" r="1.39737" transform="rotate(-90 1.39737 7.9913)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="13.6943" cy="44.6026" r="1.39737" transform="rotate(-90 13.6943 44.6026)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="13.6943" cy="7.9913" r="1.39737" transform="rotate(-90 13.6943 7.9913)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="25.9911" cy="44.6026" r="1.39737" transform="rotate(-90 25.9911 44.6026)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="25.9911" cy="7.9913" r="1.39737" transform="rotate(-90 25.9911 7.9913)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="38.288" cy="44.6026" r="1.39737" transform="rotate(-90 38.288 44.6026)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="38.288" cy="7.9913" r="1.39737" transform="rotate(-90 38.288 7.9913)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="1.39737" cy="32.3058" r="1.39737" transform="rotate(-90 1.39737 32.3058)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="13.6943" cy="32.3058" r="1.39737" transform="rotate(-90 13.6943 32.3058)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="25.9911" cy="32.3058" r="1.39737" transform="rotate(-90 25.9911 32.3058)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="38.288" cy="32.3058" r="1.39737" transform="rotate(-90 38.288 32.3058)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="1.39737" cy="20.0086" r="1.39737" transform="rotate(-90 1.39737 20.0086)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="13.6943" cy="20.0086" r="1.39737" transform="rotate(-90 13.6943 20.0086)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="25.9911" cy="20.0086" r="1.39737" transform="rotate(-90 25.9911 20.0086)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="38.288" cy="20.0086" r="1.39737" transform="rotate(-90 38.288 20.0086)" fill="white" fill-opacity="0.44"></circle>
-                  </svg>
-                </span>
-                <span class="absolute bottom-0 left-0">
-                  <svg width="46" height="46" viewbox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="1.39737" cy="44.6026" r="1.39737" transform="rotate(-90 1.39737 44.6026)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="1.39737" cy="7.9913" r="1.39737" transform="rotate(-90 1.39737 7.9913)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="13.6943" cy="44.6026" r="1.39737" transform="rotate(-90 13.6943 44.6026)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="13.6943" cy="7.9913" r="1.39737" transform="rotate(-90 13.6943 7.9913)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="25.9911" cy="44.6026" r="1.39737" transform="rotate(-90 25.9911 44.6026)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="25.9911" cy="7.9913" r="1.39737" transform="rotate(-90 25.9911 7.9913)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="38.288" cy="44.6026" r="1.39737" transform="rotate(-90 38.288 44.6026)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="38.288" cy="7.9913" r="1.39737" transform="rotate(-90 38.288 7.9913)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="1.39737" cy="32.3058" r="1.39737" transform="rotate(-90 1.39737 32.3058)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="13.6943" cy="32.3058" r="1.39737" transform="rotate(-90 13.6943 32.3058)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="25.9911" cy="32.3058" r="1.39737" transform="rotate(-90 25.9911 32.3058)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="38.288" cy="32.3058" r="1.39737" transform="rotate(-90 38.288 32.3058)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="1.39737" cy="20.0086" r="1.39737" transform="rotate(-90 1.39737 20.0086)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="13.6943" cy="20.0086" r="1.39737" transform="rotate(-90 13.6943 20.0086)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="25.9911" cy="20.0086" r="1.39737" transform="rotate(-90 25.9911 20.0086)" fill="white" fill-opacity="0.44"></circle>
-                    <circle cx="38.288" cy="20.0086" r="1.39737" transform="rotate(-90 38.288 20.0086)" fill="white" fill-opacity="0.44"></circle>
-                  </svg>
-                </span>
+
+
+
+                <div>
+                  <span class="absolute top-0 right-0">
+                    <svg width="46" height="46" viewbox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="1.39737" cy="44.6026" r="1.39737" transform="rotate(-90 1.39737 44.6026)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="1.39737" cy="7.9913" r="1.39737" transform="rotate(-90 1.39737 7.9913)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="13.6943" cy="44.6026" r="1.39737" transform="rotate(-90 13.6943 44.6026)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="13.6943" cy="7.9913" r="1.39737" transform="rotate(-90 13.6943 7.9913)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="25.9911" cy="44.6026" r="1.39737" transform="rotate(-90 25.9911 44.6026)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="25.9911" cy="7.9913" r="1.39737" transform="rotate(-90 25.9911 7.9913)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="38.288" cy="44.6026" r="1.39737" transform="rotate(-90 38.288 44.6026)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="38.288" cy="7.9913" r="1.39737" transform="rotate(-90 38.288 7.9913)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="1.39737" cy="32.3058" r="1.39737" transform="rotate(-90 1.39737 32.3058)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="13.6943" cy="32.3058" r="1.39737" transform="rotate(-90 13.6943 32.3058)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="25.9911" cy="32.3058" r="1.39737" transform="rotate(-90 25.9911 32.3058)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="38.288" cy="32.3058" r="1.39737" transform="rotate(-90 38.288 32.3058)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="1.39737" cy="20.0086" r="1.39737" transform="rotate(-90 1.39737 20.0086)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="13.6943" cy="20.0086" r="1.39737" transform="rotate(-90 13.6943 20.0086)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="25.9911" cy="20.0086" r="1.39737" transform="rotate(-90 25.9911 20.0086)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="38.288" cy="20.0086" r="1.39737" transform="rotate(-90 38.288 20.0086)" fill="white" fill-opacity="0.44"></circle>
+                    </svg>
+                  </span>
+                  <span class="absolute bottom-0 left-0">
+                    <svg width="46" height="46" viewbox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="1.39737" cy="44.6026" r="1.39737" transform="rotate(-90 1.39737 44.6026)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="1.39737" cy="7.9913" r="1.39737" transform="rotate(-90 1.39737 7.9913)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="13.6943" cy="44.6026" r="1.39737" transform="rotate(-90 13.6943 44.6026)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="13.6943" cy="7.9913" r="1.39737" transform="rotate(-90 13.6943 7.9913)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="25.9911" cy="44.6026" r="1.39737" transform="rotate(-90 25.9911 44.6026)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="25.9911" cy="7.9913" r="1.39737" transform="rotate(-90 25.9911 7.9913)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="38.288" cy="44.6026" r="1.39737" transform="rotate(-90 38.288 44.6026)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="38.288" cy="7.9913" r="1.39737" transform="rotate(-90 38.288 7.9913)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="1.39737" cy="32.3058" r="1.39737" transform="rotate(-90 1.39737 32.3058)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="13.6943" cy="32.3058" r="1.39737" transform="rotate(-90 13.6943 32.3058)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="25.9911" cy="32.3058" r="1.39737" transform="rotate(-90 25.9911 32.3058)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="38.288" cy="32.3058" r="1.39737" transform="rotate(-90 38.288 32.3058)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="1.39737" cy="20.0086" r="1.39737" transform="rotate(-90 1.39737 20.0086)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="13.6943" cy="20.0086" r="1.39737" transform="rotate(-90 13.6943 20.0086)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="25.9911" cy="20.0086" r="1.39737" transform="rotate(-90 25.9911 20.0086)" fill="white" fill-opacity="0.44"></circle>
+                      <circle cx="38.288" cy="20.0086" r="1.39737" transform="rotate(-90 38.288 20.0086)" fill="white" fill-opacity="0.44"></circle>
+                    </svg>
+                  </span>
+                </div>
               </div>
-            </div>
 
-            <div class="flex flex-wrap mb-8 -mx-4">
-              <div class="w-full px-4">
-                <h2 class="wow fadeInUp relative pb-5 text-2xl font-semibold text-dark dark:text-white sm:text-[28px]" data-wow-delay=".1s
+              <div class="flex flex-wrap mb-8 -mx-4">
+                <div class="w-full px-4">
+                  <h2 class="wow fadeInUp relative pb-5 text-2xl font-semibold text-dark dark:text-white sm:text-[28px]" data-wow-delay=".1s
                   ">
-                  Recent Articles
-                </h2>
-                <span class="mb-10 inline-block h-[2px] w-20 bg-primary"></span>
-              </div>
-              
+                    Recent Articles
+                  </h2>
+                  <span class="mb-10 inline-block h-[2px] w-20 bg-primary"></span>
+                </div>
+                
                 <div class="w-full px-4 md:w-1/2 lg:w-full">
                   <div class="flex items-center w-full pb-5 mb-5 border-b wow fadeInUp border-stroke dark:border-dark-3" data-wow-delay=".1s
                     ">
                     <div class="mr-5 h-20 w-full max-w-[80px] overflow-hidden rounded-full">
-                    
-                    <img src="/assets/images/blog/2023/12/thumbnails/blog_12_23_400w.png" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
+                      
+                      <img src="/assets/images/blog/2023/12/thumbnails/blog_12_23_400w.png" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
                     </div>
                     <div class="w-full">
                       <h4>
                         <a href="/blog/role-of-blockchain-apis-in-unlocking-blockchain-interoperability/" class="inline-block mb-1 text-lg font-medium leading-snug text-dark hover:text-primary dark:text-white dark:hover:text-primary lg:text-base xl:text-lg">
-                        Role Of Blockchain Apis In Unlocking Blockchain Interoperability
+                          Role Of Blockchain Apis In Unlocking Blockchain Interoperability
                         </a>
                       </h4>
                       <p class="text-sm text-body-color dark:text-white">
@@ -560,18 +573,18 @@ When webhook integration is lacking, some middleware applications have come in t
                     </div>
                   </div>
                 </div>
-              
+                
                 <div class="w-full px-4 md:w-1/2 lg:w-full">
                   <div class="flex items-center w-full pb-5 mb-5 border-b wow fadeInUp border-stroke dark:border-dark-3" data-wow-delay=".1s
                     ">
                     <div class="mr-5 h-20 w-full max-w-[80px] overflow-hidden rounded-full">
-                    
-                    <img src="/assets/images/blog/2023/09/thumbnails/blog_09_14_400w.webp" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
+                      
+                      <img src="/assets/images/blog/2023/09/thumbnails/blog_09_14_400w.webp" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
                     </div>
                     <div class="w-full">
                       <h4>
                         <a href="/blog/invest-in-our-blockchain-api-adventure/" class="inline-block mb-1 text-lg font-medium leading-snug text-dark hover:text-primary dark:text-white dark:hover:text-primary lg:text-base xl:text-lg">
-                        Invest In Our Blockchain Api Adventure
+                          Invest In Our Blockchain Api Adventure
                         </a>
                       </h4>
                       <p class="text-sm text-body-color dark:text-white">
@@ -580,18 +593,18 @@ When webhook integration is lacking, some middleware applications have come in t
                     </div>
                   </div>
                 </div>
-              
+                
                 <div class="w-full px-4 md:w-1/2 lg:w-full">
                   <div class="flex items-center w-full pb-5 mb-5 border-b wow fadeInUp border-stroke dark:border-dark-3" data-wow-delay=".1s
                     ">
                     <div class="mr-5 h-20 w-full max-w-[80px] overflow-hidden rounded-full">
-                    
-                    <img src="/assets/images/blog/2023/11/thumbnails/blog_11_10_400w.png" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
+                      
+                      <img src="/assets/images/blog/2023/11/thumbnails/blog_11_10_400w.png" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
                     </div>
                     <div class="w-full">
                       <h4>
                         <a href="/blog/How-to-Set-Up-an-Ethereum-Node/" class="inline-block mb-1 text-lg font-medium leading-snug text-dark hover:text-primary dark:text-white dark:hover:text-primary lg:text-base xl:text-lg">
-                        How To Set Up A Ethereum Node
+                          How To Set Up A Ethereum Node
                         </a>
                       </h4>
                       <p class="text-sm text-body-color dark:text-white">
@@ -600,18 +613,18 @@ When webhook integration is lacking, some middleware applications have come in t
                     </div>
                   </div>
                 </div>
-              
+                
                 <div class="w-full px-4 md:w-1/2 lg:w-full">
                   <div class="flex items-center w-full pb-5 mb-5 border-b wow fadeInUp border-stroke dark:border-dark-3" data-wow-delay=".1s
                     ">
                     <div class="mr-5 h-20 w-full max-w-[80px] overflow-hidden rounded-full">
-                    
-                    <img src="/assets/images/blog/2023/10/thumbnails/blog_10_16_400w.webp" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
+                      
+                      <img src="/assets/images/blog/2023/10/thumbnails/blog_10_16_400w.webp" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
                     </div>
                     <div class="w-full">
                       <h4>
                         <a href="/blog/How-to-Set-Up-a-Tron-Node/" class="inline-block mb-1 text-lg font-medium leading-snug text-dark hover:text-primary dark:text-white dark:hover:text-primary lg:text-base xl:text-lg">
-                        How To Set Up A Tron Node
+                          How To Set Up A Tron Node
                         </a>
                       </h4>
                       <p class="text-sm text-body-color dark:text-white">
@@ -620,18 +633,18 @@ When webhook integration is lacking, some middleware applications have come in t
                     </div>
                   </div>
                 </div>
-              
+                
                 <div class="w-full px-4 md:w-1/2 lg:w-full">
                   <div class="flex items-center w-full pb-5 mb-5 border-b wow fadeInUp border-stroke dark:border-dark-3" data-wow-delay=".1s
                     ">
                     <div class="mr-5 h-20 w-full max-w-[80px] overflow-hidden rounded-full">
-                    
-                    <img src="/assets/images/blog/2023/10/thumbnails/blog_10_04_400w.webp" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
+                      
+                      <img src="/assets/images/blog/2023/10/thumbnails/blog_10_04_400w.webp" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
                     </div>
                     <div class="w-full">
                       <h4>
                         <a href="/blog/How-to-Set-Up-a-Binance-Smart-Chain-Node/" class="inline-block mb-1 text-lg font-medium leading-snug text-dark hover:text-primary dark:text-white dark:hover:text-primary lg:text-base xl:text-lg">
-                        How To Set Up A Binance Smart Chain Node
+                          How To Set Up A Binance Smart Chain Node
                         </a>
                       </h4>
                       <p class="text-sm text-body-color dark:text-white">
@@ -640,126 +653,124 @@ When webhook integration is lacking, some middleware applications have come in t
                     </div>
                   </div>
                 </div>
+                
+              </div>
               
             </div>
-            
           </div>
         </div>
       </div>
     </div>
-  </div>
- 
-  
-  <div class="flex flex-wrap -mx-4">
-    <div class="w-full px-4 wow fadeInUp mt-14" data-wow-delay=".2s">
-      <h2 class="relative pb-5 text-2xl font-semibold text-dark dark:text-white sm:text-[36px]">
-        Related Posts
-      </h2>
-      <span class="mb-10 inline-block h-[2px] w-20 bg-primary"></span>
+
+    
+    <div class="flex flex-wrap -mx-4">
+      <div class="w-full px-4 wow fadeInUp mt-14" data-wow-delay=".2s">
+        <h2 class="relative pb-5 text-2xl font-semibold text-dark dark:text-white sm:text-[36px]">
+          Related Posts
+        </h2>
+        <span class="mb-10 inline-block h-[2px] w-20 bg-primary"></span>
+      </div>
+
+      
+
+      <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+        <div class="wow fadeInUp group" data-wow-delay=".1s">
+          <div class="mb-8 overflow-hidden rounded-[5px] aspect-w-16 h-64">
+            <a href="/blog/Use-Cases-of-a-Blockchain-API/" class="block">
+              <div class="aspect-w-16 h-64">
+                
+                <img src="/assets/images/blog/2023/09/thumbnails/blog_09_14_400w.webp" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
+              </div>
+            </a>
+          </div>
+          <div>
+            <span class="mb-6 inline-block rounded-[5px] bg-primary px-4 py-0.5 text-center text-xs font-medium leading-loose text-white">
+              Aug 30, 2023
+            </span>
+            <h3>
+              <a href="/blog/Use-Cases-of-a-Blockchain-API/" class="inline-block mb-4 text-xl font-semibold text-dark hover:text-primary dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
+                Use Cases Of A Blockchain Api
+              </a>
+            </h3>
+            <p class="max-w-[370px] text-base text-body-color dark:text-white">
+              A list of the various use cases for a blockchain API to foster efficiency, improve speed of blockchain-based transactions while promoting mass adoption of blockhain technology.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+        <div class="wow fadeInUp group" data-wow-delay=".1s">
+          <div class="mb-8 overflow-hidden rounded-[5px] aspect-w-16 h-64">
+            <a href="/blog/blockchain-apis-can-maximize-blockchain-potential/" class="block">
+              <div class="aspect-w-16 h-64">
+                
+                <img src="/assets/images/blog/2023/08/thumbnails/bitblade_illustration_of_blockchain_colors_like_image_style_lik_400w.webp" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
+              </div>
+            </a>
+          </div>
+          <div>
+            <span class="mb-6 inline-block rounded-[5px] bg-primary px-4 py-0.5 text-center text-xs font-medium leading-loose text-white">
+              Aug 10, 2023
+            </span>
+            <h3>
+              <a href="/blog/blockchain-apis-can-maximize-blockchain-potential/" class="inline-block mb-4 text-xl font-semibold text-dark hover:text-primary dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
+                Blockchain Apis Can Maximize Blockchain Potential
+              </a>
+            </h3>
+            <p class="max-w-[370px] text-base text-body-color dark:text-white">
+              The role of Blockchain API in maximizing the potential of blockchain technology, with an example of the Binance Smart chain API.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+        <div class="wow fadeInUp group" data-wow-delay=".1s">
+          <div class="mb-8 overflow-hidden rounded-[5px] aspect-w-16 h-64">
+            <a href="/blog/embracing-the-future-chaingateway-io-teams-up-with-forumpay-to-accept/" class="block">
+              <div class="aspect-w-16 h-64">
+                
+                <img src="/assets/images/blog/2023/08/thumbnails/embracing_the_future_400w.webp" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
+              </div>
+            </a>
+          </div>
+          <div>
+            <span class="mb-6 inline-block rounded-[5px] bg-primary px-4 py-0.5 text-center text-xs font-medium leading-loose text-white">
+              Aug 03, 2023
+            </span>
+            <h3>
+              <a href="/blog/embracing-the-future-chaingateway-io-teams-up-with-forumpay-to-accept/" class="inline-block mb-4 text-xl font-semibold text-dark hover:text-primary dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
+                Embracing The Future Chaingateway.io Teams Up With Forumpay To Accept
+              </a>
+            </h3>
+            <p class="max-w-[370px] text-base text-body-color dark:text-white">
+              Chaingateway.io partners with ForumPay, offering innovative Blockchain API solutions to enable seamless and secure cryptocurrency payments, revolutionizing the future of transactions in the blockchain ecosystem.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+
     </div>
-   
-    
-      
-        <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-          <div class="wow fadeInUp group" data-wow-delay=".1s">
-            <div class="mb-8 overflow-hidden rounded-[5px] aspect-w-16 h-64">
-              <a href="/blog/Use-Cases-of-a-Blockchain-API/" class="block">
-                <div class="aspect-w-16 h-64">
-                    
-                    <img src="/assets/images/blog/2023/09/thumbnails/blog_09_14_400w.webp" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
-                </div>
-            </a>
-            </div>
-            <div>
-              <span class="mb-6 inline-block rounded-[5px] bg-primary px-4 py-0.5 text-center text-xs font-medium leading-loose text-white">
-                Aug 30, 2023
-              </span>
-              <h3>
-                <a href="/blog/Use-Cases-of-a-Blockchain-API/" class="inline-block mb-4 text-xl font-semibold text-dark hover:text-primary dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
-                  Use Cases Of A Blockchain Api
-                </a>
-              </h3>
-              <p class="max-w-[370px] text-base text-body-color dark:text-white">
-                A list of the various use cases for a blockchain API to foster efficiency, improve speed of blockchain-based transactions while promoting mass adoption of blockhain technology.
-              </p>
-            </div>
-          </div>
-        </div>
-    
-      
-        <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-          <div class="wow fadeInUp group" data-wow-delay=".1s">
-            <div class="mb-8 overflow-hidden rounded-[5px] aspect-w-16 h-64">
-              <a href="/blog/blockchain-apis-can-maximize-blockchain-potential/" class="block">
-                <div class="aspect-w-16 h-64">
-                    
-                    <img src="/assets/images/blog/2023/08/thumbnails/bitblade_illustration_of_blockchain_colors_like_image_style_lik_400w.webp" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
-                </div>
-            </a>
-            </div>
-            <div>
-              <span class="mb-6 inline-block rounded-[5px] bg-primary px-4 py-0.5 text-center text-xs font-medium leading-loose text-white">
-                Aug 10, 2023
-              </span>
-              <h3>
-                <a href="/blog/blockchain-apis-can-maximize-blockchain-potential/" class="inline-block mb-4 text-xl font-semibold text-dark hover:text-primary dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
-                  Blockchain Apis Can Maximize Blockchain Potential
-                </a>
-              </h3>
-              <p class="max-w-[370px] text-base text-body-color dark:text-white">
-                The role of Blockchain API in maximizing the potential of blockchain technology, with an example of the Binance Smart chain API.
-              </p>
-            </div>
-          </div>
-        </div>
-    
-      
-        <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-          <div class="wow fadeInUp group" data-wow-delay=".1s">
-            <div class="mb-8 overflow-hidden rounded-[5px] aspect-w-16 h-64">
-              <a href="/blog/embracing-the-future-chaingateway-io-teams-up-with-forumpay-to-accept/" class="block">
-                <div class="aspect-w-16 h-64">
-                    
-                    <img src="/assets/images/blog/2023/08/thumbnails/embracing_the_future_400w.webp" alt="image" class="object-cover w-full h-full transition group-hover:rotate-6 group-hover:scale-125" loading="lazy">
-                </div>
-            </a>
-            </div>
-            <div>
-              <span class="mb-6 inline-block rounded-[5px] bg-primary px-4 py-0.5 text-center text-xs font-medium leading-loose text-white">
-                Aug 03, 2023
-              </span>
-              <h3>
-                <a href="/blog/embracing-the-future-chaingateway-io-teams-up-with-forumpay-to-accept/" class="inline-block mb-4 text-xl font-semibold text-dark hover:text-primary dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
-                  Embracing The Future Chaingateway.io Teams Up With Forumpay To Accept
-                </a>
-              </h3>
-              <p class="max-w-[370px] text-base text-body-color dark:text-white">
-                Chaingateway.io partners with ForumPay, offering innovative Blockchain API solutions to enable seamless and secure cryptocurrency payments, revolutionizing the future of transactions in the blockchain ecosystem.
-              </p>
-            </div>
-          </div>
-        </div>
     
 
   </div>
-  
-
-</div>
 </section>
 <!-- ====== Blog Details Section End -->
 
-
-
-    <!-- ====== Footer Section Start -->
+  <!-- ====== Footer Section Start -->
 <footer class="wow fadeInUp relative z-10 bg-gradient-to-tr from-indigo-900 to-purple-900 pt-20 lg:pt-[100px]" data-wow-delay=".15s">
     <div class="container">
         <div class="-mx-4 flex flex-wrap">
             <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-4/12 xl:w-3/12">
                 <div class="mb-10 w-full">
-                    <a href="https://twitter.com/ChaingatewayIO" class="mb-6 inline-block max-w-[180px]">
-                        <img src="/assets/images/logo/logo-white.svg" alt="logo" class="max-w-full" loading="lazy">
+                    <a href="https://chaingateway.io" class="mb-6 max-w-[270px]">
+                        <img src="/assets/images/logo/logo-white.svg" alt="Chaingateway.io" class="max-w-[270px]" loading="lazy">
                     </a>
-                    <p class="mb-8 max-w-[270px] text-base text-gray-7">
+                    <p class="mb-8 pt-5 max-w-[270px] text-base text-gray-7">
                         Passionate Blockchain Enthusiasts unlocking the Future of Blockchain Technology.
                     </p>
                     
@@ -875,13 +886,15 @@ When webhook integration is lacking, some middleware applications have come in t
                     <h3 class="mb-10 text-lg font-semibold text-white xl:text-xl">Newsletter</h3>
                     <p class="mb-9 text-base text-white/80">Don't miss any updates of our new templates and components.
                     </p>
-                    <form class="relative mb-7.5 text-right" action="https://newsletter.graygrids.com/subscribe" method="POST" accept-charset="utf-8">
-<input type="email" name="email" id="email" placeholder="Enter your email address" class="h-[50px] w-full rounded-lg border border-white/5 bg-neutral-50/[.08] pl-5 pr-5 text-base text-white placeholder-body-color-2 outline-none duration-300 focus:border-primary xs:pr-[110px] lg:pr-5 xl:pr-[110px]">
-                        <div class="hidden">
-<label for="hp">HP</label><br><input type="text" name="hp" id="hp">
-</div>
-                        <input type="hidden" name="list" value="38jM4qrpTIxiSY1A2eOyAw"><input type="hidden" name="subform" value="yes"><button type="submit" name="submit" id="submit" class="right-1.5 top-1.5 ml-auto mt-2 h-[38px] w-full max-w-[103px] rounded-md bg-primary text-sm font-medium tracking-[-0.2px] text-white duration-300 hover:bg-primary/90 xs:absolute xs:mt-0 lg:static lg:mt-2 xl:absolute xl:mt-0">Subscribe</button>
-                    </form>
+                    <form class="relative mb-7.5 text-right" x-data="ContactForm()" x-on:submit.prevent="submitForm">
+                        <input type="email" name="email" id="email" x-model="formData.email" placeholder="Enter your email address" class="h-[50px] w-full rounded-lg border border-white/5 bg-neutral-50/[.08] pl-5 pr-5 text-base text-white placeholder-body-color-2 outline-none duration-300 focus:border-primary xs:pr-[110px] lg:pr-5 xl:pr-[110px]">
+
+                        <button type="submit" name="subform" value="yes"><button type="submit" name="submit" id="submit" class="right-1.5 top-1.5 ml-auto mt-2 h-[38px] w-full max-w-[103px] rounded-md bg-primary text-sm font-medium tracking-[-0.2px] text-white duration-300 hover:bg-primary/90 xs:absolute xs:mt-0 lg:static lg:mt-2 xl:absolute xl:mt-0">Subscribe</button>
+                            <div x-show="formData.message" class="mt-4 text-sm text-white">
+                                <p x-text="formData.message"></p>
+                            </div>
+                    </button>
+</form>
 
                 </div>
             </div>
@@ -978,11 +991,11 @@ When webhook integration is lacking, some middleware applications have come in t
 </footer>
 <!-- ====== Footer Section End -->
 
-    <button x-data x-on:click="window.scrollTo({top: 0, behavior: 'smooth'})" class="back-to-top fixed bottom-8 left-auto right-24 z-[999] h-10 w-10 items-center justify-center rounded-md bg-primary text-white shadow-md transition duration-300 ease-in-out hover:-teal-800" style="display: flex;">
-      <span class="mt-[6px] h-3 w-3 rotate-45 border-l border-t border-white"></span>
+  <button x-data x-on:click="window.scrollTo({top: 0, behavior: 'smooth'})" class="back-to-top fixed bottom-8 left-auto right-24 z-[999] h-10 w-10 items-center justify-center rounded-md bg-primary text-white shadow-md transition duration-300 ease-in-out hover:-teal-800" style="display: flex;">
+    <span class="mt-[6px] h-3 w-3 rotate-45 border-l border-t border-white"></span>
   </button>
 
-    <div x-data="{ showBanner: !localStorage.getItem('cookieConsentAccepted') }" x-show="showBanner" class="fixed bottom-0 left-0 mb-4 ml-4 mr-4 w-64 z-50">
+  <div x-data="{ showBanner: !localStorage.getItem('cookieConsentAccepted') }" x-show="showBanner" class="fixed bottom-0 left-0 mb-4 ml-4 mr-4 w-64 z-50">
     <div class="bg-white rounded-lg shadow-lg p-4">
         <div class="flex items-center justify-between mb-2">
             <div class="flex items-center">
@@ -1048,23 +1061,122 @@ When webhook integration is lacking, some middleware applications have come in t
     }
 </script>
 
-    <script>
-      var toTop = document.querySelector('.back-to-top');
-      toTop.style.display = "none";
-      window.onscroll = function() {scrollFunction()};
+  <script>
+    var toTop = document.querySelector('.back-to-top');
+    toTop.style.display = "none";
+    window.onscroll = function () { scrollFunction() };
 
-      function scrollFunction() {
-        
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-          toTop.style.display = "flex";
-        } else {
-          toTop.style.display = "none";
+    function scrollFunction() {
+
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        toTop.style.display = "flex";
+      } else {
+        toTop.style.display = "none";
+      }
+    }
+
+  </script>
+
+
+
+
+
+  <!--
+  <script>
+
+    function serializeData(obj) {
+      if ('string' == typeof obj) {
+        return obj;
+      }
+      return Object.keys(obj).map(function (key) {
+        return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]);
+      }).join('&');
+    }
+
+
+    function newsletterForm() {
+      return {
+        email: '',
+        message: '',
+        submitForm() {
+          fetch('https://mautic.chaingateway.io/form/submit?formId=' + formId, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+              'X-Requested-With': 'XMLHttpRequest',
+            },
+            body: new URLSearchParams({
+              'mauticform[email]': this.email,
+            })
+          })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                this.message = 'Thank you for subscribing!';
+                this.email = '';
+              } else {
+                this.message = 'There was an error. Please try again.';
+              }
+            })
+            .catch(() => {
+              this.message = 'There was an error. Please try again.';
+            });
         }
       }
-    </script>
+    }
+  </script>-->
 
 
+  <script>
 
+    function serializeData(obj) {
+      if ('string' == typeof obj) {
+        return obj;
+      }
+      return Object.keys(obj).map(function (key) {
+        return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]);
+      }).join('&');
+    }
 
-  </body>
+    function ContactForm() {
+      console.log('ContactForm');
+      return {
+        formData: {
+          'email': '',
+          'message': ''
+        },
+        submitForm() {
+          var data = {
+            'mauticform[email]': this.formData.email,
+            'mauticform[formId]': 9
+          };
+
+          fetch('https://mautic.bitblade.io/form/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+              'X-Requested-With': 'XMLHttpRequest',
+            },
+            body: serializeData(data)
+          })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                this.formData.message = 'Thank you for subscribing!';
+                this.formData.email = '';
+              } else {
+                this.formData.message = 'There was an error. Please try again.';
+              }
+            })
+            .catch(() => {
+              this.formData.message = 'Thank you for subscribing!';
+            });
+        },
+      };
+    }
+
+  </script>
+
+</body>
+
 </html>
