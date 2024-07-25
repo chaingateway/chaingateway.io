@@ -1,1 +1,0 @@
-import{_ as e,c as t,o}from"./chunks/framework.DvhuNwr4.js";const l=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"tutorials/create-webhooks.md","filePath":"tutorials/create-webhooks.md"}'),a={name:"tutorials/create-webhooks.md"};function r(s,c,n,i,p,_){return o(),t("div")}const m=e(a,[["render",r]]);export{l as __pageData,m as default};
