@@ -17,6 +17,7 @@
 
   <link rel="shortcut icon" href="/assets/images/logo/favicon.webp" type="image/webp">
   <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="https://demo.tokengateway.io">
 
 
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -64,7 +65,7 @@
       </div>
       <div class="flex w-full items-center justify-between px-4">
         <div>
-          <button x-on:click="navbarOpen = !navbarOpen" :class="{ 'navbarTogglerActive': navbarOpen }" id="navbarToggler" class="absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden">
+          <button x-on:click="navbarOpen = !navbarOpen" :class="{ 'navbarTogglerActive': navbarOpen }" id="navbarToggler" class="absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden" aria-label="Menu open and close">
             <span class="relative my-[6px] block h-[2px] w-[30px]" :class="{ 'bg-white': transparent, 'bg-primary': !transparent }"></span>
             <span class="relative my-[6px] block h-[2px] w-[30px]" :class="{ 'bg-white': transparent, 'bg-primary': !transparent }"></span>
             <span class="relative my-[6px] block h-[2px] w-[30px]" :class="{ 'bg-white': transparent, 'bg-primary': !transparent }"></span>
@@ -811,7 +812,7 @@
                 <img src="https://www.svgrepo.com/show/401340/cookie.svg" alt="Cookie" class="h-6 w-6 mr-2" loading="lazy">
                 <span class="text-gray-700 font-bold text-sm">Cookie Policy</span>
             </div>
-            <button x-on:click="showBanner = false; localStorage.setItem('cookieConsentAccepted', 'false');" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+            <button x-on:click="showBanner = false; localStorage.setItem('cookieConsentAccepted', 'false');" class="text-gray-500 hover:text-gray-700 focus:outline-none" aria-label="close cookie banner">
                 <svg class="h-4 w-4" fill="none" viewbox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                     </path>
@@ -823,7 +824,7 @@
             cookies.
         </p>
         <div class="flex flex-row"></div>
-        <button id="cookie-notice-accept" x-on:click="showBanner = false; localStorage.setItem('cookieConsentAccepted', 'true'); loadAdditionalScripts();" href="#" class="mt-4 bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded">
+        <button id="cookie-notice-accept" x-on:click="showBanner = false; localStorage.setItem('cookieConsentAccepted', 'true'); loadAdditionalScripts();" href="#" class="mt-4 bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded">
             Accept
         </button>
         
