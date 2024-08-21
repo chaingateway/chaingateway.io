@@ -20,7 +20,7 @@
   <link rel="canonical" href="https://demo.tokengateway.io/index">
 
 
-  <script defer src="https://cdn.jsdelivr.com/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script defer src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"></script>
    
@@ -1068,6 +1068,55 @@ In the future, Web3 will become as ubiquitous as Web2, thanks to API integration
     }
 
   </script>
+
+
+
+
+
+  <!--
+  <script>
+
+    function serializeData(obj) {
+      if ('string' == typeof obj) {
+        return obj;
+      }
+      return Object.keys(obj).map(function (key) {
+        return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]);
+      }).join('&');
+    }
+
+
+    function newsletterForm() {
+      return {
+        email: '',
+        message: '',
+        submitForm() {
+          fetch('https://mautic.chaingateway.io/form/submit?formId=' + formId, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+              'X-Requested-With': 'XMLHttpRequest',
+            },
+            body: new URLSearchParams({
+              'mauticform[email]': this.email,
+            })
+          })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                this.message = 'Thank you for subscribing!';
+                this.email = '';
+              } else {
+                this.message = 'There was an error. Please try again.';
+              }
+            })
+            .catch(() => {
+              this.message = 'There was an error. Please try again.';
+            });
+        }
+      }
+    }
+  </script>-->
 
 
   <script>
