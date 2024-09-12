@@ -3722,7 +3722,7 @@ paths:
                   description: 'The type of transaction.'
                   example: Tron
                   enum:
-                    - Tron
+                    - TRX
                     - TRC10
                     - TRC20
                     - TRC721
@@ -3809,6 +3809,66 @@ paths:
                     example: Unauthenticated.
       tags:
         - Paymaster
+  '/api/v2/tron/paymaster/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters:
+        -
+          in: header
+          name: X-Network
+          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - testnet
+              - mainnet
+            default: mainnet
+          0:
+            in: header
+            name: Authorization
+            description: 'Bearer token for authorization. Required for authenticated endpoints.'
+            required: true
+            schema:
+              type: string
+          1:
+            in: header
+            name: Content-Type
+            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
+            required: false
+            schema:
+              type: string
+              enum:
+                - application/json
+                - application/x-www-form-urlencoded
+                - multipart/form-data
+              default: application/json
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Paymaster
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the paymaster.'
+        example: architecto
+        required: true
+        schema:
+          type: string
   /api/v2/tron/paymaster/estimate:
     post:
       summary: 'Estimate Paymaster Fees'
@@ -3860,7 +3920,7 @@ paths:
                   description: 'The type of transaction.'
                   example: Tron
                   enum:
-                    - Tron
+                    - TRX
                     - TRC10
                     - TRC20
                     - TRC721
@@ -7729,11 +7789,11 @@ paths:
               properties:
                 from:
                   type: string
-                  description: 'Sender address (required if not providing type, to, contractaddress, and tokenid). This field is required when <code>to</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
+                  description: 'Sender address (required if not "to"). This field is required when <code>to</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
                   example: '0x922815dFbEa128eAeaAAa185508fe078bECeFBBE'
                 to:
                   type: string
-                  description: 'Receiver address (required if not providing type, from, contractaddress, and tokenid). This field is required when <code>from</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
+                  description: 'Receiver address (required if not providing "from"). This field is required when <code>from</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
                   example: '0x922815dFbEa128eAeaAAa185508fe078bECeFBBE'
                 url:
                   type: string
@@ -7955,11 +8015,11 @@ paths:
               properties:
                 from:
                   type: string
-                  description: 'Sender address (required if not providing type, to, contractaddress, and tokenid). This field is required when <code>to</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
+                  description: 'Sender address (required if not "to"). This field is required when <code>to</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
                   example: '0x922815dFbEa128eAeaAAa185508fe078bECeFBBE'
                 to:
                   type: string
-                  description: 'Receiver address (required if not providing type, from, contractaddress, and tokenid). This field is required when <code>from</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
+                  description: 'Receiver address (required if not providing "from"). This field is required when <code>from</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
                   example: '0x922815dFbEa128eAeaAAa185508fe078bECeFBBE'
                 url:
                   type: string
@@ -11379,11 +11439,11 @@ paths:
               properties:
                 from:
                   type: string
-                  description: 'Sender address (required if not providing type, to, contractaddress, and tokenid). This field is required when <code>to</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
+                  description: 'Sender address (required if not "to"). This field is required when <code>to</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
                   example: '0x922815dFbEa128eAeaAAa185508fe078bECeFBBE'
                 to:
                   type: string
-                  description: 'Receiver address (required if not providing type, from, contractaddress, and tokenid). This field is required when <code>from</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
+                  description: 'Receiver address (required if not providing "from"). This field is required when <code>from</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
                   example: '0x922815dFbEa128eAeaAAa185508fe078bECeFBBE'
                 url:
                   type: string
@@ -11605,11 +11665,11 @@ paths:
               properties:
                 from:
                   type: string
-                  description: 'Sender address (required if not providing type, to, contractaddress, and tokenid). This field is required when <code>to</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
+                  description: 'Sender address (required if not "to"). This field is required when <code>to</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
                   example: '0x922815dFbEa128eAeaAAa185508fe078bECeFBBE'
                 to:
                   type: string
-                  description: 'Receiver address (required if not providing type, from, contractaddress, and tokenid). This field is required when <code>from</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
+                  description: 'Receiver address (required if not providing "from"). This field is required when <code>from</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
                   example: '0x922815dFbEa128eAeaAAa185508fe078bECeFBBE'
                 url:
                   type: string
@@ -15029,11 +15089,11 @@ paths:
               properties:
                 from:
                   type: string
-                  description: 'Sender address (required if not providing type, to, contractaddress, and tokenid). This field is required when <code>to</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
+                  description: 'Sender address (required if not "to"). This field is required when <code>to</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
                   example: '0x922815dFbEa128eAeaAAa185508fe078bECeFBBE'
                 to:
                   type: string
-                  description: 'Receiver address (required if not providing type, from, contractaddress, and tokenid). This field is required when <code>from</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
+                  description: 'Receiver address (required if not providing "from"). This field is required when <code>from</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
                   example: '0x922815dFbEa128eAeaAAa185508fe078bECeFBBE'
                 url:
                   type: string
@@ -15255,11 +15315,11 @@ paths:
               properties:
                 from:
                   type: string
-                  description: 'Sender address (required if not providing type, to, contractaddress, and tokenid). This field is required when <code>to</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
+                  description: 'Sender address (required if not "to"). This field is required when <code>to</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
                   example: '0x922815dFbEa128eAeaAAa185508fe078bECeFBBE'
                 to:
                   type: string
-                  description: 'Receiver address (required if not providing type, from, contractaddress, and tokenid). This field is required when <code>from</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
+                  description: 'Receiver address (required if not providing "from"). This field is required when <code>from</code> is not present.  Must match the regex /^0x[a-fA-F0-9]{40}$/.'
                   example: '0x922815dFbEa128eAeaAAa185508fe078bECeFBBE'
                 url:
                   type: string
