@@ -1,17 +1,17 @@
 <!doctype html>
 <html>
+
 <head>
     <title>Chaingateway Documentation</title>
-    <meta charset="utf-8"/>
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1"/>
-        <style>
-            body {
-                margin: 0;
-            }
-            .dark-mode {
-          
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .dark-mode {
+
             --scalar-color-1: rgba(255, 255, 255, 0.81);
             --scalar-color-2: rgba(255, 255, 255, 0.443);
             --scalar-color-3: rgba(255, 255, 255, 0.282);
@@ -20,33 +20,32 @@
             --scalar-background-2: rgb(46, 46, 51) !important;
             --scalar-background-3: rgb(46, 46, 51) !important;
             --scalar-background-accent: rgb(99, 102, 241);
-        
-             }      
-        </style>
+
+        }
+    </style>
 </head>
+
 <body>
 
-<script
-    id="api-reference"
-    data-url="openapi.yaml">
-</script>
-<script>
-    var configuration = {
-        metaData: {
-            title: 'Chaingateway.io API Docs',
-            description: 'This Page provides the documentation for the Chaingateway API endpoints. Chaingateway is a blockchain gateway that allows you to interact with multiple blockchains using a single API.',
-            ogDescription: 'This Page provides the documentation for the Chaingateway API endpoints. Chaingateway is a blockchain gateway that allows you to interact with multiple blockchains using a single API.',
-            ogTitle: 'Chaingateway.io API Docs',
-            ogImage: 'https://chaingateway.io/assets/images/svg/nav-logo.svg',
-            twitterCard: 'Chaingateway.io API Docs',
-            // Add more...
+    <script id="api-reference" data-url="openapi.yaml">
+    </script>
+    <script>
+        var configuration = {
+            metaData: {
+                title: 'Chaingateway.io API Docs',
+                description: 'This Page provides the documentation for the Chaingateway API endpoints. Chaingateway is a blockchain gateway that allows you to interact with multiple blockchains using a single API.',
+                ogDescription: 'This Page provides the documentation for the Chaingateway API endpoints. Chaingateway is a blockchain gateway that allows you to interact with multiple blockchains using a single API.',
+                ogTitle: 'Chaingateway.io API Docs',
+                ogImage: 'https://chaingateway.io/assets/images/svg/nav-logo.svg',
+                twitterCard: 'Chaingateway.io API Docs',
+                // Add more...
+            }
         }
-    }
 
-    document.getElementById('api-reference').dataset.configuration =
-        JSON.stringify(configuration)
-</script>
-    
-<script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
+        document.getElementById('api-reference').dataset.configuration =
+            JSON.stringify(configuration)
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
 </body>
+
 </html>
