@@ -896,7 +896,7 @@ paths:
               default: application/json
       responses:
         200:
-          description: Encoded
+          description: Transaction
           content:
             application/json:
               schema:
@@ -1010,25 +1010,11 @@ paths:
         required: true
         schema:
           type: string
-      -
-        in: path
-        name: decoded
-        description: "Optional parameter. If set to 'decoded' it will return the decoded transaction"
-        required: true
-        schema:
-          type: string
-        examples:
-          omitted:
-            summary: 'When the value is omitted'
-            value: ''
-          present:
-            summary: 'When the value is present'
-            value: decoded
   '/api/v2/tron/transactions/{txid}/decoded':
     get:
-      summary: 'Show Transaction'
-      operationId: showTransaction
-      description: "This method shows a transaction <br>\nIf the transaction is successful, it will return the transaction details. <br>\nIf the transaction fails, it will return an error message. <br>"
+      summary: 'Show Decoded Transaction'
+      operationId: showDecodedTransaction
+      description: "This method shows a transaction with decoded values <br>\nIf the transaction is successful, it will return the transaction details. <br>\nIf the transaction fails, it will return an error message. <br>"
       parameters:
         -
           in: header
@@ -1062,7 +1048,7 @@ paths:
               default: application/json
       responses:
         200:
-          description: Encoded
+          description: Transaction
           content:
             application/json:
               schema:
@@ -1073,27 +1059,13 @@ paths:
                   message: 'Succesfully parsed transaction receipt'
                   data:
                     transaction:
-                      ret:
-                        -
-                          contractRet: SUCCESS
-                      signature:
-                        - b75218466a3c1a141f8a2e776ec02b8aed247175193cdfa15d6bcdecac686e782edf4623c758f3483876316189d1dcc7c2aae154210038a7562b57ee49fbe99400
-                      txID: 1b66c3d50dc32690a352f3cec78cd247d02a57a5c521865fb2a137785f129a7d
-                      raw_data:
-                        contract:
-                          -
-                            parameter:
-                              value:
-                                amount: 1000000
-                                owner_address: 41764e0536d24197cd869232bf7b09f58820cde9d2
-                                to_address: 41d024bd62f3da57306ad1f9b469acdb66dc292912
-                              type_url: type.googleapis.com/protocol.TransferContract
-                            type: TransferContract
-                        ref_block_bytes: '1159'
-                        ref_block_hash: 2c0d8fbacaf7ced9
-                        expiration: 1708979589000
-                        timestamp: 1708979530210
-                      raw_data_hex: 0a02115922082c0d8fbacaf7ced940889ffcb8de315a67080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541764e0536d24197cd869232bf7b09f58820cde9d2121541d024bd62f3da57306ad1f9b469acdb66dc29291218c0843d70e2d3f8b8de31
+                      txid: 1b66c3d50dc32690a352f3cec78cd247d02a57a5c521865fb2a137785f129a7d
+                      from: TLkkCeNdJKPNUwucdro84WjswkzM62LCTH
+                      to: TUwmZghA7u2GxGxKaxM1mkCmsTF4wHs4vp
+                      amount: '1.000000'
+                      blocknumber: 44700012
+                      confirmations: 55416
+                      type: Tron
                 properties:
                   status:
                     type: integer
@@ -1110,61 +1082,27 @@ paths:
                       transaction:
                         type: object
                         properties:
-                          ret:
-                            type: array
-                            example:
-                              -
-                                contractRet: SUCCESS
-                            items:
-                              type: object
-                              properties:
-                                contractRet:
-                                  type: string
-                                  example: SUCCESS
-                          signature:
-                            type: array
-                            example:
-                              - b75218466a3c1a141f8a2e776ec02b8aed247175193cdfa15d6bcdecac686e782edf4623c758f3483876316189d1dcc7c2aae154210038a7562b57ee49fbe99400
-                            items:
-                              type: string
-                          txID:
+                          txid:
                             type: string
                             example: 1b66c3d50dc32690a352f3cec78cd247d02a57a5c521865fb2a137785f129a7d
-                          raw_data:
-                            type: object
-                            properties:
-                              contract:
-                                type: array
-                                example:
-                                  -
-                                    parameter:
-                                      value: { amount: 1000000, owner_address: 41764e0536d24197cd869232bf7b09f58820cde9d2, to_address: 41d024bd62f3da57306ad1f9b469acdb66dc292912 }
-                                      type_url: type.googleapis.com/protocol.TransferContract
-                                    type: TransferContract
-                                items:
-                                  type: object
-                                  properties:
-                                    parameter:
-                                      type: object
-                                      properties: { value: { type: object, properties: { amount: { type: integer, example: 1000000 }, owner_address: { type: string, example: 41764e0536d24197cd869232bf7b09f58820cde9d2 }, to_address: { type: string, example: 41d024bd62f3da57306ad1f9b469acdb66dc292912 } } }, type_url: { type: string, example: type.googleapis.com/protocol.TransferContract } }
-                                    type:
-                                      type: string
-                                      example: TransferContract
-                              ref_block_bytes:
-                                type: string
-                                example: '1159'
-                              ref_block_hash:
-                                type: string
-                                example: 2c0d8fbacaf7ced9
-                              expiration:
-                                type: integer
-                                example: 1708979589000
-                              timestamp:
-                                type: integer
-                                example: 1708979530210
-                          raw_data_hex:
+                          from:
                             type: string
-                            example: 0a02115922082c0d8fbacaf7ced940889ffcb8de315a67080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541764e0536d24197cd869232bf7b09f58820cde9d2121541d024bd62f3da57306ad1f9b469acdb66dc29291218c0843d70e2d3f8b8de31
+                            example: TLkkCeNdJKPNUwucdro84WjswkzM62LCTH
+                          to:
+                            type: string
+                            example: TUwmZghA7u2GxGxKaxM1mkCmsTF4wHs4vp
+                          amount:
+                            type: string
+                            example: '1.000000'
+                          blocknumber:
+                            type: integer
+                            example: 44700012
+                          confirmations:
+                            type: integer
+                            example: 55416
+                          type:
+                            type: string
+                            example: Tron
       tags:
         - 'Tron Transactions'
     parameters:
@@ -1176,20 +1114,6 @@ paths:
         required: true
         schema:
           type: string
-      -
-        in: path
-        name: decoded
-        description: "Optional parameter. If set to 'decoded' it will return the decoded transaction"
-        required: true
-        schema:
-          type: string
-        examples:
-          omitted:
-            summary: 'When the value is omitted'
-            value: ''
-          present:
-            summary: 'When the value is present'
-            value: decoded
   /api/v2/tron/addresses:
     post:
       summary: 'Create a new Address'
@@ -1419,9 +1343,9 @@ paths:
           type: string
   '/api/v2/tron/transactions/{txid}/receipt/{decoded}':
     get:
-      summary: "Show Transaction Receipt\nThis method shows a transaction receipt <br>"
-      operationId: showTransactionReceiptThisMethodShowsATransactionReceiptbr
-      description: ''
+      summary: 'Show Transaction Receipt'
+      operationId: showTransactionReceipt
+      description: 'This method shows a transaction receipt'
       parameters:
         -
           in: header
@@ -1589,9 +1513,9 @@ paths:
             value: decoded
   /api/v2/tron/transactions/trc20:
     post:
-      summary: 'Create ERC20 transaction'
-      operationId: createERC20Transaction
-      description: "This method creates a new ERC20 transaction. <br>\nIf the transaction is successful, it will return the transaction hash. <br>\nIf the transaction fails, it will return an error message. <br>"
+      summary: 'Create TRC20 transaction'
+      operationId: createTRC20Transaction
+      description: "This method creates a new TRC20 transaction. <br>\nIf the transaction is successful, it will return the transaction hash. <br>\nIf the transaction fails, it will return an error message. <br>"
       parameters:
         -
           in: header
@@ -1713,9 +1637,9 @@ paths:
                 - privatekey
   /api/v2/tron/transactions/trc721:
     post:
-      summary: 'Create ERC721 transactions'
-      operationId: createERC721Transactions
-      description: "This method creates a new ERC721 transaction. <br>\nIf the transaction is successful, it will return the transaction hash. <br>\nIf the transaction fails, it will return an error message. <br>"
+      summary: 'Create TRC721 transactions'
+      operationId: createTRC721Transactions
+      description: "This method creates a new TRC721 transaction. <br>\nIf the transaction is successful, it will return the transaction hash. <br>\nIf the transaction fails, it will return an error message. <br>"
       parameters:
         -
           in: header
@@ -2837,9 +2761,9 @@ paths:
                 - privatekey
   /api/v2/tron/delegate:
     post:
-      summary: ''
-      operationId: postApiV2TronDelegate
-      description: ''
+      summary: 'Delegate ressources'
+      operationId: delegateRessources
+      description: "Delegation is used to delegate resources, such as Bandwidth and Energy, to other addresses. Delegating balance is a requirement for voting for Super Representatives and obtaining rewards.\nTo ensure proper delegation of balance, it is important to follow two rules. First, the delegated balance needs to be frozen before delegation can occur. Second, the receiver address should not be the same as the owner address. These rules help maintain the integrity and security of the delegation process."
       parameters:
         -
           in: header
@@ -3549,9 +3473,9 @@ paths:
         - 'Tron Blockchain Queries'
   /api/v2/tron/transactions/trc10:
     post:
-      summary: 'Create ERC20 transaction'
-      operationId: createERC20Transaction
-      description: "This method creates a new ERC20 transaction. <br>\nIf the transaction is successful, it will return the transaction hash. <br>\nIf the transaction fails, it will return an error message. <br>"
+      summary: 'Create TRC10 transaction'
+      operationId: createTRC10Transaction
+      description: "This method creates a new ERC10 transaction. <br>\nIf the transaction is successful, it will return the transaction hash. <br>\nIf the transaction fails, it will return an error message. <br>"
       parameters:
         -
           in: header
@@ -3709,7 +3633,7 @@ paths:
               default: application/json
       responses: {  }
       tags:
-        - Paymaster
+        - 'Tron Paymaster'
       requestBody:
         required: true
         content:
@@ -3808,7 +3732,7 @@ paths:
                     type: string
                     example: Unauthenticated.
       tags:
-        - Paymaster
+        - 'Tron Paymaster'
   '/api/v2/tron/paymaster/{id}':
     get:
       summary: 'Display the specified resource.'
@@ -3859,7 +3783,7 @@ paths:
                     type: string
                     example: Unauthenticated.
       tags:
-        - Paymaster
+        - 'Tron Paymaster'
     parameters:
       -
         in: path
@@ -3907,7 +3831,7 @@ paths:
               default: application/json
       responses: {  }
       tags:
-        - Paymaster
+        - 'Tron Paymaster'
       requestBody:
         required: true
         content:
@@ -5711,176 +5635,6 @@ paths:
             summary: 'When the value is present'
             value: '1'
   '/api/v2/ethereum/transactions/{txid}':
-    get:
-      summary: 'Get transaction'
-      operationId: getTransaction
-      description: 'This method shows a transaction'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: Decoded
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Succesfully parsed transaction'
-                  data:
-                    transaction:
-                      blockHash: '0xf062efe5e23fbd70c05834c8ae6a329d02e8afb1673a8665906945dae74f86e6'
-                      blockNumber: '37701506'
-                      from: '0x261a8de315f34b8e35b225e70159dc612b3793db'
-                      gas: '21000'
-                      gasPrice: '3.0000000000'
-                      hash: '0xf5ed14c69911b1f15fa19946e7572486ec01d6fd40c3044753924798bc88d72b'
-                      nonce: '14'
-                      to: '0xbea640f2bb84082df3bfa459774c4a5b496ca054'
-                      transactionIndex: '8'
-                      maxFeePerGas: null
-                      maxPriorityFeePerGas: null
-                      amount: '0.001000000000000000'
-                      contractaddress: '0xbea640f2bb84082df3bfa459774c4a5b496ca054'
-                      type: ETH
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Succesfully parsed transaction'
-                  data:
-                    type: object
-                    properties:
-                      transaction:
-                        type: object
-                        properties:
-                          blockHash:
-                            type: string
-                            example: '0xf062efe5e23fbd70c05834c8ae6a329d02e8afb1673a8665906945dae74f86e6'
-                          blockNumber:
-                            type: string
-                            example: '37701506'
-                          from:
-                            type: string
-                            example: '0x261a8de315f34b8e35b225e70159dc612b3793db'
-                          gas:
-                            type: string
-                            example: '21000'
-                          gasPrice:
-                            type: string
-                            example: '3.0000000000'
-                          hash:
-                            type: string
-                            example: '0xf5ed14c69911b1f15fa19946e7572486ec01d6fd40c3044753924798bc88d72b'
-                          nonce:
-                            type: string
-                            example: '14'
-                          to:
-                            type: string
-                            example: '0xbea640f2bb84082df3bfa459774c4a5b496ca054'
-                          transactionIndex:
-                            type: string
-                            example: '8'
-                          maxFeePerGas:
-                            type: string
-                            example: null
-                          maxPriorityFeePerGas:
-                            type: string
-                            example: null
-                          amount:
-                            type: string
-                            example: '0.001000000000000000'
-                          contractaddress:
-                            type: string
-                            example: '0xbea640f2bb84082df3bfa459774c4a5b496ca054'
-                          type:
-                            type: string
-                            example: ETH
-        422:
-          description: 'Transaction not found'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 422
-                  ok: false
-                  message: 'transaction not found'
-                  errors: []
-                properties:
-                  status:
-                    type: integer
-                    example: 422
-                  ok:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'transaction not found'
-                  errors:
-                    type: array
-                    example: []
-      tags:
-        - 'Ethereum Transactions'
-    parameters:
-      -
-        in: path
-        name: txid
-        description: 'The transaction hash'
-        example: '0x7d3bC832A0860fD882FF4C2359e10268f4E5CCf8'
-        required: true
-        schema:
-          type: string
-      -
-        in: path
-        name: decoded
-        description: "Optional parameter. If set to 'decoded' it will return the decoded transaction"
-        required: true
-        schema:
-          type: string
-        examples:
-          omitted:
-            summary: 'When the value is omitted'
-            value: ''
-          present:
-            summary: 'When the value is present'
-            value: decoded
-  '/api/v2/ethereum/transactions/{txid}/decoded':
     get:
       summary: 'Get transaction'
       operationId: getTransaction
@@ -9530,176 +9284,6 @@ paths:
           present:
             summary: 'When the value is present'
             value: decoded
-  '/api/v2/bsc/transactions/{txid}/decoded':
-    get:
-      summary: 'Get transaction'
-      operationId: getTransaction
-      description: 'This method shows a transaction'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: Decoded
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Succesfully parsed transaction'
-                  data:
-                    transaction:
-                      blockHash: '0xf062efe5e23fbd70c05834c8ae6a329d02e8afb1673a8665906945dae74f86e6'
-                      blockNumber: '37701506'
-                      from: '0x261a8de315f34b8e35b225e70159dc612b3793db'
-                      gas: '21000'
-                      gasPrice: '3.0000000000'
-                      hash: '0xf5ed14c69911b1f15fa19946e7572486ec01d6fd40c3044753924798bc88d72b'
-                      nonce: '14'
-                      to: '0xbea640f2bb84082df3bfa459774c4a5b496ca054'
-                      transactionIndex: '8'
-                      maxFeePerGas: null
-                      maxPriorityFeePerGas: null
-                      amount: '0.001000000000000000'
-                      contractaddress: '0xbea640f2bb84082df3bfa459774c4a5b496ca054'
-                      type: ETH
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Succesfully parsed transaction'
-                  data:
-                    type: object
-                    properties:
-                      transaction:
-                        type: object
-                        properties:
-                          blockHash:
-                            type: string
-                            example: '0xf062efe5e23fbd70c05834c8ae6a329d02e8afb1673a8665906945dae74f86e6'
-                          blockNumber:
-                            type: string
-                            example: '37701506'
-                          from:
-                            type: string
-                            example: '0x261a8de315f34b8e35b225e70159dc612b3793db'
-                          gas:
-                            type: string
-                            example: '21000'
-                          gasPrice:
-                            type: string
-                            example: '3.0000000000'
-                          hash:
-                            type: string
-                            example: '0xf5ed14c69911b1f15fa19946e7572486ec01d6fd40c3044753924798bc88d72b'
-                          nonce:
-                            type: string
-                            example: '14'
-                          to:
-                            type: string
-                            example: '0xbea640f2bb84082df3bfa459774c4a5b496ca054'
-                          transactionIndex:
-                            type: string
-                            example: '8'
-                          maxFeePerGas:
-                            type: string
-                            example: null
-                          maxPriorityFeePerGas:
-                            type: string
-                            example: null
-                          amount:
-                            type: string
-                            example: '0.001000000000000000'
-                          contractaddress:
-                            type: string
-                            example: '0xbea640f2bb84082df3bfa459774c4a5b496ca054'
-                          type:
-                            type: string
-                            example: ETH
-        422:
-          description: 'Transaction not found'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 422
-                  ok: false
-                  message: 'transaction not found'
-                  errors: []
-                properties:
-                  status:
-                    type: integer
-                    example: 422
-                  ok:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'transaction not found'
-                  errors:
-                    type: array
-                    example: []
-      tags:
-        - 'BSC Transactions'
-    parameters:
-      -
-        in: path
-        name: txid
-        description: 'The transaction hash'
-        example: '0x7d3bC832A0860fD882FF4C2359e10268f4E5CCf8'
-        required: true
-        schema:
-          type: string
-      -
-        in: path
-        name: decoded
-        description: "Optional parameter. If set to 'decoded' it will return the decoded transaction"
-        required: true
-        schema:
-          type: string
-        examples:
-          omitted:
-            summary: 'When the value is omitted'
-            value: ''
-          present:
-            summary: 'When the value is present'
-            value: decoded
   /api/v2/bsc/addresses:
     get:
       summary: 'List addresses'
@@ -13180,176 +12764,6 @@ paths:
           present:
             summary: 'When the value is present'
             value: decoded
-  '/api/v2/polygon/transactions/{txid}/decoded':
-    get:
-      summary: 'Get transaction'
-      operationId: getTransaction
-      description: 'This method shows a transaction'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: Decoded
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Succesfully parsed transaction'
-                  data:
-                    transaction:
-                      blockHash: '0xf062efe5e23fbd70c05834c8ae6a329d02e8afb1673a8665906945dae74f86e6'
-                      blockNumber: '37701506'
-                      from: '0x261a8de315f34b8e35b225e70159dc612b3793db'
-                      gas: '21000'
-                      gasPrice: '3.0000000000'
-                      hash: '0xf5ed14c69911b1f15fa19946e7572486ec01d6fd40c3044753924798bc88d72b'
-                      nonce: '14'
-                      to: '0xbea640f2bb84082df3bfa459774c4a5b496ca054'
-                      transactionIndex: '8'
-                      maxFeePerGas: null
-                      maxPriorityFeePerGas: null
-                      amount: '0.001000000000000000'
-                      contractaddress: '0xbea640f2bb84082df3bfa459774c4a5b496ca054'
-                      type: ETH
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Succesfully parsed transaction'
-                  data:
-                    type: object
-                    properties:
-                      transaction:
-                        type: object
-                        properties:
-                          blockHash:
-                            type: string
-                            example: '0xf062efe5e23fbd70c05834c8ae6a329d02e8afb1673a8665906945dae74f86e6'
-                          blockNumber:
-                            type: string
-                            example: '37701506'
-                          from:
-                            type: string
-                            example: '0x261a8de315f34b8e35b225e70159dc612b3793db'
-                          gas:
-                            type: string
-                            example: '21000'
-                          gasPrice:
-                            type: string
-                            example: '3.0000000000'
-                          hash:
-                            type: string
-                            example: '0xf5ed14c69911b1f15fa19946e7572486ec01d6fd40c3044753924798bc88d72b'
-                          nonce:
-                            type: string
-                            example: '14'
-                          to:
-                            type: string
-                            example: '0xbea640f2bb84082df3bfa459774c4a5b496ca054'
-                          transactionIndex:
-                            type: string
-                            example: '8'
-                          maxFeePerGas:
-                            type: string
-                            example: null
-                          maxPriorityFeePerGas:
-                            type: string
-                            example: null
-                          amount:
-                            type: string
-                            example: '0.001000000000000000'
-                          contractaddress:
-                            type: string
-                            example: '0xbea640f2bb84082df3bfa459774c4a5b496ca054'
-                          type:
-                            type: string
-                            example: ETH
-        422:
-          description: 'Transaction not found'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 422
-                  ok: false
-                  message: 'transaction not found'
-                  errors: []
-                properties:
-                  status:
-                    type: integer
-                    example: 422
-                  ok:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'transaction not found'
-                  errors:
-                    type: array
-                    example: []
-      tags:
-        - 'Polygon Transactions'
-    parameters:
-      -
-        in: path
-        name: txid
-        description: 'The transaction hash'
-        example: '0x7d3bC832A0860fD882FF4C2359e10268f4E5CCf8'
-        required: true
-        schema:
-          type: string
-      -
-        in: path
-        name: decoded
-        description: "Optional parameter. If set to 'decoded' it will return the decoded transaction"
-        required: true
-        schema:
-          type: string
-        examples:
-          omitted:
-            summary: 'When the value is omitted'
-            value: ''
-          present:
-            summary: 'When the value is present'
-            value: decoded
   /api/v2/polygon/addresses:
     get:
       summary: 'List addresses'
@@ -16533,114 +15947,6 @@ paths:
         required: true
         schema:
           type: string
-  '/api/v2/bitcoin/transactions/{txid}/decoded':
-    get:
-      summary: 'Show a transaction'
-      operationId: showATransaction
-      description: 'Show the details of a transaction'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: Encoded
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Succesfully parsed transaction'
-                  data:
-                    txid: 020000000001019f9111ce8e4290fdb1679c969cdf6b756910f390895acdb1aa791be0eee7ed9a0100000000feffffff02e80300000000000016001410f7877e72c7c6e1eb7141cfa8cea2f9ef6dbf1245e5000000000000160014846e43c02307cc2dc380029de9383db83117ab020247304402200a1931a70bbd9b5490d667858389f9be81528c2fba379b2e44e599b18fce98810220147eb331d461386b1cb5155b398b2b8a3da86fcb1db933871c48b41bdd12815d012103fc7450a4f530a3e14d0511064dd3f975737ec510c60e456f85796863de997015de5d2700
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Succesfully parsed transaction'
-                  data:
-                    type: object
-                    properties:
-                      txid:
-                        type: string
-                        example: 020000000001019f9111ce8e4290fdb1679c969cdf6b756910f390895acdb1aa791be0eee7ed9a0100000000feffffff02e80300000000000016001410f7877e72c7c6e1eb7141cfa8cea2f9ef6dbf1245e5000000000000160014846e43c02307cc2dc380029de9383db83117ab020247304402200a1931a70bbd9b5490d667858389f9be81528c2fba379b2e44e599b18fce98810220147eb331d461386b1cb5155b398b2b8a3da86fcb1db933871c48b41bdd12815d012103fc7450a4f530a3e14d0511064dd3f975737ec510c60e456f85796863de997015de5d2700
-        422:
-          description: 'Transaction not found'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 422
-                  ok: false
-                  message: 'No such mempool or blockchain transaction. Use gettransaction for wallet transactions.'
-                  data: []
-                properties:
-                  status:
-                    type: integer
-                    example: 422
-                  ok:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'No such mempool or blockchain transaction. Use gettransaction for wallet transactions.'
-                  data:
-                    type: array
-                    example: []
-      tags:
-        - 'Bitcoin Transactions'
-    parameters:
-      -
-        in: path
-        name: txid
-        description: 'The transaction id of the transaction'
-        example: architecto
-        required: true
-        schema:
-          type: string
-      -
-        in: path
-        name: decoded
-        description: 'If the transaction should be decoded'
-        example: decoded
-        required: true
-        schema:
-          type: string
   /api/v2/bitcoin/wallets:
     get:
       summary: 'Display all addresses'
@@ -18113,8 +17419,8 @@ tags:
     name: 'Tron Staking'
     description: 'Description for Tron Staking'
   -
-    name: Paymaster
-    description: 'Description for Paymaster'
+    name: 'Tron Paymaster'
+    description: 'Description for Tron Paymaster'
   -
     name: 'Tron Webhooks'
     description: 'Description for Tron Webhooks'
@@ -18174,7 +17480,7 @@ x-tagGroups:
       - 'Tron Transactions'
       - 'Tron Addresses'
       - 'Tron Staking'
-      - Paymaster
+      - 'Tron Paymaster'
       - 'Tron Webhooks'
   -
     name: 'Ethereum API'
