@@ -2,14 +2,14 @@
 
 # Allow all web crawlers access to all content
 User-agent: *
-Disallow:
+Disallow: /workspace/
 
 # Specific disallow rules (if needed)
 # Disallow: /private/
 # Disallow: /temp/
 
 # Reference to the main sitemap
-Sitemap: https:// chaingateway.io/sitemap.xml
+Sitemap: https://chaingateway.io/sitemap.xml
 
 # Reference to the developers subpage sitemap
 Sitemap: https://chaingateway.io/developers/sitemap.xml
