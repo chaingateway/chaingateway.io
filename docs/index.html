@@ -5,6 +5,24 @@
     <title>Chaingateway Blockchain API Documentation</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <meta name="description" content="{{ page.description | default: site.description }}" />
+    <meta property="og:title" content="{{ page.title | default: site.title }}" />
+    <meta property="og:description" content="{{ page.description | default: site.description }}" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}#{{ page.tag }}" />
+    <meta property="og:image" content="{{ site.url }}/assets/images/{{ page.og_image | default: 'default-image.png' }}" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{{ page.title | default: site.title }}" />
+    <meta name="twitter:description" content="{{ page.description | default: site.description }}" />
+    <meta name="twitter:image" content="{{ site.url }}/assets/images/{{ page.og_image | default: 'default-image.png' }}" />
+    
+
+
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}#{{ page.tag }}" />
+
+
+
     <style>
         body {
             margin: 0;
