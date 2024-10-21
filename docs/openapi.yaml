@@ -1114,194 +1114,6 @@ paths:
         required: true
         schema:
           type: string
-  /api/v2/tron/transactions/bulk:
-    get:
-      summary: 'Get Bulk Transactions'
-      operationId: getBulkTransactions
-      description: 'This endpoint allows you to get a list of all bulk transactions that you have created.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
-      tags:
-        - 'Tron Bulk Transactions'
-    post:
-      summary: 'Create Bulk Transactions'
-      operationId: createBulkTransactions
-      description: "This endpoint allows you to create a bulk transactions. if you have a large number of transactuions that you want to send at once, you can use this endpoint to create a bulk transaction.\n\nThis can improve the way our node handles the transactions and can so it will be mor efficient.\n\nIf you weant to get notified on each transaction, you can provide a callback url that will be called with the transaction details."
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: true
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses: {  }
-      tags:
-        - 'Tron Bulk Transactions'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                url:
-                  type: string
-                  description: 'Must be a valid URL.'
-                  example: 'http://www.bailey.biz/quos-velit-et-fugiat-sunt-nihil-accusantium-harum.html'
-                transactions:
-                  type: array
-                  description: 'Array of transactions to be sent. Each transaction should have the following keys: `from`, `to`, `amount`'
-                  example: null
-                  items:
-                    type: object
-                    properties:
-                      from:
-                        type: string
-                        description: 'This field is required when <code>transactions.*.to</code> is not present.'
-                        example: null
-                      to:
-                        type: string
-                        description: 'This field is required when <code>transactions.*.from</code> is not present.'
-                        example: null
-                      amount:
-                        type: number
-                        description: ''
-                        example: 4326.41688
-                    required:
-                      - amount
-                callback_url:
-                  type: string
-                  description: 'URL to send the response to after the transaction is processed.'
-                  example: null
-              required:
-                - url
-                - transactions
-  '/api/v2/tron/transactions/bulk/{id}':
-    get:
-      summary: 'Get Bulk Transaction'
-      operationId: getBulkTransaction
-      description: 'This endpoint allows you to get the details of a bulk transaction that you have created.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
-      tags:
-        - 'Tron Bulk Transactions'
-    parameters:
-      -
-        in: path
-        name: id
-        description: 'The ID of the bulk.'
-        example: architecto
-        required: true
-        schema:
-          type: string
   /api/v2/tron/addresses:
     post:
       summary: 'Create a new Address'
@@ -4244,13 +4056,11 @@ paths:
                 from:
                   type: string
                   description: 'The sender Tron address'
-                  example:
-                    - TWrTTVizHkF3LxTiWE9vCnhWC7CBpNXe22
+                  example: TWrTTVizHkF3LxTiWE9vCnhWC7CBpNXe22
                 to:
                   type: string
                   description: 'The receiver Tron address'
-                  example:
-                    - TWrTTVizHkF3LxTiWE9vCnhWC7CBpNXe22
+                  example: TWrTTVizHkF3LxTiWE9vCnhWC7CBpNXe22
                 url:
                   type: string
                   description: 'URL for webhook notifications (required). Must be a valid URL.'
@@ -4258,8 +4068,7 @@ paths:
                 contractaddress:
                   type: string
                   description: ''
-                  example:
-                    - TWrTTVizHkF3LxTiWE9vCnhWC7CBpNXe22
+                  example: TWrTTVizHkF3LxTiWE9vCnhWC7CBpNXe22
                 token_id:
                   type: string
                   description: 'This field is required when none of <code>from</code> and <code>to</code> are present.'
@@ -4474,13 +4283,11 @@ paths:
                 from:
                   type: string
                   description: 'The sender Tron address'
-                  example:
-                    - TWrTTVizHkF3LxTiWE9vCnhWC7CBpNXe22
+                  example: TWrTTVizHkF3LxTiWE9vCnhWC7CBpNXe22
                 to:
                   type: string
                   description: 'The receiver Tron address'
-                  example:
-                    - TWrTTVizHkF3LxTiWE9vCnhWC7CBpNXe22
+                  example: TWrTTVizHkF3LxTiWE9vCnhWC7CBpNXe22
                 url:
                   type: string
                   description: 'URL for webhook notifications (required). Must be a valid URL.'
@@ -4488,8 +4295,7 @@ paths:
                 contractaddress:
                   type: string
                   description: ''
-                  example:
-                    - TWrTTVizHkF3LxTiWE9vCnhWC7CBpNXe22
+                  example: TWrTTVizHkF3LxTiWE9vCnhWC7CBpNXe22
                 token_id:
                   type: string
                   description: 'This field is required when none of <code>from</code> and <code>to</code> are present.'
@@ -5992,11 +5798,11 @@ paths:
           present:
             summary: 'When the value is present'
             value: decoded
-  /api/v2/ethereum/transactions/bulk:
+  '/api/v2/ethereum/transactions/{txid}/decoded':
     get:
-      summary: 'Get Bulk Transactions'
-      operationId: getBulkTransactions
-      description: 'This endpoint allows you to get a list of all bulk transactions that you have created.'
+      summary: ''
+      operationId: getApiV2EthereumTransactionsTxidDecoded
+      description: ''
       parameters:
         -
           in: header
@@ -6041,145 +5847,55 @@ paths:
                   message:
                     type: string
                     example: Unauthenticated.
-      tags:
-        - 'Ethereum Bulk Transactions'
-    post:
-      summary: 'Create Bulk Transactions'
-      operationId: createBulkTransactions
-      description: "This endpoint allows you to create a bulk transactions. if you have a large number of transactuions that you want to send at once, you can use this endpoint to create a bulk transaction.\n\nThis can improve the way our node handles the transactions and can so it will be mor efficient.\n\nIf you weant to get notified on each transaction, you can provide a callback url that will be called with the transaction details."
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: true
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses: {  }
-      tags:
-        - 'Ethereum Bulk Transactions'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                url:
-                  type: string
-                  description: 'Must be a valid URL.'
-                  example: 'http://www.bailey.biz/quos-velit-et-fugiat-sunt-nihil-accusantium-harum.html'
-                transactions:
-                  type: array
-                  description: 'Array of transactions to be sent. Each transaction should have the following keys: `from`, `to`, `amount`'
-                  example: null
-                  items:
-                    type: object
-                    properties:
-                      from:
-                        type: string
-                        description: 'This field is required when <code>transactions.*.to</code> is not present.'
-                        example: null
-                      to:
-                        type: string
-                        description: 'This field is required when <code>transactions.*.from</code> is not present.'
-                        example: null
-                      amount:
-                        type: number
-                        description: ''
-                        example: 4326.41688
-                    required:
-                      - amount
-                callback_url:
-                  type: string
-                  description: 'URL to send the response to after the transaction is processed.'
-                  example: null
-              required:
-                - url
-                - transactions
-  '/api/v2/ethereum/transactions/bulk/{id}':
-    get:
-      summary: 'Get Bulk Transaction'
-      operationId: getBulkTransaction
-      description: 'This endpoint allows you to get the details of a bulk transaction that you have created.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        401:
-          description: ''
+        422:
+          description: 'Transaction not found'
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  status: 422
+                  ok: false
+                  message: 'transaction not found'
+                  errors: []
                 properties:
+                  status:
+                    type: integer
+                    example: 422
+                  ok:
+                    type: boolean
+                    example: false
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'transaction not found'
+                  errors:
+                    type: array
+                    example: []
       tags:
-        - 'Ethereum Bulk Transactions'
+        - 'Ethereum Transactions'
     parameters:
       -
         in: path
-        name: id
-        description: 'The ID of the bulk.'
-        example: architecto
+        name: txid
+        description: 'The transaction hash'
+        example: '0x7d3bC832A0860fD882FF4C2359e10268f4E5CCf8'
         required: true
         schema:
           type: string
+      -
+        in: path
+        name: decoded
+        description: "Optional parameter. If set to 'decoded' it will return the decoded transaction"
+        required: true
+        schema:
+          type: string
+        examples:
+          omitted:
+            summary: 'When the value is omitted'
+            value: ''
+          present:
+            summary: 'When the value is present'
+            value: decoded
   /api/v2/ethereum/addresses:
     get:
       summary: 'List addresses'
@@ -7539,6 +7255,127 @@ paths:
         name: address
         description: 'The address you want to export.'
         example: '0xd280406b68901ae4F2431d1830dF5232F49C19fA'
+        required: true
+        schema:
+          type: string
+  '/api/v2/ethereum/addresses/export/{address}/privatekey':
+    post:
+      summary: ''
+      operationId: postApiV2EthereumAddressesExportAddressPrivatekey
+      description: ''
+      parameters:
+        -
+          in: header
+          name: X-Network
+          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - testnet
+              - mainnet
+            default: mainnet
+          0:
+            in: header
+            name: Authorization
+            description: 'Bearer token for authorization. Required for authenticated endpoints.'
+            required: true
+            schema:
+              type: string
+          1:
+            in: header
+            name: Content-Type
+            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
+            required: true
+            schema:
+              type: string
+              enum:
+                - application/json
+                - application/x-www-form-urlencoded
+                - multipart/form-data
+              default: application/json
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  ok: true
+                  message: 'Private key exported'
+                  data:
+                    private_key: '0x7d3bC832A0860fD882FF4C2359e10268f4E5CCf8'
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  ok:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Private key exported'
+                  data:
+                    type: object
+                    properties:
+                      private_key:
+                        type: string
+                        example: '0x7d3bC832A0860fD882FF4C2359e10268f4E5CCf8'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 422
+                  ok: false
+                  message: 'Data validation failed'
+                  errors:
+                    password:
+                      - 'The password field is required.'
+                properties:
+                  status:
+                    type: integer
+                    example: 422
+                  ok:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Data validation failed'
+                  errors:
+                    type: object
+                    properties:
+                      password:
+                        type: array
+                        example:
+                          - 'The password field is required.'
+                        items:
+                          type: string
+      tags:
+        - 'Ethereum Addresses'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  description: ''
+                  example: architecto
+              required:
+                - password
+    parameters:
+      -
+        in: path
+        name: address
+        description: ''
+        example: architecto
         required: true
         schema:
           type: string
@@ -9660,11 +9497,11 @@ paths:
           present:
             summary: 'When the value is present'
             value: decoded
-  /api/v2/bsc/transactions/bulk:
+  '/api/v2/bsc/transactions/{txid}/decoded':
     get:
-      summary: 'Get Bulk Transactions'
-      operationId: getBulkTransactions
-      description: 'This endpoint allows you to get a list of all bulk transactions that you have created.'
+      summary: ''
+      operationId: getApiV2BscTransactionsTxidDecoded
+      description: ''
       parameters:
         -
           in: header
@@ -9709,145 +9546,55 @@ paths:
                   message:
                     type: string
                     example: Unauthenticated.
-      tags:
-        - 'BSC Bulk Transactions'
-    post:
-      summary: 'Create Bulk Transactions'
-      operationId: createBulkTransactions
-      description: "This endpoint allows you to create a bulk transactions. if you have a large number of transactuions that you want to send at once, you can use this endpoint to create a bulk transaction.\n\nThis can improve the way our node handles the transactions and can so it will be mor efficient.\n\nIf you weant to get notified on each transaction, you can provide a callback url that will be called with the transaction details."
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: true
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses: {  }
-      tags:
-        - 'BSC Bulk Transactions'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                url:
-                  type: string
-                  description: 'Must be a valid URL.'
-                  example: 'http://www.bailey.biz/quos-velit-et-fugiat-sunt-nihil-accusantium-harum.html'
-                transactions:
-                  type: array
-                  description: 'Array of transactions to be sent. Each transaction should have the following keys: `from`, `to`, `amount`'
-                  example: null
-                  items:
-                    type: object
-                    properties:
-                      from:
-                        type: string
-                        description: 'This field is required when <code>transactions.*.to</code> is not present.'
-                        example: null
-                      to:
-                        type: string
-                        description: 'This field is required when <code>transactions.*.from</code> is not present.'
-                        example: null
-                      amount:
-                        type: number
-                        description: ''
-                        example: 4326.41688
-                    required:
-                      - amount
-                callback_url:
-                  type: string
-                  description: 'URL to send the response to after the transaction is processed.'
-                  example: null
-              required:
-                - url
-                - transactions
-  '/api/v2/bsc/transactions/bulk/{id}':
-    get:
-      summary: 'Get Bulk Transaction'
-      operationId: getBulkTransaction
-      description: 'This endpoint allows you to get the details of a bulk transaction that you have created.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        401:
-          description: ''
+        422:
+          description: 'Transaction not found'
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  status: 422
+                  ok: false
+                  message: 'transaction not found'
+                  errors: []
                 properties:
+                  status:
+                    type: integer
+                    example: 422
+                  ok:
+                    type: boolean
+                    example: false
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'transaction not found'
+                  errors:
+                    type: array
+                    example: []
       tags:
-        - 'BSC Bulk Transactions'
+        - 'BSC Transactions'
     parameters:
       -
         in: path
-        name: id
-        description: 'The ID of the bulk.'
-        example: architecto
+        name: txid
+        description: 'The transaction hash'
+        example: '0x7d3bC832A0860fD882FF4C2359e10268f4E5CCf8'
         required: true
         schema:
           type: string
+      -
+        in: path
+        name: decoded
+        description: "Optional parameter. If set to 'decoded' it will return the decoded transaction"
+        required: true
+        schema:
+          type: string
+        examples:
+          omitted:
+            summary: 'When the value is omitted'
+            value: ''
+          present:
+            summary: 'When the value is present'
+            value: decoded
   /api/v2/bsc/addresses:
     get:
       summary: 'List addresses'
@@ -11207,6 +10954,127 @@ paths:
         name: address
         description: 'The address you want to export.'
         example: '0xd280406b68901ae4F2431d1830dF5232F49C19fA'
+        required: true
+        schema:
+          type: string
+  '/api/v2/bsc/addresses/export/{address}/privatekey':
+    post:
+      summary: ''
+      operationId: postApiV2BscAddressesExportAddressPrivatekey
+      description: ''
+      parameters:
+        -
+          in: header
+          name: X-Network
+          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - testnet
+              - mainnet
+            default: mainnet
+          0:
+            in: header
+            name: Authorization
+            description: 'Bearer token for authorization. Required for authenticated endpoints.'
+            required: true
+            schema:
+              type: string
+          1:
+            in: header
+            name: Content-Type
+            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
+            required: true
+            schema:
+              type: string
+              enum:
+                - application/json
+                - application/x-www-form-urlencoded
+                - multipart/form-data
+              default: application/json
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  ok: true
+                  message: 'Private key exported'
+                  data:
+                    private_key: '0x7d3bC832A0860fD882FF4C2359e10268f4E5CCf8'
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  ok:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Private key exported'
+                  data:
+                    type: object
+                    properties:
+                      private_key:
+                        type: string
+                        example: '0x7d3bC832A0860fD882FF4C2359e10268f4E5CCf8'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 422
+                  ok: false
+                  message: 'Data validation failed'
+                  errors:
+                    password:
+                      - 'The password field is required.'
+                properties:
+                  status:
+                    type: integer
+                    example: 422
+                  ok:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Data validation failed'
+                  errors:
+                    type: object
+                    properties:
+                      password:
+                        type: array
+                        example:
+                          - 'The password field is required.'
+                        items:
+                          type: string
+      tags:
+        - 'BSC Addresses'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  description: ''
+                  example: architecto
+              required:
+                - password
+    parameters:
+      -
+        in: path
+        name: address
+        description: ''
+        example: architecto
         required: true
         schema:
           type: string
@@ -13328,11 +13196,11 @@ paths:
           present:
             summary: 'When the value is present'
             value: decoded
-  /api/v2/polygon/transactions/bulk:
+  '/api/v2/polygon/transactions/{txid}/decoded':
     get:
-      summary: 'Get Bulk Transactions'
-      operationId: getBulkTransactions
-      description: 'This endpoint allows you to get a list of all bulk transactions that you have created.'
+      summary: ''
+      operationId: getApiV2PolygonTransactionsTxidDecoded
+      description: ''
       parameters:
         -
           in: header
@@ -13377,145 +13245,55 @@ paths:
                   message:
                     type: string
                     example: Unauthenticated.
-      tags:
-        - 'Polygon Bulk Transactions'
-    post:
-      summary: 'Create Bulk Transactions'
-      operationId: createBulkTransactions
-      description: "This endpoint allows you to create a bulk transactions. if you have a large number of transactuions that you want to send at once, you can use this endpoint to create a bulk transaction.\n\nThis can improve the way our node handles the transactions and can so it will be mor efficient.\n\nIf you weant to get notified on each transaction, you can provide a callback url that will be called with the transaction details."
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: true
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses: {  }
-      tags:
-        - 'Polygon Bulk Transactions'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                url:
-                  type: string
-                  description: 'Must be a valid URL.'
-                  example: 'http://www.bailey.biz/quos-velit-et-fugiat-sunt-nihil-accusantium-harum.html'
-                transactions:
-                  type: array
-                  description: 'Array of transactions to be sent. Each transaction should have the following keys: `from`, `to`, `amount`'
-                  example: null
-                  items:
-                    type: object
-                    properties:
-                      from:
-                        type: string
-                        description: 'This field is required when <code>transactions.*.to</code> is not present.'
-                        example: null
-                      to:
-                        type: string
-                        description: 'This field is required when <code>transactions.*.from</code> is not present.'
-                        example: null
-                      amount:
-                        type: number
-                        description: ''
-                        example: 4326.41688
-                    required:
-                      - amount
-                callback_url:
-                  type: string
-                  description: 'URL to send the response to after the transaction is processed.'
-                  example: null
-              required:
-                - url
-                - transactions
-  '/api/v2/polygon/transactions/bulk/{id}':
-    get:
-      summary: 'Get Bulk Transaction'
-      operationId: getBulkTransaction
-      description: 'This endpoint allows you to get the details of a bulk transaction that you have created.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        401:
-          description: ''
+        422:
+          description: 'Transaction not found'
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  status: 422
+                  ok: false
+                  message: 'transaction not found'
+                  errors: []
                 properties:
+                  status:
+                    type: integer
+                    example: 422
+                  ok:
+                    type: boolean
+                    example: false
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'transaction not found'
+                  errors:
+                    type: array
+                    example: []
       tags:
-        - 'Polygon Bulk Transactions'
+        - 'Polygon Transactions'
     parameters:
       -
         in: path
-        name: id
-        description: 'The ID of the bulk.'
-        example: architecto
+        name: txid
+        description: 'The transaction hash'
+        example: '0x7d3bC832A0860fD882FF4C2359e10268f4E5CCf8'
         required: true
         schema:
           type: string
+      -
+        in: path
+        name: decoded
+        description: "Optional parameter. If set to 'decoded' it will return the decoded transaction"
+        required: true
+        schema:
+          type: string
+        examples:
+          omitted:
+            summary: 'When the value is omitted'
+            value: ''
+          present:
+            summary: 'When the value is present'
+            value: decoded
   /api/v2/polygon/addresses:
     get:
       summary: 'List addresses'
@@ -14875,6 +14653,127 @@ paths:
         name: address
         description: 'The address you want to export.'
         example: '0xd280406b68901ae4F2431d1830dF5232F49C19fA'
+        required: true
+        schema:
+          type: string
+  '/api/v2/polygon/addresses/export/{address}/privatekey':
+    post:
+      summary: ''
+      operationId: postApiV2PolygonAddressesExportAddressPrivatekey
+      description: ''
+      parameters:
+        -
+          in: header
+          name: X-Network
+          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - testnet
+              - mainnet
+            default: mainnet
+          0:
+            in: header
+            name: Authorization
+            description: 'Bearer token for authorization. Required for authenticated endpoints.'
+            required: true
+            schema:
+              type: string
+          1:
+            in: header
+            name: Content-Type
+            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
+            required: true
+            schema:
+              type: string
+              enum:
+                - application/json
+                - application/x-www-form-urlencoded
+                - multipart/form-data
+              default: application/json
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  ok: true
+                  message: 'Private key exported'
+                  data:
+                    private_key: '0x7d3bC832A0860fD882FF4C2359e10268f4E5CCf8'
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  ok:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Private key exported'
+                  data:
+                    type: object
+                    properties:
+                      private_key:
+                        type: string
+                        example: '0x7d3bC832A0860fD882FF4C2359e10268f4E5CCf8'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 422
+                  ok: false
+                  message: 'Data validation failed'
+                  errors:
+                    password:
+                      - 'The password field is required.'
+                properties:
+                  status:
+                    type: integer
+                    example: 422
+                  ok:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Data validation failed'
+                  errors:
+                    type: object
+                    properties:
+                      password:
+                        type: array
+                        example:
+                          - 'The password field is required.'
+                        items:
+                          type: string
+      tags:
+        - 'Polygon Addresses'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  description: ''
+                  example: architecto
+              required:
+                - password
+    parameters:
+      -
+        in: path
+        name: address
+        description: ''
+        example: architecto
         required: true
         schema:
           type: string
@@ -16699,194 +16598,6 @@ paths:
         required: true
         schema:
           type: string
-  /api/v2/bitcoin/transactions/bulk:
-    get:
-      summary: 'Get Bulk Transactions'
-      operationId: getBulkTransactions
-      description: 'This endpoint allows you to get a list of all bulk transactions that you have created.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
-      tags:
-        - 'Bitcoin Bulk Transactions'
-    post:
-      summary: 'Create Bulk Transactions'
-      operationId: createBulkTransactions
-      description: "This endpoint allows you to create a bulk transactions. if you have a large number of transactuions that you want to send at once, you can use this endpoint to create a bulk transaction.\n\nThis can improve the way our node handles the transactions and can so it will be mor efficient.\n\nIf you weant to get notified on each transaction, you can provide a callback url that will be called with the transaction details."
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: true
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses: {  }
-      tags:
-        - 'Bitcoin Bulk Transactions'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                url:
-                  type: string
-                  description: 'Must be a valid URL.'
-                  example: 'http://www.bailey.biz/quos-velit-et-fugiat-sunt-nihil-accusantium-harum.html'
-                transactions:
-                  type: array
-                  description: 'Array of transactions to be sent. Each transaction should have the following keys: `from`, `to`, `amount`'
-                  example: null
-                  items:
-                    type: object
-                    properties:
-                      from:
-                        type: string
-                        description: 'This field is required when <code>transactions.*.to</code> is not present.'
-                        example: null
-                      to:
-                        type: string
-                        description: 'This field is required when <code>transactions.*.from</code> is not present.'
-                        example: null
-                      amount:
-                        type: number
-                        description: ''
-                        example: 4326.41688
-                    required:
-                      - amount
-                callback_url:
-                  type: string
-                  description: 'URL to send the response to after the transaction is processed.'
-                  example: null
-              required:
-                - url
-                - transactions
-  '/api/v2/bitcoin/transactions/bulk/{id}':
-    get:
-      summary: 'Get Bulk Transaction'
-      operationId: getBulkTransaction
-      description: 'This endpoint allows you to get the details of a bulk transaction that you have created.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
-      tags:
-        - 'Bitcoin Bulk Transactions'
-    parameters:
-      -
-        in: path
-        name: id
-        description: 'The ID of the bulk.'
-        example: architecto
-        required: true
-        schema:
-          type: string
   /api/v2/bitcoin/wallets:
     get:
       summary: 'Display all addresses'
@@ -18353,9 +18064,6 @@ tags:
     name: 'Tron Transactions'
     description: 'Description for Tron Transactions'
   -
-    name: 'Tron Bulk Transactions'
-    description: 'Description for Tron Bulk Transactions'
-  -
     name: 'Tron Addresses'
     description: 'Description for Tron Addresses'
   -
@@ -18374,9 +18082,6 @@ tags:
     name: 'Ethereum Transactions'
     description: 'Description for Ethereum Transactions'
   -
-    name: 'Ethereum Bulk Transactions'
-    description: 'Description for Ethereum Bulk Transactions'
-  -
     name: 'Ethereum Addresses'
     description: 'Description for Ethereum Addresses'
   -
@@ -18388,9 +18093,6 @@ tags:
   -
     name: 'BSC Transactions'
     description: 'Description for BSC Transactions'
-  -
-    name: 'BSC Bulk Transactions'
-    description: 'Description for BSC Bulk Transactions'
   -
     name: 'BSC Addresses'
     description: 'Description for BSC Addresses'
@@ -18404,9 +18106,6 @@ tags:
     name: 'Polygon Transactions'
     description: 'Description for Polygon Transactions'
   -
-    name: 'Polygon Bulk Transactions'
-    description: 'Description for Polygon Bulk Transactions'
-  -
     name: 'Polygon Addresses'
     description: 'Description for Polygon Addresses'
   -
@@ -18419,9 +18118,6 @@ tags:
     name: 'Bitcoin Transactions'
     description: 'Description for Bitcoin Transactions'
   -
-    name: 'Bitcoin Bulk Transactions'
-    description: 'Description for Bitcoin Bulk Transactions'
-  -
     name: 'Bitcoin Wallets'
     description: 'Description for Bitcoin Wallets'
   -
@@ -18433,7 +18129,6 @@ x-tagGroups:
     tags:
       - 'Tron Blockchain Queries'
       - 'Tron Transactions'
-      - 'Tron Bulk Transactions'
       - 'Tron Addresses'
       - 'Tron Staking'
       - 'Tron Paymaster'
@@ -18443,7 +18138,6 @@ x-tagGroups:
     tags:
       - 'Ethereum Blockchain Queries'
       - 'Ethereum Transactions'
-      - 'Ethereum Bulk Transactions'
       - 'Ethereum Addresses'
       - 'Ethereum Webhooks'
   -
@@ -18451,7 +18145,6 @@ x-tagGroups:
     tags:
       - 'BSC Blockchain Queries'
       - 'BSC Transactions'
-      - 'BSC Bulk Transactions'
       - 'BSC Addresses'
       - 'BSC Webhooks'
   -
@@ -18459,7 +18152,6 @@ x-tagGroups:
     tags:
       - 'Polygon Blockchain Queries'
       - 'Polygon Transactions'
-      - 'Polygon Bulk Transactions'
       - 'Polygon Addresses'
       - 'Polygon Webhooks'
   -
@@ -18467,7 +18159,6 @@ x-tagGroups:
     tags:
       - 'Bitcoin Blockchain Queries'
       - 'Bitcoin Transactions'
-      - 'Bitcoin Bulk Transactions'
       - 'Bitcoin Wallets'
       - 'Bitcoin Webhooks'
 components:
