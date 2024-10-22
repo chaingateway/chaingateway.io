@@ -1249,19 +1249,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Tron Blockchain Queries'
     parameters:
@@ -1309,19 +1297,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Tron Blockchain Queries'
     parameters:
@@ -2479,19 +2455,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Tron Blockchain Queries'
     parameters:
@@ -3718,19 +3682,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Tron Paymaster'
   '/api/v2/tron/paymaster/{id}':
@@ -3769,19 +3721,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Tron Paymaster'
     parameters:
@@ -3917,19 +3857,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Tron Webhooks'
     post:
@@ -4120,19 +4048,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Tron Webhooks'
     put:
@@ -5024,18 +4940,6 @@ paths:
                 - multipart/form-data
               default: application/json
       responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
         200:
           description: ''
           content:
@@ -5835,18 +5739,6 @@ paths:
                 - multipart/form-data
               default: application/json
       responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
         422:
           description: 'Transaction not found'
           content:
@@ -5932,19 +5824,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Ethereum Addresses'
     post:
@@ -6159,18 +6039,6 @@ paths:
                 - multipart/form-data
               default: application/json
       responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
         200:
           description: ''
           content:
@@ -6249,18 +6117,6 @@ paths:
                 - multipart/form-data
               default: application/json
       responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
         200:
           description: ''
           content:
@@ -7482,19 +7338,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Ethereum Blockchain Queries'
     parameters:
@@ -7550,19 +7394,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Ethereum Blockchain Queries'
     parameters:
@@ -7618,19 +7450,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Ethereum Webhooks'
     post:
@@ -7820,19 +7640,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Ethereum Webhooks'
     put:
@@ -8723,18 +8531,6 @@ paths:
                 - multipart/form-data
               default: application/json
       responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
         200:
           description: ''
           content:
@@ -9534,18 +9330,6 @@ paths:
                 - multipart/form-data
               default: application/json
       responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
         422:
           description: 'Transaction not found'
           content:
@@ -9631,19 +9415,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'BSC Addresses'
     post:
@@ -9858,18 +9630,6 @@ paths:
                 - multipart/form-data
               default: application/json
       responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
         200:
           description: ''
           content:
@@ -9948,18 +9708,6 @@ paths:
                 - multipart/form-data
               default: application/json
       responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
         200:
           description: ''
           content:
@@ -11181,19 +10929,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'BSC Blockchain Queries'
     parameters:
@@ -11249,19 +10985,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'BSC Blockchain Queries'
     parameters:
@@ -11317,19 +11041,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'BSC Webhooks'
     post:
@@ -11519,19 +11231,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'BSC Webhooks'
     put:
@@ -12422,18 +12122,6 @@ paths:
                 - multipart/form-data
               default: application/json
       responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
         200:
           description: ''
           content:
@@ -13233,18 +12921,6 @@ paths:
                 - multipart/form-data
               default: application/json
       responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
         422:
           description: 'Transaction not found'
           content:
@@ -13330,19 +13006,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Polygon Addresses'
     post:
@@ -13557,18 +13221,6 @@ paths:
                 - multipart/form-data
               default: application/json
       responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
         200:
           description: ''
           content:
@@ -13647,18 +13299,6 @@ paths:
                 - multipart/form-data
               default: application/json
       responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
         200:
           description: ''
           content:
@@ -14880,19 +14520,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Polygon Blockchain Queries'
     parameters:
@@ -14948,19 +14576,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Polygon Blockchain Queries'
     parameters:
@@ -15016,19 +14632,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Polygon Webhooks'
     post:
@@ -15218,19 +14822,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Polygon Webhooks'
     put:
@@ -16057,19 +15649,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Bitcoin Blockchain Queries'
   '/api/v2/bitcoin/blocks/{block_number}':
@@ -16108,19 +15688,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Bitcoin Blockchain Queries'
     parameters:
@@ -17293,19 +16861,7 @@ paths:
                 - application/x-www-form-urlencoded
                 - multipart/form-data
               default: application/json
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
+      responses: {  }
       tags:
         - 'Bitcoin Webhooks'
     put:
