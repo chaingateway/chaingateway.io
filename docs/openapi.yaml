@@ -1406,7 +1406,7 @@ paths:
                       type: '->'
                     -
                       file: /var/www/html/app/Http/Middleware/PrivateKeyMigrationMiddleware.php
-                      line: 71
+                      line: 74
                       function: 'Illuminate\Pipeline\{closure}'
                       class: Illuminate\Pipeline\Pipeline
                       type: '->'
@@ -1908,7 +1908,7 @@ paths:
                         type: '->'
                       -
                         file: /var/www/html/app/Http/Middleware/PrivateKeyMigrationMiddleware.php
-                        line: 71
+                        line: 74
                         function: 'Illuminate\Pipeline\{closure}'
                         class: Illuminate\Pipeline\Pipeline
                         type: '->'
@@ -4629,6 +4629,110 @@ paths:
                 - tokenId
                 - amount
                 - privatekey
+  /api/v2/tron/transactions/broadcast:
+    post:
+      summary: 'Broadcast a signed transaction'
+      operationId: broadcastASignedTransaction
+      description: 'If you sign the transaction by yourself, you can broadcast it using this endpoint'
+      parameters:
+        -
+          in: header
+          name: X-Network
+          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - testnet
+              - mainnet
+            default: mainnet
+          0:
+            in: header
+            name: Authorization
+            description: 'Bearer token for authorization. Required for authenticated endpoints.'
+            required: true
+            schema:
+              type: string
+          1:
+            in: header
+            name: Content-Type
+            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
+            required: true
+            schema:
+              type: string
+              enum:
+                - application/json
+                - application/x-www-form-urlencoded
+                - multipart/form-data
+              default: application/json
+      responses:
+        201:
+          description: 'Succesfully broadcasted transaction'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 201
+                  ok: true
+                  message: 'Succesfully broadcasted transaction'
+                  data:
+                    txid: '0x73344d178812d4919e9002c560781f288030edf72ece88823ef1c377dfb71f27'
+                properties:
+                  status:
+                    type: integer
+                    example: 201
+                  ok:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Succesfully broadcasted transaction'
+                  data:
+                    type: object
+                    properties:
+                      txid:
+                        type: string
+                        example: '0x73344d178812d4919e9002c560781f288030edf72ece88823ef1c377dfb71f27'
+        422:
+          description: 'Wrong privatekey'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 422
+                  ok: false
+                  message: 'Validate signature error: 0984bea42fc16d38512ef3f3ae0ad36b7123d1804a8b284106005793d441b2dd2d1bfdad10ec2879e06a35bbb9a89f268b81b79bc35f6031784c32fe60eee65e01 is signed by TT61CoyUW1ZwkcpkZAcortLvpYk7TW4fgD but it is not contained of permission.'
+                  errors: []
+                properties:
+                  status:
+                    type: integer
+                    example: 422
+                  ok:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Validate signature error: 0984bea42fc16d38512ef3f3ae0ad36b7123d1804a8b284106005793d441b2dd2d1bfdad10ec2879e06a35bbb9a89f268b81b79bc35f6031784c32fe60eee65e01 is signed by TT61CoyUW1ZwkcpkZAcortLvpYk7TW4fgD but it is not contained of permission.'
+                  errors:
+                    type: array
+                    example: []
+      tags:
+        - 'Tron Transactions'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                signed_transaction:
+                  type: string
+                  description: ''
+                  example: '{"visible":true,"txID":"72d38aa982831fb6a7c6ea27ea063311ea3e1cb8749b0b2b461f9bb64ec1ddce","raw_data":{"contract":[{"parameter":{"value":{"amount":50000000,"owner_address":"TD5QjXcKdS8yhG2uwSgxvbQFdK69ycH8D7","to_address":"TXbhwYpomVzyU3MjZdFTJk1LV29zm8r9nG"},"type_url":"type.googleapis.com\/protocol.TransferContract"},"type":"TransferContract"}],"ref_block_bytes":"1d60","ref_block_hash":"86e0e9ec4b2246b0","expiration":1736841987000,"timestamp":1736841930419},"raw_data_hex":"0a021d60220886e0e9ec4b2246b040b887e69ec6325a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a15412214aaacb1e425bc3d077b8d2095f4a84c705b7d121541ed41c607af110fe24900767601c4f61bb047b3f71880e1eb1770b3cde29ec632","signature":["1eff4117e4658b506dec54c6a28cfbba25b347d00862a557da949b8315235e53a9ffaf1f3b99184d5c7bbb4f64e51c4e3bf45b40d8dded41076477f2319ef15e00"]}'
+              required:
+                - signed_transaction
   /api/v2/tron/paymaster:
     post:
       summary: 'Create Paymaster Request'
@@ -7836,6 +7940,8 @@ paths:
                       - '0x134C5E541863CDe4186f49AbC4a6e21D663cf88f'
                       - '0x22d8D6e38ABFa9CC9B76195ae1D6C3926eFbe4dd'
                       - '0x03f2c68e5006e83dc4E16F043278Ba0da710C00B'
+                      - '0xb192fcb8de7faf0f764e2d740aa4e4fd53fa06d8'
+                      - '0xc791d284732bbf00037bd1ed78c76f165e597df2'
                 properties:
                   status:
                     type: integer
@@ -7855,6 +7961,8 @@ paths:
                           - '0x134C5E541863CDe4186f49AbC4a6e21D663cf88f'
                           - '0x22d8D6e38ABFa9CC9B76195ae1D6C3926eFbe4dd'
                           - '0x03f2c68e5006e83dc4E16F043278Ba0da710C00B'
+                          - '0xb192fcb8de7faf0f764e2d740aa4e4fd53fa06d8'
+                          - '0xc791d284732bbf00037bd1ed78c76f165e597df2'
                         items:
                           type: string
       tags:
@@ -8238,7 +8346,7 @@ paths:
                       type: '->'
                     -
                       file: /var/www/html/app/Http/Middleware/PrivateKeyMigrationMiddleware.php
-                      line: 71
+                      line: 74
                       function: 'Illuminate\Pipeline\{closure}'
                       class: Illuminate\Pipeline\Pipeline
                       type: '->'
@@ -8740,7 +8848,7 @@ paths:
                         type: '->'
                       -
                         file: /var/www/html/app/Http/Middleware/PrivateKeyMigrationMiddleware.php
-                        line: 71
+                        line: 74
                         function: 'Illuminate\Pipeline\{closure}'
                         class: Illuminate\Pipeline\Pipeline
                         type: '->'
@@ -9848,7 +9956,7 @@ paths:
                   ok: true
                   message: 'Private key exported'
                   data:
-                    private_key: '0x7d3bC832A0860fD882FF4C2359e10268f4E5CCf8'
+                    private_key: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
                 properties:
                   status:
                     type: integer
@@ -9864,7 +9972,7 @@ paths:
                     properties:
                       private_key:
                         type: string
-                        example: '0x7d3bC832A0860fD882FF4C2359e10268f4E5CCf8'
+                        example: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
         422:
           description: ''
           content:
@@ -12781,7 +12889,7 @@ paths:
                       type: '->'
                     -
                       file: /var/www/html/app/Http/Middleware/PrivateKeyMigrationMiddleware.php
-                      line: 71
+                      line: 74
                       function: 'Illuminate\Pipeline\{closure}'
                       class: Illuminate\Pipeline\Pipeline
                       type: '->'
@@ -13281,7 +13389,7 @@ paths:
                         type: '->'
                       -
                         file: /var/www/html/app/Http/Middleware/PrivateKeyMigrationMiddleware.php
-                        line: 71
+                        line: 74
                         function: 'Illuminate\Pipeline\{closure}'
                         class: Illuminate\Pipeline\Pipeline
                         type: '->'
@@ -14461,7 +14569,7 @@ paths:
                   ok: true
                   message: 'Private key exported'
                   data:
-                    private_key: '0x7d3bC832A0860fD882FF4C2359e10268f4E5CCf8'
+                    private_key: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
                 properties:
                   status:
                     type: integer
@@ -14477,7 +14585,7 @@ paths:
                     properties:
                       private_key:
                         type: string
-                        example: '0x7d3bC832A0860fD882FF4C2359e10268f4E5CCf8'
+                        example: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
         422:
           description: ''
           content:
@@ -17081,7 +17189,7 @@ paths:
                       type: '->'
                     -
                       file: /var/www/html/app/Http/Middleware/PrivateKeyMigrationMiddleware.php
-                      line: 71
+                      line: 74
                       function: 'Illuminate\Pipeline\{closure}'
                       class: Illuminate\Pipeline\Pipeline
                       type: '->'
@@ -17589,7 +17697,7 @@ paths:
                         type: '->'
                       -
                         file: /var/www/html/app/Http/Middleware/PrivateKeyMigrationMiddleware.php
-                        line: 71
+                        line: 74
                         function: 'Illuminate\Pipeline\{closure}'
                         class: Illuminate\Pipeline\Pipeline
                         type: '->'
@@ -18159,7 +18267,7 @@ paths:
                       type: '->'
                     -
                       file: /var/www/html/app/Http/Middleware/PrivateKeyMigrationMiddleware.php
-                      line: 71
+                      line: 74
                       function: 'Illuminate\Pipeline\{closure}'
                       class: Illuminate\Pipeline\Pipeline
                       type: '->'
@@ -18667,7 +18775,7 @@ paths:
                         type: '->'
                       -
                         file: /var/www/html/app/Http/Middleware/PrivateKeyMigrationMiddleware.php
-                        line: 71
+                        line: 74
                         function: 'Illuminate\Pipeline\{closure}'
                         class: Illuminate\Pipeline\Pipeline
                         type: '->'
@@ -20738,7 +20846,7 @@ paths:
                       type: '->'
                     -
                       file: /var/www/html/app/Http/Middleware/PrivateKeyMigrationMiddleware.php
-                      line: 71
+                      line: 74
                       function: 'Illuminate\Pipeline\{closure}'
                       class: Illuminate\Pipeline\Pipeline
                       type: '->'
@@ -21240,7 +21348,7 @@ paths:
                         type: '->'
                       -
                         file: /var/www/html/app/Http/Middleware/PrivateKeyMigrationMiddleware.php
-                        line: 71
+                        line: 74
                         function: 'Illuminate\Pipeline\{closure}'
                         class: Illuminate\Pipeline\Pipeline
                         type: '->'
@@ -22348,7 +22456,7 @@ paths:
                   ok: true
                   message: 'Private key exported'
                   data:
-                    private_key: '0x7d3bC832A0860fD882FF4C2359e10268f4E5CCf8'
+                    private_key: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
                 properties:
                   status:
                     type: integer
@@ -22364,7 +22472,7 @@ paths:
                     properties:
                       private_key:
                         type: string
-                        example: '0x7d3bC832A0860fD882FF4C2359e10268f4E5CCf8'
+                        example: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
         422:
           description: ''
           content:
@@ -22605,7 +22713,7 @@ paths:
                       type: '->'
                     -
                       file: /var/www/html/app/Http/Middleware/PrivateKeyMigrationMiddleware.php
-                      line: 71
+                      line: 74
                       function: 'Illuminate\Pipeline\{closure}'
                       class: Illuminate\Pipeline\Pipeline
                       type: '->'
@@ -23107,7 +23215,7 @@ paths:
                         type: '->'
                       -
                         file: /var/www/html/app/Http/Middleware/PrivateKeyMigrationMiddleware.php
-                        line: 71
+                        line: 74
                         function: 'Illuminate\Pipeline\{closure}'
                         class: Illuminate\Pipeline\Pipeline
                         type: '->'
@@ -23679,7 +23787,7 @@ paths:
                       type: '->'
                     -
                       file: /var/www/html/app/Http/Middleware/PrivateKeyMigrationMiddleware.php
-                      line: 71
+                      line: 74
                       function: 'Illuminate\Pipeline\{closure}'
                       class: Illuminate\Pipeline\Pipeline
                       type: '->'
@@ -24181,7 +24289,7 @@ paths:
                         type: '->'
                       -
                         file: /var/www/html/app/Http/Middleware/PrivateKeyMigrationMiddleware.php
-                        line: 71
+                        line: 74
                         function: 'Illuminate\Pipeline\{closure}'
                         class: Illuminate\Pipeline\Pipeline
                         type: '->'
@@ -25757,7 +25865,7 @@ paths:
                   ok: true
                   message: 'Latest block number fetched'
                   data:
-                    blocknumber: 8884353
+                    blocknumber: 8884617
                 properties:
                   status:
                     type: integer
@@ -25773,7 +25881,7 @@ paths:
                     properties:
                       blocknumber:
                         type: integer
-                        example: 8884353
+                        example: 8884617
       tags:
         - 'Bitcoin Blockchain Queries'
   '/api/v2/bitcoin/blocks/{block_number}':
@@ -25825,7 +25933,7 @@ paths:
                   message: 'Block fetched'
                   data:
                     hash: 00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048
-                    confirmations: 879081
+                    confirmations: 879189
                     height: 1
                     version: 1
                     versionHex: '00000001'
@@ -25862,7 +25970,7 @@ paths:
                         example: 00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048
                       confirmations:
                         type: integer
-                        example: 879081
+                        example: 879189
                       height:
                         type: integer
                         example: 1
