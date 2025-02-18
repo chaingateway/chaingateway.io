@@ -826,6 +826,10 @@ paths:
                   type: number
                   description: 'The amount to send.'
                   example: 1.0
+                password:
+                  type: string
+                  description: 'This field is required when <code>privatekey</code> is not present.'
+                  example: '|]|{+-'
                 privatekey:
                   type: string
                   description: 'The private key of the sender.'
@@ -840,7 +844,6 @@ paths:
                   example: TLkkCeNdJKPNUwucdro84WjswkzM62LCTH
               required:
                 - amount
-                - privatekey
                 - to
                 - from
     parameters:
@@ -1116,9 +1119,9 @@ paths:
           type: string
   /api/v2/tron/addresses:
     post:
-      summary: 'Create a new Address'
-      operationId: createANewAddress
-      description: "Creates a new address wich can be used to send and receive crypto currencies, ERC20 and ERC721 tokens.\nplease provide a stron password within the request body. You will need the password everytime you interact with your address.\n\n<aside class=\"notice\">We do not store Passowrds! If you lose it, we cannot restore your wallet! </aside>"
+      summary: 'Create Address'
+      operationId: createAddress
+      description: "Creates a new address wich can be used to send and receive crypto currencies, ERC20 and ERC721 tokens.\nplease provide a stron password within the request body. You will need the password everytime you interact with your address.\n\nThere are two ways to create an Address:\n- unsecure: You will directly get the private key of your address which can be used to create transactions\n- secure: You define a password, the privatekley will use this password as well as our own encryption chain to store the privatekey on our database. You can use this password instead of a private key to create transactions\n\n<aside class=\"notice\">We do not store Passowrds! If you lose it, we cannot restore your wallet! </aside>"
       parameters:
         -
           in: header
@@ -1152,7 +1155,7 @@ paths:
               default: application/json
       responses:
         201:
-          description: 'Address created'
+          description: 'Secure Address created'
           content:
             application/json:
               schema:
@@ -1162,11 +1165,7 @@ paths:
                   ok: true
                   message: 'Address created'
                   data:
-                    -
-                      privateKey: 59f1c6200e01a2ca9471411f10198bfa63678d0e87cc2ca30f9c4a68dee78edc
-                      publicKey: 040fe6e677442c36f7fdd5535ba3ff1cef0110d78363420f7e24b65298990e3467aed68b9a67e1396d84753db25b32a2fa3e1fc0a673f01638e9bcfab2d8f4ceb5
-                      hexAddress: 41a56a6505ffbee78eb916dd44f4846874deddaebd
-                      address: TR3qx91smURF3R455V1ubqtoUsZbgqikfg
+                    address: TR3qx91smURF3R455V1ubqtoUsZbgqikfg
                 properties:
                   status:
                     type: integer
@@ -1178,28 +1177,11 @@ paths:
                     type: string
                     example: 'Address created'
                   data:
-                    type: array
-                    example:
-                      -
-                        privateKey: 59f1c6200e01a2ca9471411f10198bfa63678d0e87cc2ca30f9c4a68dee78edc
-                        publicKey: 040fe6e677442c36f7fdd5535ba3ff1cef0110d78363420f7e24b65298990e3467aed68b9a67e1396d84753db25b32a2fa3e1fc0a673f01638e9bcfab2d8f4ceb5
-                        hexAddress: 41a56a6505ffbee78eb916dd44f4846874deddaebd
-                        address: TR3qx91smURF3R455V1ubqtoUsZbgqikfg
-                    items:
-                      type: object
-                      properties:
-                        privateKey:
-                          type: string
-                          example: 59f1c6200e01a2ca9471411f10198bfa63678d0e87cc2ca30f9c4a68dee78edc
-                        publicKey:
-                          type: string
-                          example: 040fe6e677442c36f7fdd5535ba3ff1cef0110d78363420f7e24b65298990e3467aed68b9a67e1396d84753db25b32a2fa3e1fc0a673f01638e9bcfab2d8f4ceb5
-                        hexAddress:
-                          type: string
-                          example: 41a56a6505ffbee78eb916dd44f4846874deddaebd
-                        address:
-                          type: string
-                          example: TR3qx91smURF3R455V1ubqtoUsZbgqikfg
+                    type: object
+                    properties:
+                      address:
+                        type: string
+                        example: TR3qx91smURF3R455V1ubqtoUsZbgqikfg
       tags:
         - 'Tron Addresses'
       requestBody:
@@ -1209,10 +1191,194 @@ paths:
             schema:
               type: object
               properties:
-                activated:
-                  type: boolean
-                  description: 'If the address should be activated automatically, default is false. This functionality requires funds in your paymaster wallet and will cost 0.1 EUR.'
-                  example: true
+                password:
+                  type: string
+                  description: ''
+                  example: '|]|{+-'
+  '/api/v2/tron/addresses/{address}':
+    delete:
+      summary: 'Delete Address'
+      operationId: deleteAddress
+      description: 'This method will delete your address. This decreases your used address metrics'
+      parameters:
+        -
+          in: header
+          name: X-Network
+          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - testnet
+              - mainnet
+            default: mainnet
+          0:
+            in: header
+            name: Authorization
+            description: 'Bearer token for authorization. Required for authenticated endpoints.'
+            required: true
+            schema:
+              type: string
+          1:
+            in: header
+            name: Content-Type
+            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
+            required: false
+            schema:
+              type: string
+              enum:
+                - application/json
+                - application/x-www-form-urlencoded
+                - multipart/form-data
+              default: application/json
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  ok: true
+                  message: 'Address deleted'
+                  data: []
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  ok:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Address deleted'
+                  data:
+                    type: array
+                    example: []
+      tags:
+        - 'Tron Addresses'
+    post:
+      summary: 'Update Address Password'
+      operationId: updateAddressPassword
+      description: ''
+      parameters:
+        -
+          in: header
+          name: X-Network
+          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - testnet
+              - mainnet
+            default: mainnet
+          0:
+            in: header
+            name: Authorization
+            description: 'Bearer token for authorization. Required for authenticated endpoints.'
+            required: true
+            schema:
+              type: string
+          1:
+            in: header
+            name: Content-Type
+            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
+            required: true
+            schema:
+              type: string
+              enum:
+                - application/json
+                - application/x-www-form-urlencoded
+                - multipart/form-data
+              default: application/json
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  ok: true
+                  message: 'Password updated'
+                  data: []
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  ok:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Password updated'
+                  data:
+                    type: array
+                    example: []
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 422
+                  ok: false
+                  message: 'Data validation failed'
+                  errors:
+                    password:
+                      - 'The password field is required.'
+                properties:
+                  status:
+                    type: integer
+                    example: 422
+                  ok:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Data validation failed'
+                  errors:
+                    type: object
+                    properties:
+                      password:
+                        type: array
+                        example:
+                          - 'The password field is required.'
+                        items:
+                          type: string
+      tags:
+        - 'Tron Addresses'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                old_password:
+                  type: string
+                  description: 'The old password of the user.'
+                  example: old_password123
+                new_password:
+                  type: string
+                  description: 'The new password of the user.'
+                  example: new_password123
+              required:
+                - old_password
+                - new_password
+    parameters:
+      -
+        in: path
+        name: address
+        description: 'The address you want to delete.'
+        example: '0xd280406b68901ae4F2431d1830dF5232F49C19fA'
+        required: true
+        schema:
+          type: string
   '/api/v2/tron/balances/{address}':
     get:
       summary: 'Get TRX balance'
@@ -1385,6 +1551,211 @@ paths:
         required: true
         schema:
           type: string
+  '/api/v2/tron/addresses/export/{address}':
+    post:
+      summary: ''
+      operationId: postApiV2TronAddressesExportAddress
+      description: ''
+      parameters:
+        -
+          in: header
+          name: X-Network
+          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - testnet
+              - mainnet
+            default: mainnet
+          0:
+            in: header
+            name: Authorization
+            description: 'Bearer token for authorization. Required for authenticated endpoints.'
+            required: true
+            schema:
+              type: string
+          1:
+            in: header
+            name: Content-Type
+            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
+            required: true
+            schema:
+              type: string
+              enum:
+                - application/json
+                - application/x-www-form-urlencoded
+                - multipart/form-data
+              default: application/json
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  ok: true
+                  message: 'Private key exported'
+                  data:
+                    private_key: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  ok:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Private key exported'
+                  data:
+                    type: object
+                    properties:
+                      private_key:
+                        type: string
+                        example: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 422
+                  ok: false
+                  message: 'Data validation failed'
+                  errors:
+                    password:
+                      - 'The password field is required.'
+                properties:
+                  status:
+                    type: integer
+                    example: 422
+                  ok:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Data validation failed'
+                  errors:
+                    type: object
+                    properties:
+                      password:
+                        type: array
+                        example:
+                          - 'The password field is required.'
+                        items:
+                          type: string
+      tags:
+        - 'Tron Addresses'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  description: ''
+                  example: '|]|{+-'
+    parameters:
+      -
+        in: path
+        name: address
+        description: ''
+        example: architecto
+        required: true
+        schema:
+          type: string
+  /api/v2/tron/addresses/import:
+    post:
+      summary: 'Import Private key'
+      operationId: importPrivateKey
+      description: 'Import a Private key to use the secure wallet functionality for transactions.'
+      parameters:
+        -
+          in: header
+          name: X-Network
+          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - testnet
+              - mainnet
+            default: mainnet
+          0:
+            in: header
+            name: Authorization
+            description: 'Bearer token for authorization. Required for authenticated endpoints.'
+            required: true
+            schema:
+              type: string
+          1:
+            in: header
+            name: Content-Type
+            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
+            required: true
+            schema:
+              type: string
+              enum:
+                - application/json
+                - application/x-www-form-urlencoded
+                - multipart/form-data
+              default: application/json
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 201
+                  ok: true
+                  message: 'Address imported successfully'
+                  data: []
+                properties:
+                  status:
+                    type: integer
+                    example: 201
+                  ok:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Address imported successfully'
+                  data:
+                    type: array
+                    example: []
+      tags:
+        - 'Tron Addresses'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+                  description: ''
+                  example: architecto
+                privatekey:
+                  type: string
+                  description: ''
+                  example: architecto
+                password:
+                  type: string
+                  description: ''
+                  example: architecto
+              required:
+                - address
+                - privatekey
+                - password
   /api/v2/tron/transactions/trc20:
     post:
       summary: 'Create TRC20 transaction'
@@ -1499,16 +1870,19 @@ paths:
                   type: number
                   description: 'The amount to send.'
                   example: 1.0
+                password:
+                  type: string
+                  description: 'The password to unlock the wallet if you working with a password protected wallet created with chaingateway. . This field is required when <code>privatekey</code> is not present.'
+                  example: password123
                 privatekey:
                   type: string
-                  description: 'The private key of the sender.'
-                  example: 708c419d1b9ae123047f70787a503b6ba51e048a27966e0220cc5feXXXXXXXXX
+                  description: 'The private key to sign the transaction, only needed if working with non-secure chaingateway wallet.'
+                  example: '123456'
               required:
                 - from
                 - to
                 - contractaddress
                 - amount
-                - privatekey
   /api/v2/tron/transactions/trc721:
     post:
       summary: 'Create TRC721 transactions'
@@ -1627,17 +2001,20 @@ paths:
                   type: number
                   description: 'The amount to send.'
                   example: 1.0
+                password:
+                  type: string
+                  description: 'The password to unlock the wallet if you working with a password protected wallet created with chaingateway. . This field is required when <code>privatekey</code> is not present.'
+                  example: password123
                 privatekey:
                   type: string
-                  description: 'The private key of the sender.'
-                  example: 708c419d1b9ae123047f70787a503b6ba51e048a27966e0220cc5feXXXXXXXXX
+                  description: 'The private key to sign the transaction, only needed if working with non-secure chaingateway wallet.'
+                  example: '0x123456'
               required:
                 - from
                 - to
                 - contractaddress
                 - tokenid
                 - amount
-                - privatekey
   '/api/v2/tron/trc20/{contract_address}':
     get:
       summary: 'Get TRC20 contract information'
@@ -3098,16 +3475,19 @@ paths:
                   type: number
                   description: 'The amount to send.'
                   example: 1.0
+                password:
+                  type: string
+                  description: 'The password to unlock the wallet if you working with a password protected wallet created with chaingateway. . This field is required when <code>privatekey</code> is not present.'
+                  example: password123
                 privatekey:
                   type: string
-                  description: 'The private key of the sender.'
-                  example: 708c419d1b9ae123047f70787a503b6ba51e048a27966e0220cc5feXXXXXXXXX
+                  description: 'The private key to sign the transaction, only needed if working with non-secure chaingateway wallet.'
+                  example: '0x123456'
               required:
                 - from
                 - to
                 - tokenId
                 - amount
-                - privatekey
   /api/v2/tron/transactions/broadcast:
     post:
       summary: 'Broadcast a signed transaction'
@@ -3315,6 +3695,10 @@ paths:
                   type: number
                   description: 'The amount to send. This field is required when <code>type</code> is <code>Tron</code>, <code>TRC10</code>, or <code>TRC20</code>.'
                   example: 1.0
+                password:
+                  type: string
+                  description: ''
+                  example: null
                 privatekey:
                   type: string
                   description: 'The private key of the sender.'
@@ -3327,7 +3711,6 @@ paths:
                 - type
                 - from
                 - to
-                - privatekey
     get:
       summary: 'Display all Paymaster Requests.'
       operationId: displayAllPaymasterRequests
@@ -4091,6 +4474,10 @@ paths:
                   type: number
                   description: 'The amount to send. This field is required when <code>type</code> is <code>Tron</code>, <code>TRC10</code>, or <code>TRC20</code>.'
                   example: 1.0
+                password:
+                  type: string
+                  description: ''
+                  example: null
                 privatekey:
                   type: string
                   description: 'The private key of the sender.'
@@ -4103,7 +4490,6 @@ paths:
                 - type
                 - from
                 - to
-                - privatekey
   /api/v2/tron/webhooks:
     get:
       summary: 'Get all webhooks'
@@ -6410,9 +6796,9 @@ paths:
             value: decoded
   /api/v2/ethereum/addresses:
     post:
-      summary: 'Create address'
+      summary: 'Create Address'
       operationId: createAddress
-      description: "Creates a new address wich can be used to send and receive crypto currencies, ERC20 and ERC721 tokens.\nplease provide a stron password within the request body. You will need the password everytime you interact with your address.\n\n<aside class=\"notice\">We do not store Passowrds! If you lose it, we cannot restore your wallet! </aside>"
+      description: "Creates a new address wich can be used to send and receive crypto currencies, ERC20 and ERC721 tokens.\nplease provide a stron password within the request body. You will need the password everytime you interact with your address.\n\nThere are two ways to create an Address:\n- unsecure: You will directly get the private key of your address which can be used to create transactions\n- secure: You define a password, the privatekley will use this password as well as our own encryption chain to store the privatekey on our database. You can use this password instead of a private key to create transactions\n\n\n<aside class=\"notice\">We do not store Passowrds! If you lose it, we cannot restore your wallet! </aside>"
       parameters:
         -
           in: header
@@ -6500,7 +6886,7 @@ paths:
       tags:
         - 'Ethereum Addresses'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -6509,9 +6895,7 @@ paths:
                 password:
                   type: string
                   description: ''
-                  example: architecto
-              required:
-                - password
+                  example: '|]|{+-'
     get:
       summary: 'List addresses'
       operationId: listAddresses
@@ -6565,6 +6949,9 @@ paths:
                       - '0x03f2c68e5006e83dc4E16F043278Ba0da710C00B'
                       - '0xb192fcb8de7faf0f764e2d740aa4e4fd53fa06d8'
                       - '0xc791d284732bbf00037bd1ed78c76f165e597df2'
+                      - '0x5b22421a9d40a6b6b911b512cd2bd222e75937b1'
+                      - '0x51278c1a631da5c5a0e0a6ebdd19c84cead02abb'
+                      - '0xe9cb32d9c0552c36b86b0fe6a23dd4f412273a12'
                 properties:
                   status:
                     type: integer
@@ -6586,13 +6973,16 @@ paths:
                           - '0x03f2c68e5006e83dc4E16F043278Ba0da710C00B'
                           - '0xb192fcb8de7faf0f764e2d740aa4e4fd53fa06d8'
                           - '0xc791d284732bbf00037bd1ed78c76f165e597df2'
+                          - '0x5b22421a9d40a6b6b911b512cd2bd222e75937b1'
+                          - '0x51278c1a631da5c5a0e0a6ebdd19c84cead02abb'
+                          - '0xe9cb32d9c0552c36b86b0fe6a23dd4f412273a12'
                         items:
                           type: string
       tags:
         - 'Ethereum Addresses'
   '/api/v2/ethereum/addresses/{address}':
     delete:
-      summary: 'Delete address'
+      summary: 'Delete Address'
       operationId: deleteAddress
       description: 'This method will delete your address. This decreases your used address metrics'
       parameters:
@@ -7945,6 +8335,211 @@ paths:
           present:
             summary: 'When the value is present'
             value: '0x388C818CA8B9251b393131C08a736A67ccB19297'
+  '/api/v2/ethereum/addresses/export/{address}':
+    post:
+      summary: ''
+      operationId: postApiV2EthereumAddressesExportAddress
+      description: ''
+      parameters:
+        -
+          in: header
+          name: X-Network
+          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - testnet
+              - mainnet
+            default: mainnet
+          0:
+            in: header
+            name: Authorization
+            description: 'Bearer token for authorization. Required for authenticated endpoints.'
+            required: true
+            schema:
+              type: string
+          1:
+            in: header
+            name: Content-Type
+            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
+            required: true
+            schema:
+              type: string
+              enum:
+                - application/json
+                - application/x-www-form-urlencoded
+                - multipart/form-data
+              default: application/json
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  ok: true
+                  message: 'Private key exported'
+                  data:
+                    private_key: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  ok:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Private key exported'
+                  data:
+                    type: object
+                    properties:
+                      private_key:
+                        type: string
+                        example: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 422
+                  ok: false
+                  message: 'Data validation failed'
+                  errors:
+                    password:
+                      - 'The password field is required.'
+                properties:
+                  status:
+                    type: integer
+                    example: 422
+                  ok:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Data validation failed'
+                  errors:
+                    type: object
+                    properties:
+                      password:
+                        type: array
+                        example:
+                          - 'The password field is required.'
+                        items:
+                          type: string
+      tags:
+        - 'Ethereum Addresses'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  description: ''
+                  example: '|]|{+-'
+    parameters:
+      -
+        in: path
+        name: address
+        description: ''
+        example: architecto
+        required: true
+        schema:
+          type: string
+  /api/v2/ethereum/addresses/import:
+    post:
+      summary: 'Import Private Key'
+      operationId: importPrivateKey
+      description: 'Import a Private key to use the secure wallet functionality for transactions.'
+      parameters:
+        -
+          in: header
+          name: X-Network
+          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - testnet
+              - mainnet
+            default: mainnet
+          0:
+            in: header
+            name: Authorization
+            description: 'Bearer token for authorization. Required for authenticated endpoints.'
+            required: true
+            schema:
+              type: string
+          1:
+            in: header
+            name: Content-Type
+            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
+            required: true
+            schema:
+              type: string
+              enum:
+                - application/json
+                - application/x-www-form-urlencoded
+                - multipart/form-data
+              default: application/json
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 201
+                  ok: true
+                  message: 'Address imported successfully'
+                  data: []
+                properties:
+                  status:
+                    type: integer
+                    example: 201
+                  ok:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Address imported successfully'
+                  data:
+                    type: array
+                    example: []
+      tags:
+        - 'Ethereum Addresses'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+                  description: ''
+                  example: architecto
+                privatekey:
+                  type: string
+                  description: ''
+                  example: architecto
+                password:
+                  type: string
+                  description: ''
+                  example: architecto
+              required:
+                - address
+                - privatekey
+                - password
   /api/v2/ethereum/transactions/erc20:
     post:
       summary: 'Create ERC20 transaction'
@@ -8101,7 +8696,7 @@ paths:
                   example: password123
                 privatekey:
                   type: string
-                  description: 'The private key to sign the transaction, only needed if working with a non chaingateway wallet.'
+                  description: 'The private key to sign the transaction, only needed if working with non-secure chaingateway wallet.'
                   example: '0x123456'
                 nonce:
                   type: string
@@ -8532,127 +9127,6 @@ paths:
           present:
             summary: 'When the value is present'
             value: decoded
-  '/api/v2/ethereum/addresses/export/{address}':
-    post:
-      summary: ''
-      operationId: postApiV2EthereumAddressesExportAddress
-      description: ''
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: true
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Private key exported'
-                  data:
-                    private_key: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Private key exported'
-                  data:
-                    type: object
-                    properties:
-                      private_key:
-                        type: string
-                        example: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 422
-                  ok: false
-                  message: 'Data validation failed'
-                  errors:
-                    password:
-                      - 'The password field is required.'
-                properties:
-                  status:
-                    type: integer
-                    example: 422
-                  ok:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Data validation failed'
-                  errors:
-                    type: object
-                    properties:
-                      password:
-                        type: array
-                        example:
-                          - 'The password field is required.'
-                        items:
-                          type: string
-      tags:
-        - 'Ethereum Addresses'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                password:
-                  type: string
-                  description: ''
-                  example: architecto
-              required:
-                - password
-    parameters:
-      -
-        in: path
-        name: address
-        description: ''
-        example: architecto
-        required: true
-        schema:
-          type: string
   '/api/v2/ethereum/addresses/export/{address}/privatekey':
     post:
       summary: ''
@@ -8753,7 +9227,7 @@ paths:
       tags:
         - 'Ethereum Addresses'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -8762,9 +9236,7 @@ paths:
                 password:
                   type: string
                   description: ''
-                  example: architecto
-              required:
-                - password
+                  example: '|]|{+-'
     parameters:
       -
         in: path
@@ -9057,7 +9529,7 @@ paths:
         required: true
         schema:
           type: string
-  '/api/v2/ethereum/balances/{address}/erc':
+  '/api/v2/ethereum/balances/{address}/erc20':
     get:
       summary: 'Display all the token balances of a wallet'
       operationId: displayAllTheTokenBalancesOfAWallet
@@ -9210,7 +9682,7 @@ paths:
                 blockchain:
                   type: string
                   description: ''
-                  example: bsc
+                  example: polygon
                   enum:
                     - ethereum
                     - bsc
@@ -9235,6 +9707,10 @@ paths:
                   type: number
                   description: 'The amount of tokens to send. This field is required when <code>type</code> is <code>ETH</code>, <code>BNB</code>, <code>ERC20</code>, or <code>BEP20</code>.'
                   example: 10.01
+                password:
+                  type: string
+                  description: 'The password to unlock the wallet if you working with a password protected wallet created with chaingateway. . This field is required when <code>privatekey</code> is not present.'
+                  example: password123
                 privatekey:
                   type: string
                   description: 'The private key of the sender if you are not working with password protected wallets created with chaingateway.'
@@ -9248,7 +9724,6 @@ paths:
                 - blockchain
                 - from
                 - to
-                - privatekey
     get:
       summary: 'Display all Paymaster Requests.'
       operationId: displayAllPaymasterRequests
@@ -9966,7 +10441,7 @@ paths:
                 blockchain:
                   type: string
                   description: ''
-                  example: polygon
+                  example: bsc
                   enum:
                     - ethereum
                     - bsc
@@ -9991,6 +10466,10 @@ paths:
                   type: number
                   description: 'The amount of tokens to send. This field is required when <code>type</code> is <code>ETH</code>, <code>BNB</code>, <code>ERC20</code>, or <code>BEP20</code>.'
                   example: 10.01
+                password:
+                  type: string
+                  description: 'The password to unlock the wallet if you working with a password protected wallet created with chaingateway. . This field is required when <code>privatekey</code> is not present.'
+                  example: password123
                 privatekey:
                   type: string
                   description: 'The private key of the sender if you are not working with password protected wallets created with chaingateway.'
@@ -10004,7 +10483,6 @@ paths:
                 - blockchain
                 - from
                 - to
-                - privatekey
   /api/v2/ethereum/webhooks:
     get:
       summary: 'Get all webhooks'
@@ -11312,7 +11790,7 @@ paths:
         required: true
         schema:
           type: string
-  '/api/v2/polygon/balances/{address}/erc':
+  '/api/v2/polygon/balances/{address}/erc20':
     get:
       summary: 'Display all the token balances of a wallet'
       operationId: displayAllTheTokenBalancesOfAWallet
@@ -12345,9 +12823,9 @@ paths:
             value: decoded
   /api/v2/bsc/addresses:
     post:
-      summary: 'Create address'
+      summary: 'Create Address'
       operationId: createAddress
-      description: "Creates a new address wich can be used to send and receive crypto currencies, ERC20 and ERC721 tokens.\nplease provide a stron password within the request body. You will need the password everytime you interact with your address.\n\n<aside class=\"notice\">We do not store Passowrds! If you lose it, we cannot restore your wallet! </aside>"
+      description: "Creates a new address wich can be used to send and receive crypto currencies, ERC20 and ERC721 tokens.\nplease provide a stron password within the request body. You will need the password everytime you interact with your address.\n\nThere are two ways to create an Address:\n- unsecure: You will directly get the private key of your address which can be used to create transactions\n- secure: You define a password, the privatekley will use this password as well as our own encryption chain to store the privatekey on our database. You can use this password instead of a private key to create transactions\n\n\n<aside class=\"notice\">We do not store Passowrds! If you lose it, we cannot restore your wallet! </aside>"
       parameters:
         -
           in: header
@@ -12435,7 +12913,7 @@ paths:
       tags:
         - 'BSC Addresses'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -12444,9 +12922,7 @@ paths:
                 password:
                   type: string
                   description: ''
-                  example: architecto
-              required:
-                - password
+                  example: '|]|{+-'
     get:
       summary: 'List addresses'
       operationId: listAddresses
@@ -12553,7 +13029,7 @@ paths:
         - 'BSC Addresses'
   '/api/v2/bsc/addresses/{address}':
     delete:
-      summary: 'Delete address'
+      summary: 'Delete Address'
       operationId: deleteAddress
       description: 'This method will delete your address. This decreases your used address metrics'
       parameters:
@@ -13896,6 +14372,211 @@ paths:
           present:
             summary: 'When the value is present'
             value: '0x8965349fb649A33a30cbFDa057D8eC2C48AbE2A2'
+  '/api/v2/bsc/addresses/export/{address}':
+    post:
+      summary: ''
+      operationId: postApiV2BscAddressesExportAddress
+      description: ''
+      parameters:
+        -
+          in: header
+          name: X-Network
+          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - testnet
+              - mainnet
+            default: mainnet
+          0:
+            in: header
+            name: Authorization
+            description: 'Bearer token for authorization. Required for authenticated endpoints.'
+            required: true
+            schema:
+              type: string
+          1:
+            in: header
+            name: Content-Type
+            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
+            required: true
+            schema:
+              type: string
+              enum:
+                - application/json
+                - application/x-www-form-urlencoded
+                - multipart/form-data
+              default: application/json
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  ok: true
+                  message: 'Private key exported'
+                  data:
+                    private_key: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  ok:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Private key exported'
+                  data:
+                    type: object
+                    properties:
+                      private_key:
+                        type: string
+                        example: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 422
+                  ok: false
+                  message: 'Data validation failed'
+                  errors:
+                    password:
+                      - 'The password field is required.'
+                properties:
+                  status:
+                    type: integer
+                    example: 422
+                  ok:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Data validation failed'
+                  errors:
+                    type: object
+                    properties:
+                      password:
+                        type: array
+                        example:
+                          - 'The password field is required.'
+                        items:
+                          type: string
+      tags:
+        - 'BSC Addresses'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  description: ''
+                  example: '|]|{+-'
+    parameters:
+      -
+        in: path
+        name: address
+        description: ''
+        example: architecto
+        required: true
+        schema:
+          type: string
+  /api/v2/bsc/addresses/import:
+    post:
+      summary: 'Import Private Key'
+      operationId: importPrivateKey
+      description: 'Import a Private key to use the secure wallet functionality for transactions.'
+      parameters:
+        -
+          in: header
+          name: X-Network
+          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - testnet
+              - mainnet
+            default: mainnet
+          0:
+            in: header
+            name: Authorization
+            description: 'Bearer token for authorization. Required for authenticated endpoints.'
+            required: true
+            schema:
+              type: string
+          1:
+            in: header
+            name: Content-Type
+            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
+            required: true
+            schema:
+              type: string
+              enum:
+                - application/json
+                - application/x-www-form-urlencoded
+                - multipart/form-data
+              default: application/json
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 201
+                  ok: true
+                  message: 'Address imported successfully'
+                  data: []
+                properties:
+                  status:
+                    type: integer
+                    example: 201
+                  ok:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Address imported successfully'
+                  data:
+                    type: array
+                    example: []
+      tags:
+        - 'BSC Addresses'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+                  description: ''
+                  example: architecto
+                privatekey:
+                  type: string
+                  description: ''
+                  example: architecto
+                password:
+                  type: string
+                  description: ''
+                  example: architecto
+              required:
+                - address
+                - privatekey
+                - password
   /api/v2/bsc/transactions/bep20:
     post:
       summary: 'Create ERC20 transaction'
@@ -14052,7 +14733,7 @@ paths:
                   example: password123
                 privatekey:
                   type: string
-                  description: 'The private key to sign the transaction, only needed if working with a non chaingateway wallet.'
+                  description: 'The private key to sign the transaction, only needed if working with non-secure chaingateway wallet.'
                   example: '0x123456'
                 nonce:
                   type: string
@@ -14483,127 +15164,6 @@ paths:
           present:
             summary: 'When the value is present'
             value: decoded
-  '/api/v2/bsc/addresses/export/{address}':
-    post:
-      summary: ''
-      operationId: postApiV2BscAddressesExportAddress
-      description: ''
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: true
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Private key exported'
-                  data:
-                    private_key: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Private key exported'
-                  data:
-                    type: object
-                    properties:
-                      private_key:
-                        type: string
-                        example: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 422
-                  ok: false
-                  message: 'Data validation failed'
-                  errors:
-                    password:
-                      - 'The password field is required.'
-                properties:
-                  status:
-                    type: integer
-                    example: 422
-                  ok:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Data validation failed'
-                  errors:
-                    type: object
-                    properties:
-                      password:
-                        type: array
-                        example:
-                          - 'The password field is required.'
-                        items:
-                          type: string
-      tags:
-        - 'BSC Addresses'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                password:
-                  type: string
-                  description: ''
-                  example: architecto
-              required:
-                - password
-    parameters:
-      -
-        in: path
-        name: address
-        description: ''
-        example: architecto
-        required: true
-        schema:
-          type: string
   '/api/v2/bsc/addresses/export/{address}/privatekey':
     post:
       summary: ''
@@ -14704,7 +15264,7 @@ paths:
       tags:
         - 'BSC Addresses'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -14713,9 +15273,7 @@ paths:
                 password:
                   type: string
                   description: ''
-                  example: architecto
-              required:
-                - password
+                  example: '|]|{+-'
     parameters:
       -
         in: path
@@ -15008,7 +15566,7 @@ paths:
         required: true
         schema:
           type: string
-  '/api/v2/bsc/balances/{address}/bep':
+  '/api/v2/bsc/balances/{address}/bep20':
     get:
       summary: 'Display all the token balances of a wallet'
       operationId: displayAllTheTokenBalancesOfAWallet
@@ -15186,6 +15744,10 @@ paths:
                   type: number
                   description: 'The amount of tokens to send. This field is required when <code>type</code> is <code>ETH</code>, <code>BNB</code>, <code>ERC20</code>, or <code>BEP20</code>.'
                   example: 10.01
+                password:
+                  type: string
+                  description: 'The password to unlock the wallet if you working with a password protected wallet created with chaingateway. . This field is required when <code>privatekey</code> is not present.'
+                  example: password123
                 privatekey:
                   type: string
                   description: 'The private key of the sender if you are not working with password protected wallets created with chaingateway.'
@@ -15199,7 +15761,6 @@ paths:
                 - blockchain
                 - from
                 - to
-                - privatekey
     get:
       summary: 'Display all Paymaster Requests.'
       operationId: displayAllPaymasterRequests
@@ -15917,7 +16478,7 @@ paths:
                 blockchain:
                   type: string
                   description: ''
-                  example: bsc
+                  example: ethereum
                   enum:
                     - ethereum
                     - bsc
@@ -15942,6 +16503,10 @@ paths:
                   type: number
                   description: 'The amount of tokens to send. This field is required when <code>type</code> is <code>ETH</code>, <code>BNB</code>, <code>ERC20</code>, or <code>BEP20</code>.'
                   example: 10.01
+                password:
+                  type: string
+                  description: 'The password to unlock the wallet if you working with a password protected wallet created with chaingateway. . This field is required when <code>privatekey</code> is not present.'
+                  example: password123
                 privatekey:
                   type: string
                   description: 'The private key of the sender if you are not working with password protected wallets created with chaingateway.'
@@ -15955,7 +16520,6 @@ paths:
                 - blockchain
                 - from
                 - to
-                - privatekey
   /api/v2/bsc/webhooks:
     get:
       summary: 'Get all webhooks'
@@ -21370,9 +21934,9 @@ paths:
             value: decoded
   /api/v2/polygon/addresses:
     post:
-      summary: 'Create address'
+      summary: 'Create Address'
       operationId: createAddress
-      description: "Creates a new address wich can be used to send and receive crypto currencies, ERC20 and ERC721 tokens.\nplease provide a stron password within the request body. You will need the password everytime you interact with your address.\n\n<aside class=\"notice\">We do not store Passowrds! If you lose it, we cannot restore your wallet! </aside>"
+      description: "Creates a new address wich can be used to send and receive crypto currencies, ERC20 and ERC721 tokens.\nplease provide a stron password within the request body. You will need the password everytime you interact with your address.\n\nThere are two ways to create an Address:\n- unsecure: You will directly get the private key of your address which can be used to create transactions\n- secure: You define a password, the privatekley will use this password as well as our own encryption chain to store the privatekey on our database. You can use this password instead of a private key to create transactions\n\n\n<aside class=\"notice\">We do not store Passowrds! If you lose it, we cannot restore your wallet! </aside>"
       parameters:
         -
           in: header
@@ -21460,7 +22024,7 @@ paths:
       tags:
         - 'Polygon Addresses'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -21469,9 +22033,7 @@ paths:
                 password:
                   type: string
                   description: ''
-                  example: architecto
-              required:
-                - password
+                  example: '|]|{+-'
     get:
       summary: 'List addresses'
       operationId: listAddresses
@@ -21544,7 +22106,7 @@ paths:
         - 'Polygon Addresses'
   '/api/v2/polygon/addresses/{address}':
     delete:
-      summary: 'Delete address'
+      summary: 'Delete Address'
       operationId: deleteAddress
       description: 'This method will delete your address. This decreases your used address metrics'
       parameters:
@@ -22887,6 +23449,211 @@ paths:
           present:
             summary: 'When the value is present'
             value: '0xc2132D05D31c914a87C6611C10748AEb04B58e8F'
+  '/api/v2/polygon/addresses/export/{address}':
+    post:
+      summary: ''
+      operationId: postApiV2PolygonAddressesExportAddress
+      description: ''
+      parameters:
+        -
+          in: header
+          name: X-Network
+          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - testnet
+              - mainnet
+            default: mainnet
+          0:
+            in: header
+            name: Authorization
+            description: 'Bearer token for authorization. Required for authenticated endpoints.'
+            required: true
+            schema:
+              type: string
+          1:
+            in: header
+            name: Content-Type
+            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
+            required: true
+            schema:
+              type: string
+              enum:
+                - application/json
+                - application/x-www-form-urlencoded
+                - multipart/form-data
+              default: application/json
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  ok: true
+                  message: 'Private key exported'
+                  data:
+                    private_key: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  ok:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Private key exported'
+                  data:
+                    type: object
+                    properties:
+                      private_key:
+                        type: string
+                        example: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 422
+                  ok: false
+                  message: 'Data validation failed'
+                  errors:
+                    password:
+                      - 'The password field is required.'
+                properties:
+                  status:
+                    type: integer
+                    example: 422
+                  ok:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Data validation failed'
+                  errors:
+                    type: object
+                    properties:
+                      password:
+                        type: array
+                        example:
+                          - 'The password field is required.'
+                        items:
+                          type: string
+      tags:
+        - 'Polygon Addresses'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  description: ''
+                  example: '|]|{+-'
+    parameters:
+      -
+        in: path
+        name: address
+        description: ''
+        example: architecto
+        required: true
+        schema:
+          type: string
+  /api/v2/polygon/addresses/import:
+    post:
+      summary: 'Import Private Key'
+      operationId: importPrivateKey
+      description: 'Import a Private key to use the secure wallet functionality for transactions.'
+      parameters:
+        -
+          in: header
+          name: X-Network
+          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - testnet
+              - mainnet
+            default: mainnet
+          0:
+            in: header
+            name: Authorization
+            description: 'Bearer token for authorization. Required for authenticated endpoints.'
+            required: true
+            schema:
+              type: string
+          1:
+            in: header
+            name: Content-Type
+            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
+            required: true
+            schema:
+              type: string
+              enum:
+                - application/json
+                - application/x-www-form-urlencoded
+                - multipart/form-data
+              default: application/json
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 201
+                  ok: true
+                  message: 'Address imported successfully'
+                  data: []
+                properties:
+                  status:
+                    type: integer
+                    example: 201
+                  ok:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Address imported successfully'
+                  data:
+                    type: array
+                    example: []
+      tags:
+        - 'Polygon Addresses'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+                  description: ''
+                  example: architecto
+                privatekey:
+                  type: string
+                  description: ''
+                  example: architecto
+                password:
+                  type: string
+                  description: ''
+                  example: architecto
+              required:
+                - address
+                - privatekey
+                - password
   /api/v2/polygon/transactions/erc20:
     post:
       summary: 'Create ERC20 transaction'
@@ -23043,7 +23810,7 @@ paths:
                   example: password123
                 privatekey:
                   type: string
-                  description: 'The private key to sign the transaction, only needed if working with a non chaingateway wallet.'
+                  description: 'The private key to sign the transaction, only needed if working with non-secure chaingateway wallet.'
                   example: '0x123456'
                 nonce:
                   type: string
@@ -23474,127 +24241,6 @@ paths:
           present:
             summary: 'When the value is present'
             value: decoded
-  '/api/v2/polygon/addresses/export/{address}':
-    post:
-      summary: ''
-      operationId: postApiV2PolygonAddressesExportAddress
-      description: ''
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: true
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Private key exported'
-                  data:
-                    private_key: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Private key exported'
-                  data:
-                    type: object
-                    properties:
-                      private_key:
-                        type: string
-                        example: 7d3bC832A0860fD882FF4C2359e10268f4E5CCf8
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 422
-                  ok: false
-                  message: 'Data validation failed'
-                  errors:
-                    password:
-                      - 'The password field is required.'
-                properties:
-                  status:
-                    type: integer
-                    example: 422
-                  ok:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Data validation failed'
-                  errors:
-                    type: object
-                    properties:
-                      password:
-                        type: array
-                        example:
-                          - 'The password field is required.'
-                        items:
-                          type: string
-      tags:
-        - 'Polygon Addresses'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                password:
-                  type: string
-                  description: ''
-                  example: architecto
-              required:
-                - password
-    parameters:
-      -
-        in: path
-        name: address
-        description: ''
-        example: architecto
-        required: true
-        schema:
-          type: string
   '/api/v2/polygon/addresses/export/{address}/privatekey':
     post:
       summary: ''
@@ -23695,7 +24341,7 @@ paths:
       tags:
         - 'Polygon Addresses'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -23704,9 +24350,7 @@ paths:
                 password:
                   type: string
                   description: ''
-                  example: architecto
-              required:
-                - password
+                  example: '|]|{+-'
     parameters:
       -
         in: path
@@ -24105,6 +24749,10 @@ paths:
                   type: number
                   description: 'The amount of tokens to send. This field is required when <code>type</code> is <code>ETH</code>, <code>BNB</code>, <code>ERC20</code>, or <code>BEP20</code>.'
                   example: 10.01
+                password:
+                  type: string
+                  description: 'The password to unlock the wallet if you working with a password protected wallet created with chaingateway. . This field is required when <code>privatekey</code> is not present.'
+                  example: password123
                 privatekey:
                   type: string
                   description: 'The private key of the sender if you are not working with password protected wallets created with chaingateway.'
@@ -24118,7 +24766,6 @@ paths:
                 - blockchain
                 - from
                 - to
-                - privatekey
     get:
       summary: 'Display all Paymaster Requests.'
       operationId: displayAllPaymasterRequests
@@ -24836,7 +25483,7 @@ paths:
                 blockchain:
                   type: string
                   description: ''
-                  example: bsc
+                  example: polygon
                   enum:
                     - ethereum
                     - bsc
@@ -24861,6 +25508,10 @@ paths:
                   type: number
                   description: 'The amount of tokens to send. This field is required when <code>type</code> is <code>ETH</code>, <code>BNB</code>, <code>ERC20</code>, or <code>BEP20</code>.'
                   example: 10.01
+                password:
+                  type: string
+                  description: 'The password to unlock the wallet if you working with a password protected wallet created with chaingateway. . This field is required when <code>privatekey</code> is not present.'
+                  example: password123
                 privatekey:
                   type: string
                   description: 'The private key of the sender if you are not working with password protected wallets created with chaingateway.'
@@ -24874,7 +25525,6 @@ paths:
                 - blockchain
                 - from
                 - to
-                - privatekey
   /api/v2/polygon/webhooks:
     get:
       summary: 'Get all webhooks'
@@ -26086,7 +26736,7 @@ paths:
                   ok: true
                   message: 'Latest block number fetched'
                   data:
-                    blocknumber: 8922455
+                    blocknumber: 8929938
                 properties:
                   status:
                     type: integer
@@ -26102,7 +26752,7 @@ paths:
                     properties:
                       blocknumber:
                         type: integer
-                        example: 8922455
+                        example: 8929938
       tags:
         - 'Bitcoin Blockchain Queries'
   '/api/v2/bitcoin/blocks/{block_number}':
@@ -26154,7 +26804,7 @@ paths:
                   message: 'Block fetched'
                   data:
                     hash: 00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048
-                    confirmations: 882557
+                    confirmations: 884292
                     height: 1
                     version: 1
                     versionHex: '00000001'
@@ -26191,7 +26841,7 @@ paths:
                         example: 00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048
                       confirmations:
                         type: integer
-                        example: 882557
+                        example: 884292
                       height:
                         type: integer
                         example: 1
@@ -27120,7 +27770,7 @@ paths:
       tags:
         - 'Bitcoin Wallets'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -27129,9 +27779,7 @@ paths:
                 password:
                   type: string
                   description: ''
-                  example: architecto
-              required:
-                - password
+                  example: '|]|{+-'
   '/api/v2/bitcoin/wallets/{wallet}':
     get:
       summary: 'Show Wallet details'
@@ -27556,7 +28204,7 @@ paths:
       tags:
         - 'Bitcoin Wallets'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -27565,9 +28213,7 @@ paths:
                 password:
                   type: string
                   description: ''
-                  example: architecto
-              required:
-                - password
+                  example: '|]|{+-'
     parameters:
       -
         in: path
