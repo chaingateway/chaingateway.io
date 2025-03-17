@@ -726,8 +726,8 @@ paths:
       tags:
         - 'Tron Transactions'
     post:
-      summary: 'Create Transaction'
-      operationId: createTransaction
+      summary: 'Send TRX'
+      operationId: sendTRX
       description: "This method creates a new transaction. <br>\nIf the transaction is successful, it will return the transaction hash. <br>\nIf the transaction fails, it will return an error message. <br>"
       parameters:
         -
@@ -1758,8 +1758,8 @@ paths:
                 - password
   /api/v2/tron/transactions/trc20:
     post:
-      summary: 'Create TRC20 transaction'
-      operationId: createTRC20Transaction
+      summary: 'Send TRC20 transaction'
+      operationId: sendTRC20Transaction
       description: "This method creates a new TRC20 transaction. <br>\nIf the transaction is successful, it will return the transaction hash. <br>\nIf the transaction fails, it will return an error message. <br>"
       parameters:
         -
@@ -1885,8 +1885,8 @@ paths:
                 - amount
   /api/v2/tron/transactions/trc721:
     post:
-      summary: 'Create TRC721 transactions'
-      operationId: createTRC721Transactions
+      summary: 'Send TRC721 transactions'
+      operationId: sendTRC721Transactions
       description: "This method creates a new TRC721 transaction. <br>\nIf the transaction is successful, it will return the transaction hash. <br>\nIf the transaction fails, it will return an error message. <br>"
       parameters:
         -
@@ -3363,8 +3363,8 @@ paths:
         - 'Tron Blockchain Queries'
   /api/v2/tron/transactions/trc10:
     post:
-      summary: 'Create TRC10 transaction'
-      operationId: createTRC10Transaction
+      summary: 'Send TRC10 transaction'
+      operationId: sendTRC10Transaction
       description: "This method creates a new ERC10 transaction. <br>\nIf the transaction is successful, it will return the transaction hash. <br>\nIf the transaction fails, it will return an error message. <br>"
       parameters:
         -
@@ -3490,8 +3490,8 @@ paths:
                 - amount
   /api/v2/tron/transactions/broadcast:
     post:
-      summary: 'Broadcast a signed transaction'
-      operationId: broadcastASignedTransaction
+      summary: 'Broadcast transaction (self signing)'
+      operationId: broadcastTransactionselfSigning
       description: 'If you sign the transaction by yourself, you can broadcast it using this endpoint'
       parameters:
         -
@@ -3691,14 +3691,10 @@ paths:
                   type: number
                   description: 'The token id of the token. This field is required when <code>type</code> is <code>TRC721</code> or <code>TRC10</code>.'
                   example: 1.0
-                amount:
-                  type: number
-                  description: 'The amount to send. This field is required when <code>type</code> is <code>Tron</code>, <code>TRC10</code>, or <code>TRC20</code>.'
-                  example: 1.0
                 password:
                   type: string
-                  description: ''
-                  example: null
+                  description: 'This field is required when <code>privatekey</code> is not present.'
+                  example: '|]|{+-'
                 privatekey:
                   type: string
                   description: 'The private key of the sender.'
@@ -4470,14 +4466,10 @@ paths:
                   type: number
                   description: 'The token id of the token. This field is required when <code>type</code> is <code>TRC721</code> or <code>TRC10</code>.'
                   example: 1.0
-                amount:
-                  type: number
-                  description: 'The amount to send. This field is required when <code>type</code> is <code>Tron</code>, <code>TRC10</code>, or <code>TRC20</code>.'
-                  example: 1.0
                 password:
                   type: string
-                  description: ''
-                  example: null
+                  description: 'This field is required when <code>privatekey</code> is not present.'
+                  example: '|]|{+-'
                 privatekey:
                   type: string
                   description: 'The private key of the sender.'
@@ -4490,6 +4482,324 @@ paths:
                 - type
                 - from
                 - to
+  /api/v2/tron/transactions/trc20/build:
+    post:
+      summary: 'Build TRC20 transaction (self signing)'
+      operationId: buildTRC20TransactionselfSigning
+      description: "This method creates a new TRC20 transaction for self signing, so this method will return the raw transaction hex. <br>\nUsing this method, the transaction will not be broadcasted to the blockchain. <br>"
+      parameters:
+        -
+          in: header
+          name: X-Network
+          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - testnet
+              - mainnet
+            default: mainnet
+          0:
+            in: header
+            name: Authorization
+            description: 'Bearer token for authorization. Required for authenticated endpoints.'
+            required: true
+            schema:
+              type: string
+          1:
+            in: header
+            name: Content-Type
+            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
+            required: true
+            schema:
+              type: string
+              enum:
+                - application/json
+                - application/x-www-form-urlencoded
+                - multipart/form-data
+              default: application/json
+      responses:
+        201:
+          description: 'Succesfully created transaction'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 201
+                  ok: true
+                  message: 'Succesfully built transaction'
+                  data:
+                    result:
+                      result: true
+                    transaction:
+                      visible: false
+                      txID: a5d6cbdfb3845312887ce9cf22967be9ebae30b0fa4ff74ce86adc9805a1e31a
+                      raw_data:
+                        contract:
+                          -
+                            parameter:
+                              value:
+                                data: a9059cbb0000000000000000000000007a368be0e33278d1a688c290a61bf4c33474ec5600000000000000000000000000000000000000000000000000000000003567e0
+                                owner_address: 41ea6787eaf73447b41f08c7d3e2957cf7de583b94
+                                contract_address: 41ea51342dabbb928ae1e576bd39eff8aaf070a8c6
+                              type_url: type.googleapis.com/protocol.TriggerSmartContract
+                            type: TriggerSmartContract
+                        ref_block_bytes: 3b77
+                        ref_block_hash: f3e7eb650cc4ca62
+                        expiration: 1742192007000
+                        fee_limit: 15000000000
+                        timestamp: 1742191950387
+                      raw_data_hex: 0a023b772208f3e7eb650cc4ca6240d8aef195da325aae01081f12a9010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412740a1541ea6787eaf73447b41f08c7d3e2957cf7de583b94121541ea51342dabbb928ae1e576bd39eff8aaf070a8c62244a9059cbb0000000000000000000000007a368be0e33278d1a688c290a61bf4c33474ec5600000000000000000000000000000000000000000000000000000000003567e070b3f4ed95da32900180acc7f037
+                properties:
+                  status:
+                    type: integer
+                    example: 201
+                  ok:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Succesfully built transaction'
+                  data:
+                    type: object
+                    properties:
+                      result:
+                        type: object
+                        properties:
+                          result:
+                            type: boolean
+                            example: true
+                      transaction:
+                        type: object
+                        properties:
+                          visible:
+                            type: boolean
+                            example: false
+                          txID:
+                            type: string
+                            example: a5d6cbdfb3845312887ce9cf22967be9ebae30b0fa4ff74ce86adc9805a1e31a
+                          raw_data:
+                            type: object
+                            properties:
+                              contract:
+                                type: array
+                                example:
+                                  -
+                                    parameter:
+                                      value: { data: a9059cbb0000000000000000000000007a368be0e33278d1a688c290a61bf4c33474ec5600000000000000000000000000000000000000000000000000000000003567e0, owner_address: 41ea6787eaf73447b41f08c7d3e2957cf7de583b94, contract_address: 41ea51342dabbb928ae1e576bd39eff8aaf070a8c6 }
+                                      type_url: type.googleapis.com/protocol.TriggerSmartContract
+                                    type: TriggerSmartContract
+                                items:
+                                  type: object
+                                  properties:
+                                    parameter:
+                                      type: object
+                                      properties: { value: { type: object, properties: { data: { type: string, example: a9059cbb0000000000000000000000007a368be0e33278d1a688c290a61bf4c33474ec5600000000000000000000000000000000000000000000000000000000003567e0 }, owner_address: { type: string, example: 41ea6787eaf73447b41f08c7d3e2957cf7de583b94 }, contract_address: { type: string, example: 41ea51342dabbb928ae1e576bd39eff8aaf070a8c6 } } }, type_url: { type: string, example: type.googleapis.com/protocol.TriggerSmartContract } }
+                                    type:
+                                      type: string
+                                      example: TriggerSmartContract
+                              ref_block_bytes:
+                                type: string
+                                example: 3b77
+                              ref_block_hash:
+                                type: string
+                                example: f3e7eb650cc4ca62
+                              expiration:
+                                type: integer
+                                example: 1742192007000
+                              fee_limit:
+                                type: integer
+                                example: 15000000000
+                              timestamp:
+                                type: integer
+                                example: 1742191950387
+                          raw_data_hex:
+                            type: string
+                            example: 0a023b772208f3e7eb650cc4ca6240d8aef195da325aae01081f12a9010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412740a1541ea6787eaf73447b41f08c7d3e2957cf7de583b94121541ea51342dabbb928ae1e576bd39eff8aaf070a8c62244a9059cbb0000000000000000000000007a368be0e33278d1a688c290a61bf4c33474ec5600000000000000000000000000000000000000000000000000000000003567e070b3f4ed95da32900180acc7f037
+      tags:
+        - 'Tron Transactions'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                from:
+                  type: string
+                  description: 'The address to send the transaction from.'
+                  example: TLkkCeNdJKPNUwucdro84WjswkzM62LCTH
+                to:
+                  type: string
+                  description: 'The address to send the transaction to.'
+                  example: TUwmZghA7u2GxGxKaxM1mkCmsTF4wHs4vp
+                contractaddress:
+                  type: string
+                  description: 'The contract address of the token.'
+                  example: 0x708c419d1b9ae123047f70787a503b6ba51e048a27966e0220cc5feXXXXXXXXX
+                amount:
+                  type: number
+                  description: 'The amount to send.'
+                  example: 1.0
+              required:
+                - from
+                - to
+                - contractaddress
+                - amount
+  /api/v2/tron/transactions/build:
+    post:
+      summary: 'Build TRX transaction (self signing)'
+      operationId: buildTRXTransactionselfSigning
+      description: "This method creates a new TRC20 transaction for self signing, so this method will return the raw transaction hex. <br>\nUsing this method, the transaction will not be broadcasted to the blockchain. <br>\n\nYou should use this method for self signing transactions. <br>\n\nTo send the transaction to the blockchain, you can use the broadcast endpoint. <br>"
+      parameters:
+        -
+          in: header
+          name: X-Network
+          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - testnet
+              - mainnet
+            default: mainnet
+          0:
+            in: header
+            name: Authorization
+            description: 'Bearer token for authorization. Required for authenticated endpoints.'
+            required: true
+            schema:
+              type: string
+          1:
+            in: header
+            name: Content-Type
+            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
+            required: true
+            schema:
+              type: string
+              enum:
+                - application/json
+                - application/x-www-form-urlencoded
+                - multipart/form-data
+              default: application/json
+      responses:
+        201:
+          description: 'Succesfully created transaction'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 201
+                  ok: true
+                  message: 'Succesfully created transaction'
+                  data:
+                    visible: true
+                    txID: b1e0eaa2b4ea985338d6684b796d458ad2c762633ad7b9d8b003542ab067530f
+                    raw_data:
+                      contract:
+                        -
+                          parameter:
+                            value:
+                              amount: 3500000
+                              owner_address: TM7QnQtPGAyMGokd3KjKdTpKjFUgTHW7pP
+                              to_address: TXLd9QHrGF4Kvm4eng1hCcCFoqUGQKBH43
+                            type_url: type.googleapis.com/protocol.TransferContract
+                          type: TransferContract
+                      ref_block_bytes: 3a8f
+                      ref_block_hash: 4989085e2c13dd74
+                      expiration: 1742191278000
+                      timestamp: 1742191220631
+                    raw_data_hex: 0a023a8f22084989085e2c13dd7440b0efc495da325a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a15417a368be0e33278d1a688c290a61bf4c33474ec56121541ea6787eaf73447b41f08c7d3e2957cf7de583b9418e0cfd5017097afc195da32
+                properties:
+                  status:
+                    type: integer
+                    example: 201
+                  ok:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Succesfully created transaction'
+                  data:
+                    type: object
+                    properties:
+                      visible:
+                        type: boolean
+                        example: true
+                      txID:
+                        type: string
+                        example: b1e0eaa2b4ea985338d6684b796d458ad2c762633ad7b9d8b003542ab067530f
+                      raw_data:
+                        type: object
+                        properties:
+                          contract:
+                            type: array
+                            example:
+                              -
+                                parameter:
+                                  value:
+                                    amount: 3500000
+                                    owner_address: TM7QnQtPGAyMGokd3KjKdTpKjFUgTHW7pP
+                                    to_address: TXLd9QHrGF4Kvm4eng1hCcCFoqUGQKBH43
+                                  type_url: type.googleapis.com/protocol.TransferContract
+                                type: TransferContract
+                            items:
+                              type: object
+                              properties:
+                                parameter:
+                                  type: object
+                                  properties:
+                                    value:
+                                      type: object
+                                      properties: { amount: { type: integer, example: 3500000 }, owner_address: { type: string, example: TM7QnQtPGAyMGokd3KjKdTpKjFUgTHW7pP }, to_address: { type: string, example: TXLd9QHrGF4Kvm4eng1hCcCFoqUGQKBH43 } }
+                                    type_url:
+                                      type: string
+                                      example: type.googleapis.com/protocol.TransferContract
+                                type:
+                                  type: string
+                                  example: TransferContract
+                          ref_block_bytes:
+                            type: string
+                            example: 3a8f
+                          ref_block_hash:
+                            type: string
+                            example: 4989085e2c13dd74
+                          expiration:
+                            type: integer
+                            example: 1742191278000
+                          timestamp:
+                            type: integer
+                            example: 1742191220631
+                      raw_data_hex:
+                        type: string
+                        example: 0a023a8f22084989085e2c13dd7440b0efc495da325a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a15417a368be0e33278d1a688c290a61bf4c33474ec56121541ea6787eaf73447b41f08c7d3e2957cf7de583b9418e0cfd5017097afc195da32
+      tags:
+        - 'Tron Transactions'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+                  description: 'The amount to send.'
+                  example: 1.0
+                to:
+                  type: string
+                  description: 'The address to send the transaction to. Must match the regex /^T[a-zA-Z0-9]{33}$/.'
+                  example: TUwmZghA7u2GxGxKaxM1mkCmsTF4wHs4vp
+                from:
+                  type: string
+                  description: 'The address to send the transaction from. Must match the regex /^T[a-zA-Z0-9]{33}$/.'
+                  example: TLkkCeNdJKPNUwucdro84WjswkzM62LCTH
+              required:
+                - amount
+                - to
+                - from
   /api/v2/tron/webhooks:
     get:
       summary: 'Get all webhooks'
@@ -4647,6 +4957,42 @@ paths:
                         deleted_at: null
                         network: mainnet
                         blockchain: tron
+                      -
+                        id: 9e43dbed-1de7-401e-a093-648bf658c63e
+                        user_id: 1
+                        from: twrttvizhkf3lxtiwe9vcnhwc7cbpnxe22
+                        to: twrttvizhkf3lxtiwe9vcnhwc7cbpnxe22
+                        contractaddress: twrttvizhkf3lxtiwe9vcnhwc7cbpnxe22
+                        type: TRC20
+                        token_id: null
+                        url: 'http://vonrueden.com/'
+                        is_active: 1
+                        is_invalid: 0
+                        reason: null
+                        old_id: null
+                        created_at: '2025-02-21T13:01:37.000000Z'
+                        updated_at: '2025-02-21T13:01:37.000000Z'
+                        deleted_at: null
+                        network: mainnet
+                        blockchain: tron
+                      -
+                        id: 9e43f2bc-4ca2-44fd-9a2e-041f2626706c
+                        user_id: 1
+                        from: twrttvizhkf3lxtiwe9vcnhwc7cbpnxe22
+                        to: twrttvizhkf3lxtiwe9vcnhwc7cbpnxe22
+                        contractaddress: twrttvizhkf3lxtiwe9vcnhwc7cbpnxe22
+                        type: TRC20
+                        token_id: null
+                        url: 'https://beta.chaingateway.io'
+                        is_active: 1
+                        is_invalid: 0
+                        reason: null
+                        old_id: null
+                        created_at: '2025-02-21T14:05:24.000000Z'
+                        updated_at: '2025-02-21T14:05:24.000000Z'
+                        deleted_at: null
+                        network: mainnet
+                        blockchain: tron
                 properties:
                   status:
                     type: integer
@@ -4768,6 +5114,42 @@ paths:
                             old_id: null
                             created_at: '2025-02-06T09:23:47.000000Z'
                             updated_at: '2025-02-06T09:23:47.000000Z'
+                            deleted_at: null
+                            network: mainnet
+                            blockchain: tron
+                          -
+                            id: 9e43dbed-1de7-401e-a093-648bf658c63e
+                            user_id: 1
+                            from: twrttvizhkf3lxtiwe9vcnhwc7cbpnxe22
+                            to: twrttvizhkf3lxtiwe9vcnhwc7cbpnxe22
+                            contractaddress: twrttvizhkf3lxtiwe9vcnhwc7cbpnxe22
+                            type: TRC20
+                            token_id: null
+                            url: 'http://vonrueden.com/'
+                            is_active: 1
+                            is_invalid: 0
+                            reason: null
+                            old_id: null
+                            created_at: '2025-02-21T13:01:37.000000Z'
+                            updated_at: '2025-02-21T13:01:37.000000Z'
+                            deleted_at: null
+                            network: mainnet
+                            blockchain: tron
+                          -
+                            id: 9e43f2bc-4ca2-44fd-9a2e-041f2626706c
+                            user_id: 1
+                            from: twrttvizhkf3lxtiwe9vcnhwc7cbpnxe22
+                            to: twrttvizhkf3lxtiwe9vcnhwc7cbpnxe22
+                            contractaddress: twrttvizhkf3lxtiwe9vcnhwc7cbpnxe22
+                            type: TRC20
+                            token_id: null
+                            url: 'https://beta.chaingateway.io'
+                            is_active: 1
+                            is_invalid: 0
+                            reason: null
+                            old_id: null
+                            created_at: '2025-02-21T14:05:24.000000Z'
+                            updated_at: '2025-02-21T14:05:24.000000Z'
                             deleted_at: null
                             network: mainnet
                             blockchain: tron
@@ -9601,888 +9983,6 @@ paths:
         required: true
         schema:
           type: string
-  /api/v2/ethereum/paymaster:
-    post:
-      summary: 'Create Paymaster Request'
-      operationId: createPaymasterRequest
-      description: 'This endpoint is used to create a new paymaster request.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: true
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: 'Succesfully created paymaster requests'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Successfully created paymaster request'
-                  data:
-                    id: 9c72d676-8180-4cd2-a406-f0f1cd097506
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Successfully created paymaster request'
-                  data:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        example: 9c72d676-8180-4cd2-a406-f0f1cd097506
-      tags:
-        - 'Ethereum Paymaster'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                type:
-                  type: string
-                  description: 'The type of transaction, can be Ethereum: ETH, ERC20, ERC721 | BSC: BNB, BEP20, BEP721 | Polygon: POL, ERC20, ERC721.'
-                  example: ETH
-                blockchain:
-                  type: string
-                  description: ''
-                  example: polygon
-                  enum:
-                    - ethereum
-                    - bsc
-                    - polygon
-                from:
-                  type: string
-                  description: 'The address to send the transaction from.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                to:
-                  type: string
-                  description: 'The address to send the transaction to.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                contractaddress:
-                  type: string
-                  description: 'The address of the ERC20 contract. This field is required when <code>type</code> is <code>ERC20</code>, <code>ERC721</code>, <code>BEP20</code>, or <code>BEP721</code>.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                tokenid:
-                  type: number
-                  description: 'The token id of the ERC721 token. This field is required when <code>type</code> is <code>BEP721</code> or <code>ERC721</code>.'
-                  example: 1.0
-                amount:
-                  type: number
-                  description: 'The amount of tokens to send. This field is required when <code>type</code> is <code>ETH</code>, <code>BNB</code>, <code>ERC20</code>, or <code>BEP20</code>.'
-                  example: 10.01
-                password:
-                  type: string
-                  description: 'The password to unlock the wallet if you working with a password protected wallet created with chaingateway. . This field is required when <code>privatekey</code> is not present.'
-                  example: password123
-                privatekey:
-                  type: string
-                  description: 'The private key of the sender if you are not working with password protected wallets created with chaingateway.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                callback_url:
-                  type: string
-                  description: 'The callback url to send the transaction hash to.'
-                  example: 'https://example.com/callback'
-              required:
-                - type
-                - blockchain
-                - from
-                - to
-    get:
-      summary: 'Display all Paymaster Requests.'
-      operationId: displayAllPaymasterRequests
-      description: "The status is indicating the status of the request. Possible values are:\npending: the request is pending\nprocessing: the request is processing. We wait for a successful transaction.\ncompleted: the request is completed\nfailed - [reason]: the request failed, the string behind the dash shows the reason.\n\nAs soon as as the transaction is completed, you will see the resulted transaction in the response parameter 'txid'"
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: 'Succesfully Parsed paymaster requests'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Succesfully Parsed paymaster requests'
-                  current_page: 1
-                  data:
-                    -
-                      id: 9cfbfcaf-68b2-47e9-bf55-5b6b4875e84d
-                      type: TRC20
-                      from: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      to: TPUjdnMrS7XDUFp5W6zgh4QDCW34nXa2x1
-                      contract_address: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: 80a223e0cb20ef692fbd23d3cbaf3cc1dfa2b9667aaef70c7da8ca8f707ec28b
-                      status: success
-                      used_credits: '2.178413'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-11T15:28:57.000000Z'
-                    -
-                      id: 9cfbfff2-a5ca-4268-a219-a7554ecf9fd0
-                      type: TRC20
-                      from: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      to: TPUjdnMrS7XDUFp5W6zgh4QDCW34nXa2x1
-                      contract_address: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
-                      amount: '2832.001791'
-                      token_id: null
-                      transaction_hash: f97400998a9676c6f7a1e5271ef5fbd30eac25d012634ac56e87505c8651fe5d
-                      status: success
-                      used_credits: '1.154359'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-11T13:30:48.000000Z'
-                    -
-                      id: 9cfa0b7a-1fa5-4197-854e-d66fec5a8cb9
-                      type: TRX
-                      from: TTfLc34WGv3RrdEV3WyexrwdkedrFhtqGq
-                      to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      contract_address: null
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: 6ed5ede9898ac4f7f7ab60225e6183e674b7c29b5b1384712958f67f14ea411b
-                      status: success
-                      used_credits: '0.0804'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-10T14:11:23.000000Z'
-                    -
-                      id: 9cfa0964-3e1c-4139-9e5e-ec3f51117da7
-                      type: TRX
-                      from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                      to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      contract_address: null
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: 1ac9ec5ba6fb88aa037c70eff26be46a4c95f19c1fb3ab20c4d630a376bbb1da
-                      status: success
-                      used_credits: '0.0804'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-10T14:05:33.000000Z'
-                    -
-                      id: 9cfa090d-c4a1-4c07-9f32-05eec2ccd9ec
-                      type: TRX
-                      from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                      to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      contract_address: null
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: null
-                      status: failed
-                      used_credits: '0.0804'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-10T14:04:36.000000Z'
-                    -
-                      id: 9cfa08d5-c435-41a3-92d3-881fe1a0d56c
-                      type: TRX
-                      from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                      to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      contract_address: null
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: null
-                      status: failed
-                      used_credits: '0.0804'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-10T14:03:59.000000Z'
-                    -
-                      id: 9cfa0264-d6ab-46fa-a82b-41a32264c3a8
-                      type: TRX
-                      from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                      to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      contract_address: null
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: null
-                      status: failed
-                      used_credits: '0.0804'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-10T13:45:59.000000Z'
-                    -
-                      id: 9cfa0021-5203-4b69-9836-8447b120723b
-                      type: TRX
-                      from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                      to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      contract_address: null
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: null
-                      status: failed
-                      used_credits: '0.0804'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-10T13:39:39.000000Z'
-                    -
-                      id: 9cd3d9a3-191b-4107-a358-396be363cfc3
-                      type: TRC20
-                      from: TM7QnQtPGAyMGokd3KjKdTpKjFUgTHW7pP
-                      to: TXLd9QHrGF4Kvm4eng1hCcCFoqUGQKBH43
-                      contract_address: TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj
-                      amount: '10'
-                      token_id: null
-                      transaction_hash: 9aa115693113c0a1f980f6f4bc8307fb157467792668e076adf7616289204376
-                      status: success
-                      used_credits: '0'
-                      callback_url: null
-                      created_at: '2024-08-22T14:30:33.000000Z'
-                    -
-                      id: 9cd36b3a-cd4e-40f9-8388-6e325e782c49
-                      type: TRC20
-                      from: TM7QnQtPGAyMGokd3KjKdTpKjFUgTHW7pP
-                      to: TXLd9QHrGF4Kvm4eng1hCcCFoqUGQKBH43
-                      contract_address: TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj
-                      amount: '10'
-                      token_id: null
-                      transaction_hash: null
-                      status: failed
-                      used_credits: '0'
-                      callback_url: null
-                      created_at: '2024-08-22T09:21:50.000000Z'
-                  first_page_url: 'http://chaingateway.test:81/api/v2/tron/paymaster?page=1'
-                  from: 1
-                  last_page: 1
-                  last_page_url: 'http://chaingateway.test:81/api/v2/tron/paymaster?page=1'
-                  links:
-                    -
-                      url: null
-                      label: '&laquo; Previous'
-                      active: false
-                    -
-                      url: 'http://chaingateway.test:81/api/v2/tron/paymaster?page=1'
-                      label: '1'
-                      active: true
-                    -
-                      url: null
-                      label: 'Next &raquo;'
-                      active: false
-                  next_page_url: null
-                  path: 'http://chaingateway.test:81/api/v2/tron/paymaster'
-                  per_page: 50
-                  prev_page_url: null
-                  to: 10
-                  total: 10
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Succesfully Parsed paymaster requests'
-                  current_page:
-                    type: integer
-                    example: 1
-                  data:
-                    type: array
-                    example:
-                      -
-                        id: 9cfbfcaf-68b2-47e9-bf55-5b6b4875e84d
-                        type: TRC20
-                        from: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        to: TPUjdnMrS7XDUFp5W6zgh4QDCW34nXa2x1
-                        contract_address: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: 80a223e0cb20ef692fbd23d3cbaf3cc1dfa2b9667aaef70c7da8ca8f707ec28b
-                        status: success
-                        used_credits: '2.178413'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-11T15:28:57.000000Z'
-                      -
-                        id: 9cfbfff2-a5ca-4268-a219-a7554ecf9fd0
-                        type: TRC20
-                        from: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        to: TPUjdnMrS7XDUFp5W6zgh4QDCW34nXa2x1
-                        contract_address: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
-                        amount: '2832.001791'
-                        token_id: null
-                        transaction_hash: f97400998a9676c6f7a1e5271ef5fbd30eac25d012634ac56e87505c8651fe5d
-                        status: success
-                        used_credits: '1.154359'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-11T13:30:48.000000Z'
-                      -
-                        id: 9cfa0b7a-1fa5-4197-854e-d66fec5a8cb9
-                        type: TRX
-                        from: TTfLc34WGv3RrdEV3WyexrwdkedrFhtqGq
-                        to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        contract_address: null
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: 6ed5ede9898ac4f7f7ab60225e6183e674b7c29b5b1384712958f67f14ea411b
-                        status: success
-                        used_credits: '0.0804'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-10T14:11:23.000000Z'
-                      -
-                        id: 9cfa0964-3e1c-4139-9e5e-ec3f51117da7
-                        type: TRX
-                        from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                        to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        contract_address: null
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: 1ac9ec5ba6fb88aa037c70eff26be46a4c95f19c1fb3ab20c4d630a376bbb1da
-                        status: success
-                        used_credits: '0.0804'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-10T14:05:33.000000Z'
-                      -
-                        id: 9cfa090d-c4a1-4c07-9f32-05eec2ccd9ec
-                        type: TRX
-                        from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                        to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        contract_address: null
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: null
-                        status: failed
-                        used_credits: '0.0804'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-10T14:04:36.000000Z'
-                      -
-                        id: 9cfa08d5-c435-41a3-92d3-881fe1a0d56c
-                        type: TRX
-                        from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                        to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        contract_address: null
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: null
-                        status: failed
-                        used_credits: '0.0804'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-10T14:03:59.000000Z'
-                      -
-                        id: 9cfa0264-d6ab-46fa-a82b-41a32264c3a8
-                        type: TRX
-                        from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                        to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        contract_address: null
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: null
-                        status: failed
-                        used_credits: '0.0804'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-10T13:45:59.000000Z'
-                      -
-                        id: 9cfa0021-5203-4b69-9836-8447b120723b
-                        type: TRX
-                        from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                        to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        contract_address: null
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: null
-                        status: failed
-                        used_credits: '0.0804'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-10T13:39:39.000000Z'
-                      -
-                        id: 9cd3d9a3-191b-4107-a358-396be363cfc3
-                        type: TRC20
-                        from: TM7QnQtPGAyMGokd3KjKdTpKjFUgTHW7pP
-                        to: TXLd9QHrGF4Kvm4eng1hCcCFoqUGQKBH43
-                        contract_address: TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj
-                        amount: '10'
-                        token_id: null
-                        transaction_hash: 9aa115693113c0a1f980f6f4bc8307fb157467792668e076adf7616289204376
-                        status: success
-                        used_credits: '0'
-                        callback_url: null
-                        created_at: '2024-08-22T14:30:33.000000Z'
-                      -
-                        id: 9cd36b3a-cd4e-40f9-8388-6e325e782c49
-                        type: TRC20
-                        from: TM7QnQtPGAyMGokd3KjKdTpKjFUgTHW7pP
-                        to: TXLd9QHrGF4Kvm4eng1hCcCFoqUGQKBH43
-                        contract_address: TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj
-                        amount: '10'
-                        token_id: null
-                        transaction_hash: null
-                        status: failed
-                        used_credits: '0'
-                        callback_url: null
-                        created_at: '2024-08-22T09:21:50.000000Z'
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                          example: 9cfbfcaf-68b2-47e9-bf55-5b6b4875e84d
-                        type:
-                          type: string
-                          example: TRC20
-                        from:
-                          type: string
-                          example: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        to:
-                          type: string
-                          example: TPUjdnMrS7XDUFp5W6zgh4QDCW34nXa2x1
-                        contract_address:
-                          type: string
-                          example: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
-                        amount:
-                          type: string
-                          example: '200'
-                        token_id:
-                          type: string
-                          example: null
-                        transaction_hash:
-                          type: string
-                          example: 80a223e0cb20ef692fbd23d3cbaf3cc1dfa2b9667aaef70c7da8ca8f707ec28b
-                        status:
-                          type: string
-                          example: success
-                        used_credits:
-                          type: string
-                          example: '2.178413'
-                        callback_url:
-                          type: string
-                          example: 'https://api.chaingateway.io/receiver/callback'
-                        created_at:
-                          type: string
-                          example: '2024-09-11T15:28:57.000000Z'
-                  first_page_url:
-                    type: string
-                    example: 'http://chaingateway.test:81/api/v2/tron/paymaster?page=1'
-                  from:
-                    type: integer
-                    example: 1
-                  last_page:
-                    type: integer
-                    example: 1
-                  last_page_url:
-                    type: string
-                    example: 'http://chaingateway.test:81/api/v2/tron/paymaster?page=1'
-                  links:
-                    type: array
-                    example:
-                      -
-                        url: null
-                        label: '&laquo; Previous'
-                        active: false
-                      -
-                        url: 'http://chaingateway.test:81/api/v2/tron/paymaster?page=1'
-                        label: '1'
-                        active: true
-                      -
-                        url: null
-                        label: 'Next &raquo;'
-                        active: false
-                    items:
-                      type: object
-                      properties:
-                        url:
-                          type: string
-                          example: null
-                        label:
-                          type: string
-                          example: '&laquo; Previous'
-                        active:
-                          type: boolean
-                          example: false
-                  next_page_url:
-                    type: string
-                    example: null
-                  path:
-                    type: string
-                    example: 'http://chaingateway.test:81/api/v2/tron/paymaster'
-                  per_page:
-                    type: integer
-                    example: 50
-                  prev_page_url:
-                    type: string
-                    example: null
-                  to:
-                    type: integer
-                    example: 10
-                  total:
-                    type: integer
-                    example: 10
-      tags:
-        - 'Ethereum Paymaster'
-  /api/v2/ethereum/paymaster/balance:
-    get:
-      summary: 'Get Paymaster Credit Balance'
-      operationId: getPaymasterCreditBalance
-      description: 'This endpoint is used to get the credit balance of the user.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: 'Successfully fetched user balance'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Successfully fetched user balance'
-                  data:
-                    balance: '100.00'
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Successfully fetched user balance'
-                  data:
-                    type: object
-                    properties:
-                      balance:
-                        type: string
-                        example: '100.00'
-      tags:
-        - 'Ethereum Paymaster'
-  '/api/v2/ethereum/paymaster/{id}':
-    get:
-      summary: 'Display the specified Paymaster Request.'
-      operationId: displayTheSpecifiedPaymasterRequest
-      description: 'This endpoint is used to get the details of a paymaster request.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: 'Successfully fetched paymaster request'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Successfully fetched paymaster request'
-                  data:
-                    id: 9c72d676-8180-4cd2-a406-f0f1cd097506
-                    type: ERC20
-                    from: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
-                    to: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
-                    contract_address: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
-                    amount: '100'
-                    token_id: null
-                    transaction_hash: null
-                    status: pending
-                    used_credits: '0.1'
-                    callback_url: 'https://api.chaingateway.io/receiver/callback'
-                    created_at: '2024-09-11T15:28:57.000000Z'
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Successfully fetched paymaster request'
-                  data:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        example: 9c72d676-8180-4cd2-a406-f0f1cd097506
-                      type:
-                        type: string
-                        example: ERC20
-                      from:
-                        type: string
-                        example: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
-                      to:
-                        type: string
-                        example: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
-                      contract_address:
-                        type: string
-                        example: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
-                      amount:
-                        type: string
-                        example: '100'
-                      token_id:
-                        type: string
-                        example: null
-                      transaction_hash:
-                        type: string
-                        example: null
-                      status:
-                        type: string
-                        example: pending
-                      used_credits:
-                        type: string
-                        example: '0.1'
-                      callback_url:
-                        type: string
-                        example: 'https://api.chaingateway.io/receiver/callback'
-                      created_at:
-                        type: string
-                        example: '2024-09-11T15:28:57.000000Z'
-      tags:
-        - 'Ethereum Paymaster'
-    parameters:
-      -
-        in: path
-        name: id
-        description: 'The ID of the paymaster.'
-        example: architecto
-        required: true
-        schema:
-          type: string
-  /api/v2/ethereum/paymaster/estimate:
-    post:
-      summary: EstimatePaymasterFees
-      operationId: estimatePaymasterFees
-      description: 'This endpoint is used to estimate the paymaster fees for a paymaster request.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: true
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: 'Successfully estimated paymaster fees'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Successfully estimated paymaster fees'
-                  data:
-                    gas: 64000
-                    paymaster_fees: 0.1
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Successfully estimated paymaster fees'
-                  data:
-                    type: object
-                    properties:
-                      gas:
-                        type: integer
-                        example: 64000
-                      paymaster_fees:
-                        type: number
-                        example: 0.1
-      tags:
-        - 'Ethereum Paymaster'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                type:
-                  type: string
-                  description: 'The type of transaction, can be Ethereum: ETH, ERC20, ERC721 | BSC: BNB, BEP20, BEP721 | Polygon: POL, ERC20, ERC721.'
-                  example: ETH
-                blockchain:
-                  type: string
-                  description: ''
-                  example: bsc
-                  enum:
-                    - ethereum
-                    - bsc
-                    - polygon
-                from:
-                  type: string
-                  description: 'The address to send the transaction from.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                to:
-                  type: string
-                  description: 'The address to send the transaction to.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                contractaddress:
-                  type: string
-                  description: 'The address of the ERC20 contract. This field is required when <code>type</code> is <code>ERC20</code>, <code>ERC721</code>, <code>BEP20</code>, or <code>BEP721</code>.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                tokenid:
-                  type: number
-                  description: 'The token id of the ERC721 token. This field is required when <code>type</code> is <code>BEP721</code> or <code>ERC721</code>.'
-                  example: 1.0
-                amount:
-                  type: number
-                  description: 'The amount of tokens to send. This field is required when <code>type</code> is <code>ETH</code>, <code>BNB</code>, <code>ERC20</code>, or <code>BEP20</code>.'
-                  example: 10.01
-                password:
-                  type: string
-                  description: 'The password to unlock the wallet if you working with a password protected wallet created with chaingateway. . This field is required when <code>privatekey</code> is not present.'
-                  example: password123
-                privatekey:
-                  type: string
-                  description: 'The private key of the sender if you are not working with password protected wallets created with chaingateway.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                callback_url:
-                  type: string
-                  description: 'The callback url to send the transaction hash to.'
-                  example: 'https://example.com/callback'
-              required:
-                - type
-                - blockchain
-                - from
-                - to
   /api/v2/ethereum/webhooks:
     get:
       summary: 'Get all webhooks'
@@ -15638,888 +15138,6 @@ paths:
         required: true
         schema:
           type: string
-  /api/v2/bsc/paymaster:
-    post:
-      summary: 'Create Paymaster Request'
-      operationId: createPaymasterRequest
-      description: 'This endpoint is used to create a new paymaster request.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: true
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: 'Succesfully created paymaster requests'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Successfully created paymaster request'
-                  data:
-                    id: 9c72d676-8180-4cd2-a406-f0f1cd097506
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Successfully created paymaster request'
-                  data:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        example: 9c72d676-8180-4cd2-a406-f0f1cd097506
-      tags:
-        - 'BSC Paymaster'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                type:
-                  type: string
-                  description: 'The type of transaction, can be Ethereum: ETH, ERC20, ERC721 | BSC: BNB, BEP20, BEP721 | Polygon: POL, ERC20, ERC721.'
-                  example: ETH
-                blockchain:
-                  type: string
-                  description: ''
-                  example: polygon
-                  enum:
-                    - ethereum
-                    - bsc
-                    - polygon
-                from:
-                  type: string
-                  description: 'The address to send the transaction from.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                to:
-                  type: string
-                  description: 'The address to send the transaction to.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                contractaddress:
-                  type: string
-                  description: 'The address of the ERC20 contract. This field is required when <code>type</code> is <code>ERC20</code>, <code>ERC721</code>, <code>BEP20</code>, or <code>BEP721</code>.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                tokenid:
-                  type: number
-                  description: 'The token id of the ERC721 token. This field is required when <code>type</code> is <code>BEP721</code> or <code>ERC721</code>.'
-                  example: 1.0
-                amount:
-                  type: number
-                  description: 'The amount of tokens to send. This field is required when <code>type</code> is <code>ETH</code>, <code>BNB</code>, <code>ERC20</code>, or <code>BEP20</code>.'
-                  example: 10.01
-                password:
-                  type: string
-                  description: 'The password to unlock the wallet if you working with a password protected wallet created with chaingateway. . This field is required when <code>privatekey</code> is not present.'
-                  example: password123
-                privatekey:
-                  type: string
-                  description: 'The private key of the sender if you are not working with password protected wallets created with chaingateway.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                callback_url:
-                  type: string
-                  description: 'The callback url to send the transaction hash to.'
-                  example: 'https://example.com/callback'
-              required:
-                - type
-                - blockchain
-                - from
-                - to
-    get:
-      summary: 'Display all Paymaster Requests.'
-      operationId: displayAllPaymasterRequests
-      description: "The status is indicating the status of the request. Possible values are:\npending: the request is pending\nprocessing: the request is processing. We wait for a successful transaction.\ncompleted: the request is completed\nfailed - [reason]: the request failed, the string behind the dash shows the reason.\n\nAs soon as as the transaction is completed, you will see the resulted transaction in the response parameter 'txid'"
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: 'Succesfully Parsed paymaster requests'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Succesfully Parsed paymaster requests'
-                  current_page: 1
-                  data:
-                    -
-                      id: 9cfbfcaf-68b2-47e9-bf55-5b6b4875e84d
-                      type: TRC20
-                      from: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      to: TPUjdnMrS7XDUFp5W6zgh4QDCW34nXa2x1
-                      contract_address: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: 80a223e0cb20ef692fbd23d3cbaf3cc1dfa2b9667aaef70c7da8ca8f707ec28b
-                      status: success
-                      used_credits: '2.178413'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-11T15:28:57.000000Z'
-                    -
-                      id: 9cfbfff2-a5ca-4268-a219-a7554ecf9fd0
-                      type: TRC20
-                      from: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      to: TPUjdnMrS7XDUFp5W6zgh4QDCW34nXa2x1
-                      contract_address: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
-                      amount: '2832.001791'
-                      token_id: null
-                      transaction_hash: f97400998a9676c6f7a1e5271ef5fbd30eac25d012634ac56e87505c8651fe5d
-                      status: success
-                      used_credits: '1.154359'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-11T13:30:48.000000Z'
-                    -
-                      id: 9cfa0b7a-1fa5-4197-854e-d66fec5a8cb9
-                      type: TRX
-                      from: TTfLc34WGv3RrdEV3WyexrwdkedrFhtqGq
-                      to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      contract_address: null
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: 6ed5ede9898ac4f7f7ab60225e6183e674b7c29b5b1384712958f67f14ea411b
-                      status: success
-                      used_credits: '0.0804'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-10T14:11:23.000000Z'
-                    -
-                      id: 9cfa0964-3e1c-4139-9e5e-ec3f51117da7
-                      type: TRX
-                      from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                      to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      contract_address: null
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: 1ac9ec5ba6fb88aa037c70eff26be46a4c95f19c1fb3ab20c4d630a376bbb1da
-                      status: success
-                      used_credits: '0.0804'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-10T14:05:33.000000Z'
-                    -
-                      id: 9cfa090d-c4a1-4c07-9f32-05eec2ccd9ec
-                      type: TRX
-                      from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                      to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      contract_address: null
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: null
-                      status: failed
-                      used_credits: '0.0804'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-10T14:04:36.000000Z'
-                    -
-                      id: 9cfa08d5-c435-41a3-92d3-881fe1a0d56c
-                      type: TRX
-                      from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                      to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      contract_address: null
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: null
-                      status: failed
-                      used_credits: '0.0804'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-10T14:03:59.000000Z'
-                    -
-                      id: 9cfa0264-d6ab-46fa-a82b-41a32264c3a8
-                      type: TRX
-                      from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                      to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      contract_address: null
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: null
-                      status: failed
-                      used_credits: '0.0804'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-10T13:45:59.000000Z'
-                    -
-                      id: 9cfa0021-5203-4b69-9836-8447b120723b
-                      type: TRX
-                      from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                      to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      contract_address: null
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: null
-                      status: failed
-                      used_credits: '0.0804'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-10T13:39:39.000000Z'
-                    -
-                      id: 9cd3d9a3-191b-4107-a358-396be363cfc3
-                      type: TRC20
-                      from: TM7QnQtPGAyMGokd3KjKdTpKjFUgTHW7pP
-                      to: TXLd9QHrGF4Kvm4eng1hCcCFoqUGQKBH43
-                      contract_address: TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj
-                      amount: '10'
-                      token_id: null
-                      transaction_hash: 9aa115693113c0a1f980f6f4bc8307fb157467792668e076adf7616289204376
-                      status: success
-                      used_credits: '0'
-                      callback_url: null
-                      created_at: '2024-08-22T14:30:33.000000Z'
-                    -
-                      id: 9cd36b3a-cd4e-40f9-8388-6e325e782c49
-                      type: TRC20
-                      from: TM7QnQtPGAyMGokd3KjKdTpKjFUgTHW7pP
-                      to: TXLd9QHrGF4Kvm4eng1hCcCFoqUGQKBH43
-                      contract_address: TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj
-                      amount: '10'
-                      token_id: null
-                      transaction_hash: null
-                      status: failed
-                      used_credits: '0'
-                      callback_url: null
-                      created_at: '2024-08-22T09:21:50.000000Z'
-                  first_page_url: 'http://chaingateway.test:81/api/v2/tron/paymaster?page=1'
-                  from: 1
-                  last_page: 1
-                  last_page_url: 'http://chaingateway.test:81/api/v2/tron/paymaster?page=1'
-                  links:
-                    -
-                      url: null
-                      label: '&laquo; Previous'
-                      active: false
-                    -
-                      url: 'http://chaingateway.test:81/api/v2/tron/paymaster?page=1'
-                      label: '1'
-                      active: true
-                    -
-                      url: null
-                      label: 'Next &raquo;'
-                      active: false
-                  next_page_url: null
-                  path: 'http://chaingateway.test:81/api/v2/tron/paymaster'
-                  per_page: 50
-                  prev_page_url: null
-                  to: 10
-                  total: 10
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Succesfully Parsed paymaster requests'
-                  current_page:
-                    type: integer
-                    example: 1
-                  data:
-                    type: array
-                    example:
-                      -
-                        id: 9cfbfcaf-68b2-47e9-bf55-5b6b4875e84d
-                        type: TRC20
-                        from: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        to: TPUjdnMrS7XDUFp5W6zgh4QDCW34nXa2x1
-                        contract_address: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: 80a223e0cb20ef692fbd23d3cbaf3cc1dfa2b9667aaef70c7da8ca8f707ec28b
-                        status: success
-                        used_credits: '2.178413'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-11T15:28:57.000000Z'
-                      -
-                        id: 9cfbfff2-a5ca-4268-a219-a7554ecf9fd0
-                        type: TRC20
-                        from: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        to: TPUjdnMrS7XDUFp5W6zgh4QDCW34nXa2x1
-                        contract_address: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
-                        amount: '2832.001791'
-                        token_id: null
-                        transaction_hash: f97400998a9676c6f7a1e5271ef5fbd30eac25d012634ac56e87505c8651fe5d
-                        status: success
-                        used_credits: '1.154359'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-11T13:30:48.000000Z'
-                      -
-                        id: 9cfa0b7a-1fa5-4197-854e-d66fec5a8cb9
-                        type: TRX
-                        from: TTfLc34WGv3RrdEV3WyexrwdkedrFhtqGq
-                        to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        contract_address: null
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: 6ed5ede9898ac4f7f7ab60225e6183e674b7c29b5b1384712958f67f14ea411b
-                        status: success
-                        used_credits: '0.0804'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-10T14:11:23.000000Z'
-                      -
-                        id: 9cfa0964-3e1c-4139-9e5e-ec3f51117da7
-                        type: TRX
-                        from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                        to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        contract_address: null
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: 1ac9ec5ba6fb88aa037c70eff26be46a4c95f19c1fb3ab20c4d630a376bbb1da
-                        status: success
-                        used_credits: '0.0804'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-10T14:05:33.000000Z'
-                      -
-                        id: 9cfa090d-c4a1-4c07-9f32-05eec2ccd9ec
-                        type: TRX
-                        from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                        to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        contract_address: null
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: null
-                        status: failed
-                        used_credits: '0.0804'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-10T14:04:36.000000Z'
-                      -
-                        id: 9cfa08d5-c435-41a3-92d3-881fe1a0d56c
-                        type: TRX
-                        from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                        to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        contract_address: null
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: null
-                        status: failed
-                        used_credits: '0.0804'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-10T14:03:59.000000Z'
-                      -
-                        id: 9cfa0264-d6ab-46fa-a82b-41a32264c3a8
-                        type: TRX
-                        from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                        to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        contract_address: null
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: null
-                        status: failed
-                        used_credits: '0.0804'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-10T13:45:59.000000Z'
-                      -
-                        id: 9cfa0021-5203-4b69-9836-8447b120723b
-                        type: TRX
-                        from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                        to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        contract_address: null
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: null
-                        status: failed
-                        used_credits: '0.0804'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-10T13:39:39.000000Z'
-                      -
-                        id: 9cd3d9a3-191b-4107-a358-396be363cfc3
-                        type: TRC20
-                        from: TM7QnQtPGAyMGokd3KjKdTpKjFUgTHW7pP
-                        to: TXLd9QHrGF4Kvm4eng1hCcCFoqUGQKBH43
-                        contract_address: TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj
-                        amount: '10'
-                        token_id: null
-                        transaction_hash: 9aa115693113c0a1f980f6f4bc8307fb157467792668e076adf7616289204376
-                        status: success
-                        used_credits: '0'
-                        callback_url: null
-                        created_at: '2024-08-22T14:30:33.000000Z'
-                      -
-                        id: 9cd36b3a-cd4e-40f9-8388-6e325e782c49
-                        type: TRC20
-                        from: TM7QnQtPGAyMGokd3KjKdTpKjFUgTHW7pP
-                        to: TXLd9QHrGF4Kvm4eng1hCcCFoqUGQKBH43
-                        contract_address: TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj
-                        amount: '10'
-                        token_id: null
-                        transaction_hash: null
-                        status: failed
-                        used_credits: '0'
-                        callback_url: null
-                        created_at: '2024-08-22T09:21:50.000000Z'
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                          example: 9cfbfcaf-68b2-47e9-bf55-5b6b4875e84d
-                        type:
-                          type: string
-                          example: TRC20
-                        from:
-                          type: string
-                          example: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        to:
-                          type: string
-                          example: TPUjdnMrS7XDUFp5W6zgh4QDCW34nXa2x1
-                        contract_address:
-                          type: string
-                          example: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
-                        amount:
-                          type: string
-                          example: '200'
-                        token_id:
-                          type: string
-                          example: null
-                        transaction_hash:
-                          type: string
-                          example: 80a223e0cb20ef692fbd23d3cbaf3cc1dfa2b9667aaef70c7da8ca8f707ec28b
-                        status:
-                          type: string
-                          example: success
-                        used_credits:
-                          type: string
-                          example: '2.178413'
-                        callback_url:
-                          type: string
-                          example: 'https://api.chaingateway.io/receiver/callback'
-                        created_at:
-                          type: string
-                          example: '2024-09-11T15:28:57.000000Z'
-                  first_page_url:
-                    type: string
-                    example: 'http://chaingateway.test:81/api/v2/tron/paymaster?page=1'
-                  from:
-                    type: integer
-                    example: 1
-                  last_page:
-                    type: integer
-                    example: 1
-                  last_page_url:
-                    type: string
-                    example: 'http://chaingateway.test:81/api/v2/tron/paymaster?page=1'
-                  links:
-                    type: array
-                    example:
-                      -
-                        url: null
-                        label: '&laquo; Previous'
-                        active: false
-                      -
-                        url: 'http://chaingateway.test:81/api/v2/tron/paymaster?page=1'
-                        label: '1'
-                        active: true
-                      -
-                        url: null
-                        label: 'Next &raquo;'
-                        active: false
-                    items:
-                      type: object
-                      properties:
-                        url:
-                          type: string
-                          example: null
-                        label:
-                          type: string
-                          example: '&laquo; Previous'
-                        active:
-                          type: boolean
-                          example: false
-                  next_page_url:
-                    type: string
-                    example: null
-                  path:
-                    type: string
-                    example: 'http://chaingateway.test:81/api/v2/tron/paymaster'
-                  per_page:
-                    type: integer
-                    example: 50
-                  prev_page_url:
-                    type: string
-                    example: null
-                  to:
-                    type: integer
-                    example: 10
-                  total:
-                    type: integer
-                    example: 10
-      tags:
-        - 'BSC Paymaster'
-  /api/v2/bsc/paymaster/balance:
-    get:
-      summary: 'Get Paymaster Credit Balance'
-      operationId: getPaymasterCreditBalance
-      description: 'This endpoint is used to get the credit balance of the user.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: 'Successfully fetched user balance'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Successfully fetched user balance'
-                  data:
-                    balance: '100.00'
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Successfully fetched user balance'
-                  data:
-                    type: object
-                    properties:
-                      balance:
-                        type: string
-                        example: '100.00'
-      tags:
-        - 'BSC Paymaster'
-  '/api/v2/bsc/paymaster/{id}':
-    get:
-      summary: 'Display the specified Paymaster Request.'
-      operationId: displayTheSpecifiedPaymasterRequest
-      description: 'This endpoint is used to get the details of a paymaster request.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: 'Successfully fetched paymaster request'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Successfully fetched paymaster request'
-                  data:
-                    id: 9c72d676-8180-4cd2-a406-f0f1cd097506
-                    type: ERC20
-                    from: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
-                    to: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
-                    contract_address: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
-                    amount: '100'
-                    token_id: null
-                    transaction_hash: null
-                    status: pending
-                    used_credits: '0.1'
-                    callback_url: 'https://api.chaingateway.io/receiver/callback'
-                    created_at: '2024-09-11T15:28:57.000000Z'
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Successfully fetched paymaster request'
-                  data:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        example: 9c72d676-8180-4cd2-a406-f0f1cd097506
-                      type:
-                        type: string
-                        example: ERC20
-                      from:
-                        type: string
-                        example: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
-                      to:
-                        type: string
-                        example: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
-                      contract_address:
-                        type: string
-                        example: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
-                      amount:
-                        type: string
-                        example: '100'
-                      token_id:
-                        type: string
-                        example: null
-                      transaction_hash:
-                        type: string
-                        example: null
-                      status:
-                        type: string
-                        example: pending
-                      used_credits:
-                        type: string
-                        example: '0.1'
-                      callback_url:
-                        type: string
-                        example: 'https://api.chaingateway.io/receiver/callback'
-                      created_at:
-                        type: string
-                        example: '2024-09-11T15:28:57.000000Z'
-      tags:
-        - 'BSC Paymaster'
-    parameters:
-      -
-        in: path
-        name: id
-        description: 'The ID of the paymaster.'
-        example: architecto
-        required: true
-        schema:
-          type: string
-  /api/v2/bsc/paymaster/estimate:
-    post:
-      summary: EstimatePaymasterFees
-      operationId: estimatePaymasterFees
-      description: 'This endpoint is used to estimate the paymaster fees for a paymaster request.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: true
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: 'Successfully estimated paymaster fees'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Successfully estimated paymaster fees'
-                  data:
-                    gas: 64000
-                    paymaster_fees: 0.1
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Successfully estimated paymaster fees'
-                  data:
-                    type: object
-                    properties:
-                      gas:
-                        type: integer
-                        example: 64000
-                      paymaster_fees:
-                        type: number
-                        example: 0.1
-      tags:
-        - 'BSC Paymaster'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                type:
-                  type: string
-                  description: 'The type of transaction, can be Ethereum: ETH, ERC20, ERC721 | BSC: BNB, BEP20, BEP721 | Polygon: POL, ERC20, ERC721.'
-                  example: ETH
-                blockchain:
-                  type: string
-                  description: ''
-                  example: ethereum
-                  enum:
-                    - ethereum
-                    - bsc
-                    - polygon
-                from:
-                  type: string
-                  description: 'The address to send the transaction from.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                to:
-                  type: string
-                  description: 'The address to send the transaction to.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                contractaddress:
-                  type: string
-                  description: 'The address of the ERC20 contract. This field is required when <code>type</code> is <code>ERC20</code>, <code>ERC721</code>, <code>BEP20</code>, or <code>BEP721</code>.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                tokenid:
-                  type: number
-                  description: 'The token id of the ERC721 token. This field is required when <code>type</code> is <code>BEP721</code> or <code>ERC721</code>.'
-                  example: 1.0
-                amount:
-                  type: number
-                  description: 'The amount of tokens to send. This field is required when <code>type</code> is <code>ETH</code>, <code>BNB</code>, <code>ERC20</code>, or <code>BEP20</code>.'
-                  example: 10.01
-                password:
-                  type: string
-                  description: 'The password to unlock the wallet if you working with a password protected wallet created with chaingateway. . This field is required when <code>privatekey</code> is not present.'
-                  example: password123
-                privatekey:
-                  type: string
-                  description: 'The private key of the sender if you are not working with password protected wallets created with chaingateway.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                callback_url:
-                  type: string
-                  description: 'The callback url to send the transaction hash to.'
-                  example: 'https://example.com/callback'
-              required:
-                - type
-                - blockchain
-                - from
-                - to
   /api/v2/bsc/webhooks:
     get:
       summary: 'Get all webhooks'
@@ -24643,888 +23261,6 @@ paths:
         required: true
         schema:
           type: string
-  /api/v2/polygon/paymaster:
-    post:
-      summary: 'Create Paymaster Request'
-      operationId: createPaymasterRequest
-      description: 'This endpoint is used to create a new paymaster request.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: true
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: 'Succesfully created paymaster requests'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Successfully created paymaster request'
-                  data:
-                    id: 9c72d676-8180-4cd2-a406-f0f1cd097506
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Successfully created paymaster request'
-                  data:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        example: 9c72d676-8180-4cd2-a406-f0f1cd097506
-      tags:
-        - 'Polygon Paymaster'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                type:
-                  type: string
-                  description: 'The type of transaction, can be Ethereum: ETH, ERC20, ERC721 | BSC: BNB, BEP20, BEP721 | Polygon: POL, ERC20, ERC721.'
-                  example: ETH
-                blockchain:
-                  type: string
-                  description: ''
-                  example: ethereum
-                  enum:
-                    - ethereum
-                    - bsc
-                    - polygon
-                from:
-                  type: string
-                  description: 'The address to send the transaction from.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                to:
-                  type: string
-                  description: 'The address to send the transaction to.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                contractaddress:
-                  type: string
-                  description: 'The address of the ERC20 contract. This field is required when <code>type</code> is <code>ERC20</code>, <code>ERC721</code>, <code>BEP20</code>, or <code>BEP721</code>.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                tokenid:
-                  type: number
-                  description: 'The token id of the ERC721 token. This field is required when <code>type</code> is <code>BEP721</code> or <code>ERC721</code>.'
-                  example: 1.0
-                amount:
-                  type: number
-                  description: 'The amount of tokens to send. This field is required when <code>type</code> is <code>ETH</code>, <code>BNB</code>, <code>ERC20</code>, or <code>BEP20</code>.'
-                  example: 10.01
-                password:
-                  type: string
-                  description: 'The password to unlock the wallet if you working with a password protected wallet created with chaingateway. . This field is required when <code>privatekey</code> is not present.'
-                  example: password123
-                privatekey:
-                  type: string
-                  description: 'The private key of the sender if you are not working with password protected wallets created with chaingateway.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                callback_url:
-                  type: string
-                  description: 'The callback url to send the transaction hash to.'
-                  example: 'https://example.com/callback'
-              required:
-                - type
-                - blockchain
-                - from
-                - to
-    get:
-      summary: 'Display all Paymaster Requests.'
-      operationId: displayAllPaymasterRequests
-      description: "The status is indicating the status of the request. Possible values are:\npending: the request is pending\nprocessing: the request is processing. We wait for a successful transaction.\ncompleted: the request is completed\nfailed - [reason]: the request failed, the string behind the dash shows the reason.\n\nAs soon as as the transaction is completed, you will see the resulted transaction in the response parameter 'txid'"
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: 'Succesfully Parsed paymaster requests'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Succesfully Parsed paymaster requests'
-                  current_page: 1
-                  data:
-                    -
-                      id: 9cfbfcaf-68b2-47e9-bf55-5b6b4875e84d
-                      type: TRC20
-                      from: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      to: TPUjdnMrS7XDUFp5W6zgh4QDCW34nXa2x1
-                      contract_address: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: 80a223e0cb20ef692fbd23d3cbaf3cc1dfa2b9667aaef70c7da8ca8f707ec28b
-                      status: success
-                      used_credits: '2.178413'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-11T15:28:57.000000Z'
-                    -
-                      id: 9cfbfff2-a5ca-4268-a219-a7554ecf9fd0
-                      type: TRC20
-                      from: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      to: TPUjdnMrS7XDUFp5W6zgh4QDCW34nXa2x1
-                      contract_address: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
-                      amount: '2832.001791'
-                      token_id: null
-                      transaction_hash: f97400998a9676c6f7a1e5271ef5fbd30eac25d012634ac56e87505c8651fe5d
-                      status: success
-                      used_credits: '1.154359'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-11T13:30:48.000000Z'
-                    -
-                      id: 9cfa0b7a-1fa5-4197-854e-d66fec5a8cb9
-                      type: TRX
-                      from: TTfLc34WGv3RrdEV3WyexrwdkedrFhtqGq
-                      to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      contract_address: null
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: 6ed5ede9898ac4f7f7ab60225e6183e674b7c29b5b1384712958f67f14ea411b
-                      status: success
-                      used_credits: '0.0804'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-10T14:11:23.000000Z'
-                    -
-                      id: 9cfa0964-3e1c-4139-9e5e-ec3f51117da7
-                      type: TRX
-                      from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                      to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      contract_address: null
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: 1ac9ec5ba6fb88aa037c70eff26be46a4c95f19c1fb3ab20c4d630a376bbb1da
-                      status: success
-                      used_credits: '0.0804'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-10T14:05:33.000000Z'
-                    -
-                      id: 9cfa090d-c4a1-4c07-9f32-05eec2ccd9ec
-                      type: TRX
-                      from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                      to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      contract_address: null
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: null
-                      status: failed
-                      used_credits: '0.0804'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-10T14:04:36.000000Z'
-                    -
-                      id: 9cfa08d5-c435-41a3-92d3-881fe1a0d56c
-                      type: TRX
-                      from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                      to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      contract_address: null
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: null
-                      status: failed
-                      used_credits: '0.0804'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-10T14:03:59.000000Z'
-                    -
-                      id: 9cfa0264-d6ab-46fa-a82b-41a32264c3a8
-                      type: TRX
-                      from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                      to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      contract_address: null
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: null
-                      status: failed
-                      used_credits: '0.0804'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-10T13:45:59.000000Z'
-                    -
-                      id: 9cfa0021-5203-4b69-9836-8447b120723b
-                      type: TRX
-                      from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                      to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                      contract_address: null
-                      amount: '200'
-                      token_id: null
-                      transaction_hash: null
-                      status: failed
-                      used_credits: '0.0804'
-                      callback_url: 'https://api.chaingateway.io/receiver/callback'
-                      created_at: '2024-09-10T13:39:39.000000Z'
-                    -
-                      id: 9cd3d9a3-191b-4107-a358-396be363cfc3
-                      type: TRC20
-                      from: TM7QnQtPGAyMGokd3KjKdTpKjFUgTHW7pP
-                      to: TXLd9QHrGF4Kvm4eng1hCcCFoqUGQKBH43
-                      contract_address: TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj
-                      amount: '10'
-                      token_id: null
-                      transaction_hash: 9aa115693113c0a1f980f6f4bc8307fb157467792668e076adf7616289204376
-                      status: success
-                      used_credits: '0'
-                      callback_url: null
-                      created_at: '2024-08-22T14:30:33.000000Z'
-                    -
-                      id: 9cd36b3a-cd4e-40f9-8388-6e325e782c49
-                      type: TRC20
-                      from: TM7QnQtPGAyMGokd3KjKdTpKjFUgTHW7pP
-                      to: TXLd9QHrGF4Kvm4eng1hCcCFoqUGQKBH43
-                      contract_address: TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj
-                      amount: '10'
-                      token_id: null
-                      transaction_hash: null
-                      status: failed
-                      used_credits: '0'
-                      callback_url: null
-                      created_at: '2024-08-22T09:21:50.000000Z'
-                  first_page_url: 'http://chaingateway.test:81/api/v2/tron/paymaster?page=1'
-                  from: 1
-                  last_page: 1
-                  last_page_url: 'http://chaingateway.test:81/api/v2/tron/paymaster?page=1'
-                  links:
-                    -
-                      url: null
-                      label: '&laquo; Previous'
-                      active: false
-                    -
-                      url: 'http://chaingateway.test:81/api/v2/tron/paymaster?page=1'
-                      label: '1'
-                      active: true
-                    -
-                      url: null
-                      label: 'Next &raquo;'
-                      active: false
-                  next_page_url: null
-                  path: 'http://chaingateway.test:81/api/v2/tron/paymaster'
-                  per_page: 50
-                  prev_page_url: null
-                  to: 10
-                  total: 10
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Succesfully Parsed paymaster requests'
-                  current_page:
-                    type: integer
-                    example: 1
-                  data:
-                    type: array
-                    example:
-                      -
-                        id: 9cfbfcaf-68b2-47e9-bf55-5b6b4875e84d
-                        type: TRC20
-                        from: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        to: TPUjdnMrS7XDUFp5W6zgh4QDCW34nXa2x1
-                        contract_address: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: 80a223e0cb20ef692fbd23d3cbaf3cc1dfa2b9667aaef70c7da8ca8f707ec28b
-                        status: success
-                        used_credits: '2.178413'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-11T15:28:57.000000Z'
-                      -
-                        id: 9cfbfff2-a5ca-4268-a219-a7554ecf9fd0
-                        type: TRC20
-                        from: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        to: TPUjdnMrS7XDUFp5W6zgh4QDCW34nXa2x1
-                        contract_address: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
-                        amount: '2832.001791'
-                        token_id: null
-                        transaction_hash: f97400998a9676c6f7a1e5271ef5fbd30eac25d012634ac56e87505c8651fe5d
-                        status: success
-                        used_credits: '1.154359'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-11T13:30:48.000000Z'
-                      -
-                        id: 9cfa0b7a-1fa5-4197-854e-d66fec5a8cb9
-                        type: TRX
-                        from: TTfLc34WGv3RrdEV3WyexrwdkedrFhtqGq
-                        to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        contract_address: null
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: 6ed5ede9898ac4f7f7ab60225e6183e674b7c29b5b1384712958f67f14ea411b
-                        status: success
-                        used_credits: '0.0804'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-10T14:11:23.000000Z'
-                      -
-                        id: 9cfa0964-3e1c-4139-9e5e-ec3f51117da7
-                        type: TRX
-                        from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                        to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        contract_address: null
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: 1ac9ec5ba6fb88aa037c70eff26be46a4c95f19c1fb3ab20c4d630a376bbb1da
-                        status: success
-                        used_credits: '0.0804'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-10T14:05:33.000000Z'
-                      -
-                        id: 9cfa090d-c4a1-4c07-9f32-05eec2ccd9ec
-                        type: TRX
-                        from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                        to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        contract_address: null
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: null
-                        status: failed
-                        used_credits: '0.0804'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-10T14:04:36.000000Z'
-                      -
-                        id: 9cfa08d5-c435-41a3-92d3-881fe1a0d56c
-                        type: TRX
-                        from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                        to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        contract_address: null
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: null
-                        status: failed
-                        used_credits: '0.0804'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-10T14:03:59.000000Z'
-                      -
-                        id: 9cfa0264-d6ab-46fa-a82b-41a32264c3a8
-                        type: TRX
-                        from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                        to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        contract_address: null
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: null
-                        status: failed
-                        used_credits: '0.0804'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-10T13:45:59.000000Z'
-                      -
-                        id: 9cfa0021-5203-4b69-9836-8447b120723b
-                        type: TRX
-                        from: TRW4pjnfBnJ7u9gfhdHzQYhtqnJEYX68Qn
-                        to: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        contract_address: null
-                        amount: '200'
-                        token_id: null
-                        transaction_hash: null
-                        status: failed
-                        used_credits: '0.0804'
-                        callback_url: 'https://api.chaingateway.io/receiver/callback'
-                        created_at: '2024-09-10T13:39:39.000000Z'
-                      -
-                        id: 9cd3d9a3-191b-4107-a358-396be363cfc3
-                        type: TRC20
-                        from: TM7QnQtPGAyMGokd3KjKdTpKjFUgTHW7pP
-                        to: TXLd9QHrGF4Kvm4eng1hCcCFoqUGQKBH43
-                        contract_address: TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj
-                        amount: '10'
-                        token_id: null
-                        transaction_hash: 9aa115693113c0a1f980f6f4bc8307fb157467792668e076adf7616289204376
-                        status: success
-                        used_credits: '0'
-                        callback_url: null
-                        created_at: '2024-08-22T14:30:33.000000Z'
-                      -
-                        id: 9cd36b3a-cd4e-40f9-8388-6e325e782c49
-                        type: TRC20
-                        from: TM7QnQtPGAyMGokd3KjKdTpKjFUgTHW7pP
-                        to: TXLd9QHrGF4Kvm4eng1hCcCFoqUGQKBH43
-                        contract_address: TXLAQ63Xg1NAzckPwKHvzw7CSEmLMEqcdj
-                        amount: '10'
-                        token_id: null
-                        transaction_hash: null
-                        status: failed
-                        used_credits: '0'
-                        callback_url: null
-                        created_at: '2024-08-22T09:21:50.000000Z'
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                          example: 9cfbfcaf-68b2-47e9-bf55-5b6b4875e84d
-                        type:
-                          type: string
-                          example: TRC20
-                        from:
-                          type: string
-                          example: THG9nncwASg3ub5rvVquocAHwwQbnKZxpH
-                        to:
-                          type: string
-                          example: TPUjdnMrS7XDUFp5W6zgh4QDCW34nXa2x1
-                        contract_address:
-                          type: string
-                          example: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
-                        amount:
-                          type: string
-                          example: '200'
-                        token_id:
-                          type: string
-                          example: null
-                        transaction_hash:
-                          type: string
-                          example: 80a223e0cb20ef692fbd23d3cbaf3cc1dfa2b9667aaef70c7da8ca8f707ec28b
-                        status:
-                          type: string
-                          example: success
-                        used_credits:
-                          type: string
-                          example: '2.178413'
-                        callback_url:
-                          type: string
-                          example: 'https://api.chaingateway.io/receiver/callback'
-                        created_at:
-                          type: string
-                          example: '2024-09-11T15:28:57.000000Z'
-                  first_page_url:
-                    type: string
-                    example: 'http://chaingateway.test:81/api/v2/tron/paymaster?page=1'
-                  from:
-                    type: integer
-                    example: 1
-                  last_page:
-                    type: integer
-                    example: 1
-                  last_page_url:
-                    type: string
-                    example: 'http://chaingateway.test:81/api/v2/tron/paymaster?page=1'
-                  links:
-                    type: array
-                    example:
-                      -
-                        url: null
-                        label: '&laquo; Previous'
-                        active: false
-                      -
-                        url: 'http://chaingateway.test:81/api/v2/tron/paymaster?page=1'
-                        label: '1'
-                        active: true
-                      -
-                        url: null
-                        label: 'Next &raquo;'
-                        active: false
-                    items:
-                      type: object
-                      properties:
-                        url:
-                          type: string
-                          example: null
-                        label:
-                          type: string
-                          example: '&laquo; Previous'
-                        active:
-                          type: boolean
-                          example: false
-                  next_page_url:
-                    type: string
-                    example: null
-                  path:
-                    type: string
-                    example: 'http://chaingateway.test:81/api/v2/tron/paymaster'
-                  per_page:
-                    type: integer
-                    example: 50
-                  prev_page_url:
-                    type: string
-                    example: null
-                  to:
-                    type: integer
-                    example: 10
-                  total:
-                    type: integer
-                    example: 10
-      tags:
-        - 'Polygon Paymaster'
-  /api/v2/polygon/paymaster/balance:
-    get:
-      summary: 'Get Paymaster Credit Balance'
-      operationId: getPaymasterCreditBalance
-      description: 'This endpoint is used to get the credit balance of the user.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: 'Successfully fetched user balance'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Successfully fetched user balance'
-                  data:
-                    balance: '100.00'
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Successfully fetched user balance'
-                  data:
-                    type: object
-                    properties:
-                      balance:
-                        type: string
-                        example: '100.00'
-      tags:
-        - 'Polygon Paymaster'
-  '/api/v2/polygon/paymaster/{id}':
-    get:
-      summary: 'Display the specified Paymaster Request.'
-      operationId: displayTheSpecifiedPaymasterRequest
-      description: 'This endpoint is used to get the details of a paymaster request.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: false
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: 'Successfully fetched paymaster request'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Successfully fetched paymaster request'
-                  data:
-                    id: 9c72d676-8180-4cd2-a406-f0f1cd097506
-                    type: ERC20
-                    from: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
-                    to: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
-                    contract_address: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
-                    amount: '100'
-                    token_id: null
-                    transaction_hash: null
-                    status: pending
-                    used_credits: '0.1'
-                    callback_url: 'https://api.chaingateway.io/receiver/callback'
-                    created_at: '2024-09-11T15:28:57.000000Z'
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Successfully fetched paymaster request'
-                  data:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        example: 9c72d676-8180-4cd2-a406-f0f1cd097506
-                      type:
-                        type: string
-                        example: ERC20
-                      from:
-                        type: string
-                        example: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
-                      to:
-                        type: string
-                        example: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
-                      contract_address:
-                        type: string
-                        example: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
-                      amount:
-                        type: string
-                        example: '100'
-                      token_id:
-                        type: string
-                        example: null
-                      transaction_hash:
-                        type: string
-                        example: null
-                      status:
-                        type: string
-                        example: pending
-                      used_credits:
-                        type: string
-                        example: '0.1'
-                      callback_url:
-                        type: string
-                        example: 'https://api.chaingateway.io/receiver/callback'
-                      created_at:
-                        type: string
-                        example: '2024-09-11T15:28:57.000000Z'
-      tags:
-        - 'Polygon Paymaster'
-    parameters:
-      -
-        in: path
-        name: id
-        description: 'The ID of the paymaster.'
-        example: architecto
-        required: true
-        schema:
-          type: string
-  /api/v2/polygon/paymaster/estimate:
-    post:
-      summary: EstimatePaymasterFees
-      operationId: estimatePaymasterFees
-      description: 'This endpoint is used to estimate the paymaster fees for a paymaster request.'
-      parameters:
-        -
-          in: header
-          name: X-Network
-          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - testnet
-              - mainnet
-            default: mainnet
-          0:
-            in: header
-            name: Authorization
-            description: 'Bearer token for authorization. Required for authenticated endpoints.'
-            required: true
-            schema:
-              type: string
-          1:
-            in: header
-            name: Content-Type
-            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
-            required: true
-            schema:
-              type: string
-              enum:
-                - application/json
-                - application/x-www-form-urlencoded
-                - multipart/form-data
-              default: application/json
-      responses:
-        200:
-          description: 'Successfully estimated paymaster fees'
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: 200
-                  ok: true
-                  message: 'Successfully estimated paymaster fees'
-                  data:
-                    gas: 64000
-                    paymaster_fees: 0.1
-                properties:
-                  status:
-                    type: integer
-                    example: 200
-                  ok:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Successfully estimated paymaster fees'
-                  data:
-                    type: object
-                    properties:
-                      gas:
-                        type: integer
-                        example: 64000
-                      paymaster_fees:
-                        type: number
-                        example: 0.1
-      tags:
-        - 'Polygon Paymaster'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                type:
-                  type: string
-                  description: 'The type of transaction, can be Ethereum: ETH, ERC20, ERC721 | BSC: BNB, BEP20, BEP721 | Polygon: POL, ERC20, ERC721.'
-                  example: ETH
-                blockchain:
-                  type: string
-                  description: ''
-                  example: polygon
-                  enum:
-                    - ethereum
-                    - bsc
-                    - polygon
-                from:
-                  type: string
-                  description: 'The address to send the transaction from.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                to:
-                  type: string
-                  description: 'The address to send the transaction to.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                contractaddress:
-                  type: string
-                  description: 'The address of the ERC20 contract. This field is required when <code>type</code> is <code>ERC20</code>, <code>ERC721</code>, <code>BEP20</code>, or <code>BEP721</code>.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                tokenid:
-                  type: number
-                  description: 'The token id of the ERC721 token. This field is required when <code>type</code> is <code>BEP721</code> or <code>ERC721</code>.'
-                  example: 1.0
-                amount:
-                  type: number
-                  description: 'The amount of tokens to send. This field is required when <code>type</code> is <code>ETH</code>, <code>BNB</code>, <code>ERC20</code>, or <code>BEP20</code>.'
-                  example: 10.01
-                password:
-                  type: string
-                  description: 'The password to unlock the wallet if you working with a password protected wallet created with chaingateway. . This field is required when <code>privatekey</code> is not present.'
-                  example: password123
-                privatekey:
-                  type: string
-                  description: 'The private key of the sender if you are not working with password protected wallets created with chaingateway.'
-                  example: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2'
-                callback_url:
-                  type: string
-                  description: 'The callback url to send the transaction hash to.'
-                  example: 'https://example.com/callback'
-              required:
-                - type
-                - blockchain
-                - from
-                - to
   /api/v2/polygon/webhooks:
     get:
       summary: 'Get all webhooks'
@@ -26736,7 +24472,7 @@ paths:
                   ok: true
                   message: 'Latest block number fetched'
                   data:
-                    blocknumber: 8929938
+                    blocknumber: 8946002
                 properties:
                   status:
                     type: integer
@@ -26752,7 +24488,7 @@ paths:
                     properties:
                       blocknumber:
                         type: integer
-                        example: 8929938
+                        example: 8946002
       tags:
         - 'Bitcoin Blockchain Queries'
   '/api/v2/bitcoin/blocks/{block_number}':
@@ -26804,7 +24540,7 @@ paths:
                   message: 'Block fetched'
                   data:
                     hash: 00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048
-                    confirmations: 884292
+                    confirmations: 888152
                     height: 1
                     version: 1
                     versionHex: '00000001'
@@ -26841,7 +24577,7 @@ paths:
                         example: 00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048
                       confirmations:
                         type: integer
-                        example: 884292
+                        example: 888152
                       height:
                         type: integer
                         example: 1
@@ -29340,9 +27076,6 @@ tags:
     name: 'Ethereum Addresses'
     description: 'Description for Ethereum Addresses'
   -
-    name: 'Ethereum Paymaster'
-    description: 'Description for Ethereum Paymaster'
-  -
     name: 'Ethereum Webhooks'
     description: 'Description for Ethereum Webhooks'
   -
@@ -29354,9 +27087,6 @@ tags:
   -
     name: 'BSC Addresses'
     description: 'Description for BSC Addresses'
-  -
-    name: 'BSC Paymaster'
-    description: 'Description for BSC Paymaster'
   -
     name: 'BSC Webhooks'
     description: 'Description for BSC Webhooks'
@@ -29378,9 +27108,6 @@ tags:
   -
     name: 'Polygon Addresses'
     description: 'Description for Polygon Addresses'
-  -
-    name: 'Polygon Paymaster'
-    description: 'Description for Polygon Paymaster'
   -
     name: 'Polygon Webhooks'
     description: 'Description for Polygon Webhooks'
@@ -29415,7 +27142,6 @@ x-tagGroups:
       - 'Ethereum Blockchain Queries'
       - 'Ethereum Transactions'
       - 'Ethereum Addresses'
-      - 'Ethereum Paymaster'
       - 'Ethereum Webhooks'
   -
     name: 'Binance Smart Chain API'
@@ -29423,7 +27149,6 @@ x-tagGroups:
       - 'BSC Blockchain Queries'
       - 'BSC Transactions'
       - 'BSC Addresses'
-      - 'BSC Paymaster'
       - 'BSC Webhooks'
   -
     name: 'Solana API'
@@ -29437,7 +27162,6 @@ x-tagGroups:
       - 'Polygon Blockchain Queries'
       - 'Polygon Transactions'
       - 'Polygon Addresses'
-      - 'Polygon Paymaster'
       - 'Polygon Webhooks'
   -
     name: 'Bitcoin API'
