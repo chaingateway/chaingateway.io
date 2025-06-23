@@ -1,13 +1,128 @@
 openapi: 3.0.3
 info:
   title: 'Chaingateway API Documentation'
-  description: "\nChaingateway is a REST API for interactiong with Multiple Blockchain Networks like Ethereum, Binance Smart Chain, Tron, and more.\n\n## Authentication\nYou will need to add your Bearer Token to your `Authorization` header to authenticate your requests.\n\nFind more information about it <a href='/developers/'>here</a>.\n\n## Networks\nThe API supports multiple networks, including Mainnets and testnets.\n\nTo switch to testnet api, simply add `X-Network` header to your request with value `testnet`.\n\nIf you want to use mainnet api, you can either remove the `X-Network` header or set it to `mainnet`.\n\nYou can find more information about the networks\n<a href='/developers/getting-started/supported-networks'>here</a>.\n\n## Additional resources:\n<a href='/developers'>Developer Portal</a>\n\n<a href='/developers/getting-started/quickstart'>Quick Start</a>\n\n<a href='/developers/getting-started/faq'>FAQ</a>\n\n<a href='/developers/tutorials'>Tutorials</a>\n\n"
+  description: "\nChaingateway is a REST API for interactiong with Multiple Blockchain Networks like Ethereum, Binance Smart Chain, Tron, and more.\n\n## Authentication\nYou will need to add your Bearer Token to your `Authorization` header to authenticate your requests.\n\nFind more information about it <a href='/developers/'>here</a>.\n\n## Networks\nThe API supports multiple networks, including Mainnets and testnets.\n\nTo switch to testnet api, simply add `X-Network` header to your request with value `testnet`.\n\nIf you want to use mainnet api, you can either remove the `X-Network` header or set it to `mainnet`.\n\nYou can find more information about the networks\n<a href='/developers/getting-started/supported-networks'>here</a>.\n\n## Additional resources\n<a href='/developers'>Developer Portal</a>\n\n<a href='/developers/getting-started/quickstart'>Quick Start</a>\n\n<a href='/developers/getting-started/faq'>FAQ</a>\n\n<a href='/developers/tutorials'>Tutorials</a>\n\n"
   version: 2.1.0
 servers:
   -
     url: 'https://app.chaingateway.io'
     description: 'Production Server'
 paths:
+  /api/account:
+    get:
+      summary: 'Get account info'
+      operationId: getAccountInfo
+      description: ''
+      parameters:
+        -
+          in: header
+          name: X-Network
+          description: 'Specify "testnet" for test network or leave empty for main network. Defaults to "mainnet" if not provided.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - testnet
+              - mainnet
+            default: mainnet
+          0:
+            in: header
+            name: Authorization
+            description: 'Bearer token for authorization. Required for authenticated endpoints.'
+            required: true
+            schema:
+              type: string
+          1:
+            in: header
+            name: Content-Type
+            description: 'The MIME type of the body of the request (used with POST and PUT requests).'
+            required: false
+            schema:
+              type: string
+              enum:
+                - application/json
+                - application/x-www-form-urlencoded
+                - multipart/form-data
+              default: application/json
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  ok: true
+                  message: 'Account info fetched'
+                  data:
+                    plan: PLUS
+                    is_subscribed: 'true'
+                    is_yearly: 0
+                    ends_at: 25-05-03
+                    quota_reset: null
+                    status: active
+                    payment_method: crypto
+                    crypto_payment:
+                      currency: USDT_TRC20
+                      address: trx-84ab3d15d6de4a87b5f8686b28094f0d
+                      eur_amount: '49.00'
+                      crypto_amount: '60.04'
+                      qr_code: 'https://sandbox.api.forumpay.com/pay/qr/?d=https%3A%2F%2Fsandbox.dashboard.forumpay.com%2Fpay%2FsandboxWallet.transfer%3Fcurrency%3DUSDT_TRC20%26address%3Dtrx-84ab3d15d6de4a87b5f8686b28094f0d'
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  ok:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Account info fetched'
+                  data:
+                    type: object
+                    properties:
+                      plan:
+                        type: string
+                        example: PLUS
+                      is_subscribed:
+                        type: string
+                        example: 'true'
+                      is_yearly:
+                        type: integer
+                        example: 0
+                      ends_at:
+                        type: string
+                        example: 25-05-03
+                      quota_reset:
+                        type: string
+                        example: null
+                      status:
+                        type: string
+                        example: active
+                      payment_method:
+                        type: string
+                        example: crypto
+                      crypto_payment:
+                        type: object
+                        properties:
+                          currency:
+                            type: string
+                            example: USDT_TRC20
+                          address:
+                            type: string
+                            example: trx-84ab3d15d6de4a87b5f8686b28094f0d
+                          eur_amount:
+                            type: string
+                            example: '49.00'
+                          crypto_amount:
+                            type: string
+                            example: '60.04'
+                          qr_code:
+                            type: string
+                            example: 'https://sandbox.api.forumpay.com/pay/qr/?d=https%3A%2F%2Fsandbox.dashboard.forumpay.com%2Fpay%2FsandboxWallet.transfer%3Fcurrency%3DUSDT_TRC20%26address%3Dtrx-84ab3d15d6de4a87b5f8686b28094f0d'
+      tags:
+        - ''
   /api/v2/tron/blocks/number:
     get:
       summary: 'Get the latest block number'
@@ -4858,6 +4973,7 @@ paths:
                         type: null
                         token_id: null
                         url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                        reference: null
                         is_active: 1
                         is_invalid: 0
                         reason: null
@@ -4876,6 +4992,7 @@ paths:
                         type: TRX
                         token_id: null
                         url: 'https://aaf7-206-168-212-113.ngrok-free.app/'
+                        reference: null
                         is_active: 1
                         is_invalid: 0
                         reason: null
@@ -4894,6 +5011,7 @@ paths:
                         type: null
                         token_id: null
                         url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                        reference: null
                         is_active: 1
                         is_invalid: 0
                         reason: null
@@ -4912,6 +5030,7 @@ paths:
                         type: null
                         token_id: null
                         url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                        reference: null
                         is_active: 1
                         is_invalid: 0
                         reason: null
@@ -4930,6 +5049,7 @@ paths:
                         type: null
                         token_id: null
                         url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                        reference: null
                         is_active: 1
                         is_invalid: 0
                         reason: null
@@ -4948,6 +5068,7 @@ paths:
                         type: null
                         token_id: null
                         url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                        reference: null
                         is_active: 1
                         is_invalid: 0
                         reason: null
@@ -4966,6 +5087,7 @@ paths:
                         type: TRC20
                         token_id: null
                         url: 'http://vonrueden.com/'
+                        reference: null
                         is_active: 1
                         is_invalid: 0
                         reason: null
@@ -4984,6 +5106,7 @@ paths:
                         type: TRC20
                         token_id: null
                         url: 'https://beta.chaingateway.io'
+                        reference: null
                         is_active: 1
                         is_invalid: 0
                         reason: null
@@ -5018,6 +5141,7 @@ paths:
                             type: null
                             token_id: null
                             url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                            reference: null
                             is_active: 1
                             is_invalid: 0
                             reason: null
@@ -5036,6 +5160,7 @@ paths:
                             type: TRX
                             token_id: null
                             url: 'https://aaf7-206-168-212-113.ngrok-free.app/'
+                            reference: null
                             is_active: 1
                             is_invalid: 0
                             reason: null
@@ -5054,6 +5179,7 @@ paths:
                             type: null
                             token_id: null
                             url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                            reference: null
                             is_active: 1
                             is_invalid: 0
                             reason: null
@@ -5072,6 +5198,7 @@ paths:
                             type: null
                             token_id: null
                             url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                            reference: null
                             is_active: 1
                             is_invalid: 0
                             reason: null
@@ -5090,6 +5217,7 @@ paths:
                             type: null
                             token_id: null
                             url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                            reference: null
                             is_active: 1
                             is_invalid: 0
                             reason: null
@@ -5108,6 +5236,7 @@ paths:
                             type: null
                             token_id: null
                             url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                            reference: null
                             is_active: 1
                             is_invalid: 0
                             reason: null
@@ -5126,6 +5255,7 @@ paths:
                             type: TRC20
                             token_id: null
                             url: 'http://vonrueden.com/'
+                            reference: null
                             is_active: 1
                             is_invalid: 0
                             reason: null
@@ -5144,6 +5274,7 @@ paths:
                             type: TRC20
                             token_id: null
                             url: 'https://beta.chaingateway.io'
+                            reference: null
                             is_active: 1
                             is_invalid: 0
                             reason: null
@@ -5180,6 +5311,9 @@ paths:
                             url:
                               type: string
                               example: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                            reference:
+                              type: string
+                              example: null
                             is_active:
                               type: integer
                               example: 1
@@ -5359,6 +5493,10 @@ paths:
                     - TRC10
                     - TRC20
                     - TRC721
+                reference:
+                  type: string
+                  description: 'A reference for the webhook. Must not be greater than 255 characters.'
+                  example: 'n'
               required:
                 - url
   '/api/v2/tron/webhooks/{id}':
@@ -5602,6 +5740,10 @@ paths:
                     - TRC10
                     - TRC20
                     - TRC721
+                reference:
+                  type: string
+                  description: 'A reference for the webhook. Must not be greater than 255 characters.'
+                  example: 'n'
               required:
                 - url
     delete:
@@ -7671,7 +7813,7 @@ paths:
                   message: 'Undefined array key "result"'
                   exception: ErrorException
                   file: /var/www/html/app/Node/Functions/BasicFunction.php
-                  line: 318
+                  line: 328
                   trace:
                     -
                       file: /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php
@@ -7681,7 +7823,7 @@ paths:
                       type: '->'
                     -
                       file: /var/www/html/app/Node/Functions/BasicFunction.php
-                      line: 318
+                      line: 328
                       function: 'Illuminate\Foundation\Bootstrap\{closure}'
                       class: Illuminate\Foundation\Bootstrap\HandleExceptions
                       type: '->'
@@ -8171,7 +8313,7 @@ paths:
                     example: /var/www/html/app/Node/Functions/BasicFunction.php
                   line:
                     type: integer
-                    example: 318
+                    example: 328
                   trace:
                     type: array
                     example:
@@ -8183,7 +8325,7 @@ paths:
                         type: '->'
                       -
                         file: /var/www/html/app/Node/Functions/BasicFunction.php
-                        line: 318
+                        line: 328
                         function: 'Illuminate\Foundation\Bootstrap\{closure}'
                         class: Illuminate\Foundation\Bootstrap\HandleExceptions
                         type: '->'
@@ -10041,6 +10183,7 @@ paths:
                         type: null
                         token_id: null
                         url: 'https://example.com'
+                        reference: null
                         is_active: 1
                         is_invalid: 0
                         reason: null
@@ -10059,6 +10202,7 @@ paths:
                         type: null
                         token_id: null
                         url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                        reference: null
                         is_active: 1
                         is_invalid: 0
                         reason: null
@@ -10077,6 +10221,7 @@ paths:
                         type: null
                         token_id: null
                         url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                        reference: null
                         is_active: 1
                         is_invalid: 0
                         reason: null
@@ -10095,6 +10240,7 @@ paths:
                         type: null
                         token_id: null
                         url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                        reference: null
                         is_active: 1
                         is_invalid: 0
                         reason: null
@@ -10113,6 +10259,7 @@ paths:
                         type: null
                         token_id: null
                         url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                        reference: null
                         is_active: 1
                         is_invalid: 0
                         reason: null
@@ -10147,6 +10294,7 @@ paths:
                             type: null
                             token_id: null
                             url: 'https://example.com'
+                            reference: null
                             is_active: 1
                             is_invalid: 0
                             reason: null
@@ -10165,6 +10313,7 @@ paths:
                             type: null
                             token_id: null
                             url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                            reference: null
                             is_active: 1
                             is_invalid: 0
                             reason: null
@@ -10183,6 +10332,7 @@ paths:
                             type: null
                             token_id: null
                             url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                            reference: null
                             is_active: 1
                             is_invalid: 0
                             reason: null
@@ -10201,6 +10351,7 @@ paths:
                             type: null
                             token_id: null
                             url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                            reference: null
                             is_active: 1
                             is_invalid: 0
                             reason: null
@@ -10219,6 +10370,7 @@ paths:
                             type: null
                             token_id: null
                             url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                            reference: null
                             is_active: 1
                             is_invalid: 0
                             reason: null
@@ -10255,6 +10407,9 @@ paths:
                             url:
                               type: string
                               example: 'https://example.com'
+                            reference:
+                              type: string
+                              example: null
                             is_active:
                               type: integer
                               example: 1
@@ -10433,6 +10588,10 @@ paths:
                     - ETH
                     - ERC20
                     - ERC721
+                reference:
+                  type: string
+                  description: 'A reference for the webhook. Must not be greater than 255 characters.'
+                  example: 'n'
               required:
                 - url
   '/api/v2/ethereum/webhooks/{id}':
@@ -10675,6 +10834,10 @@ paths:
                     - ETH
                     - ERC20
                     - ERC721
+                reference:
+                  type: string
+                  description: 'A reference for the webhook. Must not be greater than 255 characters.'
+                  example: 'n'
               required:
                 - url
     delete:
@@ -12758,15 +12921,15 @@ paths:
                   message: 'bcdiv(): Argument #1 ($num1) is not well-formed'
                   exception: ValueError
                   file: /var/www/html/app/Node/Functions/BasicFunction.php
-                  line: 443
+                  line: 453
                   trace:
                     -
                       file: /var/www/html/app/Node/Functions/BasicFunction.php
-                      line: 443
+                      line: 453
                       function: bcdiv
                     -
                       file: /var/www/html/app/Node/Functions/BasicFunction.php
-                      line: 303
+                      line: 313
                       function: wei2amount
                       class: App\Node\Functions\BasicFunction
                       type: '->'
@@ -13256,17 +13419,17 @@ paths:
                     example: /var/www/html/app/Node/Functions/BasicFunction.php
                   line:
                     type: integer
-                    example: 443
+                    example: 453
                   trace:
                     type: array
                     example:
                       -
                         file: /var/www/html/app/Node/Functions/BasicFunction.php
-                        line: 443
+                        line: 453
                         function: bcdiv
                       -
                         file: /var/www/html/app/Node/Functions/BasicFunction.php
-                        line: 303
+                        line: 313
                         function: wei2amount
                         class: App\Node\Functions\BasicFunction
                         type: '->'
@@ -13752,7 +13915,7 @@ paths:
                           example: /var/www/html/app/Node/Functions/BasicFunction.php
                         line:
                           type: integer
-                          example: 443
+                          example: 453
                         function:
                           type: string
                           example: bcdiv
@@ -15196,6 +15359,7 @@ paths:
                         type: null
                         token_id: null
                         url: 'https://example.com'
+                        reference: null
                         is_active: 1
                         is_invalid: 0
                         reason: null
@@ -15214,6 +15378,7 @@ paths:
                         type: null
                         token_id: null
                         url: 'https://example.com'
+                        reference: null
                         is_active: 1
                         is_invalid: 0
                         reason: null
@@ -15232,6 +15397,7 @@ paths:
                         type: null
                         token_id: null
                         url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                        reference: null
                         is_active: 1
                         is_invalid: 0
                         reason: null
@@ -15266,6 +15432,7 @@ paths:
                             type: null
                             token_id: null
                             url: 'https://example.com'
+                            reference: null
                             is_active: 1
                             is_invalid: 0
                             reason: null
@@ -15284,6 +15451,7 @@ paths:
                             type: null
                             token_id: null
                             url: 'https://example.com'
+                            reference: null
                             is_active: 1
                             is_invalid: 0
                             reason: null
@@ -15302,6 +15470,7 @@ paths:
                             type: null
                             token_id: null
                             url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                            reference: null
                             is_active: 1
                             is_invalid: 0
                             reason: null
@@ -15338,6 +15507,9 @@ paths:
                             url:
                               type: string
                               example: 'https://example.com'
+                            reference:
+                              type: string
+                              example: null
                             is_active:
                               type: integer
                               example: 1
@@ -15516,6 +15688,10 @@ paths:
                     - BNB
                     - BEP20
                     - BEP721
+                reference:
+                  type: string
+                  description: 'A reference for the webhook. Must not be greater than 255 characters.'
+                  example: 'n'
               required:
                 - url
   '/api/v2/bsc/webhooks/{id}':
@@ -15758,6 +15934,10 @@ paths:
                     - BNB
                     - BEP20
                     - BEP721
+                reference:
+                  type: string
+                  description: 'A reference for the webhook. Must not be greater than 255 characters.'
+                  example: 'n'
               required:
                 - url
     delete:
@@ -20953,15 +21133,15 @@ paths:
                   message: 'bcdiv(): Argument #1 ($num1) is not well-formed'
                   exception: ValueError
                   file: /var/www/html/app/Node/Functions/BasicFunction.php
-                  line: 443
+                  line: 453
                   trace:
                     -
                       file: /var/www/html/app/Node/Functions/BasicFunction.php
-                      line: 443
+                      line: 453
                       function: bcdiv
                     -
                       file: /var/www/html/app/Node/Functions/BasicFunction.php
-                      line: 303
+                      line: 313
                       function: wei2amount
                       class: App\Node\Functions\BasicFunction
                       type: '->'
@@ -21451,17 +21631,17 @@ paths:
                     example: /var/www/html/app/Node/Functions/BasicFunction.php
                   line:
                     type: integer
-                    example: 443
+                    example: 453
                   trace:
                     type: array
                     example:
                       -
                         file: /var/www/html/app/Node/Functions/BasicFunction.php
-                        line: 443
+                        line: 453
                         function: bcdiv
                       -
                         file: /var/www/html/app/Node/Functions/BasicFunction.php
-                        line: 303
+                        line: 313
                         function: wei2amount
                         class: App\Node\Functions\BasicFunction
                         type: '->'
@@ -21947,7 +22127,7 @@ paths:
                           example: /var/www/html/app/Node/Functions/BasicFunction.php
                         line:
                           type: integer
-                          example: 443
+                          example: 453
                         function:
                           type: string
                           example: bcdiv
@@ -23319,6 +23499,7 @@ paths:
                         type: null
                         token_id: null
                         url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                        reference: null
                         is_active: 1
                         is_invalid: 0
                         reason: null
@@ -23353,6 +23534,7 @@ paths:
                             type: null
                             token_id: null
                             url: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                            reference: null
                             is_active: 1
                             is_invalid: 0
                             reason: null
@@ -23389,6 +23571,9 @@ paths:
                             url:
                               type: string
                               example: 'http://192.168.178.100:81/api/webhooks/incoming-payment'
+                            reference:
+                              type: string
+                              example: null
                             is_active:
                               type: integer
                               example: 1
@@ -23567,6 +23752,10 @@ paths:
                     - MATIC
                     - ERC20
                     - ERC721
+                reference:
+                  type: string
+                  description: 'A reference for the webhook. Must not be greater than 255 characters.'
+                  example: 'n'
               required:
                 - url
   '/api/v2/polygon/webhooks/{id}':
@@ -23809,6 +23998,10 @@ paths:
                     - MATIC
                     - ERC20
                     - ERC721
+                reference:
+                  type: string
+                  description: 'A reference for the webhook. Must not be greater than 255 characters.'
+                  example: 'n'
               required:
                 - url
     delete:
@@ -24472,7 +24665,7 @@ paths:
                   ok: true
                   message: 'Latest block number fetched'
                   data:
-                    blocknumber: 8946002
+                    blocknumber: 8995860
                 properties:
                   status:
                     type: integer
@@ -24488,7 +24681,7 @@ paths:
                     properties:
                       blocknumber:
                         type: integer
-                        example: 8946002
+                        example: 8995860
       tags:
         - 'Bitcoin Blockchain Queries'
   '/api/v2/bitcoin/blocks/{block_number}':
@@ -24540,7 +24733,7 @@ paths:
                   message: 'Block fetched'
                   data:
                     hash: 00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048
-                    confirmations: 888152
+                    confirmations: 894414
                     height: 1
                     version: 1
                     versionHex: '00000001'
@@ -24577,7 +24770,7 @@ paths:
                         example: 00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048
                       confirmations:
                         type: integer
-                        example: 888152
+                        example: 894414
                       height:
                         type: integer
                         example: 1
@@ -27049,6 +27242,9 @@ paths:
           type: string
 tags:
   -
+    name: ''
+    description: 'Description for '
+  -
     name: 'Tron Blockchain Queries'
     description: 'Description for Tron Blockchain Queries'
   -
@@ -27127,6 +27323,10 @@ tags:
     name: 'Cryptocurrency Prices'
     description: 'Description for Cryptocurrency Prices'
 x-tagGroups:
+  -
+    name: Account
+    tags:
+      - ''
   -
     name: 'Tron API'
     tags:
