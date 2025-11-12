@@ -379,9 +379,13 @@
               <a href="/bitcoin-api/" class="text-center -ml-2" title="Implented network example Bitcoin ">
                 <span class="icon-[token--btc]"></span>
               </a>
+              <a href="/arbitrum-api/" class="text-center -ml-2" title="Implented network example Arbitrum ">
+                <span class="icon-[token--arbitrum-one]"></span>
+              </a>
               <a href="/solana-api/" class="text-center -ml-2" title="Implented network example Solana ">
                 <span class="icon-[token--sol]"></span>
               </a>
+              
             </div>
           </div>
 
@@ -1524,207 +1528,141 @@ puts res.body`
 
 <!-- ====== Token Standards Section Start -->
 
-<section class=" relative z-10 bg-[radial-gradient(circle_at_right,_var(--tw-gradient-stops))] from-purple-600 via-indigo-800 to-indigo-950 py-20 lg:py-[40px] p-4">
-  <div class="mx-auto ">
-    <div class="flex flex-wrap justify-center items-center -mx-4">
-      <div class="w-full px-4 lg:w-1/2 xl:w-3/12">
-        <div>
-          <h2 class="text-3xl font-bold text-white sm:text-4xl lg:text-3xl xl:text-[33px] 2xl:text-4xl mb-4">
-            Support for All Major Token Standards
-          </h2>
-          <p class="text-white ">
-            Expand your horizons with our comprehensive Blockchain API. All coins and tokens that follow the ERC20,
-            TRC20, TRC10, ERC721, or BEP-20 standards are supported, giving you maximum flexibility and versatility.
-          </p>
-          <div class="relative flex overflow-x-hidden">
-            <div class="py-12 animate-marquee whitespace-nowrap text-white">
-              <span class="mx-4 text-4xl"><span class="icon-[token-branded--usdt]"></span></span>
-              <span class="mx-4 text-4xl"><span class="icon-[token-branded--link]"></span></span>
-              <span class="mx-4 text-4xl"><span class="icon-[token-branded--bch]"></span></span>
-              <span class="mx-4 text-4xl"><span class="icon-[token-branded--shib]"></span></span>
-              <span class="mx-4 text-4xl"><span class="icon-[cryptocurrency-color--wbtc]"></span></span>
-              <span class="mx-4 text-4xl"><span class="icon-[token-branded--sweth]"></span></span>
-              <span class="mx-4 text-4xl"><span class="icon-[token-branded--usdc]"></span></span>
-              <span class="mx-4 text-4xl"><span class="icon-[token-branded--sun]"></span></span>
-            </div>
+<section class="relative z-10 bg-[radial-gradient(circle_at_right,_var(--tw-gradient-stops))] from-purple-600 via-indigo-800 to-indigo-950 py-16 lg:py-20 p-4" x-data="{
+    initial: 8,
+    step: 12,
+    visible: 8,
+    chains: [
+      { name:'Tron Network', icon:'icon-[token-branded--tron]',  ticker:'TRX', networks:['mainnet','nile'],        standards:['TRC10','TRC20','TRC721'], docs:'/docs/#tag/tron-blockchain-queries', more:'/tron-api/' },
+      { name:'Binance Smart Chain', icon:'icon-[token-branded--bnb]', ticker:'BNB', networks:['mainnet','testnet'], standards:['BEP20'],                  docs:'/docs/#tag/bsc-transactions',        more:'/binance-smart-chain-api/' },
+      { name:'Ethereum', icon:'icon-[token-branded--eth]', ticker:'ETH', networks:['mainnet','sepolia'], standards:['ERC20','ERC721'], docs:'/docs/#tag/ethereum-blockchain-queries', more:'/ethereum-api/' },
+      { name:'Polygon', icon:'icon-[token-branded--matic]', ticker:'MATIC', networks:['mainnet','amoy'], standards:['ERC20','ERC721'], docs:'/docs/#tag/polygon-transactions',        more:'/polygon-api/' },
+      { name:'Bitcoin', icon:'icon-[token-branded--btc]', ticker:'BTC', networks:['mainnet','testnet 3'], standards:[], docs:'/docs/#tag/bitcoin-transactions', more:'/bitcoin-api/' },
+      { name:'Solana', icon:'icon-[token-branded--sol]', ticker:'SOL', networks:['mainnet','devnet'], standards:['SPL'], docs:'/docs/#tag/solana-transactions', more:'/solana-api/' },
+      { name:'Arbitrum', icon:'icon-[token-branded--arbitrum-one]', ticker:'ARB', networks:['mainnet'], standards:['ERC20','ERC721'], docs:'/docs/#tag/arbitrum', more:'/arbitrum-api/' }
+    ],
+    get displayed() { return this.chains.slice(0, this.visible) }
+  }" x-init="visible = initial">
+  <div class="mx-auto max-w-7xl">
+    <!-- Header -->
+    <header class="mb-8 lg:mb-10">
+      <h2 class="text-3xl font-bold text-white sm:text-4xl">
+        Support for All Major Token Standards
+      </h2>
+      <p class="mt-2 text-indigo-100/90 max-w-3xl">
+        Expand your horizons with our comprehensive Blockchain API. We support ERC-20/721, TRC-10/20/721, BEP-20, SPL and more — across mainnets and testnets.
+      </p>
 
-            <div class="absolute top-0 py-12 animate-marquee2 whitespace-nowrap">
-              <span class="mx-4 text-4xl"><span class="icon-[token-branded--usdt]"></span></span>
-              <span class="mx-4 text-4xl"><span class="icon-[token-branded--link]"></span></span>
-              <span class="mx-4 text-4xl"><span class="icon-[token-branded--bch]"></span></span>
-              <span class="mx-4 text-4xl"><span class="icon-[token-branded--shib]"></span></span>
-              <span class="mx-4 text-4xl"><span class="icon-[cryptocurrency-color--wbtc]"></span></span>
-              <span class="mx-4 text-4xl"><span class="icon-[token-branded--sweth]"></span></span>
-              <span class="mx-4 text-4xl"><span class="icon-[token-branded--usdc]"></span></span>
-              <span class="mx-4 text-4xl"><span class="icon-[token-branded--sun]"></span></span>
-            </div>
-          </div>
-
+      <!-- Subtle marquee of popular tokens (optional, lightweight) -->
+      <div class="relative mt-5 overflow-hidden">
+        <div class="flex gap-8 animate-[scroll_20s_linear_infinite] text-white/90 whitespace-nowrap will-change-transform">
+          <span class="text-4xl mx-2"><span class="icon-[token-branded--usdt]"></span></span>
+          <span class="text-4xl mx-2"><span class="icon-[token-branded--link]"></span></span>
+          <span class="text-4xl mx-2"><span class="icon-[token-branded--bch]"></span></span>
+          <span class="text-4xl mx-2"><span class="icon-[token-branded--shib]"></span></span>
+          <span class="text-4xl mx-2"><span class="icon-[cryptocurrency-color--wbtc]"></span></span>
+          <span class="text-4xl mx-2"><span class="icon-[token-branded--sweth]"></span></span>
+          <span class="text-4xl mx-2"><span class="icon-[token-branded--usdc]"></span></span>
+          <span class="text-4xl mx-2"><span class="icon-[token-branded--sun]"></span></span>
+          <span class="text-4xl mx-2"></span><span class="icon-[token-branded--bitcoin]"></span>
+          <span class="text-4xl mx-2"></span><span class="icon-[token-branded--arbitrum-one]"></span>
+          <span class="text-4xl mx-2"></span><span class="icon-[token-branded--binance-smart-chain]"></span>
+          <span class="text-4xl mx-2"></span><span class="icon-[token-branded--dingo]"></span>
+          <span class="text-4xl mx-2"></span><span class="icon-[token-branded--etc]"></span>
+          <span class="text-4xl mx-2"></span><span class="icon-[token-branded--pepe]"></span>
+          <span class="text-4xl mx-2"></span><span class="icon-[token-branded--rndr]"></span>
+          <span class="text-4xl mx-2"></span><span class="icon-[token-branded--xpla]"></span>
+          <span class="text-4xl mx-2"></span><span class="icon-[token-branded--ycc]"></span>
+          <!-- duplicate for seamless loop -->
+          <span class="text-4xl mx-2"><span class="icon-[token-branded--usdt]"></span></span>
+          <span class="text-4xl mx-2"><span class="icon-[token-branded--link]"></span></span>
+          <span class="text-4xl mx-2"><span class="icon-[token-branded--bch]"></span></span>
+          <span class="text-4xl mx-2"><span class="icon-[token-branded--shib]"></span></span>
+          <span class="text-4xl mx-2"><span class="icon-[cryptocurrency-color--wbtc]"></span></span>
+          <span class="text-4xl mx-2"><span class="icon-[token-branded--sweth]"></span></span>
+          <span class="text-4xl mx-2"><span class="icon-[token-branded--usdc]"></span></span>
+          <span class="text-4xl mx-2"><span class="icon-[token-branded--sun]"></span></span>
+          <span class="text-4xl mx-2"></span><span class="icon-[token-branded--bitcoin]"></span>
+          <span class="text-4xl mx-2"></span><span class="icon-[token-branded--arbitrum-one]"></span>
+          <span class="text-4xl mx-2"></span><span class="icon-[token-branded--binance-smart-chain]"></span>
+          <span class="text-4xl mx-2"></span><span class="icon-[token-branded--dingo]"></span>
+          <span class="text-4xl mx-2"></span><span class="icon-[token-branded--etc]"></span>
+          <span class="text-4xl mx-2"></span><span class="icon-[token-branded--pepe]"></span>
+          <span class="text-4xl mx-2"></span><span class="icon-[token-branded--rndr]"></span>
+          <span class="text-4xl mx-2"></span><span class="icon-[token-branded--xpla]"></span>
+          <span class="text-4xl mx-2"></span><span class="icon-[token-branded--ycc]"></span>
         </div>
       </div>
-      <div class="w-full max-w-4xl px-2 lg:w-1/2 xl:w-7/12">
-        <div class="grid grid-cols-2 lg:grid-cols-3 p-2 gap-2 lg:gap-8 items-stretch items-center justify-center mt-12 lg:mt-0d">
-          <div class="rounded-lg p-2 lg:p-6  overflow-hidden shadow-lg bg-gray-50 dark:bg-gray-800 dark:text-white text-center flex flex-col items-center justify-between wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".2s">
-            <span class="icon-[token-branded--tron] text-[90px]"> </span>
-            <div class="">
-              <div class="font-bold text-xl mb-2">Tron Network</div>
-              <p class="text-gray-700 text-base"></p>
+    </header>
+
+    <!-- Count -->
+    <div class="mb-4 text-indigo-100/80 text-sm">
+      <span x-text="Math.min(visible, chains.length)"></span>
+      <span class="opacity-70">of</span>
+      <span x-text="chains.length"></span>
+      <span class="opacity-70">chains</span>
+    </div>
+
+    <!-- Auto-fit Grid -->
+    <div class="grid gap-3 sm:gap-4 lg:gap-6 [grid-template-columns:repeat(auto-fit,minmax(240px,1fr))]">
+      <template x-for="item in displayed" :key="item.name">
+        <article class="group rounded-2xl overflow-hidden bg-gray-50/95 dark:bg-gray-800/90 text-center text-gray-900 dark:text-white shadow-lg ring-1 ring-black/10 hover:ring-white/20 transition">
+          <div class="flex flex-col items-center justify-between h-full p-4 sm:p-6">
+            <span :class="item.icon" class="text-[80px] sm:text-[90px] mt-2 mb-3"></span>
+
+            <div>
+              <h3 class="font-bold text-lg sm:text-xl" x-text="item.name"></h3>
+              <p class="text-gray-600 dark:text-gray-300 text-sm" x-text="item.ticker"></p>
             </div>
-            <div class="flex flex-wrap gap-2 px-1 lg:px-6  py-2 justify-center content-center">
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">mainnet</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">nile</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">TRX</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">TRC20</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">TRC721</span>
+
+            <div class="mt-3 flex flex-wrap gap-1 justify-center">
+              <template x-for="n in item.networks" :key="n">
+                <span class="inline-block rounded-full bg-indigo-600/90 text-white px-2 py-0.5 text-[11px] font-semibold" x-text="n"></span>
+              </template>
             </div>
-            <div class="py-2">
-              <a href="/docs/#tag/tron-blockchain-queries" class="inline-block bg-indigo-600 hover:bg-indigo-800 text-white text-sm font-bold py-2 px-4 mt-4 rounded" title="Documentation Tron API">docs</a>
-              <a href="/tron-api/" class="inline-block bg-indigo-600 hover:bg-indigo-800 text-white text-sm font-bold py-2 px-4 mt-4 lg:ml-2 ml-1 rounded" title="Learn more about Tron API">Show more</a>
+
+            <template x-if="item.standards &amp;&amp; item.standards.length">
+              <div class="mt-2 flex flex-wrap gap-1 justify-center">
+                <template x-for="s in item.standards" :key="s">
+                  <span class="inline-block rounded-full bg-white/10 text-indigo-100 border border-white/20 px-2 py-0.5 text-[11px] font-semibold" x-text="s"></span>
+                </template>
+              </div>
+            </template>
+
+            <div class="mt-4 flex gap-2">
+              <a :href="item.docs" class="inline-block rounded-lg bg-indigo-600 hover:bg-indigo-800 text-white text-xs font-bold py-2 px-3">docs</a>
+              <a :href="item.more" class="inline-block rounded-lg bg-indigo-600 hover:bg-indigo-800 text-white text-xs font-bold py-2 px-3">Show more</a>
             </div>
           </div>
+        </article>
+      </template>
+    </div>
 
-          <div class="p-2 lg:p-6 dark:bg-gray-800 dark:text-white rounded-lg overflow-hidden shadow-lg bg-gray-50 text-center flex flex-col items-center justify-between wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".4s">
-            <span class="icon-[token-branded--bnb] text-[90px]"> </span>
-            <div class="">
-              <div class="font-bold text-lg mb-2">Binance Smart Chain</div>
-              <p class="text-gray-700 text-base"></p>
-            </div>
-            <div class="flex flex-wrap gap-2 px-1 lg:px-6  py-2 justify-center content-center">
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">mainnet</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">testnet</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">BNB</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">BEP20</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">BEP21</span>
-            </div>
-            <div class="py-2">
-              <a href="/docs/#tag/bsc-transactions" class="inline-block bg-indigo-600 hover:bg-indigo-800 text-white text-sm font-bold py-2 px-4 lg:mt-4 rounded" title="Documentation Binance Smart Chain API">docs</a>
-              <a href="/binance-smart-chain-api/" class="inline-block bg-indigo-600 hover:bg-indigo-800 text-white text-sm font-bold py-2 px-4 mt-4 lg:ml-2 ml-1 rounded" title="Learn more about Binance Smart Chain API">Show more</a>
-            </div>
-          </div>
-
-          <div class="p-2 lg:p-6 dark:bg-gray-800 dark:text-white rounded-lg overflow-hidden shadow-lg bg-gray-50 text-center flex flex-col items-center justify-between wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".6s">
-            <span class="icon-[token-branded--eth] text-[90px]"> </span>
-            <div class="">
-              <div class="font-bold text-xl mb-2">Ethereum</div>
-              <p class="text-gray-700 text-base"></p>
-            </div>
-            <div class="flex flex-wrap gap-2 px-1 lg:px-6  py-2 justify-center content-center">
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">mainnet</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">sepolia</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">ETH</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">ERC20</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">ERC21</span>
-            </div>
-            <div class="py-2">
-              <a href="/docs/#tag/ethereum-blockchain-queries" class="inline-block bg-indigo-600 hover:bg-indigo-800 text-white text-sm font-bold py-2 px-4 mt-4 rounded" title="Documentation Ethereum API">docs</a>
-              <a href="/ethereum-api/" class="inline-block bg-indigo-600 hover:bg-indigo-800 text-white text-sm font-bold py-2 px-4 mt-4 lg:ml-2 ml-1 rounded" title="Learn more about Ethereum API">Show more</a>
-            </div>
-          </div>
-
-          <div class="p-2 lg:p-6 dark:bg-gray-800 dark:text-white rounded-lg overflow-hidden shadow-lg bg-gray-50 text-center flex flex-col items-center justify-between wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".8s">
-            <span class="icon-[token-branded--matic] text-[90px]"> </span>
-            <div class="">
-              <div class="font-bold text-xl mb-2">Polygon</div>
-              <p class="text-gray-700 text-base"></p>
-            </div>
-            <div class="flex flex-wrap gap-2 px-1 lg:px-6 py-2 justify-center content-center">
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">mainnet</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">amoy</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">MATIC</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">ERC20</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">ERC721</span>
-            </div>
-            <div class="py-2">
-              <a href="/docs/#tag/polygon-transactions" class="inline-block bg-indigo-600 hover:bg-indigo-800 text-white text-sm font-bold py-2 px-4 mt-4 rounded" title="Documentation Polygon API">docs</a>
-              <a href="/polygon-api/" class="inline-block bg-indigo-600 hover:bg-indigo-800 text-white text-sm font-bold py-2 px-4 mt-4 lg:ml-2 ml-1 rounded" title="Learn more about Polygron API">Show more</a>
-            </div>
-          </div>
-
-          <div class="p-2 lg:p-6 dark:bg-gray-800 dark:text-white rounded-lg overflow-hidden shadow-lg bg-gray-50 text-center flex flex-col items-center justify-between wow fadeInUp" data-wow-duration=".5s" data-wow-delay="1s">
-            <span class="icon-[token-branded--btc] text-[90px]"> </span>
-            <div class="">
-              <div class="font-bold text-xl mb-2">Bitcoin</div>
-              <p class="text-gray-700 text-base"></p>
-            </div>
-            <div class="flex flex-wrap gap-2 px-1 lg:px-6 py-2 justify-center content-center">
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">mainnet</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">testnet
-                3</span>
-
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">BTC</span>
-            </div>
-            <div class="py-2">
-              <a href="/docs/#tag/bitcoin-transactions" class="inline-block bg-indigo-600 hover:bg-indigo-800 text-white text-sm font-bold py-2 px-4 mt-4 rounded" title="Documenation Bitcoin API">docs</a>
-              <a href="/bitcoin-api/" class="inline-block bg-indigo-600 hover:bg-indigo-800 text-white text-sm font-bold py-2 px-4 mt-4 lg:ml-2 ml-1 rounded" title="Learn more about Bitcoin API">Show more</a>
-            </div>
-          </div>
-          <div class="p-2 lg:p-6 dark:bg-gray-800 dark:text-white rounded-lg overflow-hidden shadow-lg bg-gray-50 text-center flex flex-col items-center justify-between wow fadeInUp" data-wow-duration=".5s" data-wow-delay="1s">
-            <span class="icon-[token-branded--sol] text-[90px]"> </span>
-            <div class="">
-              <div class="font-bold text-xl mb-2">Solana</div>
-              <p class="text-gray-700 text-base"></p>
-            </div>
-            <div class="flex flex-wrap gap-2 px-1 lg:px-6 py-2 justify-center content-center">
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">mainnet</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">devnet
-              </span>
-
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">SOL</span>
-              <span class="inline-block bg-gray-900-6 dark:bg-indigo-600 dark:text-white rounded-full px-2 py-1 text-xs font-semibold text-indigo-800">SPL-Token</span>
-            </div>
-            <div class="py-2">
-              <a href="/docs/#tag/solana-transactions" class="inline-block bg-indigo-600 hover:bg-indigo-800 text-white text-sm font-bold py-2 px-4 mt-4 rounded" title="Documenation Solana API">docs</a>
-              <a href="/solana-api/" class="inline-block bg-indigo-600 hover:bg-indigo-800 text-white text-sm font-bold py-2 px-4 mt-4 lg:ml-2 ml-1 rounded" title="Learn more about Solana API">Show more</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
+    <!-- Actions -->
+    <div class="mt-6 flex items-center justify-center gap-2">
+      <button x-show="visible &lt; chains.length" math.min visible step class="rounded-xl bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/40">
+        Show more
+      </button>
+      <button x-show="visible &gt; initial" initial class="rounded-xl bg-white/5 px-4 py-2 text-sm font-semibold text-white/90 backdrop-blur transition hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/30">
+        Collapse
+      </button>
     </div>
   </div>
-  <div>
-    <span class="absolute top-4 left-4 z-[-1]">
-      <svg width="50" height="49" viewbox="0 0 50 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="47.7119" cy="46.3164" r="1.74121" transform="rotate(180 47.7119 46.3164)" fill="white"></circle>
-        <circle cx="47.7119" cy="16.7161" r="1.74121" transform="rotate(180 47.7119 16.7161)" fill="white"></circle>
-        <circle cx="47.7119" cy="31.3423" r="1.74121" transform="rotate(180 47.7119 31.3423)" fill="white"></circle>
-        <circle cx="47.7119" cy="1.74121" r="1.74121" transform="rotate(180 47.7119 1.74121)" fill="white"></circle>
-        <circle cx="32.3916" cy="46.3162" r="1.74121" transform="rotate(180 32.3916 46.3162)" fill="white"></circle>
-        <circle cx="32.3916" cy="16.7161" r="1.74121" transform="rotate(180 32.3916 16.7161)" fill="white"></circle>
-        <circle cx="32.3916" cy="31.342" r="1.74121" transform="rotate(180 32.3916 31.342)" fill="white"></circle>
-        <circle cx="32.3916" cy="1.74145" r="1.74121" transform="rotate(180 32.3916 1.74145)" fill="white"></circle>
-        <circle cx="17.0674" cy="46.3162" r="1.74121" transform="rotate(180 17.0674 46.3162)" fill="white"></circle>
-        <circle cx="17.0674" cy="16.7161" r="1.74121" transform="rotate(180 17.0674 16.7161)" fill="white"></circle>
-        <circle cx="17.0674" cy="31.342" r="1.74121" transform="rotate(180 17.0674 31.342)" fill="white"></circle>
-        <circle cx="17.0674" cy="1.74145" r="1.74121" transform="rotate(180 17.0674 1.74145)" fill="white"></circle>
-        <circle cx="1.74316" cy="46.3162" r="1.74121" transform="rotate(180 1.74316 46.3162)" fill="white"></circle>
-        <circle cx="1.74316" cy="16.7161" r="1.74121" transform="rotate(180 1.74316 16.7161)" fill="white"></circle>
-        <circle cx="1.74316" cy="31.342" r="1.74121" transform="rotate(180 1.74316 31.342)" fill="white"></circle>
-        <circle cx="1.74316" cy="1.74145" r="1.74121" transform="rotate(180 1.74316 1.74145)" fill="white"></circle>
-      </svg>
-    </span>
-    <span class="absolute bottom-4 right-4 z-[-1]">
-      <svg width="50" height="49" viewbox="0 0 50 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="47.7119" cy="46.3164" r="1.74121" transform="rotate(180 47.7119 46.3164)" fill="white"></circle>
-        <circle cx="47.7119" cy="16.7161" r="1.74121" transform="rotate(180 47.7119 16.7161)" fill="white"></circle>
-        <circle cx="47.7119" cy="31.3423" r="1.74121" transform="rotate(180 47.7119 31.3423)" fill="white"></circle>
-        <circle cx="47.7119" cy="1.74121" r="1.74121" transform="rotate(180 47.7119 1.74121)" fill="white"></circle>
-        <circle cx="32.3916" cy="46.3162" r="1.74121" transform="rotate(180 32.3916 46.3162)" fill="white"></circle>
-        <circle cx="32.3916" cy="16.7161" r="1.74121" transform="rotate(180 32.3916 16.7161)" fill="white"></circle>
-        <circle cx="32.3916" cy="31.342" r="1.74121" transform="rotate(180 32.3916 31.342)" fill="white"></circle>
-        <circle cx="32.3916" cy="1.74145" r="1.74121" transform="rotate(180 32.3916 1.74145)" fill="white"></circle>
-        <circle cx="17.0674" cy="46.3162" r="1.74121" transform="rotate(180 17.0674 46.3162)" fill="white"></circle>
-        <circle cx="17.0674" cy="16.7161" r="1.74121" transform="rotate(180 17.0674 16.7161)" fill="white"></circle>
-        <circle cx="17.0674" cy="31.342" r="1.74121" transform="rotate(180 17.0674 31.342)" fill="white"></circle>
-        <circle cx="17.0674" cy="1.74145" r="1.74121" transform="rotate(180 17.0674 1.74145)" fill="white"></circle>
-        <circle cx="1.74316" cy="46.3162" r="1.74121" transform="rotate(180 1.74316 46.3162)" fill="white"></circle>
-        <circle cx="1.74316" cy="16.7161" r="1.74121" transform="rotate(180 1.74316 16.7161)" fill="white"></circle>
-        <circle cx="1.74316" cy="31.342" r="1.74121" transform="rotate(180 1.74316 31.342)" fill="white"></circle>
-        <circle cx="1.74316" cy="1.74145" r="1.74121" transform="rotate(180 1.74316 1.74145)" fill="white"></circle>
-      </svg>
-    </span>
-  </div>
+
+  <!-- Decorative dots (optional) -->
+  <span class="pointer-events-none absolute top-4 left-4 z-[-1] opacity-60">
+    <!-- keep your SVG dots here if you like -->
+  </span>
+  <span class="pointer-events-none absolute bottom-4 right-4 z-[-1] opacity-60">
+    <!-- keep your SVG dots here if you like -->
+  </span>
 </section>
+
+<!-- tiny marquee keyframes -->
+<style>
+@keyframes scroll {from {transform: translateX(0)} to {transform: translateX(-50%)}}
+</style>
+
 <!-- ====== Token Standards Section END -->
 
 
