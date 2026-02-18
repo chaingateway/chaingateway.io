@@ -1,59 +1,21 @@
-<!doctype html>
+<!DOCTYPE html><script type="module" src="/_astro/page.B1D-nYk3.js"></script><div><!doctype html>
 <html>
-
-<head>
-    <title>Chaingateway Blockchain API Documentation</title>
+  <head>
+    <title>Scalar API Reference</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Explore our Blockchain API documentation to integrate blockchain technology seamlessly. Get started with guides, examples, and comprehensive API reference." />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- Load the Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
 
-    <link rel="canonical" href="https://chaingateway.io/docs/" />
-    <link rel="icon" type="image/png" href="https://chaingateway.io/assets/images/favicon.png" />
-    <meta name="language" content="en" />
-
-
-
-    <style>
-        body {
-            margin: 0;
-        }
-
-        .dark-mode {
-
-            --scalar-color-1: rgba(255, 255, 255, 0.81);
-            --scalar-color-2: rgba(255, 255, 255, 0.443);
-            --scalar-color-3: rgba(255, 255, 255, 0.282);
-            --scalar-color-accent: rgb(99, 102, 241) !important;
-            --scalar-background-1: rgb(22, 22, 24) !important;
-            --scalar-background-2: rgb(46, 46, 51) !important;
-            --scalar-background-3: rgb(46, 46, 51) !important;
-            --scalar-background-accent: rgb(99, 102, 241);
-
-        }
-    </style>
-</head>
-
-<body>
-
-    <script id="api-reference" data-url="openapi.yaml" data-proxy-url="">
+    <!-- Initialize the Scalar API Reference -->
+    <script type="text/javascript">
+      Scalar.createApiReference('#app', {
+        "url": "./openapi.yaml"})
     </script>
-    <script>
-        var configuration = {
-            metaData: {
-                title: 'Chaingateway.io Blockchain API Docs',
-                description: 'This Page provides documentation for the Chaingateway Blockchain API endpoints. Chaingateway is a crypto api that allows you to interact with multiple blockchains.',
-                ogDescription: 'This Page provides documentation for the Chaingateway Blockchain API endpoints. Chaingateway is a crypto api that allows you to interact with multiple blockchains.',
-                ogTitle: 'Chaingateway.io Blockchain API Docs',
-                ogImage: 'https://chaingateway.io/assets/images/svg/nav-logo.svg',
-                twitterCard: 'Chaingateway.io Blockchain API Docs',
-                // Add more...
-            }
-        }
-
-        document.getElementById('api-reference').dataset.configuration =
-            JSON.stringify(configuration)
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference@1.25.39/dist/browser/standalone.min.js"></script>
-</body>
-
-</html>
+  </body>
+</html></div>

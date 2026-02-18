@@ -1,1 +1,0 @@
-module.exports={plugins:[require("tailwindcss"),require("autoprefixer"),require("postcss-import")({path:["assets/css"]}),..."production"==process.env.JEKYLL_ENV?[require("cssnano")({preset:"default"})]:[]]};
