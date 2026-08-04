@@ -158,8 +158,9 @@
         </div>
 
             <div class="stage-block">
-        <h2>Duplicate-Content &amp; Linking</h2>
+        <h2>Runde 1 — Duplicate-Content &amp; Linking (Zwischenstand)</h2>
     <div class="stage-description">
+        <p>Zwischenstand: dieser Build enthält nur Runde 1. Wer den Gesamtstand sehen will, nimmt conversion-plan weiter unten — die drei Runden bauen aufeinander auf.</p>
         <p>Acht Payment-API-Landingpages (u. a. arbitrum-payment-api, bitcoin-payment-api, crypto-payment-api) werden gelöscht und in astro.config.mjs 301 auf die jeweilige /X-api/-Seite umgeleitet, um Duplicate Content zu den sieben Chain-Landings zu vermeiden.</p>
         <p>Die sieben Chain-Landingpages plus die Blockchain-API-Hub-Seite wechseln von den bisherigen Bestandskomponenten auf das gemeinsame LandingHero/LandingSeo-System, und die neue RelatedResources.astro liefert pro Seite 3 bis 4 kontextuelle interne Links zu Blog-Guides, Fee-Calculator und der Hub-Seite.</p>
     </div>
@@ -271,8 +272,9 @@
     </div>
 
     <div class="stage-block">
-        <h2>Schema-Markup &amp; Chain-Tabelle</h2>
+        <h2>Runde 2 — Schema-Markup &amp; Chain-Tabelle (Zwischenstand)</h2>
     <div class="stage-description">
+        <p>Zwischenstand: dieser Build enthält Runde 1 und 2. Der Gesamtstand steht unter conversion-plan.</p>
         <p>src/lib/landing-schema.ts erzeugt für jede Landing zusätzlich zu Service- und FAQPage-JSON-LD ein SoftwareApplication- und ein TechArticle-Schema mit datePublished/dateModified sowie bedingt ein HowTo-Schema aus vorhandenen Schritt-Listen.</p>
         <p>In alle acht Landing-JSON-Dateien — die sieben Chain-Seiten und die Hub-Seite — wird eine Vergleichstabelle &quot;What works on which chain&quot; eingefügt, die Adressen, Token-Transfers und Deposit-Webhooks der sieben Chains gegenüberstellt und dabei auf jede andere Chain-Seite verlinkt.</p>
     </div>
@@ -384,9 +386,10 @@
     </div>
 
     <div class="stage-block">
-        <h2>Trust-Bar &amp; Link-Fixes</h2>
+        <h2>Gesamtstand — alle drei Runden (Runde 3: Trust-Bar &amp; Link-Fixes)</h2>
     <div class="stage-description">
-        <p>25 interne Links ohne abschließenden Slash werden auf die Variante mit Slash korrigiert und sparen damit je einen Redirect-Sprung — 14 davon in navbar.tsx, zwei in thankyou.astro, die übrigen einzeln in footer.tsx, about-cta.tsx, blockchain-api-chains.tsx, hero.tsx, integration-token.tsx, webhook-cta.tsx, webhook-faq.tsx, imprint.astro und terms-of-service.astro.</p>
+        <p>Dies ist der Build, der bei einem Go-live live gehen würde: er enthält Runde 1 und 2 vollständig plus Runde 3. Die beiden Builds darüber sind Zwischenstände und älter.</p>
+        <p>Runde 3 im Einzelnen: 25 interne Links ohne abschließenden Slash werden auf die Variante mit Slash korrigiert und sparen damit je einen Redirect-Sprung — 14 davon in navbar.tsx, zwei in thankyou.astro, die übrigen einzeln in footer.tsx, about-cta.tsx, blockchain-api-chains.tsx, hero.tsx, integration-token.tsx, webhook-cta.tsx, webhook-faq.tsx, imprint.astro und terms-of-service.astro.</p>
         <p>LandingSeo.astro erhält eine Trust-Zeile (7-day free trial/no KYC, non-custodial, Preise ab 49 €/Monat) sowie einen neuen Section-Typ &quot;note&quot; für eine Mid-Page-CTA, der in allen acht Landing-JSON-Dateien je genau einmal ergänzt wird.</p>
     </div>
     <div class="stage-meta">
@@ -400,11 +403,11 @@
         </div>
         <div class="meta-field">
             <div class="meta-label">Commit</div>
-            <div class="meta-value" title="4e54e636305371fba9ed1333a8359386b1834ac3">4e54e63</div>
+            <div class="meta-value" title="a712fab8538b909c918aad5effc09136aa3a9b61">a712fab</div>
         </div>
         <div class="meta-field">
             <div class="meta-label">Built At</div>
-            <div class="meta-value">2026-08-04 22:16 UTC</div>
+            <div class="meta-value">2026-08-04 22:27 UTC</div>
         </div>
         <div class="meta-field">
             <div class="meta-label">Pages</div>
