@@ -1,1 +1,0 @@
-import{H as e}from"./t.CIcEPr3f.js";function i(t,o){const r=typeof t=="string"?new Date(t):t;return Number.isNaN(r.getTime())?typeof t=="string"?t:"":new Intl.DateTimeFormat(e[o],{year:"numeric",month:"short",day:"2-digit"}).format(r)}export{i as f};
