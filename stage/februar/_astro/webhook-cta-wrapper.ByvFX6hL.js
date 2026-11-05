@@ -1,0 +1,9 @@
+import{j as e}from"./jsx-runtime.D_zvdyIk.js";import{c as r}from"./utils.CDN07tui.js";import{B as i}from"./badge.BskxFRwe.js";import{B as t}from"./button.Y78Rbrys.js";import"./index.DwQS_Y10.js";import"./index.DQ7ce_Vf.js";import"./index.EoS_Dwas.js";const c=()=>e.jsx("div",{className:"relative z-10",children:e.jsx("div",{className:"container py-28 md:py-32",children:e.jsxs("div",{className:"mx-auto flex max-w-5xl flex-col items-center gap-6 text-center",children:[e.jsx(i,{variant:"secondary",children:"Enhance your Data Pipeline"}),e.jsxs("div",{className:"max-w-3xl",children:[e.jsx("h1",{className:"mb-6 text-4xl font-medium tracking-tight text-pretty text-foreground md:text-5xl lg:text-6xl",children:"Ready for real-time event notifications?"}),e.jsx("p",{className:"mx-auto max-w-2xl font-light tracking-tighter text-pretty text-muted-foreground md:text-lg lg:text-xl",children:"Stop polling and start receiving instant updates with Chaingateway Webhooks. Get notified of blockchain events in real-time, so you can react faster and build more responsive applications."})]}),e.jsxs("div",{className:"flex items-center gap-2",children:[e.jsx(t,{children:e.jsx("a",{href:"https://app.chaingateway.io/register",children:"Get Started"})}),e.jsx(t,{variant:"secondary",children:e.jsx("a",{href:"/stage/februar/pricing",children:"Pricing"})})]})]})})}),h=({className:a})=>e.jsxs("section",{className:r("relative flex py-20 w-full items-center justify-center",a),children:[e.jsx("div",{className:"pointer-events-none absolute inset-0 z-0",style:{background:`
+        radial-gradient(
+          circle at center,
+          oklch(from var(--secondary) calc(l * 0.85) calc(c * 0.8) h / 0.12) 0%,
+          oklch(from var(--secondary) calc(l * 0.8) calc(c * 0.75) h / 0.08) 40%,
+          oklch(from var(--secondary) calc(l * 0.75) calc(c * 0.7) h / 0.04) 60%,
+          transparent 80%
+        )
+      `}}),e.jsx(c,{})]});export{h as default};
