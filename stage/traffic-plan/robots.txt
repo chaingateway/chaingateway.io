@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chaingateway.io/sitemap-index.xml
+Disallow: /imprint
