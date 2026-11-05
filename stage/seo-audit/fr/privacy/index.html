@@ -3,7 +3,7 @@
   const initialTheme = savedTheme || 'dark';
   document.documentElement.classList.toggle('dark', initialTheme === 'dark');
   document.documentElement.setAttribute('data-theme', initialTheme);
-</script><script type="module" src="/stage/seo-audit/_astro/BaseHead.astro_astro_type_script_index_0_lang.CFO1TLoi.js"></script><!-- HeyCatch analytics (runs in parallel to Rybbit above): consent banner + lazy SDK, see src/lib/analytics-consent.ts --><script>
+</script><script type="module" src="/stage/seo-audit/_astro/BaseHead.astro_astro_type_script_index_0_lang.DjiQjyyB.js"></script><!-- Analytics (Rybbit + HeyCatch): consent banner; both only load after "Accept" — Rybbit script injection and lazy HeyCatch SDK, see src/lib/analytics-consent.ts --><script>
     // Only initialize once
     window.MauticSDKLoaded = window.MauticSDKLoaded || false;
     window.MauticDomain = "https://mautic.bitblade.io";
@@ -136,6 +136,30 @@
 <p>Vous pouvez retirer Votre consentement à tout moment, avec effet pour l'avenir : utilisez le lien « Paramètres de confidentialité » en pied de page ou le bouton ci-dessous. Votre choix lui-même est enregistré dans le stockage local de Votre navigateur, afin que Nous n'ayons pas à Vous le redemander sur chaque page.</p>
 
 <p><button type="button" data-analytics-consent-open>Modifier le consentement à la mesure d'audience</button></p>
+
+<h4 id="website-analytics-rybbit">Mesure d'audience du site avec Rybbit</h4>
+
+<p>Avec Votre consentement, Notre site web utilise également Rybbit, un logiciel open source d'analyse web. Rybbit ne fonctionne pas sur un service tiers : il fonctionne sur un serveur exploité pour Notre compte par Bitblade Solutions UG (haftungsbeschränkt), Siemensstraße 14, 79787 Lauchringen, Allemagne, en tant que Notre sous-traitant. Le serveur est hébergé en Allemagne par Hetzner Online GmbH.</p>
+
+<p>Rybbit ne démarre qu'après que Vous avez cliqué sur « Accepter » dans la bannière de mesure d'audience, la même bannière que pour HeyCatch. Jusque-là, le script Rybbit n'est pas chargé et rien n'est enregistré dans Votre navigateur. Si Vous refusez, Rybbit reste désactivé.</p>
+
+<p>Lorsque Vous avez donné Votre consentement, Rybbit traite :</p>
+
+<ul>
+<li>les pages que Vous consultez, la page d'où Vous venez et les paramètres présents dans le lien (par exemple utm_source) ;</li>
+<li>les clics sur des boutons et sur des liens vers d'autres sites web, ainsi que les interactions avec les formulaires ;</li>
+<li>des mesures du temps de chargement (Web Vitals) et les erreurs JavaScript survenant sur la page ;</li>
+<li>des enregistrements de Votre visite (relecture de session) : ce que la page affichait, les mouvements de la souris, les clics et le défilement. Les saisies dans les formulaires sont masquées et ne sont pas enregistrées ;</li>
+<li>Votre adresse IP, transmise avec chaque requête et utilisée pour déterminer Votre localisation approximative ;</li>
+<li>les données relatives à l'appareil et au navigateur, telles que le type de navigateur, le système d'exploitation et la taille de l'écran ;</li>
+<li>un identifiant de visiteur pseudonyme, stocké dans le stockage local de Votre navigateur, afin que plusieurs pages vues puissent être reconnues comme un seul visiteur. Il y reste jusqu'à ce que Vous le supprimiez ou retiriez Votre consentement.</li>
+</ul>
+
+<p>Nous utilisons ces données pour comprendre comment les visiteurs utilisent le site web, pour détecter les erreurs et pour l'améliorer. La base juridique est Votre consentement (art. 6, par. 1, point a) du RGPD et § 25, al. 1 TDDDG). Les données sont traitées uniquement en Allemagne et ne sont pas transmises à d'autres tiers.</p>
+
+<p>Nous conservons les données Rybbit pendant cinq ans, puis les supprimons.</p>
+
+<p>Vous pouvez retirer Votre consentement à tout moment, avec effet pour l'avenir, de la même manière que pour HeyCatch : avec le lien « Paramètres de confidentialité » en pied de page ou le bouton de la section HeyCatch ci-dessus. Le retrait supprime l'identifiant de visiteur de Votre navigateur.</p>
 
 <h4>Utilisation de Vos données personnelles</h4>
 

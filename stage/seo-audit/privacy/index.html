@@ -3,7 +3,7 @@
   const initialTheme = savedTheme || 'dark';
   document.documentElement.classList.toggle('dark', initialTheme === 'dark');
   document.documentElement.setAttribute('data-theme', initialTheme);
-</script><script type="module" src="/stage/seo-audit/_astro/BaseHead.astro_astro_type_script_index_0_lang.CFO1TLoi.js"></script><!-- HeyCatch analytics (runs in parallel to Rybbit above): consent banner + lazy SDK, see src/lib/analytics-consent.ts --><script>
+</script><script type="module" src="/stage/seo-audit/_astro/BaseHead.astro_astro_type_script_index_0_lang.DjiQjyyB.js"></script><!-- Analytics (Rybbit + HeyCatch): consent banner; both only load after "Accept" — Rybbit script injection and lazy HeyCatch SDK, see src/lib/analytics-consent.ts --><script>
     // Only initialize once
     window.MauticSDKLoaded = window.MauticSDKLoaded || false;
     window.MauticDomain = "https://mautic.bitblade.io";
@@ -153,7 +153,37 @@ You can withdraw Your consent at any time with effect for the future:
       use the "Privacy settings" link in the footer or the button below. Your
       choice itself is stored in Your browser's local storage, so that We do
       not have to ask again on every page.
-</p> <p> <button type="button" data-analytics-consent-open>Change analytics consent</button> </p> <h4>Use of Your Personal Data</h4> <p>The Company may use Personal Data for the following purposes:</p> <ul> <li> <strong>To provide and maintain our Service</strong>, including to
+</p> <p> <button type="button" data-analytics-consent-open>Change analytics consent</button> </p> <h4 id="website-analytics-rybbit">Website Analytics with Rybbit</h4> <p>
+With Your consent, Our website also uses Rybbit, an open-source web
+      analytics software. Rybbit does not run on a third-party service: it runs
+      on a server operated on Our behalf by Bitblade Solutions UG
+      (haftungsbeschränkt), Siemensstraße 14, 79787 Lauchringen, Germany, as
+      Our processor. The server is hosted by Hetzner Online GmbH in Germany.
+</p> <p>
+Rybbit starts only after You click "Accept" in the analytics banner, the
+      same banner as for HeyCatch. Until then the Rybbit script is not loaded
+      and nothing is stored in Your browser. If You decline, Rybbit stays off.
+</p> <p>When You have consented, Rybbit processes:</p> <ul> <li>the pages You view, the page You came from and parameters in the link (such as utm_source);</li> <li>clicks on buttons and on links to other websites, and interactions with forms;</li> <li>loading-time measurements (Web Vitals) and JavaScript errors that occur on the page;</li> <li>
+recordings of Your visit (session replay): what the page showed, mouse
+        movements, clicks and scrolling. Form inputs are masked and are not
+        recorded;
+</li> <li>Your IP address, which is transmitted with every request and used to determine Your approximate location;</li> <li>device and browser data, such as browser type, operating system and screen size;</li> <li>
+a pseudonymous visitor ID, stored in Your browser's local storage, so
+        that several page views can be recognised as one visitor. It stays
+        until You delete it or withdraw Your consent.
+</li> </ul> <p>
+We use this data to understand how visitors use the website, to find
+      errors and to improve it. The legal basis is Your consent (Art. 6(1)(a)
+      GDPR and § 25(1) TDDDG). The data is processed only in Germany and is
+      not passed on to other third parties.
+</p> <p>
+We keep the Rybbit data for five years and then delete it.
+</p> <p>
+You can withdraw Your consent at any time with effect for the future, in
+      the same way as for HeyCatch: with the "Privacy settings" link in the
+      footer or the button in the HeyCatch section above. Withdrawing removes
+      the visitor ID from Your browser.
+</p> <h4>Use of Your Personal Data</h4> <p>The Company may use Personal Data for the following purposes:</p> <ul> <li> <strong>To provide and maintain our Service</strong>, including to
         monitor the usage of our Service.
 </li> <li> <strong>To manage Your Account:</strong> to manage Your registration as a
         user of the Service. The Personal Data You provide can give You access to

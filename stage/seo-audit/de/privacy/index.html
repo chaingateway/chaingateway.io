@@ -3,7 +3,7 @@
   const initialTheme = savedTheme || 'dark';
   document.documentElement.classList.toggle('dark', initialTheme === 'dark');
   document.documentElement.setAttribute('data-theme', initialTheme);
-</script><script type="module" src="/stage/seo-audit/_astro/BaseHead.astro_astro_type_script_index_0_lang.CFO1TLoi.js"></script><!-- HeyCatch analytics (runs in parallel to Rybbit above): consent banner + lazy SDK, see src/lib/analytics-consent.ts --><script>
+</script><script type="module" src="/stage/seo-audit/_astro/BaseHead.astro_astro_type_script_index_0_lang.DjiQjyyB.js"></script><!-- Analytics (Rybbit + HeyCatch): consent banner; both only load after "Accept" — Rybbit script injection and lazy HeyCatch SDK, see src/lib/analytics-consent.ts --><script>
     // Only initialize once
     window.MauticSDKLoaded = window.MauticSDKLoaded || false;
     window.MauticDomain = "https://mautic.bitblade.io";
@@ -136,6 +136,30 @@
 <p>Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen: über den Link „Datenschutzeinstellungen“ in der Fußzeile oder über die Schaltfläche unten. Ihre Entscheidung selbst wird im lokalen Speicher Ihres Browsers abgelegt, damit Wir Sie nicht auf jeder Seite erneut fragen müssen.</p>
 
 <p><button type="button" data-analytics-consent-open>Analyse-Einwilligung ändern</button></p>
+
+<h4 id="website-analytics-rybbit">Website-Analyse mit Rybbit</h4>
+
+<p>Mit Ihrer Einwilligung nutzt Unsere Website außerdem Rybbit, eine Open-Source-Software zur Webanalyse. Rybbit läuft nicht bei einem Drittanbieter: Es läuft auf einem Server, der in Unserem Auftrag von der Bitblade Solutions UG (haftungsbeschränkt), Siemensstraße 14, 79787 Lauchringen, Deutschland, als Unserem Auftragsverarbeiter betrieben wird. Der Server wird von der Hetzner Online GmbH in Deutschland gehostet.</p>
+
+<p>Rybbit startet erst, nachdem Sie im Analyse-Banner auf „Akzeptieren“ geklickt haben, demselben Banner wie für HeyCatch. Bis dahin wird das Rybbit-Skript nicht geladen und nichts in Ihrem Browser gespeichert. Wenn Sie ablehnen, bleibt Rybbit ausgeschaltet.</p>
+
+<p>Wenn Sie eingewilligt haben, verarbeitet Rybbit:</p>
+
+<ul>
+<li>die von Ihnen aufgerufenen Seiten, die Seite, von der Sie kamen, und Parameter im Link (zum Beispiel utm_source);</li>
+<li>Klicks auf Schaltflächen und auf Links zu anderen Websites sowie Interaktionen mit Formularen;</li>
+<li>Messungen der Ladezeit (Web Vitals) und JavaScript-Fehler, die auf der Seite auftreten;</li>
+<li>Aufzeichnungen Ihres Besuchs (Sitzungsaufzeichnung): was die Seite angezeigt hat, Mausbewegungen, Klicks und Scrollen. Formulareingaben werden ausgeblendet und nicht aufgezeichnet;</li>
+<li>Ihre IP-Adresse, die bei jeder Anfrage übermittelt und zur Bestimmung Ihres ungefähren Standorts verwendet wird;</li>
+<li>Geräte- und Browserdaten, etwa Browsertyp, Betriebssystem und Bildschirmgröße;</li>
+<li>eine pseudonyme Besucher-ID, die im lokalen Speicher Ihres Browsers abgelegt wird, damit mehrere Seitenaufrufe als ein Besucher erkannt werden können. Sie bleibt bestehen, bis Sie sie löschen oder Ihre Einwilligung widerrufen.</li>
+</ul>
+
+<p>Wir nutzen diese Daten, um zu verstehen, wie Besucher die Website nutzen, um Fehler zu finden und um sie zu verbessern. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG). Die Daten werden ausschließlich in Deutschland verarbeitet und nicht an andere Dritte weitergegeben.</p>
+
+<p>Wir speichern die Rybbit-Daten fünf Jahre lang und löschen sie danach.</p>
+
+<p>Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen, genauso wie bei HeyCatch: über den Link „Datenschutzeinstellungen“ in der Fußzeile oder die Schaltfläche im Abschnitt zu HeyCatch oben. Mit dem Widerruf wird die Besucher-ID aus Ihrem Browser entfernt.</p>
 
 <h4>Verwendung Ihrer personenbezogenen Daten</h4>
 

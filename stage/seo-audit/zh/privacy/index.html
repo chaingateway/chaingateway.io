@@ -3,7 +3,7 @@
   const initialTheme = savedTheme || 'dark';
   document.documentElement.classList.toggle('dark', initialTheme === 'dark');
   document.documentElement.setAttribute('data-theme', initialTheme);
-</script><script type="module" src="/stage/seo-audit/_astro/BaseHead.astro_astro_type_script_index_0_lang.CFO1TLoi.js"></script><!-- HeyCatch analytics (runs in parallel to Rybbit above): consent banner + lazy SDK, see src/lib/analytics-consent.ts --><script>
+</script><script type="module" src="/stage/seo-audit/_astro/BaseHead.astro_astro_type_script_index_0_lang.DjiQjyyB.js"></script><!-- Analytics (Rybbit + HeyCatch): consent banner; both only load after "Accept" — Rybbit script injection and lazy HeyCatch SDK, see src/lib/analytics-consent.ts --><script>
     // Only initialize once
     window.MauticSDKLoaded = window.MauticSDKLoaded || false;
     window.MauticDomain = "https://mautic.bitblade.io";
@@ -136,6 +136,30 @@
 <p>您可以随时撤回同意，撤回对今后生效：请使用页脚中的“隐私设置”链接或下方的按钮。您的选择本身存储在浏览器的本地存储中，这样我们就不必在每个页面上重复询问。</p>
 
 <p><button type="button" data-analytics-consent-open>更改分析同意设置</button></p>
+
+<h4 id="website-analytics-rybbit">使用 Rybbit 进行网站分析</h4>
+
+<p>经您同意，我们的网站还使用 Rybbit，这是一款开源的网站分析软件。Rybbit 并非运行在第三方服务上：它运行在一台服务器上，该服务器由 Bitblade Solutions UG (haftungsbeschränkt), Siemensstraße 14, 79787 Lauchringen（德国）作为我们的处理者代表我们运营。该服务器由 Hetzner Online GmbH 托管于德国。</p>
+
+<p>只有在您点击分析横幅中的“接受”之后，Rybbit 才会启动，该横幅与 HeyCatch 使用的是同一个。在此之前，不会加载 Rybbit 脚本，您的浏览器中也不会存储任何内容。如果您拒绝，Rybbit 将保持关闭。</p>
+
+<p>在您同意之后，Rybbit 会处理：</p>
+
+<ul>
+<li>您浏览的页面、您来自的页面，以及链接中的参数（例如 utm_source）；</li>
+<li>对按钮和指向其他网站的链接的点击，以及与表单的交互；</li>
+<li>加载时间测量（Web Vitals）和页面上出现的 JavaScript 错误；</li>
+<li>您访问过程的录制（会话回放）：页面所显示的内容、鼠标移动、点击和滚动。表单输入内容会被屏蔽，不会被录制；</li>
+<li>您的 IP 地址，它随每个请求一并传输，并用于确定您的大致位置；</li>
+<li>设备和浏览器数据，例如浏览器类型、操作系统和屏幕尺寸；</li>
+<li>一个化名访客 ID，存储在您浏览器的本地存储中，以便将多次页面浏览识别为同一位访客。它会一直保留，直到您将其删除或撤回同意。</li>
+</ul>
+
+<p>我们使用这些数据来了解访客如何使用本网站、发现错误并加以改进。法律依据是您的同意（GDPR 第 6 条第 1 款 (a) 项及 TDDDG 第 25 条第 1 款）。数据仅在德国处理，不会提供给其他第三方。</p>
+
+<p>我们将 Rybbit 数据保存五年，之后予以删除。</p>
+
+<p>您可以随时撤回同意，撤回对今后生效，方式与 HeyCatch 相同：请使用页脚中的“隐私设置”链接，或上方 HeyCatch 部分中的按钮。撤回后，访客 ID 将从您的浏览器中删除。</p>
 
 <h4>您的个人数据的使用</h4>
 
