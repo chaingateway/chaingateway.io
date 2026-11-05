@@ -1,0 +1,47 @@
+# Chaingateway
+
+> Chaingateway is a unified REST API for crypto payments and webhooks across seven chains: Bitcoin, Ethereum, Solana, TRON, BNB Smart Chain (BSC), Polygon and Arbitrum. It is non-custodial, so private keys stay under the customer's control. Every plan starts with a 7-day free trial with no card and no KYC. Plans start at €49 per month.
+
+## Product
+
+- [Chaingateway](https://chaingateway.io/): Unified blockchain payments API: ecommerce payouts, airdrops, ICOs & payment gateways. Instant webhooks. Free 7-day trial, no KYC.
+- [Blockchain API](https://chaingateway.io/blockchain-api/): Accept and send crypto payments on Bitcoin, Ethereum, TRON, Solana, BSC, Polygon and Arbitrum. Wallets, transfers and deposit webhooks over one REST API.
+
+## Chains
+
+- [Arbitrum API](https://chaingateway.io/arbitrum-api/): Send ERC-20 tokens on Arbitrum and get deposit webhooks over one REST API. Ethereum security at Layer-2 fees. 7-day free trial, no KYC.
+- [Binance Smart Chain API](https://chaingateway.io/binance-smart-chain-api/): BSC API over REST for BNB and BEP-20 transfers, address creation, deposit webhooks and gas price. Bearer token auth, 7-day trial, no KYC.
+- [Bitcoin API](https://chaingateway.io/bitcoin-api/): Accept Bitcoin payments over a REST API instead of running a full node. Generate deposit addresses and get HMAC-signed webhooks when BTC arrives.
+- [Ethereum API](https://chaingateway.io/ethereum-api/): Send ETH and ERC-20 tokens with one REST call instead of web3.js and raw JSON-RPC. Deposit webhooks included; start with a 7-day trial, no KYC.
+- [Polygon API](https://chaingateway.io/polygon-api/): REST API for the Polygon blockchain. Send POL, USDC and USDT, get deposit webhooks in real time. For on-chain payments, not stock market data.
+- [Solana API](https://chaingateway.io/solana-api/): Create Solana addresses and send SPL tokens with plain REST calls. No web3.js and no SDK to install. Free 7-day trial, no KYC required.
+- [TRON API](https://chaingateway.io/tron-api/): TRON API over REST for USDT-TRC20 transfers, address creation, deposit webhooks and live fee data. Bearer token auth, 7-day trial, no KYC.
+
+## Pricing
+
+- [Pricing](https://chaingateway.io/pricing/): Compare Chaingateway blockchain API plans — Plus, Pro, Premium and Enterprise from €49 per month. Every plan starts with a 7-day free trial, no KYC.
+
+## Docs
+
+- [API Documentation](https://chaingateway.io/docs/): Full REST API reference for Chaingateway — endpoints for wallets, transactions, tokens, and webhooks across Bitcoin, Ethereum, Solana, TRON, BNB and Polygon.
+- [OpenAPI specification](https://chaingateway.io/openapi.yaml): Machine-readable OpenAPI description of the Chaingateway REST API.
+
+## Tools
+
+- [Blockchain Developer Tools](https://chaingateway.io/tools/): Fee calculators, unit converters and an address validator for TRON, Bitcoin and the EVM chains. Free to use in the browser, no account and no API key.
+- [Crypto Address Validator](https://chaingateway.io/tools/address-validator/): Check a TRON address against its Base58Check checksum, or an Ethereum/BSC address against its EIP-55 checksum. Runs in your browser, nothing leaves it.
+- [Bitcoin Transaction Fee Calculator](https://chaingateway.io/tools/bitcoin-fee-calculator/): Estimate a Bitcoin transaction fee from its inputs and outputs: virtual size in vBytes per address type, fee in satoshi and BTC, at the sat/vB rate you set.
+- [Gwei Converter](https://chaingateway.io/tools/gwei-converter/): Convert wei to ETH, Gwei to ETH and back in one step. Exact BigInt arithmetic across all 18 decimals, plus why gas prices are quoted in Gwei at all.
+- [TRON Energy and Bandwidth Calculator](https://chaingateway.io/tools/tron-energy-calculator/): Work out how much Energy and Bandwidth your TRON volume needs per day, what it costs to burn TRX for it, and roughly how much staked TRX would cover it.
+- [TRON Fee Calculator](https://chaingateway.io/tools/tron-fee-calculator/): Calculate TRON fees before you send: about 6.4 TRX per USDT-TRC20 transfer, 13.4 TRX to an empty wallet. Plus how Bandwidth and Energy work.
+- [TRON to PHP Conversion](https://chaingateway.io/tools/tron-to-php/): TRX, TRC20 and BEP20 conversion to Philippine peso, explained without a stale rate widget: where to get a live rate, and how to check the network fee first.
+
+## Blog
+
+- [Blog](https://chaingateway.io/blog/): Blockchain API tutorials, integration guides, and release notes from the Chaingateway team, covering Ethereum, BSC, Tron, Bitcoin, and Polygon.
+
+## Company
+
+- [About](https://chaingateway.io/about/): Chaingateway UG (haftungsbeschränkt) is the German company behind the blockchain payments API: who runs it, where it is registered and how to reach us.
+- [Imprint](https://chaingateway.io/imprint/): Legal notice for Chaingateway UG (haftungsbeschränkt): registered address, managing director, and contact details for the blockchain payments API provider.
+- [Support](https://chaingateway.io/support/): Get help with the Chaingateway blockchain API: reach the support team via chat, email, or Telegram, or browse the developer documentation.
